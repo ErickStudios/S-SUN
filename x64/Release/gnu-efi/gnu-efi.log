@@ -1,0 +1,30 @@
+﻿  boxdraw.c
+  cmdline.c
+  console.c
+  crc.c
+  data.c
+  debug.c
+  dpath.c
+  error.c
+  event.c
+  guid.c
+  hand.c
+  hw.c
+  init.c
+  lock.c
+  misc.c
+  print.c
+  efirtlib.c
+  rtdata.c
+  rtlock.c
+  rtstr.c
+  Generando código...
+  Compilando...
+  vm.c
+  smbios.c
+  sread.c
+  str.c
+  initplat.c
+  math.c
+  Generando código...
+  gnu-efi.vcxproj -> C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\x64\Release\gnu-efi.lib
