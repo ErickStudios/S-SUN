@@ -33,6 +33,92 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #ifndef _KERNEL_CORE_
 #define _KERNEL_CORE_
 
+#define dift(n,v) UINTN (n) = (v);
+
+// System Resources
+#define kERNEL_RESOURCE     1
+#define DISPLAY_RESOURCE    2
+#define KEYBOARD_RESOURCE   3
+#define RAM_RESOURCE        4
+#define CONIO_RESOURCE      5
+
+// Interruption codes
+#define INT_SUCCES                  1
+#define INT_ERROR                   2
+#define INT_NOT_FOUNDED             3
+#define INT_RESOURCE_NOT_FOUNDED    4
+
+int SystemResources[] = {
+    kERNEL_RESOURCE ,
+    DISPLAY_RESOURCE ,
+    KEYBOARD_RESOURCE,
+    RAM_RESOURCE,
+    CONIO_RESOURCE
+};
+
+// interruptions
+/**
+Summary:
+    this method calls a specific S-SUN resource and specific InterruptionID in S++
+    for example:
+    int....
+    that are a great idea but i cancelled it
+**/
+/*int
+Interruption
+(
+    int Resource,
+    int InterruptionID
+)
+{
+    switch (Resource)
+    {
+    case kERNEL_RESOURCE:
+        switch (InterruptionID)
+        {
+        case 1:
+            return INT_SUCCES;
+        default:
+            return INT_NOT_FOUNDED;
+        }
+    case DISPLAY_RESOURCE:
+        switch (InterruptionID)
+        {
+        case 1:
+            DRW_X++;
+            return INT_SUCCES;
+        case 2:
+            DRW_Y++;
+            return INT_SUCCES;
+        case 3:
+            DRW_DOWN;
+            return INT_SUCCES;
+        case 4:
+            DRW_COL.Red = Read_MEM_FILE_INT(L"Interruption_DISPLAY_val");
+            return INT_SUCCES;
+        case 5:
+            DRW_COL.Green = Read_MEM_FILE_INT(L"Interruption_DISPLAY_val");
+            return INT_SUCCES;
+        case 6:
+            DRW_COL.Blue = Read_MEM_FILE_INT(L"Interruption_DISPLAY_val");
+            return INT_SUCCES;
+        default:
+            return INT_NOT_FOUNDED;
+        }
+    case KEYBOARD_RESOURCE:
+        switch (InterruptionID)
+        {
+        case 1:
+            return INT_SUCCES;
+        default:
+            return INT_NOT_FOUNDED;
+        }
+    default:
+        return INT_RESOURCE_NOT_FOUNDED;
+    }
+}
+*/
+
 EFI_STATUS CreateANewDirFUNCTION(CHAR16* DirName, EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable);
 
 /*
@@ -118,7 +204,7 @@ CHAR16* kernel_call_handler(enum _KERNEL_REASON_FOR_CALL_ reason, CHAR16* data) 
         UINTN count;
         CHAR16* datatype = split(data, L' ** ==', &count);
         if (count > 1) {
-            pr_special(L"kernel variable seted operation\m");
+            pr_special(L"kernel variable seted operation\n");
             printc(datatype[0]);
             printc(L" = ");
             printc(datatype[1]);
@@ -244,9 +330,9 @@ EFI_HANDLE GET_CURRENT_DOMAIN() {
             if (_KERNEL_SYSTEM_ERROR_ == 0) { \
                 globalsystemtable->RuntimeServices->ResetSystem(EfiResetShutdown , EFI_SUCCESS, 0, NULL); \
             } else { \
-		        globalsystemtable->ConOut->ClearScreen(globalsystemtable->ConOut); \
-                Print(L"The system has encountered a problem and needs to restart.\n"); \
-                Print(int_to_hex_string(_KERNEL_SYSTEM_ERROR_)); \
+                ClearScreen(); \
+                printc(L"The system has encountered a problem and needs to restart.\n"); \
+                printc(int_to_hex_string(_KERNEL_SYSTEM_ERROR_)); \
                 uefi_call_wrapper(globalsystemtable->BootServices->Stall, 1, 500000); \
                 globalsystemtable->RuntimeServices->ResetSystem(EfiResetCold, EFI_SUCCESS, 0, NULL); \
             } \

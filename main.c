@@ -36,9 +36,31 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #include <libsmbios.h>
 #include ".vs/msvc/kernelMK.h"
 
-#define MAX_VARIABLES 100
+/*
+erick : y si hago un siste...
+comunidad c : NOOOO
+PAM , S-SUN creado
+*/
+CSCHEME* Sceme;
 
-EFI_STATUS WriteFile(CHAR16* FileName, CHAR16* Content) {
+#define MAX_VARIABLES 100
+string CurrentDir;
+
+/*
+no se por que hago
+function
+e
+(
+);
+en vez de function e();
+*/
+EFI_STATUS
+WriteFile
+(
+	CHAR16* FileName,
+	 CHAR16* Content
+)
+{
 	// Verificar parámetros nulos
 	if (FileName == NULL || Content == NULL) {
 		Print(L"KERNEL_CALL -> -> Parámetro nulo: FileName o Content es NULL\n");
@@ -201,7 +223,12 @@ EFI_STATUS CheckAndCreateFiles(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemT
 }
 */
 
-CHAR16* StrStr(CHAR16* haystack, CHAR16* needle) {
+CHAR16*
+ StrStr
+ (
+	CHAR16* haystack, CHAR16* needle
+)
+{
 	if (!*needle) return haystack;
 	for (; *haystack; haystack++) {
 		if (*haystack != *needle) continue;
@@ -222,7 +249,13 @@ typedef struct {
 VariableEntry variables[MAX_VARIABLES];
 UINTN variable_count = 0;
 
-VOID SetVariable(CHAR16* variable, CHAR16* value) {
+VOID
+SetVariable
+(
+	CHAR16* variable,
+	 CHAR16* value
+)
+{
 	for (UINTN i = 0; i < variable_count; i++) {
 		if (StrCmp(variables[i].variable, variable) == 0) {
 			variables[i].value = value;
@@ -234,7 +267,12 @@ VOID SetVariable(CHAR16* variable, CHAR16* value) {
 	variable_count++;
 }
 
-CHAR16* GetVariable(CHAR16* variable) {
+CHAR16*
+GetVariable
+(
+	CHAR16* variable
+)
+{
 	for (UINTN i = 0; i < variable_count; i++) {
 		if (StrCmp(variables[i].variable, variable) == 0) {
 			return variables[i].value;
@@ -243,9 +281,20 @@ CHAR16* GetVariable(CHAR16* variable) {
 	return NULL;
 }
 
-CHAR16* StrToken(CHAR16* str, const CHAR16* delim);
+CHAR16*
+StrToken
+(
+	CHAR16* str,
+	 const CHAR16* delim
+);
 
-EFI_STATUS SSUNSCREENLOGOUT(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
+EFI_STATUS
+SSUNSCREENLOGOUT
+(
+	EFI_HANDLE ImageHandle,
+	 EFI_SYSTEM_TABLE* SystemTable
+)
+{
 	initializeMoonScreen();
 	SetScreenAtribute(1, blue);
 	ClearScreen();
@@ -263,9 +312,24 @@ EFI_STATUS SSUNSCREENLOGOUT(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTabl
 	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 5, 1000000);
 }
 
-CHAR16 ExecuteCommand(CHAR16* buffer, EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable, CHAR16 mode);
+CHAR16 
+ExecuteCommand
+(
+	CHAR16* buffer,
+	EFI_HANDLE ImageHandle,
+	EFI_SYSTEM_TABLE* SystemTable,
+	CHAR16 mode
+)
+;
+
 // Función para dividir una cadena CHAR16 en líneas
-CHAR16** SplitLines(CHAR16* text, UINTN* line_count) {
+CHAR16** 
+SplitLines
+(
+	CHAR16* text, 
+	UINTN* line_count
+) 
+{
 	static CHAR16* lines[100];
 	*line_count = 0;
 	CHAR16* token = StrToken(text, L"\n");
@@ -277,7 +341,13 @@ CHAR16** SplitLines(CHAR16* text, UINTN* line_count) {
 }
 
 // Implementación de StrToken
-CHAR16* StrToken(CHAR16* str, const CHAR16* delim) {
+CHAR16* 
+StrToken
+(
+	CHAR16* str,
+	const CHAR16* delim
+)
+{
 	static CHAR16* static_str = NULL; // Mantiene el puntero de la posición en la cadena original
 	if (str) static_str = str;
 	if (!static_str) return NULL;
@@ -303,7 +373,17 @@ CHAR16* StrToken(CHAR16* str, const CHAR16* delim) {
 	static_str = NULL;
 	return start != static_str ? start : NULL;
 }
-VOID PrintLineWithBackground(EFI_SYSTEM_TABLE* SystemTable, CHAR16* text, UINTN line, UINTN COLOR, UINTN BG) {
+
+VOID
+PrintLineWithBackground
+(
+	EFI_SYSTEM_TABLE* SystemTable, 
+	CHAR16* text, 
+	UINTN line, 
+	UINTN COLOR, 
+	UINTN BG
+) 
+{
 	UINTN Column, MaxColumns;
 	CHAR16* lineBuffer;
 	UINTN textLength = StrLen(text);
@@ -365,7 +445,13 @@ PrintSSL
 	}
 }
 
-EFI_STATUS DrawCursor(EFI_SYSTEM_TABLE* SystemTable, CHAR16 CursorChar) {
+EFI_STATUS
+DrawCursor
+(
+	EFI_SYSTEM_TABLE* SystemTable, 
+	CHAR16 CursorChar
+) 
+{
 	UINTN Column, Row;
 
 	// Obtener la posición actual del cursor
@@ -394,13 +480,26 @@ EFI_STATUS DrawCursor(EFI_SYSTEM_TABLE* SystemTable, CHAR16 CursorChar) {
 }
 
 // Función para dibujar texto utilizando la consola UEFI
-EFI_STATUS DrawText(EFI_SYSTEM_TABLE* SystemTable, CHAR16* Text, UINTN X, UINTN Y) {
+EFI_STATUS 
+DrawText
+(
+	EFI_SYSTEM_TABLE* SystemTable, 
+	CHAR16* Text, 
+	UINTN X, 
+	UINTN Y
+) 
+{
 	SystemTable->ConOut->SetCursorPosition(SystemTable->ConOut, X, Y);
 	SystemTable->ConOut->OutputString(SystemTable->ConOut, Text);
 	return EFI_SUCCESS;
 }
 
-EFI_STATUS guimode(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
+EFI_STATUS guimode
+(
+	EFI_HANDLE ImageHandle, 
+	EFI_SYSTEM_TABLE* SystemTable
+)
+{
 	EFI_STATUS Status;
 	EFI_GRAPHICS_OUTPUT_PROTOCOL* GraphicsOutput;
 	EFI_SIMPLE_POINTER_PROTOCOL* Mouse;
@@ -513,11 +612,29 @@ EFI_STATUS guimode(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
 	return EFI_SUCCESS;
 }
 
-EFI_STATUS ssun_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable, CHAR16 mode);
+EFI_STATUS 
+ssun_main
+(
+	EFI_HANDLE ImageHandle,
+	EFI_SYSTEM_TABLE* SystemTable,
+	CHAR16 mode
+);
 
-EFI_STATUS editor(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable);
+EFI_STATUS 
+editor
+(
+	EFI_HANDLE ImageHandle, 
+	EFI_SYSTEM_TABLE* SystemTable, 
+	string* textt
+);
 
-EFI_STATUS SystemManager(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
+EFI_STATUS 
+SystemManager
+(
+	EFI_HANDLE ImageHandle,
+	EFI_SYSTEM_TABLE* SystemTable
+)
+{
 	EFI_INPUT_KEY Key;
 	EFI_STATUS Status;
 	UINTN Event;
@@ -529,19 +646,21 @@ EFI_STATUS SystemManager(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) 
 	{
 		WHILESYSTEMRUNNING(
 			EFI_TIME Time;
-		SystemTable->ConOut->EnableCursor(SystemTable->ConOut, FALSE);
-		SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_LIGHTGRAY | EFI_BACKGROUND_BLACK);
-		SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 
-		PrintLineWithBackground(SystemTable, L"S-SUN system manager", 0, EFI_BLACK, EFI_BACKGROUND_LIGHTGRAY);
+		ClearScreen();
+		SetScreenAtribute(0, black);
+		SetScreenAtribute(1, white);
+		printc(SystemTable, L"S-SUN system manager");
 
+		SetScreenAtribute(0, white);
+		SetScreenAtribute(1, black);
 		SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_LIGHTGRAY | EFI_BACKGROUND_BLACK);
-		Print(L"\nPlease select an option\n\n");
-		Print(L"<F1> Exit\n");
-		Print(L"<F2> Get the time\n");
-		Print(L"<F3> Get the date\n");
-		Print(L"<F4> About S-SUN\n");
-		Print(L"<F5> editor\n");
+		printc(L"\nPlease select an option\n\n");
+		printc(L"<F1> Exit\n");
+		printc(L"<F2> Get the time\n");
+		printc(L"<F3> Get the date\n");
+		printc(L"<F4> About S-SUN\n");
+		printc(L"<F5> editor\n");
 
 		uefi_call_wrapper(SystemTable->ConIn->ReadKeyStroke, 2, SystemTable->ConIn, &Key);
 
@@ -561,22 +680,23 @@ EFI_STATUS SystemManager(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) 
 		}
 		else if (Key.ScanCode == SCAN_F4)
 		{
-			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_LIGHTGRAY | EFI_BACKGROUND_BLACK);
-			SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
+			ClearScreen();
+			SetScreenAtribute(0, black);
+			SetScreenAtribute(1, white);
+			printc(SystemTable, L"S-SUN - about S-SUN");
 
-			PrintLineWithBackground(SystemTable, L"S-SUN - about S-SUN", 0, EFI_BLACK, EFI_BACKGROUND_LIGHTGRAY);
-			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_LIGHTGRAY | EFI_BACKGROUND_BLACK);
-
-			Print(L"\nENGLISH\n\n");
-			Print(L"S-SUN is a very small Operating System maded by ErickCraftStudios with C and Visual Studio with help of a template (uefi-simple: https://github.com/pbatard/uefi-simple) \n");
-			Print(L"\n\nESPAÑOL\n\n");
-			Print(L"S-SUN es un sistema operativo muy pequeño hecho por ErickCraftStudios con C y Visual Studio con ayuda de una plantilla (uefi-simple: https://github.com/pbatard/uefi-simple) \n");
+			SetScreenAtribute(0, white);
+			SetScreenAtribute(1, black);
+			printc(L"\nENGLISH\n\n");
+			printc(L"S-SUN is a very small Operating System maded by ErickCraftStudios with C and Visual Studio with help of a template (uefi-simple: https://github.com/pbatard/uefi-simple) \n");
+			printc(L"\n\nESPAÑOL\n\n");
+			printc(L"S-SUN es un sistema operativo muy pequeño hecho por ErickCraftStudios con C y Visual Studio con ayuda de una plantilla (uefi-simple: https://github.com/pbatard/uefi-simple) \n");
 			SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 
 		}
 		else if (Key.ScanCode == SCAN_F5)
 		{
-			editor(ImageHandle, SystemTable);
+			editor(ImageHandle, SystemTable, L"");
 		}
 		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 			);
@@ -589,7 +709,13 @@ EFI_STATUS SystemManager(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) 
 
 EFI_FILE_PROTOCOL* CurrentDirectory = NULL;
 
-EFI_STATUS ListStorageDevices(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
+EFI_STATUS 
+ListStorageDevices
+(
+	EFI_HANDLE ImageHandle, 
+	EFI_SYSTEM_TABLE* SystemTable
+)
+{
 	EFI_STATUS Status;
 	EFI_HANDLE* HandleBuffer;
 	UINTN HandleCount;
@@ -619,7 +745,14 @@ EFI_STATUS ListStorageDevices(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTa
 	return EFI_SUCCESS;
 }
 
-EFI_STATUS CreateANewDirFUNCTION(CHAR16* DirName, EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
+EFI_STATUS 
+CreateANewDirFUNCTION
+(
+	CHAR16* DirName,
+	EFI_HANDLE ImageHandle, 
+	EFI_SYSTEM_TABLE* SystemTable
+) 
+{
 	if (DirName == NULL || ImageHandle == NULL || SystemTable == NULL) {
 		Print(L"KERNEL_CALL -> -> Null Param\n");
 		uefi_call_wrapper(SystemTable->BootServices->Stall, 0.01, 100000);
@@ -675,7 +808,14 @@ EFI_STATUS CreateANewDirFUNCTION(CHAR16* DirName, EFI_HANDLE ImageHandle, EFI_SY
 	return EFI_SUCCESS;
 }
 
-EFI_STATUS ChangeDirectory(CHAR16* DirName, EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
+EFI_STATUS 
+ChangeDirectory
+(
+	CHAR16* DirName, 
+	EFI_HANDLE ImageHandle, 
+	EFI_SYSTEM_TABLE* SystemTable
+) 
+{
 	EFI_FILE_PROTOCOL* NewDirectory;
 	EFI_STATUS Status;
 
@@ -691,7 +831,13 @@ EFI_STATUS ChangeDirectory(CHAR16* DirName, EFI_HANDLE ImageHandle, EFI_SYSTEM_T
 	return EFI_SUCCESS;
 }
 
-EFI_STATUS ListDirectories(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
+EFI_STATUS 
+ListDirectories
+(
+	EFI_HANDLE ImageHandle, 
+	EFI_SYSTEM_TABLE* SystemTable
+) 
+{
 	EFI_FILE_INFO* FileInfo;
 	EFI_STATUS Status;
 	UINTN BufferSize = SIZE_OF_EFI_FILE_INFO + 256;
@@ -712,7 +858,12 @@ EFI_STATUS ListDirectories(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable
 	return EFI_SUCCESS;
 }
 
-CHAR16* ProcessText(CHAR16* buffer) {
+CHAR16* 
+ProcessText
+(
+	CHAR16* buffer
+) 
+{
 	static CHAR16 processed_text[1024];
 	UINTN Index = 0;
 	UINTN i = 0;
@@ -761,30 +912,50 @@ CHAR16* ProcessText(CHAR16* buffer) {
 	return processed_text;
 }
 
-EFI_STATUS editor(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
+CHAR16* 
+SPP_SYNTAX
+(
+	CHAR16* buffer
+) 
+{
+	if (StartsWish(buffer, L"%")) {
+		CHAR16* processmemfile = buffer + 1;
+		return Read_MEM_FILE_STRING(processmemfile);
+	}
+	return buffer;
+}
+
+EFI_STATUS 
+editor
+(
+	EFI_HANDLE ImageHandle, 
+	EFI_SYSTEM_TABLE* SystemTable, 
+	CHAR16* textt
+) 
+{
 	InitializeLib(ImageHandle, SystemTable);
 
 	CHAR16 text[2048] = L""; // Definir un tamaño suficiente para el búfer de entrada
 	CHAR16 save_text[2048] = L""; // Búfer para guardar el texto
-	UINTN Index = 0;
+	UINTN Index = StrLen(textt);
 	UINTN Event;
 	EFI_INPUT_KEY Key;
 	UINTN MaxColumns, MaxRows;
-	int SurvivalGuideAlt;
+	int SurvivalGuideAlt = 0;
 
 	MEM_FILE_INT* EDITOR_INSTANCE = Create_MEM_FILE_INT(L"EDITOR_INSTANCE", 1);
 	SystemTable->ConOut->EnableCursor(SystemTable->ConOut, FALSE);
 
-	SurvivalGuideAlt = 0;
+	StrCpy(text, textt);
+
 	while (TRUE) {
-			ChangeToTextMode();
+		ChangeToTextMode();
 		SystemTable->ConOut->EnableCursor(SystemTable->ConOut, TRUE);
 		SystemTable->ConOut->QueryMode(SystemTable->ConOut, SystemTable->ConOut->Mode->Mode, &MaxColumns, &MaxRows);
-		// Limpiar y actualizar la pantalla
 		SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_LIGHTGRAY | EFI_BACKGROUND_BLACK);
 		SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 		ClearScreen();
-		gotoxy(0,0);
+		gotoxy(0, 0);
 		SetScreenAtribute(1, gray);
 		SetScreenAtribute(0, black);
 		printc(L"S-SUN editor <ESC = exit> <F1 = see the survival guide> <F5 = run as S++>");
@@ -792,10 +963,11 @@ EFI_STATUS editor(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
 		SetScreenAtribute(0, gray);
 		SetScreenAtribute(1, black);
 		printc(L"\n\n\n");
-		// Dividir el texto en líneas y ejecutar cada línea
+
 		StrCpy(save_text, text);
 		UINTN line_count1 = 0;
 		CHAR16** lines1 = SplitLines(text, &line_count1);
+
 		if (SurvivalGuideAlt == 0) {
 			for (UINTN i2 = 0; i2 < line_count1; i2++) {
 				printc(lines1[i2]);
@@ -804,55 +976,42 @@ EFI_STATUS editor(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
 				}
 			}
 		}
-		else
-		{
+		else {
 			SetScreenAtribute(0, brblue);
 			SetScreenAtribute(1, black);
 			printc(L"S-SUN editor survival guide\n\n");
 			SetScreenAtribute(0, gray);
 			SetScreenAtribute(1, black);
-			printc(L"S-SUN editor is a powerfull tool for make documments\nor programs.\n\n");
+			printc(L"S-SUN editor is a powerful tool for making documents\nor programs.\n\n");
 			SetScreenAtribute(0, brblue);
 			SetScreenAtribute(1, black);
 			printc(L"How To Use\n\n");
 			SetScreenAtribute(0, gray);
 			SetScreenAtribute(1, black);
-			printc(L"use it as another editor , to make programs press F5\n\nNOTE: you cant save your file\n so dont make big programs");
+			printc(L"use it as another editor, to make programs press F5\n\nNOTE: you can't save your file\nso don't make big programs");
 		}
-		// Restaurar el texto guardado
+
 		StrCpy(text, save_text);
-		UINTN Buttom = MaxRows - 1; // Última fila
-		// Leer una tecla
+		UINTN Buttom = MaxRows - 1;
 		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 		SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key);
 
-		// Manejar la entrada de teclado
 		if (Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
 			text[Index++] = L'\n';
-			Index == 0;
 		}
 		else if (Key.UnicodeChar == CHAR_BACKSPACE) {
 			if (Index > 0) {
 				text[--Index] = L'\0';
 			}
 		}
-		else if (Key.ScanCode == SCAN_F1)
-		{
-			if (SurvivalGuideAlt == 0) {
-				SurvivalGuideAlt = 1;
-			}
-			else
-			{
-				SurvivalGuideAlt = 0;
-			}
+		else if (Key.ScanCode == SCAN_F1) {
+			SurvivalGuideAlt = SurvivalGuideAlt == 0 ? 1 : 0;
 		}
 		else if (Key.ScanCode == SCAN_ESC) {
 			break;
 		}
 		else if (Key.ScanCode == SCAN_F5) {
-			// Guardar el texto antes de ejecutar los comandos
 			StrCpy(save_text, text);
-			// Dividir el texto en líneas y ejecutar cada línea
 			UINTN line_count = 0;
 			ClearScreen();
 			SetScreenAtribute(0, gray);
@@ -864,29 +1023,56 @@ EFI_STATUS editor(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
 				ExecuteCommand(lines[i], ImageHandle, SystemTable, L"DEV");
 			}
 			SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
-			// Restaurar el texto guardado
 			StrCpy(text, save_text);
 		}
 		else {
 			if (Key.UnicodeChar != 0) {
-
 				text[Index++] = Key.UnicodeChar;
 			}
 		}
 
-		text[Index] = L'\0'; // Asegurar el fin de cadena
+		text[Index] = L'\0';
 		WHILESYSTEMRUNNING();
 	}
 
-	string* filepath = ReadLine(L"\nFile to save: ");
-	if (filepath != NULL) {
-		WriteFile(filepath, text);
+	ExecuteCommand(L"ls", ImageHandle,SystemTable,L"Norm");
+	CHAR16* filepath = ReadLine(L"\nFile name: ");
+
+	bool filefound;
+	int filepos = 0;
+
+	filefound = false;
+	for (UINTN i = 0; i < FilesCount; i++)
+	{
+		if (StrCmp(filepath, HEY_CURRENT_SESSION[i].Name) == 0) {
+			filefound = true;
+			filepos = i;
+			break;
+		}
 	}
+
+	if (filefound == true) {
+		HEY_CURRENT_SESSION[filepos].Content = text;
+	}
+	else {
+		HEY_CURRENT_SESSION[FilesCount + 1].Content = text;
+		FilesCount++;
+	}
+
 	Free_MEM_FILE_INT(EDITOR_INSTANCE);
+
 	return EFI_SUCCESS;
 }
 
-CHAR16 ExecuteCommand(CHAR16* buffer, EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable, CHAR16 mode) {
+string
+ExecuteCommand
+(
+	string* buffer,
+	EFI_HANDLE ImageHandle,
+	EFI_SYSTEM_TABLE* SystemTable,
+	string mode
+) 
+{
 	EFI_INPUT_KEY Key;
 	UINTN Event;
 
@@ -895,12 +1081,12 @@ CHAR16 ExecuteCommand(CHAR16* buffer, EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* 
 		CHAR16* msgtoecho = buffer + 5;
 		SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
 		printc(L"\n");
-		printc(ProcessText(msgtoecho));
+		printc(SPP_SYNTAX(msgtoecho));
 	}
 	if (StrnCmp(buffer, L"writel ", 7) == 0) {
 		CHAR16* msgtoecho = buffer + 7;
 		SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
-		printc(ProcessText(msgtoecho));
+		printc(SPP_SYNTAX(msgtoecho));
 	}
 	else if (StrCmp(buffer, L"wait") == 0)
 	{
@@ -908,7 +1094,12 @@ CHAR16 ExecuteCommand(CHAR16* buffer, EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* 
 	}
 	else if (StrnCmp(buffer, L"throw ", 6) == 0) {
 		CHAR16* reason = buffer + 6;
-		THROW_ERROR(ProcessText(reason));
+		THROW_ERROR(SPP_SYNTAX(reason));
+	}
+	else if (StrnCmp(buffer, L"edit ", 5) == 0) {
+		CHAR16* file = buffer + 5;
+
+		editor(ImageHandle, SystemTable, HEY_CURRENT_SESSION[Atoi(file)].Content);
 	}
 	else if (StrnCmp(buffer, L"if ", 3) == 0)
 	{
@@ -966,6 +1157,90 @@ CHAR16 ExecuteCommand(CHAR16* buffer, EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* 
 		CHAR16* command = buffer + 9;
 		Flush_MEM_FILE_STRING(command);
 	}
+	else if (StrnCmp(buffer, L"drw ", 4) == 0) {
+		CHAR16* command = buffer + 4;
+
+		printc(command);
+		if (StrCmp(command, L"down") == 0) {
+			DRW_DOWN;
+		}
+		if (StrCmp(command, L"update") == 0) {
+			DrawScreen();
+		}
+		else
+		{
+			if (StrCmp(command, L"black") == 0) {
+				DRW_COL = black;
+			}
+			else if (StrCmp(command, L"gray") == 0) {
+				DRW_COL = gray;
+			}
+			else if (StrCmp(command, L"lightgray") == 0) {
+				DRW_COL = lightgray;
+			}
+			else if (StrCmp(command, L"white") == 0) {
+				DRW_COL = white;
+			}
+			else if (StrCmp(command, L"red") == 0) {
+				DRW_COL = red;
+			}
+			else if (StrCmp(command, L"brred") == 0) {
+				DRW_COL = brblue;
+			}
+			else if (StrCmp(command, L"orange") == 0) {
+				DRW_COL = orange;
+			}
+			else if (StrCmp(command, L"brorange") == 0) {
+				DRW_COL = brorange;
+			}
+			else if (StrCmp(command, L"yellow") == 0) {
+				DRW_COL = yellow;
+			}
+			else if (StrCmp(command, L"bryellow") == 0) {
+				DRW_COL = bryellow;
+			}
+			else if (StrCmp(command, L"green") == 0) {
+				DRW_COL = green;
+			}
+			else if (StrCmp(command, L"brgreen") == 0) {
+				DRW_COL = brgreen;
+			}
+			else if (StrCmp(command, L"blue") == 0) {
+				DRW_COL = blue;
+			}
+			else if (StrCmp(command, L"brblue") == 0) {
+				DRW_COL = brblue;
+			}
+			else
+			{
+				DRW_COL = white;
+			}
+		}
+	}
+	else if (StrnCmp(buffer, L"mv drw x ", 9) == 0) {
+		CHAR16* command = buffer + 9;
+
+		printc(command);
+		if (StrCmp(command, L"r") == 0) {
+			DRW_X = 0;
+		}
+		else
+		{
+			DRW_X += Atoi(command);
+		}
+	}
+	else if (StrnCmp(buffer, L"mv drw y ", 9) == 0) {
+		CHAR16* command = SPP_SYNTAX(buffer + 9);
+
+		printc(command);
+		if (StrCmp(command, L"r") == 0) {
+			DRW_Y = 0;
+		}
+		else
+		{
+			DRW_Y += Atoi(command);
+		}
+	}
 	else if (StrnCmp(buffer, L"EditMem ", 8) == 0) {
 		CHAR16* command = buffer + 8;
 		CHAR16* equals_pos = StrStr(command, L"=");
@@ -983,6 +1258,44 @@ CHAR16 ExecuteCommand(CHAR16* buffer, EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* 
 			}
 		}
 	}
+	else if (StrnCmp(buffer, L"Shark P ", 8) == 0) {
+		CHAR16* command = buffer + 8;
+		CHAR16* equals_pos = StrStr(command, L"\t");
+		if (equals_pos != NULL) {
+			*equals_pos = L'\0';
+			CHAR16* MemName = command;
+			CHAR16* NewValue = equals_pos + 1;
+
+			CHAR16 Status = Read_MEM_FILE_STRING(MemName, NewValue);
+			if (Status == NULL) {
+				MEM_FILE_STRING* NEW_MEM_FILE = Create_MEM_FILE_STRING(MemName, NewValue);
+			}
+			else
+			{
+				printc(L"\n");
+				printc(L"the buffer is so mad for the system -_O");
+			}
+		}
+	}
+	else if (StrnCmp(buffer, L"Shark I ", 8) == 0) {
+		CHAR16* command = buffer + 8;
+		CHAR16* equals_pos = StrStr(command, L"\t");
+		if (equals_pos != NULL) {
+			*equals_pos = L'\0';
+			CHAR16* MemName = command;
+			CHAR16* NewValue = equals_pos + 1;
+
+			UINTN Status = Read_MEM_FILE_INT(MemName, NewValue);
+			if (Status == -1) {
+				MEM_FILE_INT* NEW_MEM_FILE = Create_MEM_FILE_INT(MemName, NewValue);
+			}
+			else
+			{
+				printc(L"\n");
+				printc(L"the buffer is so mad for the system -_O");
+			}
+		}
+		}
 	else if (buffer[0] == L'#') {
 		CHAR16* equals_pos = StrStr(buffer, L"=");
 		if (equals_pos != NULL) {
@@ -1026,15 +1339,36 @@ CHAR16 ExecuteCommand(CHAR16* buffer, EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* 
 			guimode(ImageHandle,SystemTable);
 	}
 	else if (StrnCmp(buffer, L"cd ", 3) == 0) {
-		if (StrCmp(mode, L"DEV") == 0) {
-			CHAR16* DirName = ProcessText(buffer + 3);
-			ChangeDirectory(DirName, ImageHandle, SystemTable);
-		}
 	}	
 	else if (StrCmp(buffer, L"ls") == 0) {
-		if (StrCmp(mode, L"DEV") == 0) {
-			ListDirectories(ImageHandle, SystemTable);
+		printc(L"\n");
+		for (size_t i = 0; i < FilesCount + 1; i++)
+		{
+			CHAR16 FILENAME[20];
+			SPrint(FILENAME, sizeof(FILENAME) * 20, L"%s%s", HEY_CURRENT_SESSION[i].path , HEY_CURRENT_SESSION[i].Name);
+
+			if (StartsWish(FILENAME, CurrentDir)) {
+				if (HEY_CURRENT_SESSION[i].Content == FOLDER_CONTENT) {
+					SetScreenAtribute(0, green);
+				}
+				else
+				{
+					SetScreenAtribute(0, blue);
+				}
+				CHAR16 nam[20];
+				SPrint(nam, sizeof(nam) * 20, L"%s", HEY_CURRENT_SESSION[i].Name);
+
+				printc(nam);
+				SetScreenAtribute(0, brblue);
+
+				CHAR16 str[20];
+				printc(L" Direction: ");
+				SPrint(str, sizeof(str) * 20, L"%d", HEY_CURRENT_SESSION[i].Direction);
+				printc(str);
+				printc(L"\n");
+			}
 		}
+
 	}
 	else if (StrCmp(buffer, L"cls") == 0) {
 		ClearScreen();
@@ -1042,11 +1376,40 @@ CHAR16 ExecuteCommand(CHAR16* buffer, EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* 
 	else if (StrCmp(buffer, L"exit") == 0) {
 		return L"sistema , tu trabajo ha terminado";
 	}
-
+	else if (StrCmp(buffer, L"Desktop") == 0) {
+	}
 	return L"sistema , si puedes seguir";
 }
 
-EFI_STATUS ssun_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable, CHAR16 mode) {
+VOID
+ExecuteScript
+(
+	CHAR16* buffer,
+	EFI_HANDLE ImageHandle,
+	EFI_SYSTEM_TABLE* SystemTable
+)
+{
+			// Dividir el texto en líneas y ejecutar cada línea
+			UINTN line_count = 0;
+			ClearScreen();
+			SetScreenAtribute(0, gray);
+			SetScreenAtribute(1, black);
+			CHAR16** lines = SplitLines(buffer, &line_count);
+			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_LIGHTGRAY | EFI_BACKGROUND_BLACK);
+			SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
+			for (UINTN i = 0; i < line_count; i++) {
+				ExecuteCommand(lines[i], ImageHandle, SystemTable, L"DEV");
+			}
+}
+
+EFI_STATUS 
+ssun_main
+(
+	EFI_HANDLE ImageHandle, 
+	EFI_SYSTEM_TABLE* SystemTable, 
+	CHAR16 mode
+) 
+{
 	UINTN Event;
 	EFI_STATUS Status;
 	EFI_INPUT_KEY Key;
@@ -1113,6 +1476,12 @@ EFI_STATUS ssun_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable, CHAR
 			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
 
 		}
+		else if (Key.ScanCode == SCAN_UP) {
+			gotoxy(cursorx, cursory - 1);
+		}
+		else if (Key.ScanCode == SCAN_DOWN) {
+			gotoxy(cursorx, cursory + 1);
+		}
 		else if (Key.ScanCode == SCAN_ESC)
 		{
 			return EFI_SUCCESS;
@@ -1144,7 +1513,13 @@ EFI_STATUS ssun_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable, CHAR
 	return EFI_SUCCESS;
 }
 
-EFI_STATUS Desktop(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
+EFI_STATUS 
+Desktop
+(
+	EFI_HANDLE ImageHandle, 
+	EFI_SYSTEM_TABLE* SystemTable
+) 
+{
 	InitializeLib(globalimagehandle, globalsystemtable);
 	EFI_FILE_PROTOCOL* Root;
 	EFI_STATUS Status;
@@ -1155,9 +1530,11 @@ EFI_STATUS Desktop(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
 	UINTN Tab = 0;
 	UINTN optionud = 0;
 
+	EFI_SIMPLE_POINTER_PROTOCOL* MouseProtocol;
+	EFI_SIMPLE_POINTER_STATE MouseState;
+
 	UINTN MaxColumns, MaxRows;
 
-	CSCHEME* Sceme;
 
 	CSCHEME* SCDefault = newCSCHEME(yellow, gray, black);
 	CSCHEME* SCNature = newCSCHEME(cyan, green, black);
@@ -1175,8 +1552,14 @@ EFI_STATUS Desktop(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
 	DRAW_TEXT_DIALOG_NO_WAIT(ImageHandle, SystemTable, L"Please wait...", EFI_WHITE, EFI_BACKGROUND_CYAN);
 	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 5, 1000000); \
 
+		SystemTable->BootServices->LocateProtocol(
+			&SimplePointerProtocol,
+			NULL,
+			(VOID**)&MouseProtocol
+		);
 	while (TRUE) {
 		ChangeToGrapichalMode();
+		MouseProtocol->GetState(MouseProtocol, &MouseState);
 		SystemTable->ConOut->EnableCursor(SystemTable->ConOut, FALSE);
 		PIXELCOL syscolor2 = Sceme->buttonscolor;
 		PIXELCOL sysbg = Sceme->backgroundcolor;
@@ -1390,7 +1773,7 @@ EFI_STATUS Desktop(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
 					globalsystemtable->RuntimeServices->ResetSystem(EfiResetWarm, EFI_SUCCESS, 0, NULL); \
 				}
 				else if (optionud == 3) {
-					editor(ImageHandle, SystemTable);
+					editor(ImageHandle, SystemTable, L"editor default text :)");
 					SetScreenAtribute(0, gray);
 					printc(L"\nApplication closed press any key to continue...");
 					SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
@@ -1456,19 +1839,29 @@ EFI_STATUS Desktop(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable) {
 }
 
 // S-SUN main
-EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
+EFI_STATUS 
+efi_main
+(
+	EFI_HANDLE ImageHandle, 
+	EFI_SYSTEM_TABLE* SystemTable
+)
 {
 	UINTN Event;
 	INT16 option;
 	EFI_STATUS Status;
 	EFI_INPUT_KEY Key;
-	EFI_SIMPLE_FILE_SYSTEM_PROTOCOL* FileSystem;
+	// EFI_SIMPLE_FILE_SYSTEM_PROTOCOL* FileSystem;
 	globalimagehandle = ImageHandle;
 	globalsystemtable = SystemTable;
 #if defined(_GNU_EFI)
 	InitializeLib(ImageHandle, SystemTable);
 #endif
-	InitializeLib(ImageHandle, SystemTable);
+	CurrentDir = L"\\";
+
+	SystemTable->ConOut->QueryMode(SystemTable->ConOut, SystemTable->ConOut->Mode->Mode, &horizontalResolution, &verticalResolution);
+
+	horizontalResolution = horizontalResolution / 8;
+	verticalResolution = verticalResolution / 12;
 
 	// Obtener la interfaz de gráficos
 	Status = uefi_call_wrapper(BS->LocateProtocol, 3, &gEfiGraphicsOutputProtocolGuid, NULL, (VOID**)&gop);
@@ -1498,33 +1891,34 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 
 	MEM_FILE_INT* Kernel_Startup = Create_MEM_FILE_INT(L"Kernel_Initialized",1);
 	MEM_FILE_INT* Kernel_Instance = Create_MEM_FILE_INT(L"DESKTOPINSTANCE", 1);
-	#ifdef DEBUG
+	#ifdef _DEBUG
 		MEM_FILE_INT* DEBUG = Create_MEM_FILE_INT(L"DEBUG GNU-EFI", 1);
 	#endif // DEBUG
 		uefi_call_wrapper(globalsystemtable->BootServices->Stall, 1, 100000);
+
 	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 	SystemTable->BootServices->LocateProtocol(&gEfiGraphicsOutputProtocolGuid, NULL, (void**)&gop);
 	initializeMoonScreen();
 	ClearScreen();
 
+	InitializeFileSystem();
+
 	SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
 	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 	printc(L"S-SUN startup logs\n");
 	printc(L"\nIf you found a problem with system this can help you to fix it\n\nSystem Startup Logs:\n\n");
+	
 	KERNEL_INITIALIZE;
-	// Install system
-	/*
-	KERNELCALL_CREATEDIR_PARAMS(L"\\S-SUN", ImageHandle, SystemTable);
-	KERNELCALL_CREATEDIR_PARAMS(L"\\S-SUN\\System", ImageHandle, SystemTable);
-	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 1, 100000);
-	KERNELCALL_CREATEDIR_PARAMS(L"\\S-SUN\\System\\KERNEL_SERVICES", ImageHandle, SystemTable);
-	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 1, 100000);
-	KERNELCALL_CREATEDIR_PARAMS(L"\\S-SUN\\User", ImageHandle, SystemTable);
-	KERNELCALL_CREATEDIR_PARAMS(L"\\S-SUN\\User\\Documments", ImageHandle, SystemTable);
-	KERNELCALL_CREATEDIR_PARAMS(L"\\S-SUN\\User\\Scripts", ImageHandle, SystemTable);
-	KERNELCALL_CREATEDIR_PARAMS(L"\\S-SUN\\User\\Sources", ImageHandle, SystemTable);
-	KERNELCALL_CREATEDIR_PARAMS(L"\\S-SUN\\User\\Projects", ImageHandle, SystemTable);
-	*/
+
+	ClearScreen();
+	initializeMoonScreen();
+	SetScreenAtribute(1, black);
+	SetScreenAtribute(0, white);
+
+	printc(L"press F1 to skip init.spp\n");
+
+	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 1, 500000);
+
 	initializeMoonScreen();
 	SetScreenAtribute(1, blue);
 	ClearScreen();
@@ -1536,11 +1930,19 @@ EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE* SystemTable)
 		SetScreenAtribute(1, blue);
 		printc(L".");
 		uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 100000);
+
+		uefi_call_wrapper(SystemTable->ConIn->ReadKeyStroke, 2, SystemTable->ConIn, &Key);
+		if (Key.ScanCode == SCAN_F1) {
+			break;
+		}
 	}
 	SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
 	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 5, 1000000);
 
+	if (Key.ScanCode != SCAN_F1) {
+		ExecuteScript(HEY_CURRENT_SESSION[3].Content, ImageHandle, SystemTable);
+	}
 		// The platform logo may still be displayed → remove it
 			/*
 		SystemTable->ConOut->ClearScreen(SystemTable->ConOut);

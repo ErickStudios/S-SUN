@@ -398,6 +398,8 @@
     <ClInclude Include="KernelDef.h" />
     <ClInclude Include="KernelMemory.h" />
     <ClInclude Include="kernelMK.h" />
+    <ClInclude Include="KernelProcess.h" />
+    <ClInclude Include="KernelStorage.h" />
     <ClInclude Include="KernelTextMode.h" />
     <ClInclude Include="TextModeMapBits.h" />
   </ItemGroup>

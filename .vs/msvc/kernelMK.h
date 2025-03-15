@@ -21,6 +21,12 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 */
 // Seriously, please don't do anything to me.
 
+/*+++
+* KernelMK.h
++++*/
+#ifndef _KERNEL_
+#define _KERNEL_
+
 #include <efi.h>
 #include <efilib.h>
 #include "KernelConsole.h"
@@ -28,16 +34,163 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #include "KernelDef.h"
 #include "KernelMemory.h"
 #include "KernelTextMode.h"
+#include "KernelStorage.h"
 
-/*+++
-* KernelMK.h
-+++*/
-#ifndef _KERNEL_
-#define _KERNEL_
+// IF YOU DONT HAVE ECS_KRN, PAM YOU HAVE IT
+#ifndef HAVE_US_ECS_KRN
+#define HAVE_US_ECS_KRN 1
+
+#define ECS_KRN HAVE_US_ECS_KRN
+#endif // !ECS_KRN
+
+#ifdef HAVE_US_ECS_KRN
+
+#define PRIV private
+#define POTENTIATOR const
+
+#endif // HAVE_US_ECS_KRN
+
+typedef VOID electron;
+
+#define IF if
+#define ELIF else if
+#define ELSE(b) else { b }
+#define POWR EFIAPI
 
 /*
-* eh 4 kl kilos dale kilos
-// \\\\ O _ O ////
+* Summary
+    Define KERNEL 16bit functions
 */
+#ifndef KERNEL_16
+#define KERNEL_16
+
+    typedef 
+        CHAR16
+    neutron16
+    ;
+    typedef
+        INT16
+    proton16
+    ;
+
+#endif // !KERNEL_16
+
+/*
+* Summary
+    Define KERNEL 32bit functions
+*/
+#ifndef KERNEL_32
+    #define KERNEL_32
+
+    typedef
+    INT32
+    proton32
+    ;
+
+    typedef 
+        proton32
+    KERNEL32_status
+    ;
+
+    typedef 
+        proton32
+    KERNEL32_error
+    ;
+
+    typedef
+    electron
+    function;
+
+    // ** Errors **
+
+    // when the Time is OUT
+    POTENTIATOR
+    KERNEL32_error
+    ERR_TimeOut = 0x001
+    ;
+
+    // when the parammeter is invalid
+    POTENTIATOR
+    KERNEL32_error
+    ERR_Invalid = 0x002
+    ;
+
+    // when the program launchs a throw
+    POTENTIATOR
+    KERNEL32_error
+    ERR_Throw = 0x003
+    ;
+
+    // when the system cant make a action that is out of his limits
+    POTENTIATOR
+    KERNEL32_error
+    ERR_OutOfResources = 0x004
+    ;
+
+    // when the buffer is too filled to write in he
+    POTENTIATOR
+    KERNEL32_error
+    ERR_filledbuffer = 0x005
+    ;
+
+    // when the system cant manage the buffer
+    POTENTIATOR
+    KERNEL32_error
+    ERR_invalid_buffer = 0x006
+    ;
+
+    // when the system cant read the buffer
+    POTENTIATOR
+    KERNEL32_error
+    ERR_bad_buffer = 0x007
+    ;
+    
+    // when the buffer is so SUS (suspicious) for the system
+    // and the systems looks it with a -_O face
+    POTENTIATOR
+    KERNEL32_error
+    ERR_mad_buffer = 0x008
+    ;
+
+    CHAR16
+    POWR
+    ErrorToString
+    (
+        KERNEL32_error ERROR
+    )
+    {
+        #ifndef HAVE_US_ECS_KRN
+            return L"you dont have ESC_KRN";
+        #endif // !HAVE_US_ECS_KRN
+
+        // the ky
+        IF (ERROR == ERR_TimeOut) {
+            return L"TimeOut , try agin";
+        } 
+        ELIF (ERROR == ERR_Invalid) {
+            return L"invalid paramter";
+        }
+        ELIF(ERROR == ERR_Throw) {
+            return L"has ocurren an throw error";
+        }
+        ELIF(ERROR == ERR_OutOfResources) {
+            return L"the system cant use a action that is out of limits of system";
+        }
+        ELIF(ERROR == ERR_filledbuffer) {
+            return L"you cant write in a buffer that is filled";
+        }
+        ELIF(ERROR == ERR_invalid_buffer) {
+            return L"invalid buffer";
+        }
+        ELIF(ERROR == ERR_bad_buffer) {
+            return L"the system can conect with the buffer";
+        }
+        ELIF(ERROR == ERR_mad_buffer) {
+            return L"the buffer is so mad for the system -_O";
+        }
+        ELSE(return L"invalid error";);
+    }
+
+#endif // !KERNEL_32
 
 #endif // !_KERNEL_

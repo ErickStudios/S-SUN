@@ -206,7 +206,7 @@ Read_MEM_FILE_INT
             return MemFilesInt[i]->VALUE;
         }
     }
-    return 0;
+    return -1;
 }
 
 // Free_MEM_FILE_STRING

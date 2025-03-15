@@ -26,6 +26,7 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #include <efilib.h>
 
 #include "KernelTextMode.h"
+#include "kernelStorage.h"
 
 /*+++
 * KernelDef.h
@@ -168,6 +169,12 @@ _SYSTEM_INSTANCE_FOR_MANAGER {
         kernel;
     CSCHEME 
         COLORS;
+    string
+        Vendor;
+    int
+        revision;
+    File
+        HEY_CURRENT_SESSION[200];
 } 
 _SYSTEM_INSTANCE_FOR_MANAGER;
 

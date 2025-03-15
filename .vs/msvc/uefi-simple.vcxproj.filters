@@ -48,5 +48,11 @@
     <ClInclude Include="TextModeMapBits.h">
       <Filter>Header Files\kernel</Filter>
     </ClInclude>
+    <ClInclude Include="KernelStorage.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="KernelProcess.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

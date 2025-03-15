@@ -22,10 +22,11 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 // Seriously, please don't do anything to me.
 
 /*+++
-* KernelCore.h
+* KernelTextMode.h
 +++*/
 #include <efi.h>
 #include <efilib.h>
+#include "KernelProcess.h"
 
 // ITS MY FONT :)
 #include "TextModeMapBits.h"
@@ -39,14 +40,18 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 
 #define BUFFER_HEIGHT 1200  // Tamaño del buffer mayor que la pantalla
 
-typedef struct {
-    EFI_GRAPHICS_OUTPUT_BLT_PIXEL
-        color;
-    UINTN
-        x;
-    UINTN
-        y;
-} Pixels;
+#define BUFFERSCREEN_MEM_Dir 0x000000032
+#define SEGC_PROTOCOL 0x002
+
+UINTN DRAWING_CURSOR_POSX;
+UINTN DRAWING_CURSOR_POSY;
+EFI_GRAPHICS_OUTPUT_BLT_PIXEL DRAWING_CURSOR_COLOR;
+
+#define DRW_X DRAWING_CURSOR_POSX
+#define DRW_Y DRAWING_CURSOR_POSY
+#define DRW_COL DRAWING_CURSOR_COLOR
+
+#define DRW_DOWN draw_pixel(gop, DRW_X, DRW_Y, DRW_COL)
 
 Pixels bufferscreen[999999];
 
@@ -69,6 +74,7 @@ EFI_HANDLE globalimagehandle;
 EFI_SYSTEM_TABLE* globalsystemtable;
 
 #define PIXELCOL EFI_GRAPHICS_OUTPUT_BLT_PIXEL
+#define RESERVED_SYSTEM_PROCESS -1
 
 EFI_GRAPHICS_OUTPUT_PROTOCOL* gop;
 
@@ -133,6 +139,11 @@ MoonScreemConio* Conio;
         int
             screenscroll;
 
+        void
+            printc
+            (
+                string* a
+            );
 void
 ClearScreen
 (
@@ -218,9 +229,36 @@ draw_pixel
     }
 }
 
+void
+draw_pixelp
+(
+    EFI_GRAPHICS_OUTPUT_PROTOCOL* gop,
+    UINTN x,
+    UINTN y,
+    EFI_GRAPHICS_OUTPUT_BLT_PIXEL color,
+    UINTN process
+)
+{
+    //EFI_GRAPHICS_OUTPUT_BLT_PIXEL pixel = color;
+    //gop->Blt(gop, &pixel, EfiBltVideoFill, 0, 0, x, y, 1, 1, 0);
+    Pixels a;
+    a.color = color;
+    a.x = x;
+    a.y = y;
+    if (y > ALLPROCESS[process].bufferlines) {
+        ALLPROCESS[process].bufferlines = y;
+    }
+    ALLPROCESS[process].pixels++;
+    ALLPROCESS[process].CONTENT[ALLPROCESS[process].pixels] = a;
+    if (ALLPROCESS[process].bufferlines > ALLPROCESS[process].verticalResolution)
+    {
+        ALLPROCESS[process].screenscroll = a.y - ALLPROCESS[process].verticalResolution;
+    }
+}
+
 // Función para dibujar una letra usando el mapa de píxeles
 void
-draw_bitmap
+draw_bitmaprt
 (
     EFI_GRAPHICS_OUTPUT_PROTOCOL* gop,
     int x,
@@ -238,8 +276,29 @@ draw_bitmap
     }
 }
 
+// Función para dibujar una letra usando el mapa de píxeles
 void
-draw_bitmap2
+draw_bitmaprtp
+(
+    EFI_GRAPHICS_OUTPUT_PROTOCOL* gop,
+    int x,
+    int y,
+    CHAR16** bitmap,
+    EFI_GRAPHICS_OUTPUT_BLT_PIXEL color,
+    INTN process
+)
+{
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            if (bitmap[i][j] == L'1') {
+                draw_pixelp(gop, x + j, y + i, color,process);
+            }
+        }
+    }
+}
+
+void
+draw_bitmap2rt
 (
     EFI_GRAPHICS_OUTPUT_PROTOCOL* gop,
     int x,
@@ -257,6 +316,29 @@ draw_bitmap2
     }
 }
 
+void
+draw_bitmap2rtp
+(
+    EFI_GRAPHICS_OUTPUT_PROTOCOL* gop,
+    int x,
+    int y,
+    CHAR16** bitmap,
+    EFI_GRAPHICS_OUTPUT_BLT_PIXEL color,
+    INTN proces
+)
+{
+    for (int i = 0; i < 12; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (bitmap[i][j] == L'1') {
+                draw_pixelp(gop, x + j, y + i, color, proces);
+            }
+        }
+    }
+}
+
+#define draw_bitmap(gop,x,y,bitmap,color) if (process == RESERVED_SYSTEM_PROCESS) { draw_bitmaprt(gop,x,y,bitmap,color); } else { draw_bitmaprtp(gop,x,y,bitmap,color, process); }
+#define draw_bitmap2(gop,x,y,bitmap,color) if (process == RESERVED_SYSTEM_PROCESS) { draw_bitmap2rt(gop,x,y,bitmap,color); } else { draw_bitmap2rtp(gop,x,y,bitmap,color, process); }
+
 // Función para dibujar una letra
 void
 DrawLetter
@@ -265,7 +347,8 @@ DrawLetter
     EFI_GRAPHICS_OUTPUT_BLT_PIXEL color,
     int x,
     int y,
-    CHAR16* letter
+    CHAR16* letter,
+    INTN process
 )
 {
     int realx = x * 8;
@@ -284,6 +367,9 @@ DrawLetter
     }
     else if (StrCmp(letter, L"/") == 0) {
         draw_bitmap(gop, realx, realy, Diagonal_bitmap, color);
+    }
+    else if (StrCmp(letter, L"\\") == 0) {
+        draw_bitmap(gop, realx, realy, Diagonal2_bitmap, color);
     }
     else if (StrCmp(letter, L":") == 0) {
         draw_bitmap(gop, realx, realy, DubbleDot_bitmap, color);
@@ -530,8 +616,11 @@ DrawLetter
     }
     else if (StrCmp(letter, L"\n") == 0) {
         draw_bitmap2(gop, realx, realy - 2, space_bitmap, color);
-        }
+    }
     else if (StrCmp(letter, L" ") == 0) {
+        draw_bitmap(gop, realx, realy, space_bitmap, color);
+    }
+    else if (StrCmp(letter, L"\t") == 0) {
         draw_bitmap(gop, realx, realy, space_bitmap, color);
     }
     else
@@ -614,6 +703,80 @@ DrawScreen
     }
 }
 
+void DrawProcess(
+    INTN process
+)
+{
+
+    // Verificar que el proceso y sus componentes no sean nulos
+    if (ALLPROCESS[process].WindowsState == NULL || ALLPROCESS[process].atributes == NULL || ALLPROCESS[process].Conoutpud == NULL) {
+        return; // Salir si alguna de las estructuras internas es nula
+    }
+
+    // Verificación adicional de coordenadas y tamaños
+    INTN x = ALLPROCESS[process].WindowsState->x;
+    INTN y = ALLPROCESS[process].WindowsState->y;
+    UINTN width = ALLPROCESS[process].horizontalResolution;
+    UINTN height = ALLPROCESS[process].verticalResolution;
+
+    if (x < 0 || y < 0 || width <= 0 || height <= 0) {
+        return;
+    }
+
+    if (width <= 0 || height <= 0) {
+        return;
+    }
+
+    EFI_GRAPHICS_OUTPUT_BLT_PIXEL borderColor = { 255, 255, 255, 0 }; // Color blanco para el borde
+    // Dibujar el borde del proceso
+    gop->Blt(
+        gop,
+        &borderColor,
+        EfiBltVideoFill,
+        0,
+        0,
+        x - 6,
+        y - 16,
+        width + 2,
+        height + 12,
+        0
+    );
+
+    // Dibujar el fondo del proceso
+    gop->Blt(
+        gop,
+        &ALLPROCESS[process].atributes->BG,
+        EfiBltVideoFill,
+        0,
+        0,
+        x - 5,
+        y - 5,
+        width,
+        height,
+        0
+    );
+
+    // Dibujar los píxeles del contenido del proceso
+    for (UINTN i = 0; i < ALLPROCESS[process].pixels; i++) {
+        Pixels pixel = ALLPROCESS[process].CONTENT[i];
+        if (pixel.x != 0) { // Verificar que pixel.x no sea 0
+            EFI_GRAPHICS_OUTPUT_BLT_PIXEL color = pixel.color;
+             gop->Blt(
+                gop,
+                &color,
+                EfiBltVideoFill,
+                0,
+                0,
+                x + pixel.x,
+                y + pixel.y,
+                1,
+                1,
+                0
+            );
+
+        }
+    }
+}
 
 void
 printf
@@ -623,7 +786,8 @@ printf
     int* x,
     int* y,
     CHAR16* TEXT,
-    EFI_GRAPHICS_OUTPUT_BLT_PIXEL bgcolor
+    EFI_GRAPHICS_OUTPUT_BLT_PIXEL bgcolor,
+    int process
 ) {
     int currentx = x;
     int currenty = y;
@@ -636,8 +800,8 @@ printf
             currentx = 0;
         }
         else {
-            DrawLetter(gop, bgcolor, currentx, currenty, L"\a");
-            DrawLetter(gop, color, currentx, currenty, FullMessage);
+            DrawLetter(gop, bgcolor, currentx, currenty, L"\a", process);
+            DrawLetter(gop, color, currentx, currenty, FullMessage, process);
             currentx++;
         }
     }
@@ -667,7 +831,7 @@ printc
     string* a
 )
 {
-    printf(gop, Conio->atributes->TEXT, cursorx, cursory, a, Conio->atributes->BG);
+    printf(gop, Conio->atributes->TEXT, cursorx, cursory, a, Conio->atributes->BG,-1);
     cursorx = cursorx + StrLen(a) - CountOccurrencesf(a, L'\n');
     if (CountOccurrencesf(a, L'\n') != 0) {
         bufferlines += CountOccurrencesf(a, L'\n');
@@ -677,52 +841,65 @@ printc
     DrawScreen();
 }
 
-string
-ReadLine
+void
+printp
 (
-    string* ae
+    string* a,
+    INTN process
 )
 {
-    CHAR16 Buffer[512];
+    printf(gop, ALLPROCESS[process].atributes->TEXT, ALLPROCESS[process].Conoutpud->cursorx, ALLPROCESS[process].Conoutpud->cursory, a, ALLPROCESS[process].atributes->BG, process);
+    ALLPROCESS[process].Conoutpud->cursorx = ALLPROCESS[process].Conoutpud->cursorx + StrLen(a) - CountOccurrencesf(a, L'\n');
+    if (CountOccurrencesf(a, L'\n') != 0) {
+        ALLPROCESS[process].bufferlines += CountOccurrencesf(a, L'\n');
+        ALLPROCESS[process].Conoutpud->cursorx = 0;
+        ALLPROCESS[process].Conoutpud->cursory = ALLPROCESS[process].Conoutpud->cursory + CountOccurrencesf(a, L'\n');
+    }
+    DrawProcess(process);
+}
+
+CHAR16* ReadLine(CHAR16* prompt) {
+    static CHAR16 Buffer[512]; // Estático para mantener la vida útil más allá del scope de la función
     SetScreenAtribute(0, brgreen);
 
-    printc(ae);
+    printc(prompt);
     UINTN Index = 0;
     UINTN Event;
-    EFI_STATUS Status;
     EFI_INPUT_KEY Key;
     SetScreenAtribute(0, brblue);
-    gotoxy(cursorx + StrLen(ae), cursory);
+    gotoxy(cursorx + StrLen(prompt), cursory);
     InitializeLib(globalimagehandle, globalsystemtable);
-    while (true)
-    {
+
+    while (true) {
         uefi_call_wrapper(globalsystemtable->ConIn->ReadKeyStroke, 2, globalsystemtable->ConIn, &Key);
         if (Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
             Buffer[Index] = L'\0';
-            Index = 0; // Reiniciar el índice para la siguiente entrada
             break;
         }
-        else if (Key.ScanCode == SCAN_ESC)
-        {
+        else if (Key.ScanCode == SCAN_ESC) {
             return NULL;
         }
         else if (Key.UnicodeChar == CHAR_BACKSPACE) {
-            gotoxy(cursorx - 1, cursory);
-            printc(L" ");
-            gotoxy(cursorx - 1, cursory);
-            Buffer[--Index] = L'\0';
+            if (Index > 0) {
+                gotoxy(cursorx - 1, cursory);
+                printc(L" ");
+                gotoxy(cursorx - 1, cursory);
+                Buffer[--Index] = L'\0';
+            }
         }
         else if (Key.UnicodeChar != 0) {
-              Buffer[Index++] = Key.UnicodeChar;
-              string a[100];
-              SPrint(a, sizeof(a), L"%c", Key.UnicodeChar);
-              SetScreenAtribute(0, brblue);
-              printc(a);
+            Buffer[Index++] = Key.UnicodeChar;
+            CHAR16 a[2] = { Key.UnicodeChar, '\0' };
+            SetScreenAtribute(0, brblue);
+            printc(a);
         }
-        Buffer[Index] = L'\0'; // Asegurar el fin de cadena
-        globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
 
+        Buffer[Index] = L'\0';
+        globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
     }
+    printc(L"\n");
+    printc(L"debug: ");
+    printc(Buffer); // Mensaje de depuración para verificar Buffer
     printc(L"\n");
     return Buffer;
 }

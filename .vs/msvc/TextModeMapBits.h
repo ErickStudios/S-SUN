@@ -4,6 +4,11 @@
 #ifndef _ERICK_MAP_BITS_
 #define _ERICK_MAP_BITS_
 
+/*
+mapa de bits hecho por erick antonio
+hola
+*/
+
 CHAR16* space_bitmap[] = {
 L"00000000",
 L"00000000",
@@ -251,6 +256,17 @@ L"00001100",
 L"00011000",
 L"00110000",
 L"00100000",
+L"00000000",
+};
+
+CHAR16* Diagonal2_bitmap[] = {
+L"00000000",
+L"01100000",
+L"00110000",
+L"00001100",
+L"00000110",
+L"00000011",
+L"00000001",
 L"00000000",
 };
 

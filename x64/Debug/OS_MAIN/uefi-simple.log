@@ -1,313 +1,342 @@
 ﻿  main.c
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\TextModeMapBits.h(589,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\TextModeMapBits.h(590,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\TextModeMapBits.h(591,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\TextModeMapBits.h(592,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\TextModeMapBits.h(593,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\TextModeMapBits.h(594,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\TextModeMapBits.h(595,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\TextModeMapBits.h(596,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(151,31): warning C4244: 'función': conversión de 'UINTN' a 'UINT32'; posible pérdida de datos
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(151,53): warning C4244: 'función': conversión de 'UINTN' a 'UINT32'; posible pérdida de datos
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(173,13): warning C4047: '=': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(174,13): warning C4047: '=': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(189,23): warning C4047: '==': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(556,13): warning C4047: '=': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(557,13): warning C4047: '=': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(595,38): warning C4244: 'función': conversión de 'UINTN' a 'UINT32'; posible pérdida de datos
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(595,60): warning C4244: 'función': conversión de 'UINTN' a 'UINT32'; posible pérdida de datos
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(600,25): warning C4047: '!=': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(644,5): warning C4098: 'printf': función 'void' que devuelve un valor
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(628,9): warning C4047: 'inicializando': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'UINTN *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(629,9): warning C4047: 'inicializando': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'UINTN *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(670,41): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'UINTN'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(670,41): warning C4024: 'printf': tipos distintos para el parámetro formal y el parámetro real 3
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(670,50): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'UINTN'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(670,50): warning C4024: 'printf': tipos distintos para el parámetro formal y el parámetro real 4
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(707,13): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(727,5): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 [512]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(692,16): warning C4101: 'Status': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelDef.h(339,5): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 [512]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(119,40): warning C4066: se han omitido los caracteres en la constante de caracteres anchos a excepción del primero
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(121,24): warning C4129: “m”: secuencia de escape de caracteres no reconocida
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(122,28): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(122,28): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(124,28): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(124,28): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(126,41): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(126,41): warning C4024: 'set_kernel_variable': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(126,54): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(126,54): warning C4024: 'set_kernel_variable': tipos distintos para el parámetro formal y el parámetro real 2
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(290,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(290,16): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(291,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(291,16): warning C4024: 'pr_msg': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(295,20): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(295,20): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(296,21): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(296,21): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(300,20): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(300,20): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(301,21): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(301,21): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(304,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(304,16): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(305,20): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelCore.h(305,20): warning C4024: 'pr_special': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(97,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(97,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(102,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(102,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(108,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(108,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(113,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(113,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(118,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(118,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(123,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(123,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(129,23): warning C4101: 'Key': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(134,27): warning C4101: 'Key': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(149,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(149,16): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(152,34): warning C4047: 'función': 'const CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(152,34): warning C4024: 'StrLen': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(168,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(168,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(169,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(169,16): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(172,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(172,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(178,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(178,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(179,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(179,16): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(183,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(183,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(184,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(184,16): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(188,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(188,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(189,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(189,16): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(193,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(193,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(194,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(194,16): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(198,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(198,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(199,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(199,16): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(203,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(203,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(206,23): warning C4101: 'Key': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(211,27): warning C4101: 'Key': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(243,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(243,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(248,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(248,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(254,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(254,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(259,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(259,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(264,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelConsole.h(264,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelMemory.h(146,38): warning C4047: '=': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelMemory.h(167,35): warning C4047: '=': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'UINTN'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelMemory.h(187,13): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelMemory.h(190,5): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelMemory.h(206,13): warning C4047: 'return': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'UINTN *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelMemory.h(278,35): warning C4047: '=': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(61,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(61,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(62,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(62,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(70,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(70,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(71,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(71,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(79,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(79,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(80,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(80,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(88,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(88,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(89,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(89,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(250,20): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(250,20): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(257,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(257,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(353,20): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(353,20): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(363,32): warning C4047: '<': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'UINTN *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(357,9): warning C4047: 'inicializando': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'UINTN'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(356,10): warning C4101: 'lineBuffer': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(422,11): warning C4244: 'función': conversión de 'UINTN' a 'UINT32'; posible pérdida de datos
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(406,31): warning C4101: 'Mouse': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(408,27): warning C4101: 'MouseState': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(527,72): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(527,72): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(530,3): warning C4047: 'función': 'const CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(530,3): warning C4024: 'Print': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(522,13): warning C4101: 'Status': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(530,3): warning C4101: 'Time': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(641,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(641,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(642,14): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(642,14): warning C4024: 'pr_special': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(650,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(650,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(651,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(651,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(659,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(659,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(660,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(660,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(668,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(668,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(669,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(669,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(775,74): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(775,74): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(788,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(788,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(793,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(793,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(810,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(810,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(813,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(813,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(816,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(816,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(819,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(819,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(832,10): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(859,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(859,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(864,56): warning C4047: 'función': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [4]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(864,56): warning C4024: 'ExecuteCommand': tipos distintos para el parámetro formal y el parámetro real 4
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(878,3): warning C4003: no hay suficientes argumentos para la invocación de macro "WHILESYSTEMRUNNING" de tipo función
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(878,3): warning C4047: 'función': 'const CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(878,3): warning C4024: 'Print': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(881,10): warning C4047: 'inicializando': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(911,3): warning C4047: '=': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(965,40): warning C4020: 'StrCmp': hay demasiados parámetros reales
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(977,54): warning C4047: 'función': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(977,54): warning C4024: 'Edit_MEM_FILE_STRING': tipos distintos para el parámetro formal y el parámetro real 2
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(993,4): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [18]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1001,3): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [20]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1003,36): warning C4020: 'StrCmp': hay demasiados parámetros reales
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1006,40): warning C4020: 'StrCmp': hay demasiados parámetros reales
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1010,14): warning C4047: 'función': 'const CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1010,14): warning C4024: 'StrCmp': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1018,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1018,11): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1019,4): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1019,4): warning C4024: 'ShowCenteredDialog': tipos distintos para el parámetro formal y el parámetro real 3
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1029,14): warning C4047: 'función': 'const CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1029,14): warning C4024: 'StrCmp': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1035,14): warning C4047: 'función': 'const CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1035,14): warning C4024: 'StrCmp': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1043,3): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [34]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1046,2): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [27]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(890,16): warning C4101: 'Key': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1073,74): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1073,74): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1075,20): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1075,20): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1089,3): warning C4047: 'función': 'const CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1089,3): warning C4024: 'Print': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1172,74): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1172,74): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1193,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1193,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1196,52): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'UINTN'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1196,52): warning C4024: 'PrintSSL': tipos distintos para el parámetro formal y el parámetro real 5
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1200,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1200,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1203,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1203,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1210,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1210,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1213,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1213,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1224,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1224,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1231,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1231,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1234,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1234,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1241,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1241,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1244,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1244,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1251,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1251,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1254,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1254,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1261,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1261,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1264,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1264,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1271,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1271,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1274,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1274,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1281,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1281,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1284,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1284,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1293,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1293,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1300,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1300,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1303,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1303,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1310,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1310,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1313,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1313,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1320,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1320,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1323,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1323,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1330,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1330,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1333,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1333,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1340,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1340,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1343,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1343,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1350,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1350,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1353,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1353,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1360,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1360,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1363,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1363,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1409,42): warning C4047: 'función': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [4]'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1409,42): warning C4024: 'ssun_main': tipos distintos para el parámetro formal y el parámetro real 3
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1150,13): warning C4101: 'Status': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1149,21): warning C4101: 'Root': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1482,11): warning C4244: 'función': conversión de 'UINTN' a 'UINT32'; posible pérdida de datos
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1499,75): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1499,75): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1500,74): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1500,74): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1502,63): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1502,63): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1529,20): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1529,20): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1536,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1536,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1464,16): warning C4101: 'Key': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1462,8): warning C4101: 'option': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1461,8): warning C4101: 'Event': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(1465,35): warning C4101: 'FileSystem': variable local sin referencia
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelTextMode.h(727,1): warning C4172: devolución de dirección de la variable local o temporal: Buffer
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\.vs\msvc\KernelDef.h(339,1): warning C4172: devolución de dirección de la variable local o temporal: HexString
-C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\main.c(264,1): warning C4716: 'SSUNSCREENLOGOUT': debe devolver un valor
-  uefi-simple.vcxproj -> C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\x64\Debug\OS_MAIN.efi
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\TextModeMapBits.h(605,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\TextModeMapBits.h(606,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\TextModeMapBits.h(607,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\TextModeMapBits.h(608,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\TextModeMapBits.h(609,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\TextModeMapBits.h(610,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\TextModeMapBits.h(611,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\TextModeMapBits.h(612,5): warning C4133: 'inicializando': tipos incompatibles, de 'char [9]' a 'CHAR16 *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(162,31): warning C4244: 'función': conversión de 'UINTN' a 'UINT32'; posible pérdida de datos
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(162,53): warning C4244: 'función': conversión de 'UINTN' a 'UINT32'; posible pérdida de datos
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(184,13): warning C4047: '=': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(185,13): warning C4047: '=': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(200,23): warning C4047: '==': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(645,13): warning C4047: '=': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(646,13): warning C4047: '=': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(684,38): warning C4244: 'función': conversión de 'UINTN' a 'UINT32'; posible pérdida de datos
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(684,60): warning C4244: 'función': conversión de 'UINTN' a 'UINT32'; posible pérdida de datos
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(689,25): warning C4047: '!=': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(808,5): warning C4098: 'printf': función 'void' que devuelve un valor
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(792,9): warning C4047: 'inicializando': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'UINTN *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(793,9): warning C4047: 'inicializando': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'UINTN *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(834,41): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'UINTN'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(834,41): warning C4024: 'printf': tipos distintos para el parámetro formal y el parámetro real 3
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(834,50): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'UINTN'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(834,50): warning C4024: 'printf': tipos distintos para el parámetro formal y el parámetro real 4
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(851,83): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'INTN'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(851,83): warning C4024: 'printf': tipos distintos para el parámetro formal y el parámetro real 3
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(851,123): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'INTN'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelTextMode.h(851,123): warning C4024: 'printf': tipos distintos para el parámetro formal y el parámetro real 4
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelStorage.h(81,20): warning C4047: '=': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [15]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelStorage.h(82,5): warning C4047: '=': 'Path' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [1]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelStorage.h(82,5): warning C4047: '=': 'FILE_CONTENT *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelStorage.h(83,5): warning C4047: '=': 'Path' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [2]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelStorage.h(83,5): warning C4047: '=': 'FILE_CONTENT *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelStorage.h(84,5): warning C4047: '=': 'Path' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [2]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelStorage.h(84,5): warning C4047: '=': 'FILE_CONTENT *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelStorage.h(85,5): warning C4047: '=': 'Path' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [2]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelDef.h(346,5): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 [512]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(205,40): warning C4066: se han omitido los caracteres en la constante de caracteres anchos a excepción del primero
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(208,28): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(208,28): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(210,28): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(210,28): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(212,41): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(212,41): warning C4024: 'set_kernel_variable': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(212,54): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(212,54): warning C4024: 'set_kernel_variable': tipos distintos para el parámetro formal y el parámetro real 2
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(376,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(376,16): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(377,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(377,16): warning C4024: 'pr_msg': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(381,20): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(381,20): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(382,21): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(382,21): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(386,20): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(386,20): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(387,21): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(387,21): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(390,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(390,16): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(391,20): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelCore.h(391,20): warning C4024: 'pr_special': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(99,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(99,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(104,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(104,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(110,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(110,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(115,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(115,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(120,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(120,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(125,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(125,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(131,23): warning C4101: 'Key': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(136,27): warning C4101: 'Key': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(151,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(151,16): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(154,34): warning C4047: 'función': 'const CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(154,34): warning C4024: 'StrLen': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(170,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(170,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(171,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(171,16): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(174,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(174,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(180,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(180,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(181,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(181,16): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(185,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(185,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(186,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(186,16): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(190,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(190,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(191,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(191,16): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(195,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(195,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(196,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(196,16): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(200,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(200,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(201,16): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(201,16): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(205,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(205,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(208,23): warning C4101: 'Key': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(213,27): warning C4101: 'Key': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(245,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(245,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(250,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(250,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(256,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(256,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(261,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(261,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(266,27): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelConsole.h(266,27): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelMemory.h(146,38): warning C4047: '=': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelMemory.h(167,35): warning C4047: '=': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'UINTN'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelMemory.h(187,13): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelMemory.h(190,5): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelMemory.h(206,13): warning C4047: 'return': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'UINTN *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelMemory.h(278,35): warning C4047: '=': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelMK.h(168,13): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [19]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelMK.h(171,13): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [17]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelMK.h(174,13): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [27]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelMK.h(177,13): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [61]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelMK.h(180,13): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [42]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelMK.h(183,13): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [15]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelMK.h(186,13): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [38]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelMK.h(189,13): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [40]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\kernelMK.h(191,9): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [14]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(64,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(64,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(65,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(65,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(73,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(73,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(74,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(74,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(82,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(82,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(83,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(83,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(91,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(91,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(92,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(92,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(253,20): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(253,20): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(260,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(260,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(356,20): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(356,20): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(366,32): warning C4047: '<': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'UINTN *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(360,9): warning C4047: 'inicializando': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'UINTN'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(359,10): warning C4101: 'lineBuffer': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(425,11): warning C4244: 'función': conversión de 'UINTN' a 'UINT32'; posible pérdida de datos
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(409,31): warning C4101: 'Mouse': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(411,27): warning C4101: 'MouseState': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(530,72): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(530,72): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(533,3): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(533,3): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(533,3): warning C4133: 'función': tipos incompatibles, de 'EFI_SYSTEM_TABLE *' a 'CHAR16 *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(533,3): warning C4020: 'printc': hay demasiados parámetros reales
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(533,3): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(533,3): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(525,13): warning C4101: 'Status': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(533,3): warning C4101: 'Time': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(647,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(647,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(648,14): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(648,14): warning C4024: 'pr_special': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(656,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(656,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(657,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(657,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(665,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(665,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(666,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(666,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(674,10): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(674,10): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(675,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(675,11): warning C4024: 'pr_warn': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(773,3): warning C4047: 'return': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(789,74): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(789,74): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(802,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(802,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(807,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(807,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(824,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(824,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(827,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(827,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(830,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(830,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(833,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(833,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(861,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(861,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(866,56): warning C4047: 'función': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [4]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(866,56): warning C4024: 'ExecuteCommand': tipos distintos para el parámetro formal y el parámetro real 4
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(878,3): warning C4003: no hay suficientes argumentos para la invocación de macro "WHILESYSTEMRUNNING" de tipo función
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(878,3): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(878,3): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(881,48): warning C4047: 'función': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [5]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(881,48): warning C4024: 'ExecuteCommand': tipos distintos para el parámetro formal y el parámetro real 4
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(939,3): warning C4047: '=': 'UINTN' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(998,40): warning C4020: 'StrCmp': hay demasiados parámetros reales
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1094,54): warning C4047: 'función': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1094,54): warning C4024: 'Edit_MEM_FILE_STRING': tipos distintos para el parámetro formal y el parámetro real 2
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1111,50): warning C4020: 'Read_MEM_FILE_STRING': hay demasiados parámetros reales
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1112,15): warning C4047: '==': 'int' es distinto en los niveles de direccionamiento indirecto de 'VOID *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1130,46): warning C4020: 'Read_MEM_FILE_INT': hay demasiados parámetros reales
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1132,63): warning C4133: 'función': tipos incompatibles, de 'CHAR16 *' a 'UINTN *'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1148,4): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [18]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1156,3): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [20]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1158,36): warning C4020: 'StrCmp': hay demasiados parámetros reales
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1161,40): warning C4020: 'StrCmp': hay demasiados parámetros reales
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1165,14): warning C4047: 'función': 'const CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1165,14): warning C4024: 'StrCmp': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1173,11): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1173,11): warning C4024: 'UnicodeSPrint': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1174,4): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16 *[100]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1174,4): warning C4024: 'ShowCenteredDialog': tipos distintos para el parámetro formal y el parámetro real 3
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1192,29): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1192,29): warning C4024: 'StartsWish': tipos distintos para el parámetro formal y el parámetro real 2
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1193,40): warning C4047: '==': 'FILE_CONTENT *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1219,3): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [34]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1223,2): warning C4047: 'return': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [27]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(918,16): warning C4101: 'Key': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1238,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1238,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1243,56): warning C4047: 'función': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [4]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1243,56): warning C4024: 'ExecuteCommand': tipos distintos para el parámetro formal y el parámetro real 4
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1271,74): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1271,74): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1273,20): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1273,20): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1287,3): warning C4047: 'función': 'CHAR16 *' es distinto en los niveles de direccionamiento indirecto de 'CHAR16'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1287,3): warning C4024: 'printc': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1378,74): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1378,74): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1405,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1405,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1408,52): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'UINTN'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1408,52): warning C4024: 'PrintSSL': tipos distintos para el parámetro formal y el parámetro real 5
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1412,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1412,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1415,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1415,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1422,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1422,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1425,22): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1425,22): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1436,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1436,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1443,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1443,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1446,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1446,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1453,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1453,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1456,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1456,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1463,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1463,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1466,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1466,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1473,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1473,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1476,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1476,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1483,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1483,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1486,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1486,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1493,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1493,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1496,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1496,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1505,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1505,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1512,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1512,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1515,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1515,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1522,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1522,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1525,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1525,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1532,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1532,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1535,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1535,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1542,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1542,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1545,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1545,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1552,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1552,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1555,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1555,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1562,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1562,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1565,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1565,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1572,23): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1572,23): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1575,24): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1575,24): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1621,42): warning C4047: 'función': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [4]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1621,42): warning C4024: 'ssun_main': tipos distintos para el parámetro formal y el parámetro real 3
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1354,13): warning C4101: 'Status': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1353,21): warning C4101: 'Root': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1683,13): warning C4047: '=': 'CHAR16' es distinto en los niveles de direccionamiento indirecto de 'unsigned short [2]'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1699,11): warning C4244: 'función': conversión de 'UINTN' a 'UINT32'; posible pérdida de datos
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1716,75): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1716,75): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1717,74): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1717,74): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1719,63): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1719,63): warning C4024: 'Create_MEM_FILE_INT': tipos distintos para el parámetro formal y el parámetro real 2
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1739,20): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1739,20): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1747,20): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1747,20): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1754,21): warning C4047: 'función': 'UINTN *' es distinto en los niveles de direccionamiento indirecto de 'int'
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1754,21): warning C4024: 'SetScreenAtribute': tipos distintos para el parámetro formal y el parámetro real 1
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1674,8): warning C4101: 'option': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(1673,8): warning C4101: 'Event': variable local sin referencia
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\.vs\msvc\KernelDef.h(346,1): warning C4172: devolución de dirección de la variable local o temporal: HexString
+C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\main.c(267,1): warning C4716: 'SSUNSCREENLOGOUT': debe devolver un valor
+  uefi-simple.vcxproj -> C:\Users\erick\OneDrive\ErickCraftStudiosMgrChannel\Saved Proyects\S-SUNEFI\S-SUN\x64\Debug\OS_MAIN.efi
