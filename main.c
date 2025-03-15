@@ -1858,6 +1858,8 @@ efi_main
 #endif
 	CurrentDir = L"\\";
 
+	Status = gBS->SetWatchdogTimer(0, 0, 0, NULL);
+
 	SystemTable->ConOut->QueryMode(SystemTable->ConOut, SystemTable->ConOut->Mode->Mode, &horizontalResolution, &verticalResolution);
 
 	horizontalResolution = horizontalResolution / 8;

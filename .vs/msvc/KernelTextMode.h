@@ -197,7 +197,7 @@ SetScreenAtribute
     if (atribute == 0) {
         Conio->atributes->TEXT = (*e);
     }
-    else if (atribute == 1) {
+    else if (atribute == ((UINTN) 1)) {
         Conio->atributes->BG = (*e);
     }
 }
