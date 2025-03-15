@@ -27,6 +27,7 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #ifndef _KERNEL_
 #define _KERNEL_
 
+
 #include <efi.h>
 #include <efilib.h>
 #include "KernelConsole.h"
