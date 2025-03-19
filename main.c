@@ -1514,6 +1514,81 @@ ssun_main
 }
 
 EFI_STATUS 
+ADIVINA_EL_NUMERO
+(
+	EFI_HANDLE ImageHandle,
+	EFI_SYSTEM_TABLE* SystemTable
+)
+{
+	// ITSS FUNNN TIMEEE JIJIJI
+	UINTN Event;
+	EFI_INPUT_KEY Key;
+	UINTN Number;
+
+	UINTN MaxNumber;
+	UINTN MinNumber;
+
+	UINTN UserPrompt;
+
+	GAME_LOOP
+	{
+		// Prepare Numbers
+		MaxNumber = RandomInRange(0,99);
+
+		FOREVER
+		{
+			MinNumber = RandomInRange(0, 99);
+
+			// if the min number finally is not out of the MaxNumber = YEEES
+			if (MinNumber < MaxNumber) {
+				break;
+			}
+		}
+
+		// prepare the number
+		Number = RandomInRange(MinNumber,MaxNumber);
+
+		printc(L"Which Is The Number that is in range ");
+		string a[100];
+		SPrint(a, sizeof(a), L"%d to %d\n", MinNumber, MaxNumber);
+		printc(a);
+
+		CHAR16* input = NULL;
+		ReadLineSerius(&input); // Llamada a la función
+
+		UserPrompt = Atoi(input);
+
+		// Yeah go to the verification
+
+		CHAR16* state;
+		if (UserPrompt == Number) {
+			state = L"Perfect";
+		}
+		else if (UserPrompt > Number - 2 || UserPrompt < Number + 2) {
+			state = L"Good";
+		}
+		else if (UserPrompt > Number - 8 || UserPrompt < Number + 8) {
+			state = L"Great";
+		}
+		else if (UserPrompt > Number - 14 || UserPrompt < Number + 14) {
+			state = L"hmmm passable";
+		}
+		else if (UserPrompt > Number - 32 || UserPrompt < Number + 32) {
+			state = L"bad";
+		}
+		else {
+			state = L"soo bad but dont worry you can try agin";
+		}
+
+		printc(L"\n");
+		printc(state);
+		printc(L"\n");
+
+	}
+	return EFI_SUCCESS;
+}
+
+EFI_STATUS 
 Desktop
 (
 	EFI_HANDLE ImageHandle, 
