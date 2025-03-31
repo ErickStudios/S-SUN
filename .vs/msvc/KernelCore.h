@@ -60,11 +60,9 @@ int SystemResources[] = {
 /**
 Summary:
     this method calls a specific S-SUN resource and specific InterruptionID in S++
-    for example:
-    int....
-    that are a great idea but i cancelled it
 **/
-/*int
+/*
+int
 Interruption
 (
     int Resource,
@@ -76,7 +74,7 @@ Interruption
     case kERNEL_RESOURCE:
         switch (InterruptionID)
         {
-        case 1:
+        case 0x01:
             return INT_SUCCES;
         default:
             return INT_NOT_FOUNDED;
@@ -84,22 +82,22 @@ Interruption
     case DISPLAY_RESOURCE:
         switch (InterruptionID)
         {
-        case 1:
+        case 0x01:
             DRW_X++;
             return INT_SUCCES;
-        case 2:
+        case 0x02:
             DRW_Y++;
             return INT_SUCCES;
-        case 3:
+        case 0x03:
             DRW_DOWN;
             return INT_SUCCES;
-        case 4:
+        case 0x04:
             DRW_COL.Red = Read_MEM_FILE_INT(L"Interruption_DISPLAY_val");
             return INT_SUCCES;
-        case 5:
+        case 0x05:
             DRW_COL.Green = Read_MEM_FILE_INT(L"Interruption_DISPLAY_val");
             return INT_SUCCES;
-        case 6:
+        case 0x06:
             DRW_COL.Blue = Read_MEM_FILE_INT(L"Interruption_DISPLAY_val");
             return INT_SUCCES;
         default:
@@ -108,7 +106,7 @@ Interruption
     case KEYBOARD_RESOURCE:
         switch (InterruptionID)
         {
-        case 1:
+        case 0x01:
             return INT_SUCCES;
         default:
             return INT_NOT_FOUNDED;

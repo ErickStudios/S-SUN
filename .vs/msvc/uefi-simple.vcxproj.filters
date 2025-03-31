@@ -15,6 +15,12 @@
     <Filter Include="Header Files\kernel">
       <UniqueIdentifier>{6a62d1fa-cd2e-4cef-9749-7f728889b44a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\kernelImp">
+      <UniqueIdentifier>{5736d0e0-e92a-4ae3-8067-5bf30cad5c44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Dirvers">
+      <UniqueIdentifier>{2cc6cd15-82e7-4f58-9654-75642209ef77}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\debug.vbs">
@@ -24,6 +30,12 @@
   <ItemGroup>
     <ClCompile Include="..\..\main.c">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KernelAlgoritm.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="KernelAlgoritm.c">
+      <Filter>Source Files\kernelImp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +64,21 @@
       <Filter>Header Files\kernel</Filter>
     </ClInclude>
     <ClInclude Include="KernelProcess.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="STFPrint.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="KernelEarly.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyBoardDriver.h">
+      <Filter>Header Files\Dirvers</Filter>
+    </ClInclude>
+    <ClInclude Include="KernelDictionaries.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="KernelLanguaje.h">
       <Filter>Header Files\kernel</Filter>
     </ClInclude>
   </ItemGroup>

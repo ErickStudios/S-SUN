@@ -27,6 +27,7 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #include <efi.h>
 #include <efilib.h>
 #include "KernelProcess.h"
+#include "STFPrint.h"
 
 // ITS MY FONT :)
 #include "TextModeMapBits.h"
@@ -43,15 +44,22 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #define BUFFERSCREEN_MEM_Dir 0x000000032
 #define SEGC_PROTOCOL 0x002
 
+typedef enum KERNEL_STATUS;
+
 UINTN DRAWING_CURSOR_POSX;
 UINTN DRAWING_CURSOR_POSY;
+UINTN DRAWING_CURSOR_SIZEX;
+UINTN DRAWING_CURSOR_SIZEY;
+
 EFI_GRAPHICS_OUTPUT_BLT_PIXEL DRAWING_CURSOR_COLOR;
 
 #define DRW_X DRAWING_CURSOR_POSX
 #define DRW_Y DRAWING_CURSOR_POSY
+#define DRW_SX DRAWING_CURSOR_SIZEX
+#define DRW_SY DRAWING_CURSOR_SIZEY
 #define DRW_COL DRAWING_CURSOR_COLOR
 
-#define DRW_DOWN draw_pixel(gop, DRW_X, DRW_Y, DRW_COL)
+#define DRW_DOWN DRW_DOWN_F()
 
 Pixels bufferscreen[999999];
 
@@ -105,16 +113,22 @@ PIXELCOL darkgray = { 100, 100, 100, 0 };
 PIXELCOL white = { 255, 255, 255, 0 };
 PIXELCOL red = { 0, 0, 255, 0 };
 PIXELCOL brred = { 100, 100, 255, 0 };
+PIXELCOL darkred = { 0, 0, 100, 0 };
 PIXELCOL orange = { 0, 150, 255, 0 };
 PIXELCOL brorange = { 50, 150, 255, 0 };
+PIXELCOL darkorange = { 0, 50, 155, 0 };
 PIXELCOL yellow = { 0, 210, 235, 0 };
 PIXELCOL bryellow = { 0, 230, 255, 0 };
+PIXELCOL darkyellow = { 0, 110, 135, 0 };
 PIXELCOL green = { 0, 255, 0, 0 };
 PIXELCOL brgreen = { 100, 255, 100, 0 };
+PIXELCOL darkgreen = { 0, 155, 0, 0 };
 PIXELCOL cyan = { 255, 255, 0, 0 };
+PIXELCOL darkcyan = { 155, 155, 0, 0 };
 PIXELCOL brcyan = { 255, 255, 100, 0 };
 PIXELCOL blue = { 200, 0, 0, 0 };
 PIXELCOL brblue = { 255, 100, 100, 0 };
+PIXELCOL darkblue = { 100, 0, 0, 0 };
 
 typedef struct
 {
@@ -124,6 +138,8 @@ typedef struct
             TEXT;
         PIXELCOL
             BG;
+        UINTN
+            size;
     } *atributes;
 } MoonScreemConio;
 
@@ -144,6 +160,7 @@ MoonScreemConio* Conio;
             (
                 string* a
             );
+
 void
 ClearScreen
 (
@@ -175,6 +192,7 @@ initializeMoonScreen
     verticalResolution = gop->Mode->Info->VerticalResolution;
     Conio->atributes->TEXT = white;
     Conio->atributes->BG = black;
+    Conio->atributes->size = 1;
     cursorx = 0;
     cursory = 0;
     screenscroll = 0;
@@ -203,29 +221,61 @@ SetScreenAtribute
 }
 
 // Función para dibujar un píxel en la pantalla
-void
+VOID
 draw_pixel
 (
     EFI_GRAPHICS_OUTPUT_PROTOCOL* gop,
     int x,
     int y,
     EFI_GRAPHICS_OUTPUT_BLT_PIXEL color
-)
-{
-    //EFI_GRAPHICS_OUTPUT_BLT_PIXEL pixel = color;
-    //gop->Blt(gop, &pixel, EfiBltVideoFill, 0, 0, x, y, 1, 1, 0);
-    Pixels a;
-    a.color = color;
-    a.x = x;
-    a.y = y;
-    if (y > bufferlines) {
-        bufferlines = y;
+) {
+    bool pixel_found = false;
+    int pixel_id = -1;
+
+    // Buscar el píxel en bufferscreen
+    if (true) {
+        for (UINTN i = 0; i < pixels; i++) {
+            if ((bufferscreen[i].x == x) == (bufferscreen[i].y == y)) {
+                if ((bufferscreen[i].x == x) == true) {
+                    pixel_found = true;
+                    pixel_id = i;
+                    break;
+                }
+            }
+            if ((bufferscreen[i].x == NULL)) {
+                break;
+            }
+        }
     }
-    pixels++;
-    bufferscreen[pixels] = a;
-    if (bufferlines > verticalResolution)
-    {
-        screenscroll = a.y - verticalResolution;
+
+    if (!pixel_found) {
+        // Crear un nuevo píxel
+        if (pixels >= 999999) {
+            Print(L"you cant write in a buffer that is filled");
+            return;
+        }
+
+        Pixels new_pixel;
+        new_pixel.color = color;
+        new_pixel.x = x;
+        new_pixel.y = y;
+
+        bufferscreen[pixels++] = new_pixel;
+
+        // Actualizar bufferlines y manejar scroll
+        if (y > bufferlines) {
+            bufferlines = y;
+        }
+
+        if (bufferlines > verticalResolution) {
+            screenscroll = bufferlines - verticalResolution;
+        }
+    }
+    else {
+        // Actualizar color y posición del píxel existente
+        bufferscreen[pixel_id].color = color;
+        bufferscreen[pixel_id].x = x;
+        bufferscreen[pixel_id].y = y;
     }
 }
 
@@ -256,21 +306,40 @@ draw_pixelp
     }
 }
 
-// Función para dibujar una letra usando el mapa de píxeles
 void
+DRW_DOWN_F
+(
+)
+{
+    for (size_t j = 0; j < DRW_SY; j++)
+    {
+        for (size_t i = 0; i < DRW_SX; i++)
+        {
+            draw_pixel(gop, DRW_X + i, DRW_Y + j, DRW_COL);
+        }
+    }
+}
+
+// Función para dibujar una letra usando el mapa de píxeles
+void 
 draw_bitmaprt
 (
     EFI_GRAPHICS_OUTPUT_PROTOCOL* gop,
     int x,
     int y,
     CHAR16** bitmap,
-    EFI_GRAPHICS_OUTPUT_BLT_PIXEL color
+    EFI_GRAPHICS_OUTPUT_BLT_PIXEL color,
+    UINTN size
 )
 {
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            if (bitmap[i][j] == L'1') {
-                draw_pixel(gop, x + j, y + i, color);
+    for (int i = 0; i < 8; i++) { // Itera filas del bitmap (eje y)
+        for (int j = 0; j < 8; j++) { // Itera columnas del bitmap (eje x)
+            if (bitmap[i][j] == L'1') { // Verifica si se debe dibujar un "píxel"
+                for (int dy = 0; dy < size; dy++) { // Escala en el eje y
+                    for (int dx = 0; dx < size; dx++) { // Escala en el eje x
+                        draw_pixel(gop, (x + j * size) + dx, (y + i * size) + dy, color);
+                    }
+                }
             }
         }
     }
@@ -285,13 +354,18 @@ draw_bitmaprtp
     int y,
     CHAR16** bitmap,
     EFI_GRAPHICS_OUTPUT_BLT_PIXEL color,
+    UINTN size,
     INTN process
 )
 {
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            if (bitmap[i][j] == L'1') {
-                draw_pixelp(gop, x + j, y + i, color,process);
+    for (int i = 0; i < 8; i++) { // Itera filas del bitmap (eje y)
+        for (int j = 0; j < 8; j++) { // Itera columnas del bitmap (eje x)
+            if (bitmap[i][j] == L'1') { // Verifica si se debe dibujar un "píxel"
+                for (int dy = 0; dy < size; dy++) { // Escala en el eje y
+                    for (int dx = 0; dx < size; dx++) { // Escala en el eje x
+                        draw_pixelp(gop, (x + j * size) + dx, (y + i * size) + dy, color, process);
+                    }
+                }
             }
         }
     }
@@ -304,13 +378,18 @@ draw_bitmap2rt
     int x,
     int y,
     CHAR16** bitmap,
-    EFI_GRAPHICS_OUTPUT_BLT_PIXEL color
+    EFI_GRAPHICS_OUTPUT_BLT_PIXEL color,
+    UINTN size
 )
 {
-    for (int i = 0; i < 12; i++) {
-        for (int j = 0; j < 10; j++) {
-            if (bitmap[i][j] == L'1') {
-                draw_pixel(gop, x + j, y + i, color);
+    for (int i = 0; i < 12; i++) { // Itera filas del bitmap (eje y)
+        for (int j = 0; j < 10; j++) { // Itera columnas del bitmap (eje x)
+            if (bitmap[i][j] == L'1') { // Verifica si se debe dibujar un "píxel"
+                for (int dy = 0; dy < size; dy++) { // Escala en el eje y
+                    for (int dx = 0; dx < size; dx++) { // Escala en el eje x
+                        draw_pixel(gop, (x + j * size) + dx, (y + i * size) + dy, color);
+                    }
+                }
             }
         }
     }
@@ -324,20 +403,24 @@ draw_bitmap2rtp
     int y,
     CHAR16** bitmap,
     EFI_GRAPHICS_OUTPUT_BLT_PIXEL color,
-    INTN proces
+    UINTN size,
+    INTN process
 )
 {
-    for (int i = 0; i < 12; i++) {
-        for (int j = 0; j < 10; j++) {
-            if (bitmap[i][j] == L'1') {
-                draw_pixelp(gop, x + j, y + i, color, proces);
+    for (int i = 0; i < 12; i++) { // Itera filas del bitmap (eje y)
+        for (int j = 0; j < 10; j++) { // Itera columnas del bitmap (eje x)
+            if (bitmap[i][j] == L'1') { // Verifica si se debe dibujar un "píxel"
+                for (int dy = 0; dy < size; dy++) { // Escala en el eje y
+                    for (int dx = 0; dx < size; dx++) { // Escala en el eje x
+                        draw_pixelp(gop, (x + j * size) + dx, (y + i * size) + dy, color,process);
+                    }
+                }
             }
         }
     }
 }
-
-#define draw_bitmap(gop,x,y,bitmap,color) if (process == RESERVED_SYSTEM_PROCESS) { draw_bitmaprt(gop,x,y,bitmap,color); } else { draw_bitmaprtp(gop,x,y,bitmap,color, process); }
-#define draw_bitmap2(gop,x,y,bitmap,color) if (process == RESERVED_SYSTEM_PROCESS) { draw_bitmap2rt(gop,x,y,bitmap,color); } else { draw_bitmap2rtp(gop,x,y,bitmap,color, process); }
+#define draw_bitmap(gop,x,y,bitmap,color) if (process == RESERVED_SYSTEM_PROCESS) { draw_bitmaprt(gop,x,y,bitmap,color, size); } else { draw_bitmaprtp(gop,x,y,bitmap,color, size, process); }
+#define draw_bitmap2(gop,x,y,bitmap,color) if (process == RESERVED_SYSTEM_PROCESS) { draw_bitmap2rt(gop,x,y,bitmap,color, size); } else { draw_bitmap2rtp(gop,x,y,bitmap,color, size , process); }
 
 // Función para dibujar una letra
 void
@@ -348,16 +431,29 @@ DrawLetter
     int x,
     int y,
     CHAR16* letter,
+    UINTN size,
     INTN process
 )
 {
-    int realx = x * 8;
-    int realy = y * 12;
+    int realx = (x * (8 * size));
+    int realy = (y * (12 * size));
     if (StrCmp(letter, L"_") == 0) {
         draw_bitmap(gop, realx, realy, GuionBajo_bitmap, color);
     }
     else if (StrCmp(letter, L"+") == 0) {
         draw_bitmap(gop, realx, realy, Plus_bitmap, color);
+    }
+    else if (StrCmp(letter, L"\x1") == 0) {
+        draw_bitmap(gop, realx, realy, happyface_bitmap, color);
+    }
+    else if (StrCmp(letter, L"\x2") == 0) {
+        draw_bitmap(gop, realx, realy, sadface_bitmap, color);
+    }
+    else if (StrCmp(letter, L"\x3") == 0) {
+        draw_bitmap(gop, realx, realy, neutralface_bitmap, color);
+    }
+    else if (StrCmp(letter, L"\x4") == 0) {
+        draw_bitmap(gop, realx, realy, rombo_bitmap, color);
     }
     else if (StrCmp(letter, L"-") == 0) {
         draw_bitmap(gop, realx, realy, subtrac_bitmap, color);
@@ -690,20 +786,21 @@ DrawScreen
                 EFI_GRAPHICS_OUTPUT_BLT_PIXEL color = pixel.color;
                 if (screenscroll < verticalResolution) {
                     if (SMODE == 0) {
-                        gop->Blt(gop, &color, EfiBltVideoFill, 0, 0, pixel.x, pixel.y - screenscroll - 2, 1, 1, 0);
+                        gop->Blt(gop, &color, EfiBltVideoFill, 0, 0, pixel.x, pixel.y - screenscroll - 5, 1, 1, 0);
                     }
                     else
                     {
-                        gop->Blt(gop, &color, EfiBltVideoFill, 0, 0, pixel.x, pixel.y, 1, 1, 0);
+                        gop->Blt(gop, &color, EfiBltVideoFill, 0, 0, pixel.x, pixel.y + 2, 1, 1, 0);
                     }
                 } else {
-                    gop->Blt(gop, &color, EfiBltVideoFill, 0, 0, pixel.x, pixel.y, 1, 1, 0);
+                    gop->Blt(gop, &color, EfiBltVideoFill, 0, 0, pixel.x, pixel.y + 2, 1, 1, 0);
                 }
             }
     }
 }
 
-void DrawProcess(
+void
+DrawProcess(
     INTN process
 )
 {
@@ -787,6 +884,7 @@ printf
     int* y,
     CHAR16* TEXT,
     EFI_GRAPHICS_OUTPUT_BLT_PIXEL bgcolor,
+    int size,
     int process
 ) {
     int currentx = x;
@@ -796,12 +894,12 @@ printf
     for (UINTN TEXTLETTER = 0; TEXTLETTER < StrLen(TEXT); TEXTLETTER++) {
         SPrint(FullMessage, sizeof(FullMessage), L"%c", TEXT[TEXTLETTER]);
         if (TEXT[TEXTLETTER] == L'\n') {
-            currenty++;
+            currenty++; 
             currentx = 0;
         }
         else {
-            DrawLetter(gop, bgcolor, currentx, currenty, L"\a", process);
-            DrawLetter(gop, color, currentx, currenty, FullMessage, process);
+            DrawLetter(gop, bgcolor, currentx, currenty, L"\a",size ,process);
+            DrawLetter(gop, color, currentx, currenty, FullMessage,size ,process);
             currentx++;
         }
     }
@@ -824,6 +922,27 @@ CountOccurrencesf
     return count;
 }
 
+void
+_printc
+(
+    string* ar,
+    bool update,
+    ...
+)
+{
+    string* a = ar;
+
+    printf(gop, Conio->atributes->TEXT, cursorx, cursory, a, Conio->atributes->BG, Conio->atributes->size,-1);
+    cursorx = cursorx + StrLen(a) - CountOccurrencesf(a, L'\n');
+    if (CountOccurrencesf(a, L'\n') != 0) {
+        bufferlines += CountOccurrencesf(a, L'\n');
+        cursorx = 0;
+        cursory = cursory + CountOccurrencesf(a, L'\n');
+    }
+    if (update == true) {
+        DrawScreen();
+    }
+}
 
 void
 printc
@@ -831,14 +950,16 @@ printc
     string* a
 )
 {
-    printf(gop, Conio->atributes->TEXT, cursorx, cursory, a, Conio->atributes->BG,-1);
-    cursorx = cursorx + StrLen(a) - CountOccurrencesf(a, L'\n');
-    if (CountOccurrencesf(a, L'\n') != 0) {
-        bufferlines += CountOccurrencesf(a, L'\n');
-        cursorx = 0;
-        cursory = cursory + CountOccurrencesf(a, L'\n');
-    }
-    DrawScreen();
+    _printc(a,true);
+}
+
+void
+printcu
+(
+    string* a
+)
+{
+    _printc(a, false);
 }
 
 void
@@ -848,7 +969,7 @@ printp
     INTN process
 )
 {
-    printf(gop, ALLPROCESS[process].atributes->TEXT, ALLPROCESS[process].Conoutpud->cursorx, ALLPROCESS[process].Conoutpud->cursory, a, ALLPROCESS[process].atributes->BG, process);
+    printf(gop, ALLPROCESS[process].atributes->TEXT, ALLPROCESS[process].Conoutpud->cursorx, ALLPROCESS[process].Conoutpud->cursory, a, ALLPROCESS[process].atributes->BG, ALLPROCESS[process].atributes->size, process);
     ALLPROCESS[process].Conoutpud->cursorx = ALLPROCESS[process].Conoutpud->cursorx + StrLen(a) - CountOccurrencesf(a, L'\n');
     if (CountOccurrencesf(a, L'\n') != 0) {
         ALLPROCESS[process].bufferlines += CountOccurrencesf(a, L'\n');
@@ -898,10 +1019,53 @@ CHAR16* ReadLine(CHAR16* prompt) {
         globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
     }
     printc(L"\n");
-    printc(L"debug: ");
-    printc(Buffer); // Mensaje de depuración para verificar Buffer
-    printc(L"\n");
     return Buffer;
+}
+
+VOID ReadLineSerius
+(
+    OUT CHAR16* prompt
+)
+{
+    static CHAR16 Buffer[512]; // Estático para mantener la vida útil más allá del scope de la función
+
+    UINTN Index = 0;
+    UINTN Event;
+    EFI_INPUT_KEY Key;
+
+    InitializeLib(globalimagehandle, globalsystemtable);
+
+    while (true) {
+        uefi_call_wrapper(globalsystemtable->ConIn->ReadKeyStroke, 2, globalsystemtable->ConIn, &Key);
+        if (Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
+            Buffer[Index] = L'\0';
+            break;
+        }
+        else if (Key.ScanCode == SCAN_ESC) {
+            *prompt = NULL;
+            return;
+        }
+        else if (Key.UnicodeChar == CHAR_BACKSPACE) {
+            if (Index > 0) {
+                gotoxy(cursorx - 1, cursory);
+                printc(L" ");
+                gotoxy(cursorx - 1, cursory);
+                Buffer[--Index] = L'\0';
+            }
+        }
+        else if (Key.UnicodeChar != 0) {
+            Buffer[Index++] = Key.UnicodeChar;
+            string a[100];
+            SPrint(a, sizeof(a), L"%c", Key.UnicodeChar);
+            printc(a);
+            Buffer[Index] = L'\0';
+        }
+
+        Buffer[Index] = L'\0';
+        globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
+    }
+    printc(L"\n");
+    *prompt = Buffer;
 }
 
 #endif // !_KERNEL_TEXTMODE_

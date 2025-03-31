@@ -22,15 +22,17 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 */
 // Seriously, please don't do anything to me.
 
-#include <efi.h>
-#include <efilib.h>
-
-#include "KernelTextMode.h"
-#include "kernelStorage.h"
-
 /*+++
 * KernelDef.h
 +++*/
+#include <efi.h>
+#include <efilib.h>
+
+#ifndef _KERNEL_TEXTMODE_
+#include "KernelTextMode.h"
+#endif // !_KERNEL_TEXTMODE_
+
+#include "kernelStorage.h"
 #ifndef _KERNEL_DEFS_
 #define _KERNEL_DEFS_
 
@@ -45,12 +47,15 @@ EFI_SYSTEM_TABLE* globalsystemtable;
 #define HFOLDER _REGISTER_FOLDER_WITH_REGS
 
 // for c 
-#define int UINTN
+#define int INTN
 #define void VOID
 #define string CHAR16
 #define bool BOOLEAN
 #define true TRUE
 #define false FALSE
+
+#define GAME_LOOP while (true) 
+#define FOREVER while (true) 
 
 // StartsWish
 /**

@@ -388,6 +388,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\main.c" />
+    <ClCompile Include="KernelAlgoritm.c" />
+    <ClCompile Include="KernelAlgoritm.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\debug.vbs" />
@@ -396,11 +398,16 @@
     <ClInclude Include="KernelConsole.h" />
     <ClInclude Include="KernelCore.h" />
     <ClInclude Include="KernelDef.h" />
+    <ClInclude Include="KernelDictionaries.h" />
+    <ClInclude Include="KernelEarly.h" />
+    <ClInclude Include="KernelLanguaje.h" />
     <ClInclude Include="KernelMemory.h" />
     <ClInclude Include="kernelMK.h" />
     <ClInclude Include="KernelProcess.h" />
     <ClInclude Include="KernelStorage.h" />
     <ClInclude Include="KernelTextMode.h" />
+    <ClInclude Include="KeyBoardDriver.h" />
+    <ClInclude Include="STFPrint.h" />
     <ClInclude Include="TextModeMapBits.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

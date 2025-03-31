@@ -73,6 +73,7 @@ typedef struct {
     {
         EFI_GRAPHICS_OUTPUT_BLT_PIXEL TEXT;
         EFI_GRAPHICS_OUTPUT_BLT_PIXEL BG;
+        UINTN size;
     } *atributes;
     // Conoutpud
     /**
@@ -125,6 +126,8 @@ CreateProcess(
 
     EFI_GRAPHICS_OUTPUT_BLT_PIXEL black = { 0, 0, 0, 0 };
     EFI_GRAPHICS_OUTPUT_BLT_PIXEL white = { 255, 255, 255, 0 };
+
+    ALLPROCESS[ID].atributes->size = 1;
 
     ALLPROCESS[ID].atributes->BG = black;
     ALLPROCESS[ID].atributes->TEXT = white;

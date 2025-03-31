@@ -86,8 +86,8 @@ EFI_DEVICE_IO_INTERFACE *GlobalIoFncs; // Declaración externa
         InitializeLib(ImageHamdle, SystemTable);
 
         // Obtener el tamaño de la pantalla
-        MaxRows = verticalResolution / 12;
-        MaxColumns = horizontalResolution / 8;
+        MaxRows = (verticalResolution / 12) / Conio->atributes->size;
+        MaxColumns = (horizontalResolution / 8) / Conio->atributes->size;
 
         // Calcular la posición inicial para centrar el mensaje
         StartColumn = (MaxColumns - MsgLength) / 2;
@@ -158,8 +158,8 @@ EFI_DEVICE_IO_INTERFACE *GlobalIoFncs; // Declaración externa
         InitializeLib(ImageHamdle, SystemTable);
 
         // Obtener el tamaño de la pantalla
-        MaxRows = verticalResolution / 12;
-        MaxColumns = horizontalResolution / 8;
+        MaxRows = (verticalResolution / 12) / Conio->atributes->size;
+        MaxColumns = (horizontalResolution / 8) / Conio->atributes->size;
 
         // Calcular la posición inicial para centrar el mensaje
         StartColumn = (MaxColumns - MsgLength) / 2;
@@ -218,6 +218,93 @@ EFI_DEVICE_IO_INTERFACE *GlobalIoFncs; // Declaración externa
         return EFI_SUCCESS;
     }
 
+#define DRAW_DIALOG_MSG_CONFIRM(ImageHamdle ,SystemTable, message) \
+    ShowCenteredDialogaConf(ImageHamdle, SystemTable, message);
+    BOOLEAN ShowCenteredDialogaConf(EFI_HANDLE* ImageHamdle, EFI_SYSTEM_TABLE* SystemTable, CHAR16* message) {
+        UINTN MaxColumns, MaxRows;
+        CHAR16* FullMessage[100];
+        CHAR16 CloseMsg[100];
+        EFI_INPUT_KEY Key;
+
+        SPrint(FullMessage, sizeof(FullMessage), L"      %s      ", message);
+        SPrint(CloseMsg, sizeof(CloseMsg), L"  OK  ", message);
+
+        UINTN MsgLength = StrLen(FullMessage);
+        UINTN CloseMsgLength = StrLen(CloseMsg);
+        UINTN StartColumn, StartRow;
+
+        InitializeLib(ImageHamdle, SystemTable);
+
+        // Obtener el tamaño de la pantalla
+        MaxRows = (verticalResolution / 12) / Conio->atributes->size;
+        MaxColumns = (horizontalResolution / 8) / Conio->atributes->size;
+
+        // Calcular la posición inicial para centrar el mensaje
+        StartColumn = (MaxColumns - MsgLength) / 2;
+        StartRow = MaxRows / 2;
+
+        gotoxy(StartColumn, StartRow - 2);
+        SetScreenAtribute(0, black);
+        SetScreenAtribute(1, black);
+        printc(FullMessage);
+
+        gotoxy(StartColumn, StartRow - 2);
+        SetScreenAtribute(1, black);
+        SetScreenAtribute(0, white);
+        printc(L"MsgBox");
+
+        gotoxy(StartColumn, StartRow - 1);
+        SetScreenAtribute(0, white);
+        SetScreenAtribute(1, white);
+        printc(FullMessage);
+
+        gotoxy(StartColumn, StartRow);
+        SetScreenAtribute(0, black);
+        SetScreenAtribute(1, white);
+        printc(FullMessage);
+
+        gotoxy(StartColumn, StartRow + 1);
+        SetScreenAtribute(0, white);
+        SetScreenAtribute(1, white);
+        printc(FullMessage);
+
+        gotoxy(StartColumn, StartRow + 2);
+        SetScreenAtribute(0, white);
+        SetScreenAtribute(1, white);
+        printc(FullMessage);
+
+        gotoxy(StartColumn, StartRow + 3);
+        SetScreenAtribute(0, white);
+        SetScreenAtribute(1, white);
+        printc(FullMessage);
+
+        gotoxy(StartColumn + 1, StartRow + 2);
+        SetScreenAtribute(0, white);
+        SetScreenAtribute(1, black);
+        printc(L"YES (enter)");
+
+        gotoxy(StartColumn + 15, StartRow + 2);
+        SetScreenAtribute(0, white);
+        SetScreenAtribute(1, black);
+        printc(L"NO (esc)");
+        UINTN Event;
+        UINTN tab;
+        SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+        while (TRUE)
+        {
+            SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+            SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key);
+
+            if (Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
+                return true;
+            } else if (Key.ScanCode == SCAN_ESC) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+
 #define DRAW_TEXT_DIALOG_NO_WAIT(ImageHamdle ,SystemTable, message, color, bg) \
     ShowCenteredDialognowait(ImageHamdle, SystemTable, message, color, bg);
     EFI_STATUS ShowCenteredDialognowait(EFI_HANDLE* ImageHamdle, EFI_SYSTEM_TABLE* SystemTable, CHAR16* message, UINTN color, UINTN BG) {
@@ -232,8 +319,8 @@ EFI_DEVICE_IO_INTERFACE *GlobalIoFncs; // Declaración externa
 
         // Obtener el tamaño de la pantalla
                 // Obtener el tamaño de la pantalla
-        MaxRows = verticalResolution / 12;
-        MaxColumns = horizontalResolution / 8;
+        MaxRows = (verticalResolution / 12) / Conio->atributes->size;
+        MaxColumns = (horizontalResolution / 8) / Conio->atributes->size;
 
         // Calcular la posición inicial para centrar el mensaje
         StartColumn = (MaxColumns - MsgLength) / 2;

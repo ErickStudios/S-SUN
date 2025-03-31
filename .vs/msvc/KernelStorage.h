@@ -35,43 +35,51 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 UINTN x = n;
 
 #define FileDef(name,paath,content,direction) \
-    HEY_CURRENT_SESSION[direction].Name = name; \
-    HEY_CURRENT_SESSION[direction].path = paath; \
-    HEY_CURRENT_SESSION[direction].Content = content; \
-    HEY_CURRENT_SESSION[direction].Direction = direction; \
-    if ( FilesCount < direction) { FilesCount = direction; }
+    CurrentFS.HEY_CURRENT_SESSION[direction].Name = name; \
+    CurrentFS.HEY_CURRENT_SESSION[direction].path = paath; \
+    CurrentFS.HEY_CURRENT_SESSION[direction].Content = content; \
+    CurrentFS.HEY_CURRENT_SESSION[direction].Direction = direction; \
+    if ( CurrentFS.FilesCount < direction) { CurrentFS.FilesCount = direction; }
 
 #define BasicStorageMethod \
     FileName* \
         Name; \
     Path \
         path; \
-    FILE_CONTENT* \
+    CHAR16* \
         Content;
 
-typedef UINTN    MEMORY_DIRECTION;
+typedef UINT8    MEMORY_DIRECTION;
 
-UINTN FilesCount = 0;
+typedef CHAR8    FileName;
+typedef CHAR8    Path;
 
-typedef CHAR16    FileName;
-typedef CHAR16    Path;
-
-typedef CHAR16    FILE_CONTENT;
+typedef CHAR8    FILE_CONTENT;
 
 typedef MEMORY_DIRECTION    MEM_DIR;
 
 CHAR16 FOLDER_CONTENT;
 
 typedef struct {
-    BasicStorageMethod
-    MEM_DIR
+    UINT8
         Direction;
+    CHAR8*
+        Name;
+    CHAR8
+        path;
+    CHAR8*
+        Content;
 } File;
 
 typedef File    FileSystem;
 
-FileSystem
-HEY_CURRENT_SESSION[200];
+typedef struct {
+    UINT8 FilesCount;
+    FileSystem
+        HEY_CURRENT_SESSION[100];
+} FS_IMPACT;
+
+FS_IMPACT CurrentFS;
 
 // Peparar los archivos
 VOID
@@ -83,6 +91,8 @@ InitializeFileSystem
     FileDef(L"System", L"\\", FOLDER_CONTENT, 1);
     FileDef(L"User", L"\\", FOLDER_CONTENT, 2);
     FileDef(L"Init.spp", L"\\", L"EditMem S-SUN_CREATOR=ErickCraftStudios\nEditMem S-SUN_KERNEL_CODENAME=KSUN\nEditMem S-SUN_MadedIn=C\n\ncls\necho Please Wait , Loading Desktop", 3);
+
+    CurrentFS.FilesCount = 3;
 }
 
 #endif // !_KERNEL_STORAGE_
