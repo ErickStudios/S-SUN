@@ -342,17 +342,12 @@ EFI_HANDLE GET_CURRENT_DOMAIN() {
     uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 100000); \
     KERNEL_CALL(forsetramvariable, L"S-SUN_INTERNAL_KERNEL_INITIALIZED ** == 1"); \
     pr_special(L"the variable SUN_INTERNAL_KERNEL_INITIALIZED is setted as 1"); \
-    uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 100000); \
     pr_msg(L"setting the variable SUN_INTERNAL_KERNEL_OS_VERSION"); \
-    uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 100000); \
     KERNEL_CALL(forsetramvariable, L"S-SUN_INTERNAL_KERNEL_OS_VERSION ** == alpha 0.1"); \
     pr_special(L"the variable SUN_INTERNAL_KERNEL_OS_VERSION is setted as alpha 0.1"); \
-    uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 100000); \
     pr_msg(L"setting the variable SUN_INTERNAL_KERNEL_MAX_SPACE"); \
-    uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 100000); \
     KERNEL_CALL(forsetramvariable, L"S-SUN_INTERNAL_KERNEL_MAX_SPACE ** == 2048"); \
     pr_special(L"the variable SUN_INTERNAL_KERNEL_MAX_SPACE is setted as 2048"); \
-    uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 100000);
 
 #define KERNEL_VERSION \
     KERNEL_CALL(forgetramvariable, L"SUN_INTERNAL_KERNEL_OS_VERSION")

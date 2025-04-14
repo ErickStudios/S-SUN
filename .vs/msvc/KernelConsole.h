@@ -75,7 +75,16 @@ EFI_DEVICE_IO_INTERFACE *GlobalIoFncs; // Declaración externa
 
 #define DRAW_TEXT_DIALOG(ImageHamdle ,SystemTable, message, color, bg) \
     ShowCenteredDialog(ImageHamdle, SystemTable, message, color, bg);
-    EFI_STATUS ShowCenteredDialog(EFI_HANDLE* ImageHamdle, EFI_SYSTEM_TABLE* SystemTable, CHAR16* message, UINTN color, UINTN BG) {
+    EFI_STATUS 
+    ShowCenteredDialog
+    (
+        EFI_HANDLE* ImageHamdle,
+        EFI_SYSTEM_TABLE* SystemTable, 
+        CHAR16* message, 
+        UINTN color, 
+        UINTN BG
+    )
+    {
         UINTN MaxColumns, MaxRows;
         CHAR16 FullMessage[100];
         SPrint(FullMessage, sizeof(FullMessage), L"   %s   ", message);
@@ -141,13 +150,32 @@ EFI_DEVICE_IO_INTERFACE *GlobalIoFncs; // Declaración externa
         return EFI_SUCCESS;
     }
 
-#define DRAW_DIALOG_MSG(ImageHamdle ,SystemTable, message) \
-    ShowCenteredDialoga(ImageHamdle, SystemTable, message);
-    EFI_STATUS ShowCenteredDialoga(EFI_HANDLE* ImageHamdle, EFI_SYSTEM_TABLE* SystemTable, CHAR16* message) {
+#define DRAW_DIALOG_MSG(ImageHamdle ,SystemTable, message, bar , text) \
+    ShowCenteredDialoga(ImageHamdle, SystemTable, message, text , bar, Sceme);
+    EFI_STATUS
+        ShowCenteredDialoga
+        (
+            EFI_HANDLE* ImageHamdle,
+            EFI_SYSTEM_TABLE* SystemTable,
+            CHAR16* message,
+            PIXELCOL bar,
+            PIXELCOL text,
+            CSCHEME* Colors
+    )
+    {
+        Pixels* savedbufsc = AllocatePool(sizeof(Pixels) * pixels);
+        for (size_t i = 0; i < pixels; i++) {
+            savedbufsc[i] = bufferscreen[i];
+        }
+
+        UINTN savpixels = pixels;
+
         UINTN MaxColumns, MaxRows;
         CHAR16* FullMessage[100];
         CHAR16 CloseMsg[100];
 
+        INT16 x = 0;
+        INT16 y = 0;
         SPrint(FullMessage, sizeof(FullMessage), L"      %s      ", message);
         SPrint(CloseMsg, sizeof(CloseMsg), L"  OK  ", message);
 
@@ -155,72 +183,135 @@ EFI_DEVICE_IO_INTERFACE *GlobalIoFncs; // Declaración externa
         UINTN CloseMsgLength = StrLen(CloseMsg);
         UINTN StartColumn, StartRow;
 
-        InitializeLib(ImageHamdle, SystemTable);
-
         // Obtener el tamaño de la pantalla
         MaxRows = (verticalResolution / 12) / Conio->atributes->size;
         MaxColumns = (horizontalResolution / 8) / Conio->atributes->size;
 
-        // Calcular la posición inicial para centrar el mensaje
-        StartColumn = (MaxColumns - MsgLength) / 2;
-        StartRow = MaxRows / 2;
-
-        gotoxy(StartColumn, StartRow - 2);
-        SetScreenAtribute(0, black);
-        SetScreenAtribute(1, black);
-        printc(FullMessage);
-
-        gotoxy(StartColumn, StartRow - 2);
-        SetScreenAtribute(1, black);
-        SetScreenAtribute(0, white);
-        printc(L"MsgBox");
-
-        gotoxy(StartColumn, StartRow - 1);
-        SetScreenAtribute(0, white);
-        SetScreenAtribute(1, white);
-        printc(FullMessage);
-
-        gotoxy(StartColumn, StartRow);
-        SetScreenAtribute(0, black);
-        SetScreenAtribute(1, white);
-        printc(FullMessage);
-
-        gotoxy(StartColumn, StartRow + 1);
-        SetScreenAtribute(0, white);
-        SetScreenAtribute(1, white);
-        printc(FullMessage);
-
-        gotoxy(StartColumn, StartRow + 2);
-        SetScreenAtribute(0, white);
-        SetScreenAtribute(1, white);
-        printc(FullMessage);
-
-        gotoxy(StartColumn, StartRow + 3);
-        SetScreenAtribute(0, white);
-        SetScreenAtribute(1, white);
-        printc(FullMessage);
-
-        gotoxy((MaxColumns - CloseMsgLength) / 2, StartRow + 2);
-        SetScreenAtribute(0, white);
-        SetScreenAtribute(1, black);
-        printc(CloseMsg);
-
         EFI_INPUT_KEY Key;
         UINTN Event;
-        SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
         while (TRUE)
         {
-            EFI_INPUT_KEY Key;
-            UINTN Event;
+            // Calcular la posición inicial para centrar el mensaje
+            StartColumn = ((MaxColumns - MsgLength) / 2) + x;
+            StartRow = (MaxRows / 2) + y;
+
+            gotoxy(StartColumn, StartRow - 2);
+            SetScreenAtribute(0, bar);
+            SetScreenAtribute(1, bar);
+            printcu(FullMessage);
+
+            gotoxy(StartColumn, StartRow - 2);
+            SetScreenAtribute(1, bar);
+            SetScreenAtribute(0, text);
+            printcu(L"MsgBox");
+
+            gotoxy(StartColumn, StartRow - 1);
+            SetScreenAtribute(0, text);
+            SetScreenAtribute(1, text);
+            printcu(FullMessage);
+
+            gotoxy(StartColumn, StartRow);
+            SetScreenAtribute(0, bar);
+            SetScreenAtribute(1, text);
+            printcu(FullMessage);
+
+            gotoxy(StartColumn, StartRow + 1);
+            SetScreenAtribute(0, text);
+            SetScreenAtribute(1, text);
+            printcu(FullMessage);
+
+            gotoxy(StartColumn, StartRow + 2);
+            SetScreenAtribute(0, text);
+            SetScreenAtribute(1, text);
+            printcu(FullMessage);
+
+            gotoxy(StartColumn, StartRow + 3);
+            SetScreenAtribute(0, text);
+            SetScreenAtribute(1, text);
+            printcu(FullMessage);
+
+            gotoxy(((MaxColumns - CloseMsgLength) / 2) + x, (StartRow + 2));
+            SetScreenAtribute(0, text);
+            SetScreenAtribute(1, bar);
+            printcu(CloseMsg);
+
+            DrawScreen();
             SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
-            break;
+            SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key);
+            if (Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
+                return EFI_SUCCESS;
+            }
+            else if (Key.ScanCode == SCAN_F2) {
+                globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
+                globalsystemtable->ConIn->ReadKeyStroke(globalsystemtable->ConIn, &Key);
+
+                if (Key.ScanCode == SCAN_UP) {
+                    pixels = savpixels;
+                    for (size_t i = 0; i < savpixels; i++) {
+                        bufferscreen[i] = savedbufsc[i];
+                    }
+                    DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+                    y--;
+                }
+                else if (Key.ScanCode == SCAN_DOWN) {
+                    pixels = savpixels;
+                    for (size_t i = 0; i < savpixels; i++) {
+                        bufferscreen[i] = savedbufsc[i];
+                    }
+                    DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+                    y++;
+                }
+                else if (Key.ScanCode == SCAN_LEFT) {
+                    pixels = savpixels;
+                    for (size_t i = 0; i < savpixels; i++) {
+                        bufferscreen[i] = savedbufsc[i];
+                    }
+                    DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+                    x--;
+                }
+                else if (Key.ScanCode == SCAN_RIGHT) {
+                    pixels = savpixels;
+                    for (size_t i = 0; i < savpixels; i++) {
+                        bufferscreen[i] = savedbufsc[i];
+                    }
+                    DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+                    x++;
+                }
+            }
         }
+
+        pixels = savpixels;
+        for (size_t i = 0; i < savpixels; i++) {
+            bufferscreen[i] = savedbufsc[i];
+        }
+        FreePool(savedbufsc);
+        DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
         return EFI_SUCCESS;
     }
 
-#define DRAW_DIALOG_MSG_CONFIRM(ImageHamdle ,SystemTable, message) \
-    ShowCenteredDialogaConf(ImageHamdle, SystemTable, message);
-    BOOLEAN ShowCenteredDialogaConf(EFI_HANDLE* ImageHamdle, EFI_SYSTEM_TABLE* SystemTable, CHAR16* message) {
+#define DRAW_DIALOG_MSG_CONFIRM(ImageHamdle ,SystemTable, message, bar , text) \
+    ShowCenteredDialogaConf(ImageHamdle, SystemTable, message, text , bar, Sceme);
+    BOOLEAN 
+    ShowCenteredDialogaConf
+    (
+        EFI_HANDLE* ImageHamdle, 
+        EFI_SYSTEM_TABLE* SystemTable,
+        CHAR16* message,
+        PIXELCOL bar,
+        PIXELCOL text,
+        CSCHEME *Colors
+    ) 
+    {
+        Pixels* savedbufsc = AllocatePool(sizeof(Pixels) * pixels);
+        for (size_t i = 0; i < pixels; i++) {
+            savedbufsc[i] = bufferscreen[i];
+        }
+
+        UINTN savpixels = pixels;
+
+        INT16 x = 0;
+        INT16 y = 0;
+
         UINTN MaxColumns, MaxRows;
         CHAR16* FullMessage[100];
         CHAR16 CloseMsg[100];
@@ -239,59 +330,60 @@ EFI_DEVICE_IO_INTERFACE *GlobalIoFncs; // Declaración externa
         MaxRows = (verticalResolution / 12) / Conio->atributes->size;
         MaxColumns = (horizontalResolution / 8) / Conio->atributes->size;
 
-        // Calcular la posición inicial para centrar el mensaje
-        StartColumn = (MaxColumns - MsgLength) / 2;
-        StartRow = MaxRows / 2;
-
-        gotoxy(StartColumn, StartRow - 2);
-        SetScreenAtribute(0, black);
-        SetScreenAtribute(1, black);
-        printc(FullMessage);
-
-        gotoxy(StartColumn, StartRow - 2);
-        SetScreenAtribute(1, black);
-        SetScreenAtribute(0, white);
-        printc(L"MsgBox");
-
-        gotoxy(StartColumn, StartRow - 1);
-        SetScreenAtribute(0, white);
-        SetScreenAtribute(1, white);
-        printc(FullMessage);
-
-        gotoxy(StartColumn, StartRow);
-        SetScreenAtribute(0, black);
-        SetScreenAtribute(1, white);
-        printc(FullMessage);
-
-        gotoxy(StartColumn, StartRow + 1);
-        SetScreenAtribute(0, white);
-        SetScreenAtribute(1, white);
-        printc(FullMessage);
-
-        gotoxy(StartColumn, StartRow + 2);
-        SetScreenAtribute(0, white);
-        SetScreenAtribute(1, white);
-        printc(FullMessage);
-
-        gotoxy(StartColumn, StartRow + 3);
-        SetScreenAtribute(0, white);
-        SetScreenAtribute(1, white);
-        printc(FullMessage);
-
-        gotoxy(StartColumn + 1, StartRow + 2);
-        SetScreenAtribute(0, white);
-        SetScreenAtribute(1, black);
-        printc(L"YES (enter)");
-
-        gotoxy(StartColumn + 15, StartRow + 2);
-        SetScreenAtribute(0, white);
-        SetScreenAtribute(1, black);
-        printc(L"NO (esc)");
         UINTN Event;
         UINTN tab;
-        SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
         while (TRUE)
         {
+            // Calcular la posición inicial para centrar el mensaje
+            StartColumn = ((MaxColumns - MsgLength) / 2) + x;
+            StartRow = (MaxRows / 2) + y;
+
+            gotoxy(StartColumn, StartRow - 2);
+            SetScreenAtribute(0, bar);
+            SetScreenAtribute(1, bar);
+            printcu(FullMessage);
+
+            gotoxy(StartColumn, StartRow - 2);
+            SetScreenAtribute(1, bar);
+            SetScreenAtribute(0, text);
+            printcu(L"MsgBox");
+
+            gotoxy(StartColumn, StartRow - 1);
+            SetScreenAtribute(0, text);
+            SetScreenAtribute(1, text);
+            printcu(FullMessage);
+
+            gotoxy(StartColumn, StartRow);
+            SetScreenAtribute(0, bar);
+            SetScreenAtribute(1, text);
+            printcu(FullMessage);
+
+            gotoxy(StartColumn, StartRow + 1);
+            SetScreenAtribute(0, text);
+            SetScreenAtribute(1, text);
+            printcu(FullMessage);
+
+            gotoxy(StartColumn, StartRow + 2);
+            SetScreenAtribute(0, text);
+            SetScreenAtribute(1, text);
+            printcu(FullMessage);
+
+            gotoxy(StartColumn, StartRow + 3);
+            SetScreenAtribute(0, text);
+            SetScreenAtribute(1, text);
+            printcu(FullMessage);
+
+            gotoxy(StartColumn + 1, StartRow + 2);
+            SetScreenAtribute(0, text);
+            SetScreenAtribute(1, bar);
+            printcu(L"YES (enter)");
+
+            gotoxy(StartColumn + 15, StartRow + 2);
+            SetScreenAtribute(0, text);
+            SetScreenAtribute(1, bar);
+            printcu(L"NO (esc)");
+            DrawScreen();
+
             SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
             SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key);
 
@@ -300,14 +392,68 @@ EFI_DEVICE_IO_INTERFACE *GlobalIoFncs; // Declaración externa
             } else if (Key.ScanCode == SCAN_ESC) {
                 return false;
             }
+            else if (Key.ScanCode == SCAN_F2) {
+                globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
+                globalsystemtable->ConIn->ReadKeyStroke(globalsystemtable->ConIn, &Key);
+
+                if (Key.ScanCode == SCAN_UP) {
+                    pixels = savpixels;
+                    for (size_t i = 0; i < savpixels; i++) {
+                        bufferscreen[i] = savedbufsc[i];
+                    }
+                    DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+                    y--;
+                }
+                else if (Key.ScanCode == SCAN_DOWN) {
+                    pixels = savpixels;
+                    for (size_t i = 0; i < savpixels; i++) {
+                        bufferscreen[i] = savedbufsc[i];
+                    }
+                    DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+                    y++;
+                }
+                else if (Key.ScanCode == SCAN_LEFT) {
+                    pixels = savpixels;
+                    for (size_t i = 0; i < savpixels; i++) {
+                        bufferscreen[i] = savedbufsc[i];
+                    }
+                    DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+                    x--;
+                }
+                else if (Key.ScanCode == SCAN_RIGHT) {
+                    pixels = savpixels;
+                    for (size_t i = 0; i < savpixels; i++) {
+                        bufferscreen[i] = savedbufsc[i];
+                    }
+                    DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+                    x++;
+                }
+            }
+
         }
+        pixels = savpixels;
+        for (size_t i = 0; i < savpixels; i++) {
+            bufferscreen[i] = savedbufsc[i];
+        }
+        DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+        FreePool(savedbufsc);
+
         return false;
     }
 
 
 #define DRAW_TEXT_DIALOG_NO_WAIT(ImageHamdle ,SystemTable, message, color, bg) \
     ShowCenteredDialognowait(ImageHamdle, SystemTable, message, color, bg);
-    EFI_STATUS ShowCenteredDialognowait(EFI_HANDLE* ImageHamdle, EFI_SYSTEM_TABLE* SystemTable, CHAR16* message, UINTN color, UINTN BG) {
+    EFI_STATUS 
+    ShowCenteredDialognowait
+    (
+        EFI_HANDLE* ImageHamdle,
+        EFI_SYSTEM_TABLE* SystemTable,
+        CHAR16* message,
+        UINTN color,
+        UINTN BG
+    ) 
+    {
         UINTN MaxColumns, MaxRows;
         CHAR16 FullMessage[100];
         SPrint(FullMessage, sizeof(FullMessage), L"   %s   ", message);

@@ -33,11 +33,13 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #define _KERNEL_PROCES_
 
 // Pixels
+#pragma pack(1)
 typedef struct {
     EFI_GRAPHICS_OUTPUT_BLT_PIXEL color;
-    UINTN x;
-    UINTN y;
+    UINT16 x;
+    UINT16 y;
 } Pixels;
+#pragma pack()
 
 // Process
 /**
@@ -90,11 +92,15 @@ typedef struct {
 Process ALLPROCESS[10];
 
 VOID
-CreateProcess(
+CreateProcess
+(
+    // Proces Propities
     INTN ID,
     CHAR16* Name,
+    // position
     INTN x,
     INTN y,
+    // window size
     INTN sizex,
     INTN sizey
 )

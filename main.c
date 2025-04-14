@@ -41,17 +41,25 @@ Abstract:
 */
 #include <efi.h>
 #include <efilib.h>
-#include <libsmbios.h>
 #include ".vs/msvc/kernelMK.h"
 
 CHAR16* languajecu;
+
+CSCHEME* SCDefault;
+CSCHEME* SCNature;
+CSCHEME* SCBoy;
+CSCHEME* SCGirl;
+CSCHEME* SCBilly;
+CSCHEME* SCFire;
+CSCHEME* SCOcean;
+CSCHEME* SCFuturistic;
+CSCHEME* SCDesert;
 
 /*
 erick : y si hago un siste...
 comunidad c : NOOOO
 PAM , S-SUN creado
 */
-CSCHEME* Sceme;
 PIXELCOL consoleoutpudcurrentcolor;
 
 // the taskbar
@@ -71,22 +79,8 @@ updatefilesystem
 (
 )
 {
-	
-	EFI_STATUS Status;
+	LibSetNVVariable(L"S-SUN_State", &VariablesGuid, sizeof(CurrentFS), (VOID*)&CurrentFS);
 
-	Status = RT->SetVariable(
-		L"S-SUN_State",
-		&VariablesGuid,
-		EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS,
-		sizeof(CurrentFS),
-		&CurrentFS
-	);
-	if (EFI_ERROR(Status)) {
-		printc(L"\nError saving the state: \n");
-		string* e[100];
-		StatusToString(e, Status);
-		printc(e);
-	}
 }
 
 VOID
@@ -94,25 +88,7 @@ UpdateLanguaje
 (
 )
 {
-	InitializeLib(globalsystemtable, globalsystemtable);
-
-	CHAR16* langdata;
-	langdata = languajecu;
-	UINTN DataSize = sizeof(langdata);
-	EFI_STATUS status;
-	status = globalsystemtable->RuntimeServices->SetVariable(
-		L"S-SUN_Languaje",
-		&SmallVariables,
-		EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS,
-		DataSize,
-		&langdata
-	);
-	string* ea[100];
-
-	StatusToString(ea, status);
-	printc(L"\nstatus on set the system languaje: \n");
-	printc(ea);
-	printc(L"\n");
+	LibSetNVVariable(L"Lang", &SmallVariables, sizeof(languajecu), languajecu);
 }
 
 /*
@@ -358,6 +334,56 @@ StrToken
 );
 
 EFI_STATUS
+SetupLoadingScreen
+(
+	EFI_HANDLE ImageHandle,
+	EFI_SYSTEM_TABLE* SystemTable
+)
+{
+	initializeMoonScreen();
+	SetScreenAtribute(1, darkcyan);
+	ChangeToTextMode();
+	ClearScreen();
+	globMaxRows = (verticalResolution / 12) / Conio->atributes->size;
+	globMaxColumns = (horizontalResolution / 8) / Conio->atributes->size;
+
+	// draw the presentation by-creator
+	gotoxy((globMaxColumns - StrLen(L"By ErickCraftStudios")) / 2, globMaxRows - 1);
+	printc(L"By ErickCraftStudios");
+
+	// draw the system name
+	gotoxy((globMaxColumns - StrLen(L"S-SUN v1.4")) / 2, globMaxRows / 2);
+	printc(L"S-SUN v1.4");
+
+	// draw the instruccions
+	gotoxy((globMaxColumns - StrLen(L"Preparing S-SUN for the first use...")) / 2, (globMaxRows / 2) + 4);
+	printc(L"Preparing S-SUN for the first use...");
+
+	// set the colors for the loading bar
+	gotoxy((globMaxColumns - 30) / 2, (globMaxRows / 2) + 2);
+	SetScreenAtribute(0, brgreen);
+
+	// draw the loading bar
+	printc(L"\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a");
+
+	gotoxy((globMaxColumns - 30) / 2, (globMaxRows / 2) + 2);
+	// the animation
+	for (INT8 i = 0; i < 30; i++)
+	{
+		// set the loading dots colors
+		SetScreenAtribute(1, darkcyan);
+		SetScreenAtribute(0, cyan);
+		// draw the dot
+		printc(L"\a");
+		// wait for make it a animation
+		uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 50000);
+	}
+	SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
+	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
+	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 5, 1000000);
+}
+
+EFI_STATUS
 SSUNSCREENLOGOUT
 (
 	EFI_HANDLE ImageHandle,
@@ -365,24 +391,41 @@ SSUNSCREENLOGOUT
 )
 {
 	initializeMoonScreen();
-	SetScreenAtribute(1, blue);
+	SetScreenAtribute(1, darkcyan);
+	ChangeToTextMode();
 	ClearScreen();
-	for (size_t i = 0; i < CurrentFS.FilesCount; i++) {
-		if (CurrentFS.HEY_CURRENT_SESSION[i].Name != NULL) {
-			printc(L"File: ");
-			printc(CurrentFS.HEY_CURRENT_SESSION[i].Name);
-			printc(L"\n");
-			uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 100000);
-		}
-	}
-	ClearScreen();
-	printc(L"\nS-SUN BootLoader v0.2\n\n");
-	printc(L"\nS-SUN Operating System\nmaded By ErickCraftStudios\nPlease Wait while S-SUN logins out\n\n");
-	for (size_t i = 0; i < 30; i++)
+	globMaxRows = (verticalResolution / 12) / Conio->atributes->size;
+	globMaxColumns = (horizontalResolution / 8) / Conio->atributes->size;
+
+	// draw the presentation by-creator
+	gotoxy((globMaxColumns - StrLen(L"By ErickCraftStudios")) / 2, globMaxRows - 1);
+	printc(L"By ErickCraftStudios");
+
+	// draw the system name
+	gotoxy((globMaxColumns - StrLen(L"S-SUN")) / 2, globMaxRows / 2);
+	printc(L"S-SUN");
+
+	// draw the instruccions
+	gotoxy((globMaxColumns - StrLen(L"Please wait while S-SUN logins out...")) / 2, (globMaxRows / 2) + 4);
+	printc(L"Please wait while S-SUN logins out...");
+
+	// set the colors for the loading bar
+	gotoxy((globMaxColumns - 30) / 2, (globMaxRows / 2) + 2);
+	SetScreenAtribute(0, brgreen);
+
+	// draw the loading bar
+	printc(L"\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a");
+
+	gotoxy((globMaxColumns - 30) / 2, (globMaxRows / 2) + 2);
+	// the animation
+	for (INT8 i = 0; i < 30; i++)
 	{
-		SetScreenAtribute(0, white);
-		SetScreenAtribute(1, blue);
-		printc(L".");
+		// set the loading dots colors
+		SetScreenAtribute(1, darkcyan);
+		SetScreenAtribute(0, cyan);
+		// draw the dot
+		printc(L"\a");
+		// wait for make it a animation
 		uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 100000);
 	}
 	SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
@@ -390,25 +433,25 @@ SSUNSCREENLOGOUT
 	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 5, 1000000);
 }
 
-CHAR16 
+string 
 ExecuteCommand
 (
-	CHAR16* buffer,
+	string* buffer,
 	EFI_HANDLE ImageHandle,
 	EFI_SYSTEM_TABLE* SystemTable,
-	CHAR16 mode
+	string mode
 )
 ;
 
 // Función para dividir una cadena CHAR16 en líneas
-CHAR16** 
+CHAR16**
 SplitLines
 (
-	CHAR16* text, 
+	CHAR16* text,
 	UINTN* line_count
-) 
+)
 {
-	static CHAR16* lines[100];
+	CHAR16* lines[2048];
 	*line_count = 0;
 	CHAR16* token = StrToken(text, L"\n");
 	while (token != NULL && *line_count < 100) {
@@ -419,11 +462,11 @@ SplitLines
 }
 
 // Implementación de StrToken
-CHAR16* 
+string*
 StrToken
 (
-	CHAR16* str,
-	const CHAR16* delim
+	string* str,
+	const string* delim
 )
 {
 	static CHAR16* static_str = NULL; // Mantiene el puntero de la posición en la cadena original
@@ -456,14 +499,14 @@ VOID
 PrintLineWithBackground
 (
 	EFI_SYSTEM_TABLE* SystemTable, 
-	CHAR16* text, 
+	string* text,
 	UINTN line, 
 	UINTN COLOR, 
 	UINTN BG
 ) 
 {
 	UINTN Column, MaxColumns;
-	CHAR16* lineBuffer;
+	string* lineBuffer;
 	UINTN textLength = StrLen(text);
 
 	// Obtener el número máximo de columnas de la pantalla
@@ -500,7 +543,7 @@ PrintLineWithBackground
 void
 PrintSSL
 (
-	CHAR16* text,
+	string* text,
 	UINTN column,
 	PIXELCOL tc,
 	PIXELCOL bc,
@@ -673,7 +716,6 @@ EFI_STATUS guimode
 		SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 		Print(L"%d", MouseState.RelativeMovementX);
 
-
 		CursorX += MouseState.RelativeMovementX;
 		CursorY += MouseState.RelativeMovementY;
 	}
@@ -691,7 +733,7 @@ ssun_main
 	CHAR16 mode
 );
 
-EFI_STATUS 
+CHAR16
 editor
 (
 	EFI_HANDLE ImageHandle, 
@@ -777,6 +819,14 @@ SystemManager
 	Free_MEM_FILE_INT(SYMGR_INSTANCE);
 	return EFI_SUCCESS;
 }
+
+MINI_PROGRAM
+ExecuteScript
+(
+	CHAR16* buffer,
+	EFI_HANDLE ImageHandle,
+	EFI_SYSTEM_TABLE* SystemTable
+);
 
 EFI_FILE_PROTOCOL* CurrentDirectory = NULL;
 
@@ -879,6 +929,15 @@ CreateANewDirFUNCTION
 	return EFI_SUCCESS;
 }
 
+CHAR16*
+ProcessText
+(
+	CHAR16* A
+)
+{
+	return A;
+}
+
 EFI_STATUS 
 ChangeDirectory
 (
@@ -929,70 +988,176 @@ ListDirectories
 	return EFI_SUCCESS;
 }
 
-CHAR16* 
-ProcessText
-(
-	CHAR16* buffer
-) 
-{
-	static CHAR16 processed_text[1024];
-	UINTN Index = 0;
-	UINTN i = 0;
+/*
+SPP_SYNTAX:
 
-	while (buffer[i] != L'\0') {
-		if (buffer[i] == L'%' && buffer[i + 1] == L'[') {
-			CHAR16 variable[100];
-			UINTN var_index = 0;
-			i += 2; // Saltar %[
+Syntax use:
+	MEMS Syntax:
+		%(MEM): get a MEM_FILE_STRING or a MEM_FILE_INT
+		def%(MEM): verific if a MEM file exist (can be "def" or "DEF")
+		X%(MEM_INT) get a MEM_FILE_INT		(can use the two caps in the "X")
+					in hex withut the "0x"
 
-			// Extraer el nombre de la variable
-			while (buffer[i] != L']' && buffer[i] != L'\0') {
-				variable[var_index++] = buffer[i++];
-			}
-			variable[var_index] = L'\0';
-			if (buffer[i] == L']') {
-				i++; // Saltar ]
-			}
+	STRICT MEM syntax:
+		%(MEM_STRING) get a MEM_STRING 		(can use the two caps in the "S")
+		D%(MEM_STRING) get a MEM_STRING		(can use the two caps in the "D")
 
-			// Obtener el valor de la variable
-			CHAR16* value = GetVariable(variable);
-			if (value != NULL) {
-				// Copiar el valor de la variable al texto procesado
-				while (*value != L'\0') {
-					processed_text[Index++] = *value++;
-				}
-			}
-			else {
-				// Si no se encuentra la variable, copiar el texto tal cual
-				processed_text[Index++] = L'%';
-				processed_text[Index++] = L'[';
-				for (UINTN j = 0; j < var_index; j++) {
-					processed_text[Index++] = variable[j];
-				}
-				processed_text[Index++] = L']';
-			}
-		}
-		else {
-			// Copiar el texto tal cual si no se encuentra una variable
-			processed_text[Index++] = buffer[i++];
-		}
-	}
+	COMPARATORS:
+		cmp%(syntax1)=(syntax2): verific if syntax  (can be "cmp" or "CMP")
 
-	// Asegurarse de que el texto procesado esté terminado en nulo
-	processed_text[Index] = L'\0';
-	return processed_text;
-}
+	S-FRAMEWORCK:
+		&confirm (Message): shows a YESS or NO window popup
 
+	ELSE:
+		returns the text
+*/
 CHAR16* 
 SPP_SYNTAX
 (
 	CHAR16* buffer
 ) 
 {
-	if (StartsWish(buffer, L"%")) {
-		CHAR16* processmemfile = buffer + 1;
-		return Read_MEM_FILE_STRING(processmemfile);
+	// Get-Hex MEM
+	if (
+		(buffer[0] == L'x' || buffer[0] == L'X')
+		&& buffer[1] == L'%'
+		) {
+		CHAR16* processmemfile = buffer + 2;
+
+		for (UINTN i = 0; i < MemFileCountInt; i++) {
+			if (StrCmp(MemFilesInt[i]->NAME, processmemfile) == 0)
+			{
+				string* b;
+				ValueToHex(b, MemFilesInt[i]->VALUE);
+				return b;
+				;
+			}
+		}
+
+		return L"Not Founded";
 	}
+	// Get-String MEM
+	if (
+		(buffer[0] == L's' || buffer[0] == L'S') 
+		&& buffer[1] == L'%'
+		) {
+		CHAR16* processmemfile = buffer + 2;
+
+		for (UINTN i = 0; i < MemFileCountString; i++) {
+			if (StrCmp(MemFilesString[i]->NAME, processmemfile) == 0)
+			{
+				return MemFilesString[i]->VALUE;
+				;
+			}
+		}
+
+		return L"Not Founded";
+	}
+	// Get-Int MEM
+	if (
+		(buffer[0] == L'd' || buffer[0] == L'D')
+		&& buffer[1] == L'%'
+		) {
+		CHAR16* processmemfile = buffer + 2;
+
+		for (UINTN i = 0; i < MemFileCountInt; i++) {
+			if (StrCmp(MemFilesInt[i]->NAME, processmemfile) == 0)
+			{
+				string* b;
+				ValueToString(b, false, MemFilesInt[i]->VALUE);
+				return b;
+			}
+		}
+
+		return L"Not Founded";
+	}
+	// Get MEM
+	else if (
+		buffer[0] 
+		== L'%'
+		) {
+		CHAR16* processmemfile = buffer + 1;
+
+		for (UINTN i = 0; i < MemFileCountString; i++) {
+			if (StrCmp(MemFilesString[i]->NAME,processmemfile) == 0) 
+				return MemFilesString[i]->VALUE
+			;
+		}
+		for (UINTN i = 0; i < MemFileCountInt; i++) {
+			if (StrCmp(MemFilesInt[i]->NAME, processmemfile) == 0)
+			{
+				string* b;
+				ValueToString(b, false, MemFilesInt[i]->VALUE);
+				return b;
+			}
+		}
+
+		return L"Not Founded";
+	}
+	// Comp
+	else if (
+		((buffer[0] == L'c' && buffer[1] == L'm' && buffer[2] == L'p') ||
+			(buffer[0] == L'C' && buffer[1] == L'M' && buffer[2] == L'P')) &&
+		buffer[3] == L'&'
+		) {
+		CHAR16* command = buffer + 4;
+		CHAR16* equals_pos = StrStr(command, L"=");
+		if (equals_pos != NULL) {
+			*equals_pos = L'\0';
+			CHAR16* MemName = command;
+			CHAR16* NewValue = equals_pos + 1;
+
+			CHAR16* VALUE1 = SPP_SYNTAX(MemName);
+			CHAR16* VALUE2 = SPP_SYNTAX(NewValue);
+
+			if (StrCmp(VALUE1, VALUE2) == 0) {
+				return L"1";
+			}
+			else
+			{
+				return L"0";
+			}
+		}
+		return L"invalid comparation";
+	}
+	// defined MEM syntax
+	else if (
+		((buffer[0] == L'd' && buffer[1] == L'e' && buffer[2] == L'f') ||
+		(buffer[0] == L'D' && buffer[1] == L'E' && buffer[2] == L'F')) &&
+		buffer[3]
+		== L'%'
+		) {
+			CHAR16* processmemfile = buffer + 4;
+			if (Read_MEM_FILE_INT(processmemfile) != -100) {
+				return L"1";
+			}
+			else {
+				if (Read_MEM_FILE_STRING(processmemfile) != NULL) {
+					return L"1";
+				}
+			}
+			return L"0";
+		}
+	// Confirm
+	else if (
+		StrnCmp(buffer, L"&confirm ",9) 
+		== 0
+		) {
+		CHAR16* processmsg = buffer + 9;
+
+		PIXELCOL syscolor2 = Sceme->buttonscolor;
+		PIXELCOL sysbg = Sceme->backgroundcolor;
+		PIXELCOL sysbtext = Sceme->buttonstext;
+		EFI_INPUT_KEY Key;
+		UINTN Event;
+		bool confirm = DRAW_DIALOG_MSG_CONFIRM(globalimagehandle, ST, processmsg, syscolor2, sysbtext);
+		if (confirm == true) {
+			return L"1";
+		} else if (confirm == false) {
+			return L"0";
+		}
+	}
+	// returns the text if the syntax is invalid
 	return buffer;
 }
 
@@ -1002,7 +1167,7 @@ S-SUN editor
 Summary:
 	the S-SUN editor is a text editor for create documments, programs and texts
 */
-EFI_STATUS 
+CHAR16
 editor
 (
 	EFI_HANDLE ImageHandle, 
@@ -1010,12 +1175,9 @@ editor
 	CHAR16* textt
 ) 
 {
-	// if the text is null dont start
-	if (textt == NULL) return 0;
-
 	// buffers of editor
 	CHAR16 text[1024] = L""; // Definir un tamaño suficiente para el búfer de entrada
-	CHAR16 save_text[1024] = L""; // Búfer para guardar el texto
+	CHAR16* save_text[1024]; // Búfer para guardar el texto
 
 	// the index
 	UINTN Index = StrLen(textt);
@@ -1039,35 +1201,36 @@ editor
 	MEM_FILE_INT* EDITOR_INSTANCE = Create_MEM_FILE_INT(L"EDITOR_INSTANCE", 1);
 
 	// load the file or not load the file that is the question
-	if (*EditorProcess == NULL) {
+	if (*EditorProcess == NULL && textt != NULL) {
 		StrCpy(&text, textt);
+		Index = StrLen(text);
 	}
 	else
 	{
 		StrCpy(&text, EditorProcess);
-		Index = StrLen(EditorProcess);
+		Index = StrLen(text);
 	}
 	INTN scrolla;
 
+	PIXELCOL editorbg = black;
+	PIXELCOL editorcol1 = Sceme->buttonscolor;
+	PIXELCOL editorcol2 = Sceme->buttonstext;
+
 	// editor main loop
 	while (TRUE) {
-		// set to grapichel mode
-		ChangeToGrapichalMode();
-
 		// parse the screen size
-		MaxColumns = (gop->Mode->Info->HorizontalResolution / 8) / Conio->atributes->size;
-		MaxColumns = MaxColumns - 1;
-		MaxRows = (gop->Mode->Info->VerticalResolution / 12) / Conio->atributes->size;
+		MaxRows = (verticalResolution / 12) / Conio->atributes->size;
+		MaxColumns = (horizontalResolution / 8) / Conio->atributes->size;
 
 		// set the atributes
-		SetScreenAtribute(0, gray);
-		SetScreenAtribute(1, black);
+		SetScreenAtribute(0, editorcol1);
+		SetScreenAtribute(1, editorbg);
 		ClearScreen();
 
 		// reset the cursor
 		gotoxy(0, 0);
-		SetScreenAtribute(1, gray);
-		SetScreenAtribute(0, black);
+		SetScreenAtribute(1, editorcol1);
+		SetScreenAtribute(0, editorcol2);
 
 		// print the upper menu without update the screen
 		printcu(taskbar);
@@ -1075,14 +1238,14 @@ editor
 		printcu(TranslateWorck(&SSUNEDITOR_UPPER_BAR_TRANSL, languajecu));
 
 		// set the space
-		SetScreenAtribute(0, gray);
-		SetScreenAtribute(1, black);
+		SetScreenAtribute(0, editorcol1);
+		SetScreenAtribute(1, editorbg);
 		printcu(L"\n\n\n");
 
 		// print the footer bar
 		gotoxy(0, MaxRows - 1);
-		SetScreenAtribute(1, gray);
-		SetScreenAtribute(0, black);
+		SetScreenAtribute(1, editorcol1);
+		SetScreenAtribute(0, editorcol2);
 		printcu(taskbar);
 		gotoxy(0, MaxRows - 1);
 		printcu(TranslateWorck(&SSUNEDITOR_LOWER_BAR_TRANSL, languajecu));
@@ -1119,6 +1282,10 @@ editor
 				else if (StrCmp(lines1[i2], L"end catch") == 0) {
 					SetScreenAtribute(0, brblue);
 					printcu(lines1[i2]);
+				}
+				else if (StrnCmp(lines1[i2], L"section::",9 ) == 0) {
+					SetScreenAtribute(0, brblue);
+					printcu(lines1[i2] + 9);
 				}
 				else if (StrCmp(lines1[i2], L"LSMEM") == 0) {
 					SetScreenAtribute(0, green);
@@ -1167,6 +1334,20 @@ editor
 					SetScreenAtribute(0, brgreen);
 					printcu(lines1[i2] + 9);
 				}
+				else if (StrCmp(lines1[i2], L"section") == 0) {
+					SetScreenAtribute(0, blue);
+					printcu(L"section");
+				}
+				else if (StrCmp(lines1[i2 - 1], L"section") == 0) {
+					SetScreenAtribute(0, brcyan);
+					printcu(lines1[i2]);
+				}
+				else if (StrnCmp(lines1[i2], L"call ", 5) == 0) {
+					SetScreenAtribute(0, brred);
+					printcu(L"call ");
+					SetScreenAtribute(0, brcyan);
+					printcu(lines1[i2] + 5);
+				}
 				else if (StrnCmp(lines1[i2], L"EditMem ", 8) == 0) {
 					SetScreenAtribute(0, brcyan);
 					printcu(L"EditMem ");
@@ -1185,7 +1366,7 @@ editor
 					}
 					else
 					{
-						SetScreenAtribute(0, brred);
+						SetScreenAtribute(0, darkred);
 						printcu(lines1[i2] + 8);
 					}
 				}
@@ -1199,6 +1380,8 @@ editor
 					printcu(L"\n");
 				}
 			}
+			SetScreenAtribute(0, gray);
+			printcu(L"\a");
 		}
 		else {
 			/*
@@ -1262,7 +1445,7 @@ editor
 			text[Index] = L'\0';
 			StrCpy(&EditorProcess, text);
 
-			return EFI_SUCCESS;
+			return text;
 		}
 		else if (Key.ScanCode == SCAN_UP) {
 			EditorScroll--;
@@ -1285,15 +1468,21 @@ editor
 			CHAR16** lines = SplitLines(text, &line_count);
 			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_LIGHTGRAY | EFI_BACKGROUND_BLACK);
 			SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
-			for (UINTN i = 0; i < line_count; i++) {
-				ExecuteCommand(lines[i], ImageHandle, SystemTable, L"DEV");
-			}
+			ExecuteScript(save_text,ImageHandle,SystemTable);
 			SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 			StrCpy(text, save_text);
 		}
 		else {
-			if (Key.UnicodeChar != 0) {
-				text[Index++] = Key.UnicodeChar;
+			if (Key.UnicodeChar != 0 || Key.ScanCode == SCAN_F12) {
+				if (Key.ScanCode == SCAN_F12) {
+					CHAR16 OtherCharacter = ACCES_TO_OTHER_CHARACTERS();
+					if (OtherCharacter != NULL) {
+						text[Index++] = OtherCharacter;
+					}
+				}
+				else {
+					text[Index++] = Key.UnicodeChar;
+				}
 				EditorScroll = 0;
 			}
 		}
@@ -1304,59 +1493,53 @@ editor
 
 	*EditorProcess = NULL;
 
-	ChangeToTextMode();
+	bool save_confirm = DRAW_DIALOG_MSG_CONFIRM(ImageHandle,SystemTable, TranslateWorck(&EXIT_EDITOR_TEXT, languajecu), Sceme->buttonscolor, Sceme->buttonstext)
 
-	ExecuteCommand(L"ls", ImageHandle,SystemTable,L"Norm");
-	SetScreenAtribute(0, white);
-	printc(L"\nFileName:\n");
-	SetScreenAtribute(0, gray);
-	FileName* filepath[100];
-	ReadLineSerius(&filepath);
+		if (save_confirm) {
+			ChangeToTextMode();
 
-	printc(filepath);
-	bool filefound;
-	int filepos = 0;
+			ExecuteCommand(L"ls", ImageHandle, SystemTable, L"Norm");
+			SetScreenAtribute(0, white);
+			printc(L"\nFileName:\n");
+			SetScreenAtribute(0, gray);
+			FileName* filepath[100];
+			ReadLineSerius(&filepath);
 
-	filefound = false;
-	printc(L"verified file\n");
+			printc(filepath);
+			bool filefound;
+			int filepos = 0;
 
-	if (filepath == NULL) {
-		return EFI_SUCCESS;
-	}
+			filefound = false;
+			printc(L"verified file\n");
 
-	for (UINTN i = 0; i < CurrentFS.FilesCount; i++)
-	{
-		if (StrCmp(filepath, CurrentFS.HEY_CURRENT_SESSION[i].Name) == 0) {
-			filefound = true;
-			filepos = i;
-			break;
+			if (filepath == NULL) {
+				return textt;
+			}
+
+			for (UINTN i = 0; i < CurrentFS.FilesCount; i++)
+			{
+				if (StrCmp(filepath, CurrentFS.HEY_CURRENT_SESSION[i].Name) == 0) {
+					filefound = true;
+					filepos = i;
+					break;
+				}
+			}
+
+			if (filefound == true) {
+				printc(L"file edited\n");
+				*CurrentFS.HEY_CURRENT_SESSION[filepos].Content = text;
+			}
+			else {
+				FileDef(filepath,L"", text, CurrentFS.FilesCount + 1);
+			}
+
+			Free_MEM_FILE_INT(EDITOR_INSTANCE);
+
+			printc(L"saving changes...\n");
+			updatefilesystem();
 		}
-	}
 
-	if (filefound == true) {
-		printc(L"file edited\n");
-		StrCpy(CurrentFS.HEY_CURRENT_SESSION[filepos].Content, text);
-	}
-	else {
-		printc(L"creating file...\n");
-		printc(L"coping name\n");
-		CurrentFS.HEY_CURRENT_SESSION[CurrentFS.FilesCount + 1].Name =filepath;
-		printc(L"coping path\n");
-		CurrentFS.HEY_CURRENT_SESSION[CurrentFS.FilesCount + 1].path = L"\\";
-		printc(L"coping text\n");
-		StrCpy(&CurrentFS.HEY_CURRENT_SESSION[CurrentFS.FilesCount + 1].Content , text);
-		printc(L"coping direction\n");
-		CurrentFS.HEY_CURRENT_SESSION[CurrentFS.FilesCount + 1].Direction = CurrentFS.FilesCount + 1;
-		printc(L"file created\n");
-		CurrentFS.FilesCount++;
-	}
-
-	Free_MEM_FILE_INT(EDITOR_INSTANCE);
-
-	printc(L"saving changes...\n");
-	updatefilesystem();
-
-	return EFI_SUCCESS;
+	return text;
 }
 
 /*
@@ -1364,6 +1547,9 @@ ExecuteCommand
 
 Summary:
 	Process the command of a S++ instruction for be executed
+
+Command Reference:
+	(see the command and read the comment that have)
 */
 string
 ExecuteCommand
@@ -1378,15 +1564,54 @@ ExecuteCommand
 	UINTN Event;
 
 	InitializeLib(ImageHandle,SystemTable);
+	/*
+	echo (text)
+	*/
 	if (StrnCmp(buffer, L"echo ", 5) == 0) {
 		CHAR16* msgtoecho = buffer + 5;
 		SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
 		SetScreenAtribute(0, consoleoutpudcurrentcolor);
 
 		printc(L"\n");
-		printc(SPP_SYNTAX(msgtoecho));
+		if (StrCmp(msgtoecho , L"S-SUN is a very good system , erick") == 0) {
+			printc(L"AWWWW Sweety (not the ... i forget it) o^ - ^o\nbut dont replace windows by this ^-^\n... i try to say thanks for the sweet ^-^ but i try to say eh emm forget it");
+		}
+		else if (StrCmp(msgtoecho, L"S-SUN es un buen sistema , erick") == 0) {
+			printc(L"AWWWW que dulce o^ - ^o\npero no remplazes windows por esta ... cosa ^-^\n");
+		}
+		else if (StrCmp(msgtoecho, L"la sopa...") == 0) {
+			printc(L"hoy prepare sopa\nhe aqui\nla sopa, la sopa que sopapea a todas las sopas\nla sopa , la sopa suprema");
+		}
+		else if (StrCmp(msgtoecho, L"hello ^-^...") == 0) {
+			printc(L"hello ^-^ \x2a5\x2a5");
+		}
+		else if (StrCmp(msgtoecho, L"hola ^-^...") == 0) {
+			printc(L"holaaaa ^-^ \x2a5\x2a5");
+		}
+		else if (StrCmp(msgtoecho, L"babosos in my chanel...") == 0) {
+			printc(L"in my channel no babosos");
+		}
+		else if (StrCmp(msgtoecho, L"tienen el control completo? , erick") == 0) {
+			printc(L"no , no tenemos el control completo de la computadora\nya que depende de los bootservices\npor que sino S-SUN se nos muere");
+		}
+		else
+		{
+			printc(SPP_SYNTAX(msgtoecho));
+		}
 	}
-	if (StrnCmp(buffer, L"writel ", 7) == 0) {
+	/*
+	help (theme)
+	*/
+	else if (StrnCmp(buffer, L"help ", 5) == 0) {
+		CHAR16* themetohelp = buffer + 5;
+		SetScreenAtribute(0, brcyan);
+
+		printc(L"\n");
+		if (StrCmp(themetohelp, L"syntax") == 0) {
+			printc(L"SPP_SYNTAX:\n\nSyntax use :\n\tMEMS Syntax :\n\t\t% (MEM) : get a MEM_FILE_STRING or a MEM_FILE_INT\n\t\tX % (MEM_INT)get a MEM_FILE_INT in hex withut the \"0x\"(can use the two caps in the \"X\")\n\n		def%(MEM): verific if a MEM file exist (can be \"def\" or \"DEF\")\n\tSTRICT MEM syntax :\n\t\t S % (MEM_STRING)get a MEM_STRING(can use the two caps in the \"S\")\n\t\t D % (MEM_INT)get a MEM_INT(can use the two caps in the \"D\")\n\n	COMPARATORS:\n\tcmp%(syntax1) = (syntax2) : verific if syntax(can be \"cmp\" or \"CMP\")\n\n\tS - FRAMEWORCK :\n\t\t &confirm(Message) : shows a YESS or NO window popup\n\n\tELSE :\n\t\treturns the text");
+		}
+	}
+	else if (StrnCmp(buffer, L"writel ", 7) == 0) {
 		CHAR16* msgtoecho = buffer + 7;
 		SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
 		SetScreenAtribute(0, consoleoutpudcurrentcolor);
@@ -1396,79 +1621,115 @@ ExecuteCommand
 	else if (StrCmp(buffer, L"Reset /all") == 0) {
 		InitializeFileSystem();
 
+		LibDeleteVariable(L"Lang", &SmallVariables);
+		LibDeleteVariable(L"Theme", &SmallVariables);
+		LibDeleteVariable(L"ThemeT", &SmallVariables);
+
+		LibDeleteVariable(L"S-SUN_State", &VariablesGuid);
+
 		updatefilesystem();
+	}
+	/*
+	int (interruptionID)(letter of the indicator)
+	*/
+	else if (StrnCmp(buffer, L"int",3) == 0)
+	{
+		CHAR16* interruption = buffer + 4;
+		UINTN interruptionSize = StrLen(interruption);
+
+		if (interruption[interruptionSize] = L'f') {
+			INTN interruptionConverted = Atoi(interruption);
+
+			FrameworckInterruptions(interruptionConverted);
+		}
+		else if (interruption[interruptionSize] = L'n') {
+
+		}
 	}
 	else if (StrCmp(buffer, L"wait") == 0)
 	{
 		uefi_call_wrapper(globalsystemtable->BootServices->Stall, 1, 500000); \
 	}
+	/*
+	throw (error)
+	*/
 	else if (StrnCmp(buffer, L"throw ", 6) == 0) {
 		CHAR16* reason = buffer + 6;
 		THROW_ERROR(SPP_SYNTAX(reason));
 	}
+	/*
+	edit (file ID)
+	*/
 	else if (StrnCmp(buffer, L"edit ", 5) == 0) {
 		CHAR16* file = buffer + 5;
 
 		editor(ImageHandle, SystemTable, CurrentFS.HEY_CURRENT_SESSION[Atoi(file)].Content);
 	}
-	else if (StrnCmp(buffer, L"if ", 3) == 0)
-	{
-
-	} 
 	else if (StrCmp(buffer, L"LSMEM") == 0) {
 		SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_LIGHTBLUE | EFI_BACKGROUND_BLACK);
 		SetScreenAtribute(0, brblue);
 		printc(L"\nList of MEM files:\n\n");
-		for (UINTN i = 0; i < MemFileCountString; i++) {
-			SetScreenAtribute(0, brblue);
-			printc(L"MEM_STRING* ");
-			SetScreenAtribute(0, cyan);
-			printc(MemFilesString[i]->NAME);
-			SetScreenAtribute(0, white);
-			printc(L" = ");
-			SetScreenAtribute(0, brgreen);
-			printc(MemFilesString[i]->VALUE);
-			printc(L"\n");
-			uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 100000);
-		}
-		
-		for (UINTN i = 0; i < MemFileCountInt; i++) {
-			SetScreenAtribute(0, brblue);
-			printc(L"MEM_STRING* ");
-			SetScreenAtribute(0, cyan);
-			printc(MemFilesInt[i]->NAME);
-			SetScreenAtribute(0, white);
-			printc(L" = ");
-			string value[100];
 
-			SPrint(value, sizeof(value), L"%d ", MemFilesInt[i]->VALUE);
-			SetScreenAtribute(0, brgreen);
-			printc(value);
-			printc(L"\n");
-			uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 100000);
-		}
-	}
-	else if (StrnCmp(buffer, L"GetMem ", 7) == 0) {
-		CHAR16* MemName = buffer + 7;
-		bool found = false;
-		SetScreenAtribute(0, consoleoutpudcurrentcolor);
+		SetScreenAtribute(0, brgreen);
+
+		printc(L"MemFilesString ");
+
+		SetScreenAtribute(0, gray);
+		printc(L"([\n");
+
 		for (UINTN i = 0; i < MemFileCountString; i++) {
-			if (StrCmp(MemFilesString[i]->NAME, MemName) == 0) {
+			if (StrCmp(MemFilesString[i]->NAME, L"[deleted content]")) {
+				SetScreenAtribute(0, brblue);
+				printc(L"   * ");
+				SetScreenAtribute(0, cyan);
+				printc(MemFilesString[i]->NAME);
+				SetScreenAtribute(0, white);
+				printc(L" = ");
+				SetScreenAtribute(0, brgreen);
 				printc(MemFilesString[i]->VALUE);
-				found = true;
-				break;
+				printc(L"\n");
 			}
 		}
-		if (!found) {
-			SetScreenAtribute(0, consoleoutpudcurrentcolor);
-			printc(L"\n");
-			printc(L"MEM not founded");
+		SetScreenAtribute(0, gray);
+		printc(L"])\n\n");
+
+		SetScreenAtribute(0, brgreen);
+
+		printc(L"MemFilesInt ");
+
+		SetScreenAtribute(0, gray);
+		printc(L"([\n");
+		for (UINTN i = 0; i < MemFileCountInt; i++) {
+			if (StrCmp(MemFilesInt[i]->NAME, L"[deleted content]")) {
+				SetScreenAtribute(0, brblue);
+				printc(L"   * ");
+				SetScreenAtribute(0, cyan);
+				printc(MemFilesInt[i]->NAME);
+				SetScreenAtribute(0, white);
+				printc(L" = ");
+				string value[100];
+
+				SPrint(value, sizeof(value), L"%d ", MemFilesInt[i]->VALUE);
+				SetScreenAtribute(0, brgreen);
+				printc(value);
+				printc(L"\n");
+			}
 		}
+		SetScreenAtribute(0, gray);
+		printc(L"])\n\n");
 	}
-	else if (StrCmp(buffer, L"FlushMEM ", 9) == 0) {
+	/*
+	FlushMEM (MEM_NAME)
+	*/
+	else if (StrnCmp(buffer, L"FlushMEM ", 9) == 0) {
 		CHAR16* command = buffer + 9;
-		Flush_MEM_FILE_STRING(command);
+		if (Flush_MEM_FILE_STRING(command) == true) return 0;
+		if (Flush_MEM_FILE_INT(command) == true) return 0;
+
 	}
+	/*
+	drw (action/color)
+	*/
 	else if (StrnCmp(buffer, L"drw ", 4) == 0) {
 		CHAR16* command = buffer + 4;
 
@@ -1528,6 +1789,9 @@ ExecuteCommand
 			}
 		}
 	}
+	/*
+	color (color name)
+	*/
 	else if (StrnCmp(buffer, L"color ", 6) == 0) {
 		CHAR16* command = buffer + 6;
 		if (StrCmp(command, L"black") == 0) {
@@ -1594,6 +1858,9 @@ ExecuteCommand
 			consoleoutpudcurrentcolor = brcyan;
 		}
 	}
+	/*
+	mv drw (x/y/sx/sy) (number/action)
+	*/
 	else if (StrnCmp(buffer, L"mv drw x ", 9) == 0) {
 		CHAR16* command = buffer + 9;
 
@@ -1681,6 +1948,9 @@ ExecuteCommand
 				}
 			}
 	}
+	/*
+	EditMem (MEM_NAME)=(MEM_VALUE)
+	*/
 	else if (StrnCmp(buffer, L"EditMem ", 8) == 0) {
 		CHAR16* command = buffer + 8;
 		CHAR16* equals_pos = StrStr(command, L"=");
@@ -1691,13 +1961,30 @@ ExecuteCommand
 
 			EFI_STATUS Status = Edit_MEM_FILE_STRING(MemName, NewValue);
 			if (Status == EFI_NOT_FOUND) {
-				Status = Edit_MEM_FILE_INT(MemName, Atoi(NewValue)); // Convertir a int si no se encuentra como string
+				Status = Edit_MEM_FILE_INT(MemName, Atoi(SPP_SYNTAX(NewValue))); // Convertir a int si no se encuentra como string
 			}
 			if (Status == EFI_NOT_FOUND) {
-				MEM_FILE_STRING* NEW_MEM_FILE = Create_MEM_FILE_STRING(MemName,NewValue);
+				MEM_FILE_STRING* NEW_MEM_FILE = Create_MEM_FILE_STRING(MemName, SPP_SYNTAX(NewValue));
 			}
 		}
 	}
+	else if (StrnCmp(buffer, L"if ", 3) == 0) {
+		CHAR16* command = buffer + 3;
+		CHAR16* div_pos = StrStr(command, L":");
+		if (div_pos != NULL) {
+			*div_pos = L'\0';
+			CHAR16* Syntax = command;
+			CHAR16* CommandToExecute = div_pos + 1;
+
+			if (StrCmp(SPP_SYNTAX(Syntax), L"1") == 0) {
+				ExecuteCommand(CommandToExecute, ImageHandle,SystemTable, mode);
+			}
+		}
+		}
+
+	/*
+	ReadLine (MEM_NAME)
+	*/
 	else if (StrnCmp(buffer, L"ReadLine ", 9) == 0) {
 		CHAR16* command = buffer + 9;
 		if (command != NULL) {
@@ -1713,6 +2000,9 @@ ExecuteCommand
 			}
 		}
 	}
+	/*
+	Shark P Mem_Name &&\t(Mem_Value)
+	*/
 	else if (StrnCmp(buffer, L"Shark P ", 8) == 0) {
 		CHAR16* command = buffer + 8;
 		CHAR16* equals_pos = StrStr(command, L"\t");
@@ -1734,6 +2024,9 @@ ExecuteCommand
 			}
 		}
 	}
+	/*
+	Shark I Mem_Name &&\t(Mem_Value)
+	*/
 	else if (StrnCmp(buffer, L"Shark I ", 8) == 0) {
 		CHAR16* command = buffer + 8;
 		CHAR16* equals_pos = StrStr(command, L"\t");
@@ -1755,23 +2048,6 @@ ExecuteCommand
 			}
 		}
 		}
-	else if (buffer[0] == L'#') {
-		CHAR16* equals_pos = StrStr(buffer, L"=");
-		if (equals_pos != NULL) {
-			*equals_pos = L'\0';
-			CHAR16* variable = buffer + 1;
-			CHAR16* value = equals_pos + 1;
-			SetVariable(variable, value);
-			return L"Variable definida";
-		}
-	}
-	else if (StrCmp(buffer, L"showvars") == 0) {
-		Print(L"\n");
-		for (UINTN i = 0; i < variable_count; i++) {
-			Print(L"%s = %s\n", variables[i].variable, variables[i].value);
-		}
-		return L"Variables mostradas";
-	}
 	else if (StrCmp(buffer, L"catch", 6) == 0) {
 		_KERNEL_CATCH_THROW_ = 1;
 	}
@@ -1779,17 +2055,21 @@ ExecuteCommand
 		_KERNEL_CATCH_THROW_ = 0;
 	}
 	else if (StrnCmp(buffer, L"md ", 3) == 0) {
-		if (StrCmp(mode, L"DEV") == 0) {
-			CHAR16* DirName = ProcessText(buffer + 3);
-			CreateANewDirFUNCTION(DirName, ImageHandle, SystemTable);
-		}
+		CHAR16* DirName = ProcessText(buffer + 3);
+		CreateANewDirFUNCTION(DirName, ImageHandle, SystemTable);
 	}
+	/*
+	MsgBox (text)
+	*/
 	else if (StrnCmp(buffer, L"MsgBox ", 7) == 0) {
-			CHAR16* Text = ProcessText(buffer + 7);
-			CHAR16* FullMessage[100];
-			SPrint(FullMessage, sizeof(FullMessage), L"%s", Text);
-			DRAW_TEXT_DIALOG(ImageHandle, SystemTable, FullMessage, EFI_WHITE, EFI_BACKGROUND_CYAN);
-			SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+		CHAR16* Text = SPP_SYNTAX(buffer + 7);
+		CHAR16* FullMessage[100];
+		SPrint(FullMessage, sizeof(FullMessage), L"%s", Text);
+		PIXELCOL syscolor2 = Sceme->buttonscolor;
+		PIXELCOL sysbg = Sceme->backgroundcolor;
+		PIXELCOL sysbtext = Sceme->buttonstext;
+
+		DRAW_DIALOG_MSG(ImageHandle, SystemTable, FullMessage, syscolor2, sysbtext);
 	}
 	else if (StrCmp(buffer, L"SyMgr") == 0) {
 			SystemManager(ImageHandle, SystemTable);
@@ -1803,28 +2083,9 @@ ExecuteCommand
 		printc(L"\n");
 		for (size_t i = 0; i < CurrentFS.FilesCount + 1; i++)
 		{
-			CHAR16* FILENAME[20];
-			SPrint(FILENAME, sizeof(FILENAME) * 20, L"%s%s", CurrentFS.HEY_CURRENT_SESSION[i].path , CurrentFS.HEY_CURRENT_SESSION[i].Name);
-
-			if (StartsWish(FILENAME, CurrentDir)) {
-				if (CurrentFS.HEY_CURRENT_SESSION[i].Content == FOLDER_CONTENT) {
-					SetScreenAtribute(0, green);
-				}
-				else
-				{
-					SetScreenAtribute(0, blue);
-				}
-
-				printc(CurrentFS.HEY_CURRENT_SESSION[i].Name);
-				SetScreenAtribute(0, brblue);
-
-				CHAR16 str[20];
-				printc(L" Direction: ");
-				SPrint(str, sizeof(str) * 20, L"%d", CurrentFS.HEY_CURRENT_SESSION[i].Direction);
-				printc(str);
-				printc(L"\n");
-			}
-			
+			SetScreenAtribute(0, consoleoutpudcurrentcolor);
+			printc(CurrentFS.HEY_CURRENT_SESSION[i].Name);
+			printc(L"\n");
 		}
 
 	}
@@ -1833,8 +2094,6 @@ ExecuteCommand
 	}
 	else if (StrCmp(buffer, L"exit") == 0) {
 		return L"sistema , tu trabajo ha terminado";
-	}
-	else if (StrCmp(buffer, L"Desktop") == 0) {
 	}
 	else if (StrnCmp(buffer, L"#",1) == 0) {}
 	return L"sistema , si puedes seguir";
@@ -1846,25 +2105,52 @@ ExecuteScript
 Summary:
 	executes a s++ script
 */
-VOID
+MINI_PROGRAM
 ExecuteScript
 (
-	CHAR16* buffer,
+	CONST CHAR16* bufferf,
 	EFI_HANDLE ImageHandle,
 	EFI_SYSTEM_TABLE* SystemTable
 )
 {
-			// Dividir el texto en líneas y ejecutar cada línea
-			UINTN line_count = 0;
-			ClearScreen();
-			SetScreenAtribute(0, gray);
-			SetScreenAtribute(1, black);
-			CHAR16** lines = SplitLines(buffer, &line_count);
-			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_LIGHTGRAY | EFI_BACKGROUND_BLACK);
-			SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
-			for (UINTN i = 0; i < line_count; i++) {
-				ExecuteCommand(lines[i], ImageHandle, SystemTable, L"DEV");
+	// Dividir el texto en líneas y ejecutar cada línea
+	CHAR16* buffer = StrDuplicate(bufferf);
+	UINTN line_count = 0;
+	CHAR16** lines = SplitLines(buffer, &line_count);
+
+	INTN returnsection = 0;
+
+	for (UINTN i = 0; i < line_count; i++) {
+		if (
+			StrnCmp(lines[i], L"call ", 5) == 0
+			)
+			{
+				CHAR16* section_to_search = lines[i] + 5;
+				INTN search_section = -1;
+				for (search_section = 0; search_section < line_count; search_section++)
+				{
+					if (
+						StrCmp(lines[search_section], section_to_search) == 0 &&
+						StrCmp(lines[search_section - 1], L"section") == 0
+						) {
+						returnsection = i + 1;
+						break;
+					}
+				}
+				if (search_section != -1) {
+					i = search_section;
+				}
 			}
+		else if (
+				StrCmp(lines[i], L"ret") == 0
+			)
+			{
+				i = returnsection - 1;
+			}
+		else {
+			ExecuteCommand(lines[i], ImageHandle, SystemTable, L"Norm1");
+		}
+	}
 }
 
 /*
@@ -1873,11 +2159,9 @@ Console
 Summary:
 	the console of S-SUN
 */
-EFI_STATUS 
+PROGRAM 
 Console
 (
-	EFI_HANDLE ImageHandle, 
-	EFI_SYSTEM_TABLE* SystemTable, 
 	CHAR16 mode
 ) 
 {
@@ -1889,11 +2173,11 @@ Console
 	CHAR16 Buffer[512];
 	UINTN Index = 0;
 	// Obtener la interfaz de sistema de archivos
-	Status = uefi_call_wrapper(BS->HandleProtocol, 3, ImageHandle, &gEfiSimpleFileSystemProtocolGuid, (VOID**)&FileSystem);
+	Status = uefi_call_wrapper(BS->HandleProtocol, 3, globalimagehandle, &gEfiSimpleFileSystemProtocolGuid, (VOID**)&FileSystem);
 	// Abrir el volumen del sistema de archivos
 
 	// Continuar con el resto de la inicialización
-	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
+	globalsystemtable->ConOut->ClearScreen(globalsystemtable->ConOut);
 	uefi_call_wrapper(ST->ConOut->ClearScreen, 1, ST->ConOut);
 
 	/*t
@@ -1910,32 +2194,32 @@ Console
 	ClearScreen();
 	gotoxy(0,0);
 	uefi_call_wrapper(ST->ConOut->ClearScreen, 1, ST->ConOut);
-	SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
-	SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_MAGENTA | EFI_BACKGROUND_BLACK);
-	CHAR16 handle_action_huh = ExecuteCommand(L"cls", ImageHandle, SystemTable, mode);
+	globalsystemtable->ConOut->SetAttribute(globalsystemtable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
+	globalsystemtable->ConOut->SetAttribute(globalsystemtable->ConOut, EFI_MAGENTA | EFI_BACKGROUND_BLACK);
+	CHAR16 handle_action_huh = ExecuteCommand(L"cls", globalimagehandle, globalsystemtable, mode);
 	SetScreenAtribute(0, white);
 	printc(L"\nS-SUN Console\n");
-	SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_CYAN | EFI_BACKGROUND_BLACK);
+	globalsystemtable->ConOut->SetAttribute(globalsystemtable->ConOut, EFI_CYAN | EFI_BACKGROUND_BLACK);
 	SetScreenAtribute(0, cyan);
 	printc(L"S-SUN> ");
 	SetScreenAtribute(0, white);
 	while (TRUE) {
 		WHILESYSTEMRUNNING(
 			ChangeToTextMode();
-			SystemTable->ConOut->EnableCursor(SystemTable->ConOut, TRUE);
-		uefi_call_wrapper(SystemTable->ConIn->ReadKeyStroke, 2, SystemTable->ConIn, &Key);
+		globalsystemtable->ConOut->EnableCursor(globalsystemtable->ConOut, TRUE);
+		uefi_call_wrapper(globalsystemtable->ConIn->ReadKeyStroke, 2, globalsystemtable->ConIn, &Key);
 		// Variables para almacenar la posición del cursor
 		UINTN CursorColumn;
 		UINTN CursorRow;
 
 		// Obtener la posición actual del cursor
-		CursorColumn = SystemTable->ConOut->Mode->CursorColumn;
-		CursorRow = SystemTable->ConOut->Mode->CursorRow;
+		CursorColumn = globalsystemtable->ConOut->Mode->CursorColumn;
+		CursorRow = globalsystemtable->ConOut->Mode->CursorRow;
 		if (Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
 			Buffer[Index] = L'\0';
-			CHAR16 handle_action_huh = ExecuteCommand(Buffer, ImageHandle, SystemTable, mode);
+			CHAR16 handle_action_huh = ExecuteCommand(Buffer, globalimagehandle, globalsystemtable, mode);
 			Index = 0; // Reiniciar el índice para la siguiente entrada
-			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_CYAN | EFI_BACKGROUND_BLACK);
+			globalsystemtable->ConOut->SetAttribute(globalsystemtable->ConOut, EFI_CYAN | EFI_BACKGROUND_BLACK);
 			if (StrCmp(Buffer, L"exit") == 0)
 			{
 				return EFI_SUCCESS;
@@ -1944,7 +2228,7 @@ Console
 			printc(L"\nS-SUN> ");
 			gotoxy(7, cursory);
 			SetScreenAtribute(0, white);
-			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
+			globalsystemtable->ConOut->SetAttribute(globalsystemtable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
 
 		}
 		else if (Key.ScanCode == SCAN_UP) {
@@ -1959,32 +2243,258 @@ Console
 		}
 		else if (Key.UnicodeChar == CHAR_BACKSPACE) {
 			gotoxy(cursorx - 1, cursory);
-			SystemTable->ConOut->SetCursorPosition(SystemTable->ConOut, CursorColumn - 1, CursorRow);
+			globalsystemtable->ConOut->SetCursorPosition(globalsystemtable->ConOut, CursorColumn - 1, CursorRow);
 			printc(L" ");
 			gotoxy(cursorx - 1, cursory);
-			SystemTable->ConOut->SetCursorPosition(SystemTable->ConOut, CursorColumn - 1, CursorRow);
+			globalsystemtable->ConOut->SetCursorPosition(globalsystemtable->ConOut, CursorColumn - 1, CursorRow);
 			Buffer[--Index] = L'\0';
 		}
+		else if (Key.ScanCode == SCAN_F12) {
+			CHAR16 OtherCharacter = ACCES_TO_OTHER_CHARACTERS();
+			if (OtherCharacter != NULL) {
+				Buffer[Index++] = OtherCharacter;
+				string a[100];
+				SPrint(a, sizeof(a), L"%c", OtherCharacter);
+				SetScreenAtribute(0, white);
+				printc(a);
+			}
+		}
 		else if (Key.UnicodeChar != 0) {
-			Buffer[Index++] = Key.UnicodeChar;
-			string a[100];
-			SPrint(a, sizeof(a), L"%c", Key.UnicodeChar);
-			SetScreenAtribute(0, white);
-			printc(a);
+				Buffer[Index++] = Key.UnicodeChar;
+				string a[100];
+				SPrint(a, sizeof(a), L"%c", Key.UnicodeChar);
+				SetScreenAtribute(0, white);
+				printc(a);
 		}
 		Buffer[Index] = L'\0'; // Asegurar el fin de cadena
 		);
-		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+		globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
 	}
-	SystemTable->ConIn->Reset(SystemTable->ConIn, FALSE);
-	SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+	globalsystemtable->ConIn->Reset(globalsystemtable->ConIn, FALSE);
+	globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
 	Free_MEM_FILE_INT(CONSOLEINSTANCE);
-	SystemTable->ConOut->EnableCursor(SystemTable->ConOut, FALSE);
+	globalsystemtable->ConOut->EnableCursor(globalsystemtable->ConOut, FALSE);
 
 	return EFI_SUCCESS;
 }
 
-#define ssun_main Console
+/*
+ssun_main
+
+Summary:
+	for compatybility with the old versions
+*/
+#define ssun_main(I,S,M) Console(M)
+
+/*
+Calculator
+
+Summary:
+	the calculator
+*/
+PROGRAM
+Calculator
+(
+	CSCHEME* Colors
+)
+{
+	// input variables
+	UINTN Event;
+	EFI_INPUT_KEY Key;
+
+	Pixels* savedbufsc = AllocatePool(sizeof(Pixels) * pixels);
+	for (size_t i = 0; i < pixels; i++) {
+		savedbufsc[i] = bufferscreen[i];
+	}
+
+	UINTN savpixels = pixels;
+
+	INT8 tab;
+
+	tab = 0;
+
+	UINTN MaxColumns, MaxRows;
+
+	MaxRows = (verticalResolution / 12) / Conio->atributes->size;
+	MaxColumns = (horizontalResolution / 8) / Conio->atributes->size;
+
+	INT16 x = ((MaxColumns - 12) / 2);
+	INT16 y = ((MaxRows - 14) / 2);
+
+	typedef enum {
+		Add = 1,
+		Sub = 2,
+		Div = 3,
+		Mult = 4,
+	} CALC_ACTION;
+
+	CALC_ACTION ACTION;
+	INT64 NUMBERS[2];
+
+	NUMBERS[0] = 0;
+	NUMBERS[1] = 0;
+
+	INT64 CurrentNum = 0;
+
+	FOREVER
+	{
+	DrawWindowsFrm(Colors, x, y, 12, 14, L"Calculator");
+
+	CHAR16* OPTIONS[] = {
+		L"123",
+		L"456",
+		L"789",
+		L"0+-",
+		L"/*=",
+		L"<>B"
+	};
+
+	gotoxy((x + 1), (y + 2));
+	SetScreenColor(Colors->buttonscolor, Colors->buttonstext);
+	printcu(L"          ");
+
+	gotoxy((x + 1), (y + 2));
+	SetScreenColor(Colors->buttonscolor, Colors->buttonstext);
+	CHAR16 ER[10];
+	ValueToString(ER,FALSE,NUMBERS[CurrentNum]);
+	printcu(ER);
+	for (size_t i = 0; i < 5; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			gotoxy((x + 1) + (j * 3), (y + 4) + (i * 2));
+			CHAR16 e[10];
+			SetScreenColor(Colors->buttonscolor, Colors->buttonstext);
+			if (tab == (j + (i * 3))) 
+				SetScreenColor(Colors->buttonstext, Colors->buttonscolor)
+				;
+			SPrint(e, sizeof(e), L"%c", OPTIONS[i][j]);
+			printcu(e);
+		}
+	}
+
+	DrawScreen();
+	// Esperar eventos de teclado
+	globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
+	globalsystemtable->ConIn->ReadKeyStroke(globalsystemtable->ConIn, &Key);
+
+	if (Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
+		if (tab >= 0 & tab <= 9) {
+			if (tab == 9) {
+				NUMBERS[CurrentNum] = (NUMBERS[CurrentNum] * 10);
+			}
+			else
+			{
+				NUMBERS[CurrentNum] = (NUMBERS[CurrentNum] * 10) + (tab + 1);
+			}
+		}
+		else if (tab == 10) {
+			ACTION = Add;
+			if (CurrentNum == 0) {
+				CurrentNum = 1;
+			}
+		}
+		else if (tab == 11) {
+			ACTION = Sub;
+			if (CurrentNum == 0) {
+				CurrentNum = 1;
+			}
+		}
+		else if (tab == 12) {
+			ACTION = Div;
+			if (CurrentNum == 0) {
+				CurrentNum = 1;
+			}
+		}
+		else if (tab == 13) {
+			ACTION = Mult;
+			if (CurrentNum == 0) {
+				CurrentNum = 1;
+			}
+		}
+		else if (tab == 14) {
+			if (ACTION == Add) {
+				NUMBERS[0] = NUMBERS[0] + NUMBERS[1];
+				NUMBERS[1] = 0;
+				CurrentNum = 0;
+			}
+			else if (ACTION == Sub) {
+				NUMBERS[0] = NUMBERS[0] - NUMBERS[1];
+				NUMBERS[1] = 0;
+				CurrentNum = 0;
+			}
+			else if (ACTION == Div) {
+				if ((NUMBERS[0] == 0) && (NUMBERS[1] == 0)) {
+					DRAW_DIALOG_MSG(globalimagehandle, globalsystemtable, L"Error : divide by 0", Sceme->buttonscolor, Sceme->buttonstext);
+				}
+				else
+				{
+					NUMBERS[0] = NUMBERS[0] / NUMBERS[1];
+					NUMBERS[1] = 0;
+					CurrentNum = 0;
+				}
+			}
+			else if (ACTION == Mult) {
+				NUMBERS[0] = NUMBERS[0] * NUMBERS[1];
+				NUMBERS[1] = 0;
+				CurrentNum = 0;
+			}
+		}
+	}
+	else if (Key.ScanCode == SCAN_LEFT) {
+		tab--;
+	}
+	else if (Key.ScanCode == SCAN_RIGHT) {
+		tab++;
+	}
+	else if (Key.ScanCode == SCAN_ESC) {
+		break;
+	}
+	else if (Key.ScanCode == SCAN_F2) {
+		globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
+		globalsystemtable->ConIn->ReadKeyStroke(globalsystemtable->ConIn, &Key);
+
+		if (Key.ScanCode == SCAN_UP) {
+			pixels = savpixels;
+			for (size_t i = 0; i < savpixels; i++) {
+				bufferscreen[i] = savedbufsc[i];
+			}
+			DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+			y--;
+		}
+		else if (Key.ScanCode == SCAN_DOWN) {
+			pixels = savpixels;
+			for (size_t i = 0; i < savpixels; i++) {
+				bufferscreen[i] = savedbufsc[i];
+			}
+			DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+			y++;
+		}
+		else if (Key.ScanCode == SCAN_LEFT) {
+			pixels = savpixels;
+			for (size_t i = 0; i < savpixels; i++) {
+				bufferscreen[i] = savedbufsc[i];
+			}
+			DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+			x--;
+		}
+		else if (Key.ScanCode == SCAN_RIGHT) {
+			pixels = savpixels;
+			for (size_t i = 0; i < savpixels; i++) {
+				bufferscreen[i] = savedbufsc[i];
+			}
+			DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+			x++;
+		}
+	}
+	pixels = savpixels;
+	for (size_t i = 0; i < savpixels; i++) {
+		bufferscreen[i] = savedbufsc[i];
+	}
+	DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Colors->backgroundcolor);
+	}
+	return 0;
+}
 
 /*
 BITMAP_MAKER
@@ -1992,7 +2502,7 @@ BITMAP_MAKER
 Summary:
 	a 8x8 only 0/1 bitmap maker
 */
-EFI_STATUS
+PROGRAM
 BITMAP_MAKER
 (
 	EFI_HANDLE ImageHandle,
@@ -2052,21 +2562,22 @@ BITMAP_MAKER
 						SetScreenAtribute(1, brblue);
 					}
 				}
-				printc(L" ");
+				printcu(L" ");
 			}
 			gotoxy(0, cursory + 1);
 		}
 		// draw instructions
-		printc(L"\n");
+		printcu(L"\n");
 		SetScreenAtribute(1, green);
-		printc(L" ");
+		printcu(L" ");
 		SetScreenAtribute(1, black);
-		printc(L" = 0\n");
+		printcu(L" = 0\n");
 		SetScreenAtribute(1, brblue);
-		printc(L" ");
+		printcu(L" ");
 		SetScreenAtribute(1, black);
-		printc(L" = 1");
+		printcu(L" = 1");
 
+		DrawScreen();
 		// wait the key
 		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 		SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key);
@@ -2108,7 +2619,7 @@ SNAKE
 Summary:
 	the clasic Snake game
 */
-EFI_STATUS
+GAME
 SNAKE
 (
 	EFI_HANDLE ImageHandle,
@@ -2118,6 +2629,15 @@ SNAKE
 	// prepare the input variables
 	UINTN Event;
 	EFI_INPUT_KEY Key;
+
+	typedef struct {
+		INT8 foodid;
+		PIXELCOL Color;
+	} SnakeFood;
+
+	SnakeFood FoodOrange = { 1 , orange };
+	SnakeFood FoodApple = { 2 , red };
+	SnakeFood FoodPear = { 3 , green };
 
 	// defines the balls (O_o)... of the snake
 	typedef struct {
@@ -2138,6 +2658,7 @@ SNAKE
 	// variables of the food pos
 	INT8 foodx;
 	INT8 foody;
+	SnakeFood foodtype;
 
 	// the balls (O_o)... of the snake
 	SnakeBALL poses[30];
@@ -2145,6 +2666,7 @@ SNAKE
 	// set the food pos
 	foodx = 4;
 	foody = 4;
+	foodtype = FoodOrange;
 
 	// set the snake default size and direction
 	snakesize = 3;
@@ -2152,11 +2674,13 @@ SNAKE
 
 	// set the screen
 	SetScreenAtribute(1, black);
-	ClearScreen();
 
 	// set the snake pos
 	snakeposx = 2;
 	snakeposy = 4;
+
+	// printcu is for print without update the screen
+	ClearScreen();
 
 	// displays the message
 	printc(L"Press any key to start the FUUN yYYAY");
@@ -2174,7 +2698,7 @@ SNAKE
 
 		// draws the floor
 		SetScreenAtribute(1, darkgreen);
-		printc(L"            \n            \n            \n            \n            \n            \n            \n            \n            ");
+		printcu(L"            \n            \n            \n            \n            \n            \n            \n            \n            ");
 		SetScreenAtribute(1, black);
 
 		// a snake scroe
@@ -2182,21 +2706,21 @@ SNAKE
 
 		SetScreenAtribute(0, brgreen);
 		// prints the snake score
-		printc(L"\nSCORE: ");
+		printcu(L"\nSCORE: ");
 		gotoxy(7, cursory);
 
 		SPrint(ea,sizeof(ea), L"%d ", snakesize);
 		SetScreenAtribute(0, brblue);
 
-		printc(ea);
+		printcu(ea);
 
 		// prints the snake pos
 		SetScreenAtribute(0, brgreen);
-		printc(L"\nPOS: ");
+		printcu(L"\nPOS: ");
 		gotoxy(5, cursory);
 		SPrint(ea, sizeof(ea), L"x: %d y: %d", snakeposx, snakeposy);
 		SetScreenAtribute(0, brblue);
-		printc(ea);
+		printcu(ea);
 
 		// draws the snake
 		for (size_t i = 0; i < snakesize; i++)
@@ -2208,14 +2732,15 @@ SNAKE
 			}
 
 			SetScreenAtribute(1, blue);
-			printc(L" ");
+			printcu(L" ");
 		}
 
 		// draws the food
 		gotoxy(foodx,foody);
-		SetScreenAtribute(1, orange);
-		printc(L" ");
+		SetScreenAtribute(1, foodtype.Color);
+		printcu(L" ");
 
+		DrawScreen();
 		// condition of the snake position
 		if (snakedirection == 0) {
 			snakeposy--;
@@ -2274,6 +2799,16 @@ SNAKE
 		if (snakeposx == foodx) {
 			if (snakeposy == foody) {
 				snakesize++;
+				INT8 foodtoselect = RandomInRange(1, 3);
+				if (foodtoselect == 1) {
+					foodtype = FoodOrange;
+				}
+				else if (foodtoselect == 2) {
+					foodtype = FoodApple;
+				}
+				else if (foodtoselect == 3) {
+					foodtype = FoodPear;
+				}
 				foodx = RandomInRange(0,7);
 				foody = RandomInRange(0, 7);
 			}
@@ -2324,7 +2859,7 @@ ADIVINA_EL_NUMERO
 Summary:
 	the game of try to write the correct number
 */
-EFI_STATUS
+GAME
 ADIVINA_EL_NUMERO
 (
 	EFI_HANDLE ImageHandle,
@@ -2422,12 +2957,146 @@ ADIVINA_EL_NUMERO
 }
 
 /*
+SchemeEditor
+v
+Summary:
+	The Schemes editor
+*/
+CSCHEME*
+SchemeEditor
+(
+	CSCHEME* SchemeToEdit
+)
+{
+	CSCHEME* SchemeWorck;
+
+	SchemeWorck = SchemeToEdit;
+	CHAR16* Options[] = {
+		L"black",
+		L"gray",
+		L"darkgray",
+		L"white",
+		L"darkred",
+		L"red",
+		L"brred",
+		L"darkorange",
+		L"orange",
+		L"brorange",
+		L"darkyellow",
+		L"yellow",
+		L"bryellow",
+		L"darkgreen",
+		L"green",
+		L"brgreen",
+		L"darkcyan",
+		L"cyan",
+		L"brcyan",
+		L"darkblue",
+		L"blue",
+		L"brblue"
+	};
+
+	// input variables
+	UINTN Event;
+	EFI_INPUT_KEY Key;
+
+	INT8 tab;
+
+	CHAR16* bg;
+	CHAR16* btcol;
+	CHAR16* bttext;
+
+	tab = 0;
+	bg = CtoA(&SchemeWorck->backgroundcolor);
+	btcol = CtoA(&SchemeWorck->buttonscolor);
+	bttext = CtoA(&SchemeWorck->buttonstext);
+
+	INT8 WindowSize = 30;
+	INT16 WindowPosX = (globMaxColumns - WindowSize) / 2;
+	INT16 WindowsPosY = globMaxRows / 2;
+
+	FOREVER{
+		gotoxy(WindowPosX, WindowsPosY - 3);
+		SetScreenAtribute(1, SchemeWorck->buttonstext);
+		SetScreenAtribute(0, SchemeWorck->buttonscolor);
+		printcu(L"                              ");
+		gotoxy(WindowPosX, WindowsPosY - 3);
+		printcu(L"Theme Edit");
+
+		SetScreenAtribute(1, SchemeWorck->buttonscolor);
+		SetScreenAtribute(0, SchemeWorck->buttonstext);
+		gotoxy(WindowPosX, WindowsPosY - 2);
+		printcu(L"                              ");
+		gotoxy(WindowPosX, WindowsPosY - 1);
+		printcu(L"                              ");
+		gotoxy(WindowPosX, WindowsPosY);
+		printcu(L"                              ");
+		gotoxy(WindowPosX, WindowsPosY + 1);
+		printcu(L"                              ");
+		gotoxy(WindowPosX, WindowsPosY + 2);
+		printcu(L"                              ");
+		gotoxy(WindowPosX, WindowsPosY + 3);
+		printcu(L"                              ");
+
+		gotoxy(WindowPosX + 1, WindowsPosY);
+		SetScreenAtribute(0, white);
+		SetScreenAtribute(1, SchemeWorck->backgroundcolor);
+		if (tab == 0) {
+			printcu(L"\a");
+		}
+		else
+		{
+			printcu(L"-");
+		}
+
+		gotoxy(WindowPosX + 3, WindowsPosY);
+		SetScreenAtribute(0, white);
+		SetScreenAtribute(1, SchemeWorck->buttonscolor);
+		if (tab == 1) {
+			printcu(L"\a");
+		}
+		else
+		{
+			printcu(L"-");
+		}
+
+		gotoxy(WindowPosX + 5, WindowsPosY);
+		SetScreenAtribute(0, white);
+		SetScreenAtribute(1, SchemeWorck->buttonstext);
+		if (tab == 2) {
+			printcu(L"\a");
+		}
+		else
+		{
+			printcu(L"-");
+		}
+		DrawScreen();
+		// Esperar eventos de teclado
+		globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
+		globalsystemtable->ConIn->ReadKeyStroke(globalsystemtable->ConIn, &Key);
+
+		if (Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
+
+		}
+		else if (Key.ScanCode == SCAN_LEFT) {
+			tab--;
+		}
+		else if (Key.ScanCode == SCAN_RIGHT) {
+			tab++;
+		}
+		else if (Key.ScanCode == SCAN_ESC) {
+			break;
+		}
+	}
+}
+
+/*
 Desktop
 
 Summary:
 	the S-SUN desktop
 */
-EFI_STATUS 
+PROGRAM 
 Desktop
 (
 	EFI_HANDLE ImageHandle,
@@ -2449,19 +3118,19 @@ Desktop
 	// the screen size
 	UINTN MaxColumns, MaxRows;
 
-	// themes
-	CSCHEME* SCDefault = newCSCHEME(yellow, gray, black);
-	CSCHEME* SCNature = newCSCHEME(cyan, green, black);
-	CSCHEME* SCBoy = newCSCHEME(blue, cyan, black);
-	CSCHEME* SCGirl = newCSCHEME(brred, gray, black);
-	CSCHEME* SCBilly = newCSCHEME(brblue, brgreen, black);
-	CSCHEME* SCFire = newCSCHEME(brorange, red, black);
-	CSCHEME* SCOcean = newCSCHEME(blue, brblue, black);
-	CSCHEME* SCFuturistic = newCSCHEME(darkgray, brcyan, black);
-	CSCHEME* SCDesert = newCSCHEME(bryellow, yellow, black);
+	// the editor save
+	CHAR16 textsaved[1024];
 
-	// set the default theme
-	Sceme = SCDefault;
+	// themes
+	SCDefault = newCSCHEME(yellow, gray, black);
+	SCNature = newCSCHEME(cyan, green, black);
+	SCBoy = newCSCHEME(blue, cyan, black);
+	SCGirl = newCSCHEME(brred, gray, black);
+	SCBilly = newCSCHEME(darkcyan, brgreen, brblue);
+	SCFire = newCSCHEME(brorange, orange, red);
+	SCOcean = newCSCHEME(blue, brblue, darkblue);
+	SCFuturistic = newCSCHEME(darkgray, brcyan, darkcyan);
+	SCDesert = newCSCHEME(bryellow, yellow, black);
 
 	// set the screen
 	MaxColumns = (gop->Mode->Info->HorizontalResolution / 8) / Conio->atributes->size;
@@ -2473,6 +3142,8 @@ Desktop
 	{
 		SPrint(taskbar, sizeof(taskbar), L"%s%c", taskbar, L' ');
 	}
+
+	ChangeToGrapichalMode();
 
 	MEM_FILE_INT* DESKTOPINSTANCE = Create_MEM_FILE_INT(L"DESKTOPINSTANCE", 1);
 	SystemTable->ConOut->QueryMode(SystemTable->ConOut, SystemTable->ConOut->Mode->Mode, &MaxColumns, &MaxRows);
@@ -2487,12 +3158,24 @@ Desktop
 
 	SetScreenAtribute(1, Sceme->backgroundcolor);
 
+	ChangeToGrapichalMode();
+	ClearScreen();
+
+	// ShowCenteredDialoga(ImageHandle, SystemTable, L"if you dont know what you do press F1", Sceme->buttonstext, Sceme->buttonscolor);
+	DrawScreen();
+
 	while (TRUE) {
 		ChangeToGrapichalMode();
 		SystemTable->ConOut->EnableCursor(SystemTable->ConOut, FALSE);
 		PIXELCOL syscolor2 = Sceme->buttonscolor;
 		PIXELCOL sysbg = Sceme->backgroundcolor;
 		PIXELCOL sysbtext = Sceme->buttonstext;
+		UINTN barbt1 = 8;
+		UINTN barbt2 = barbt1 + 1 + StrLen(TranslateWorck(&THEMES_BUTTON_TRANSL, languajecu));
+		UINTN barbt3 = barbt2 + 1 + StrLen(TranslateWorck(&GAMES_BUTTON_TRANSL, languajecu));
+		UINTN barbt4 = barbt3 + 1 + StrLen(TranslateWorck(&LANGS_BUTTON_TRANSL, languajecu));
+		UINTN barbt5 = barbt4 + 1;
+
 		// Configurar la pantalla
 		MaxColumns = (gop->Mode->Info->HorizontalResolution / 8) / Conio->atributes->size;
 		MaxColumns = MaxColumns - 1;
@@ -2509,7 +3192,7 @@ Desktop
 		gotoxy(0, MaxRows - 1);
 		SetScreenAtribute(1, syscolor2);
 		SetScreenAtribute(0, sysbtext);
-		printc(taskbar);
+		printcu(taskbar);
 
 		// DRAW START
 		gotoxy(0, MaxRows - 1);
@@ -2519,47 +3202,57 @@ Desktop
 			SetScreenAtribute(1, sysbtext);
 			SetScreenAtribute(0, syscolor2);
 		}
-		printc(L"\x4 S-SUN");
+		printcu(L"\x2a4 S-SUN");
 
 		// DRAW Themes
-		gotoxy(8, MaxRows - 1);
+		gotoxy(barbt1, MaxRows - 1);
 		SetScreenAtribute(1, syscolor2);
 		SetScreenAtribute(0, sysbtext);
 		if (Tab == 1) {
 			SetScreenAtribute(1, sysbtext);
 			SetScreenAtribute(0, syscolor2);
 		}
-		printc(TranslateWorck(&THEMES_BUTTON_TRANSL, languajecu));
+		printcu(TranslateWorck(&THEMES_BUTTON_TRANSL, languajecu));
 	
 		// DRAW games
-		gotoxy(15, MaxRows - 1);
+		gotoxy(barbt2, MaxRows - 1);
 		SetScreenAtribute(1, syscolor2);
 		SetScreenAtribute(0, sysbtext);
 		if (Tab == 2) {
 			SetScreenAtribute(1, sysbtext);
 			SetScreenAtribute(0, syscolor2);
 		}
-		printc(TranslateWorck(&GAMES_BUTTON_TRANSL, languajecu));
+		printcu(TranslateWorck(&GAMES_BUTTON_TRANSL, languajecu));
 
-		// DRAW games
-		gotoxy(21, MaxRows - 1);
+		// DRAW langs
+		gotoxy(barbt3, MaxRows - 1);
 		SetScreenAtribute(1, syscolor2);
 		SetScreenAtribute(0, sysbtext);
 		if (Tab == 3) {
 			SetScreenAtribute(1, sysbtext);
 			SetScreenAtribute(0, syscolor2);
 		}
-		printc(TranslateWorck(&LANGS_BUTTON_TRANSL, languajecu));
+		printcu(TranslateWorck(&LANGS_BUTTON_TRANSL, languajecu));
+
+		// DRAW tests
+		gotoxy(barbt4, MaxRows - 1);
+		SetScreenAtribute(1, syscolor2);
+		SetScreenAtribute(0, sysbtext);
+		if (Tab == 4) {
+			SetScreenAtribute(1, sysbtext);
+			SetScreenAtribute(0, syscolor2);
+		}
+		printcu(TranslateWorck(&TEST_BUTTON_TRANSL, languajecu));
 
 		// Draw start menu
 		if (optionud > 0) {
 			if (Tab == 0) {
-				for (INT8 i = 0; i < 7; i++)
+				for (INT8 i = 0; i < 8; i++)
 				{
 					gotoxy(0, MaxRows - 1 - 1 - i);
 					SetScreenAtribute(1, syscolor2);
 					SetScreenAtribute(0, sysbtext);
-					printc(L"             ");
+					printcu(L"             ");
 				}
 
 				// draw Shutdown button
@@ -2570,7 +3263,7 @@ Desktop
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(TranslateWorck(&OFF_BUTTON_TRANSL, languajecu));
+				printcu(TranslateWorck(&OFF_BUTTON_TRANSL, languajecu));
 
 				// draw restart button
 				gotoxy(0, MaxRows - 1 - 2);
@@ -2580,9 +3273,9 @@ Desktop
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(TranslateWorck(&RESTART_BUTTON_TRANSL, languajecu));
+				printcu(TranslateWorck(&RESTART_BUTTON_TRANSL, languajecu));
 
-				// draw editor button
+				// draw help button
 				gotoxy(0, MaxRows - 1 - 3);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
@@ -2590,9 +3283,9 @@ Desktop
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(TranslateWorck(&TEXTEDITOR_BUTTON_TRANSL, languajecu));
+				printcu(TranslateWorck(&HELP_BUTTON_TRANS, languajecu));
 
-				// draw time view
+				// draw editor button
 				gotoxy(0, MaxRows - 1 - 4);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
@@ -2600,9 +3293,9 @@ Desktop
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(TranslateWorck(&GETTIME_BUTTON_TRANSL, languajecu));
+				printcu(TranslateWorck(&TEXTEDITOR_BUTTON_TRANSL, languajecu));
 
-				// draw date view
+				// draw time view
 				gotoxy(0, MaxRows - 1 - 5);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
@@ -2610,9 +3303,9 @@ Desktop
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(TranslateWorck(&GETDATE_BUTTON_TRANSL, languajecu));
+				printcu(TranslateWorck(&GETTIME_BUTTON_TRANSL, languajecu));
 
-				// draw command prompt shortcut
+				// draw date view
 				gotoxy(0, MaxRows - 1 - 6);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
@@ -2620,226 +3313,289 @@ Desktop
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(TranslateWorck(&CONSOLE_BUTTON_TRANSL, languajecu));
-			}
-			if (Tab == 1) {
-				for (INT8 i = 0; i < 9; i++)
-				{
-					gotoxy(8, MaxRows - 1 - 1 - i);
-					SetScreenAtribute(1, syscolor2);
-					SetScreenAtribute(0, sysbtext);
-					printc(L"        ");
-				}
+				printcu(TranslateWorck(&GETDATE_BUTTON_TRANSL, languajecu));
 
-				// draw "Default" theme button
-				gotoxy(8, MaxRows - 1 - 1);
-				SetScreenAtribute(1, syscolor2);
-				SetScreenAtribute(0, sysbtext);
-				if (optionud == 1) {
-					SetScreenAtribute(1, sysbtext);
-					SetScreenAtribute(0, syscolor2);
-				}
-				printc(L"Default");
-
-				// draw "Nature" theme button
-				gotoxy(8, MaxRows - 1 - 2);
-				SetScreenAtribute(1, syscolor2);
-				SetScreenAtribute(0, sysbtext);
-				if (optionud == 2) {
-					SetScreenAtribute(1, sysbtext);
-					SetScreenAtribute(0, syscolor2);
-				}
-				printc(L"Nature");
-
-				// draw "Boy" theme button
-				gotoxy(8, MaxRows - 1 - 3);
-				SetScreenAtribute(1, syscolor2);
-				SetScreenAtribute(0, sysbtext);
-				if (optionud == 3) {
-					SetScreenAtribute(1, sysbtext);
-					SetScreenAtribute(0, syscolor2);
-				}
-				printc(L"Boy");
-
-				// draw "Girl" theme button
-				gotoxy(8, MaxRows - 1 - 4);
-				SetScreenAtribute(1, syscolor2);
-				SetScreenAtribute(0, sysbtext);
-				if (optionud == 4) {
-					SetScreenAtribute(1, sysbtext);
-					SetScreenAtribute(0, syscolor2);
-				}
-				printc(L"Girl");
-
-				// draw "Billy" theme button
-				gotoxy(8, MaxRows - 1 - 5);
-				SetScreenAtribute(1, syscolor2);
-				SetScreenAtribute(0, sysbtext);
-				if (optionud == 5) {
-					SetScreenAtribute(1, sysbtext);
-					SetScreenAtribute(0, syscolor2);
-				}
-				printc(L"Billy");
-
-				// draw "Fire" theme button
-				gotoxy(8, MaxRows - 1 - 6);
-				SetScreenAtribute(1, syscolor2);
-				SetScreenAtribute(0, sysbtext);
-				if (optionud == 6) {
-					SetScreenAtribute(1, sysbtext);
-					SetScreenAtribute(0, syscolor2);
-				}
-				printc(L"Fire");
-
-				// draw "Ocean" theme button
-				gotoxy(8, MaxRows - 1 - 7);
+				// draw command prompt shortcut
+				gotoxy(0, MaxRows - 1 - 7);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
 				if (optionud == 7) {
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(L"Ocean");
+				printcu(TranslateWorck(&CONSOLE_BUTTON_TRANSL, languajecu));
 
-				// draw "Futuristic" theme button
-				gotoxy(8, MaxRows - 1 - 8);
+				// draw calculator shortcut
+				gotoxy(0, MaxRows - 1 - 8);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
 				if (optionud == 8) {
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(L"Futurist");
+				printcu(TranslateWorck(&CALC_BUTTON_TRANSL, languajecu));
+			}
+			if (Tab == 1) {
+				for (INT8 i = 0; i < 9; i++)
+				{
+					gotoxy(barbt1, MaxRows - 1 - 1 - i);
+					SetScreenAtribute(1, syscolor2);
+					SetScreenAtribute(0, sysbtext);
+					printcu(L"        ");
+				}
 
-				// draw "Monochromatic" theme button
-				gotoxy(8, MaxRows - 1 - 9);
+				// draw "Default" theme button
+				gotoxy(barbt1, MaxRows - 1 - 1);
+				SetScreenAtribute(1, syscolor2);
+				SetScreenAtribute(0, sysbtext);
+				if (optionud == 1) {
+					SetScreenAtribute(1, sysbtext);
+					SetScreenAtribute(0, syscolor2);
+				}
+				printcu(L"Default");
+
+				// draw "Nature" theme button
+				gotoxy(barbt1, MaxRows - 1 - 2);
+				SetScreenAtribute(1, syscolor2);
+				SetScreenAtribute(0, sysbtext);
+				if (optionud == 2) {
+					SetScreenAtribute(1, sysbtext);
+					SetScreenAtribute(0, syscolor2);
+				}
+				printcu(L"Nature");
+
+				// draw "Boy" theme button
+				gotoxy(barbt1, MaxRows - 1 - 3);
+				SetScreenAtribute(1, syscolor2);
+				SetScreenAtribute(0, sysbtext);
+				if (optionud == 3) {
+					SetScreenAtribute(1, sysbtext);
+					SetScreenAtribute(0, syscolor2);
+				}
+				printcu(L"Boy");
+
+				// draw "Girl" theme button
+				gotoxy(barbt1, MaxRows - 1 - 4);
+				SetScreenAtribute(1, syscolor2);
+				SetScreenAtribute(0, sysbtext);
+				if (optionud == 4) {
+					SetScreenAtribute(1, sysbtext);
+					SetScreenAtribute(0, syscolor2);
+				}
+				printcu(L"Girl");
+
+				// draw "Billy" theme button
+				gotoxy(barbt1, MaxRows - 1 - 5);
+				SetScreenAtribute(1, syscolor2);
+				SetScreenAtribute(0, sysbtext);
+				if (optionud == 5) {
+					SetScreenAtribute(1, sysbtext);
+					SetScreenAtribute(0, syscolor2);
+				}
+				printcu(L"Billy");
+
+				// draw "Fire" theme button
+				gotoxy(barbt1, MaxRows - 1 - 6);
+				SetScreenAtribute(1, syscolor2);
+				SetScreenAtribute(0, sysbtext);
+				if (optionud == 6) {
+					SetScreenAtribute(1, sysbtext);
+					SetScreenAtribute(0, syscolor2);
+				}
+				printcu(L"Fire");
+
+				// draw "Ocean" theme button
+				gotoxy(barbt1, MaxRows - 1 - 7);
+				SetScreenAtribute(1, syscolor2);
+				SetScreenAtribute(0, sysbtext);
+				if (optionud == 7) {
+					SetScreenAtribute(1, sysbtext);
+					SetScreenAtribute(0, syscolor2);
+				}
+				printcu(L"Ocean");
+
+				// draw "Futuristic" theme button
+				gotoxy(barbt1, MaxRows - 1 - 8);
+				SetScreenAtribute(1, syscolor2);
+				SetScreenAtribute(0, sysbtext);
+				if (optionud == 8) {
+					SetScreenAtribute(1, sysbtext);
+					SetScreenAtribute(0, syscolor2);
+				}
+				printcu(L"Futurist");
+
+				// draw "Desert" theme button
+				gotoxy(barbt1, MaxRows - 1 - 9);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
 				if (optionud == 9) {
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(L"Desert");
+				printcu(L"Desert");
 			}
 			if (Tab == 2) {
 				for (INT8 i = 0; i < 4; i++)
 				{
-					gotoxy(15, MaxRows - 1 - 1 - i);
+					gotoxy(barbt2, MaxRows - 1 - 1 - i);
 					SetScreenAtribute(1, syscolor2);
 					SetScreenAtribute(0, sysbtext);
-					printc(L"                        ");
+					printcu(L"                        ");
 				}
 
 				// draw "ADIVINA EL NUMERO" GAME button
-				gotoxy(15, MaxRows - 1 - 1);
+				gotoxy(barbt2, MaxRows - 1 - 1);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
 				if (optionud == 1) {
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(L"ADIVINA EL NUMERO");
+				printcu(L"ADIVINA EL NUMERO");
 
 				// draw "BITMAP_MAKER" button
-				gotoxy(15, MaxRows - 2 - 1);
+				gotoxy(barbt2, MaxRows - 2 - 1);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
 				if (optionud == 2) {
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(L"BITMAP_MAKER");
+				printcu(L"BITMAP_MAKER");
 
 				// draw "Snake" GAME button
-				gotoxy(15, MaxRows - 3 - 1);
+				gotoxy(barbt2, MaxRows - 3 - 1);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
 				if (optionud == 3) {
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(L"Snake");
+				printcu(L"Snake");
 			}
 			if (Tab == 3) {
 				for (INT8 i = 0; i < 3; i++)
 				{
-					gotoxy(21, MaxRows - 1 - 1 - i);
+					gotoxy(barbt3, MaxRows - 1 - 1 - i);
 					SetScreenAtribute(1, syscolor2);
 					SetScreenAtribute(0, sysbtext);
-					printc(L"                        ");
+					printcu(L"                        ");
 				}
 
 				// draw "English" lang button
-				gotoxy(21, MaxRows - 1 - 1);
+				gotoxy(barbt3, MaxRows - 1 - 1);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
 				if (optionud == 1) {
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(L"English");
+				printcu(L"English");
 
 				// draw "Spanish" lang button
-				gotoxy(21, MaxRows - 2 - 1);
+				gotoxy(barbt3, MaxRows - 2 - 1);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
 				if (optionud == 2) {
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(L"Spanish");
+				printcu(L"Espanol");
 
 				// draw "Francais" lang button
-				gotoxy(21, MaxRows - 3 - 1);
+				gotoxy(barbt3, MaxRows - 3 - 1);
 				SetScreenAtribute(1, syscolor2);
 				SetScreenAtribute(0, sysbtext);
 				if (optionud == 3) {
 					SetScreenAtribute(1, sysbtext);
 					SetScreenAtribute(0, syscolor2);
 				}
-				printc(L"Francais");
+				printcu(L"Francais");
 			}
+			if (Tab == 4) {
+				for (INT8 i = 0; i < 3; i++)
+				{
+					gotoxy(barbt4, MaxRows - 1 - 1 - i);
+					SetScreenAtribute(1, syscolor2);
+					SetScreenAtribute(0, sysbtext);
+					printcu(L"                        ");
+				}
+
+				// draw "English" lang button
+				gotoxy(barbt4, MaxRows - 1 - 1);
+				SetScreenAtribute(1, syscolor2);
+				SetScreenAtribute(0, sysbtext);
+				if (optionud == 1) {
+					SetScreenAtribute(1, sysbtext);
+					SetScreenAtribute(0, syscolor2);
+				}
+				printcu(L"MsgBoxes");
+
+			}
+
 		}
 
+		DrawScreen();
 		// Esperar eventos de teclado
 		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 		SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key);
 
 		// Manejo de navegación por teclado
 		if (Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
-			if (Tab == 0) {
+			if (optionud == 0) {
+				optionud = 1;
+			}
+			else if (Tab == 0) {
 				if (optionud == 1) {
 					SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
-					ClearScreen();
-					uefi_call_wrapper(globalsystemtable->BootServices->Stall, 5, 1000000);
-					SSUNSCREENLOGOUT(ImageHandle,SystemTable);
-					globalsystemtable->RuntimeServices->ResetSystem(EfiResetShutdown, EFI_SUCCESS, 0, NULL); \
+					bool confirm = DRAW_DIALOG_MSG_CONFIRM(ImageHandle, SystemTable, TranslateWorck(&SHUTDOWNCONFIRM_TRANS, languajecu), syscolor2, sysbtext);
+					if (confirm) {
+						ClearScreen();
+						uefi_call_wrapper(globalsystemtable->BootServices->Stall, 5, 1000000);
+						SSUNSCREENLOGOUT(ImageHandle, SystemTable);
+						globalsystemtable->RuntimeServices->ResetSystem(EfiResetShutdown, EFI_SUCCESS, 0, NULL);
+					}
 				}
 				if (optionud == 2) {
 					SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
-					ClearScreen();
-					uefi_call_wrapper(globalsystemtable->BootServices->Stall, 5, 1000000);
-					SSUNSCREENLOGOUT(ImageHandle, SystemTable);
-					globalsystemtable->RuntimeServices->ResetSystem(EfiResetWarm, EFI_SUCCESS, 0, NULL); \
+					bool confirm = DRAW_DIALOG_MSG_CONFIRM(ImageHandle, SystemTable, TranslateWorck(&RESETCONFIRM_TRANS, languajecu), syscolor2 , sysbtext);
+					if (confirm) {
+						ClearScreen();
+						uefi_call_wrapper(globalsystemtable->BootServices->Stall, 5, 1000000);
+						SSUNSCREENLOGOUT(ImageHandle, SystemTable);
+						globalsystemtable->RuntimeServices->ResetSystem(EfiResetWarm, EFI_SUCCESS, 0, NULL);
+					}
 				}
 				else if (optionud == 3) {
-					editor(ImageHandle, SystemTable, L"editor default text :)");
+					editor(ImageHandle, SystemTable, TranslateWorck(&HELP_TEXT_TRANS, languajecu));
 					SetScreenAtribute(0, gray);
 					printc(TranslateWorck(&EXITMESSAGE_TRANS, languajecu));
 					SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 				}
 				else if (optionud == 4) {
-					DRAW_DIALOG_MSG(ImageHandle, SystemTable, KERNEL_GET_TIME(SystemTable));
+					editor(ImageHandle, SystemTable, NULL);
+					SetScreenAtribute(0, gray);
+					printc(TranslateWorck(&EXITMESSAGE_TRANS, languajecu));
 					SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 				}
-				else if (optionud == 5)
-				{
-					DRAW_DIALOG_MSG(ImageHandle, SystemTable, KERNEL_GET_DATE(SystemTable));
-					SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+				else if (optionud == 5) {
+					DRAW_DIALOG_MSG(ImageHandle, SystemTable, KERNEL_GET_TIME(SystemTable), syscolor2, sysbtext);
+
 				}
 				else if (optionud == 6)
 				{
+					DRAW_DIALOG_MSG(ImageHandle, SystemTable, KERNEL_GET_DATE(SystemTable), syscolor2, sysbtext);
+				}
+				else if (optionud == 7)
+				{
 					ssun_main(ImageHandle, SystemTable, L"DEV");
+					SetScreenAtribute(0, gray);
+					printc(TranslateWorck(&EXITMESSAGE_TRANS, languajecu));
+					SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+				}
+				else if (optionud == 8)
+				{
+					Calculator(Sceme);
 					SetScreenAtribute(0, gray);
 					printc(TranslateWorck(&EXITMESSAGE_TRANS, languajecu));
 					SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
@@ -2848,30 +3604,48 @@ Desktop
 			else if (Tab == 1) {
 				if (optionud == 1) {
 					Sceme = SCDefault;
+					LibSetNVVariable(L"Theme", &SmallVariables, sizeof(Sceme), Sceme);
+					LibSetNVVariable(L"ThemeT", &SmallVariables, sizeof(Sceme->buttonstext), (VOID*)&Sceme->buttonstext);
 				}
 				else if (optionud == 2) {
 					Sceme = SCNature;
+					LibSetNVVariable(L"Theme", &SmallVariables, sizeof(Sceme), Sceme);
+					LibSetNVVariable(L"ThemeT", &SmallVariables, sizeof(Sceme->buttonstext), (VOID*)&Sceme->buttonstext);
 				}
 				else if (optionud == 3) {
 					Sceme = SCBoy;
+					LibSetNVVariable(L"Theme", &SmallVariables, sizeof(Sceme), Sceme);
+					LibSetNVVariable(L"ThemeT", &SmallVariables, sizeof(Sceme->buttonstext), (VOID*)&Sceme->buttonstext);
 				}
 				else if (optionud == 4) {
 					Sceme = SCGirl;
+					LibSetNVVariable(L"Theme", &SmallVariables, sizeof(Sceme), Sceme);
+					LibSetNVVariable(L"ThemeT", &SmallVariables, sizeof(Sceme->buttonstext), (VOID*)&Sceme->buttonstext);
 				}
 				else if (optionud == 5) {
 					Sceme = SCBilly;
+					LibSetNVVariable(L"Theme", &SmallVariables, sizeof(Sceme), Sceme);
+					LibSetNVVariable(L"ThemeT", &SmallVariables, sizeof(Sceme->buttonstext), (VOID*)&Sceme->buttonstext);
 				}
 				else if (optionud == 6) {
 					Sceme = SCFire;
+					LibSetNVVariable(L"Theme", &SmallVariables, sizeof(Sceme), Sceme);
+					LibSetNVVariable(L"ThemeT", &SmallVariables, sizeof(Sceme->buttonstext), (VOID*)&Sceme->buttonstext);
 				}
 				else if (optionud == 7) {
 					Sceme = SCOcean;
+					LibSetNVVariable(L"Theme", &SmallVariables, sizeof(Sceme), Sceme);
+					LibSetNVVariable(L"ThemeT", &SmallVariables, sizeof(Sceme->buttonstext), (VOID*)&Sceme->buttonstext);
 				}
 				else if (optionud == 8) {
 					Sceme = SCFuturistic;
+					LibSetNVVariable(L"Theme", &SmallVariables, sizeof(Sceme), Sceme);
+					LibSetNVVariable(L"ThemeT", &SmallVariables, sizeof(Sceme->buttonstext), (VOID*)&Sceme->buttonstext);
 				}
 				else if (optionud == 9) {
 					Sceme = SCDesert;
+					LibSetNVVariable(L"Theme", &SmallVariables, sizeof(Sceme), Sceme);
+					LibSetNVVariable(L"ThemeT", &SmallVariables, sizeof(Sceme->buttonstext), (VOID*)&Sceme->buttonstext);
 				}
 			}
 			else if (Tab == 2) {
@@ -2911,6 +3685,22 @@ Desktop
 					UpdateLanguaje();
 				}
 			}
+			else if (Tab == 4) {
+				if (optionud == 1) {
+					ExecuteScript(L"MsgBox A red spy in the base\necho &confirm Are you the red spy?",ImageHandle, SystemTable);
+				}
+			}
+		}
+		else if (Key.ScanCode == SCAN_F1) {
+			editor(ImageHandle, SystemTable, TranslateWorck(&HELP_TEXT_TRANS, languajecu));
+			SetScreenAtribute(0, gray);
+			printc(TranslateWorck(&EXITMESSAGE_TRANS, languajecu));
+			SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
+		}
+		else if (Key.ScanCode == SCAN_ESC) {
+			if (optionud != 0) {
+				optionud = 0;
+				}
 		}
 		else if (Key.ScanCode == SCAN_LEFT) {
 			if (Tab > 0) { Tab--; }
@@ -2936,7 +3726,7 @@ efi_main
 Summary:
 	...
 */
-EFI_STATUS 
+PROGRAM
 efi_main
 (
 	EFI_HANDLE ImageHandle,
@@ -2969,10 +3759,6 @@ efi_main
 	// set the screen size
 	SystemTable->ConOut->QueryMode(SystemTable->ConOut, SystemTable->ConOut->Mode->Mode, &horizontalResolution, &verticalResolution);
 
-	// generalize it
-	horizontalResolution = horizontalResolution / 8;
-	verticalResolution = verticalResolution / 12;
-
 	// Obtener la interfaz de gráficos
 	Status = uefi_call_wrapper(BS->LocateProtocol, 3, &gEfiGraphicsOutputProtocolGuid, NULL, (VOID**)&gop);
 	if (EFI_ERROR(Status)) {
@@ -3003,41 +3789,7 @@ efi_main
 	// clear the screen
 	ClearScreen();
 
-	CHAR16* ldata = NULL;
-	UINTN BufferSize = 0;
-
-	// get the languaje variable
-	Status = gRT->GetVariable(
-		L"S-SUN_Languaje",
-		&SmallVariables,
-		NULL,
-		sizeof(ldata),
-		&ldata
-	);
-
-	string* ea[100];
-
-	StatusToString(ea, Status);
-	printc(L"\nstatus on load the system languaje: \n");
-	printc(ea);
-	printc(L"\n");
-
-	if (Status == EFI_NOT_FOUND) {
-		UpdateLanguaje();
-	}
-	else if (Status == EFI_BUFFER_TOO_SMALL) {
-		UpdateLanguaje();
-	}
-	else if (Status == EFI_SUCCESS) {
-		Status = SystemTable->RuntimeServices->GetVariable(
-			L"S-SUN_Languaje",
-			&SmallVariables,
-			NULL,
-			sizeof(ldata),
-			&ldata
-		);
-		languajecu = ldata;
-	}
+	languajecu = LibGetVariable(L"Lang", &SmallVariables);
 
 	// prepare the instances
 	MEM_FILE_INT* Kernel_Startup = Create_MEM_FILE_INT(L"Kernel_Initialized",1);
@@ -3068,92 +3820,87 @@ efi_main
 	SetScreenAtribute(1, black);
 	SetScreenAtribute(0, white);
 
-	printc(L"press F1 to skip init.spp\n");
-	FS_IMPACT data;
-	UINTN atributes = EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS;
-	
+	printc(L"initializing the frameworck\n");
+	InitializeFrameworck();
+
+	printc(L"press ESC to skip init.spp\n");
+
+	ExecuteScript(L"# ---------------------------------\n\n#\tS-SUN kernel\n\n# ---------------------------------\n\n\n\n# internal system file (kernel.sys)\n\n\n\n# ---------------------------------\n\n# POINTERS DEFINITION\n\n\n\nif def%VOID:EditMem VOID=0\n\n\n\n# ---------------------------------\n\n# KERNEL_MAIN\n\n\n\necho Initializing Kernel\n\n\n\n# the kernel main\n\ncall set_vars\n\ncall oem_start\n\ncall flush_vars\n\ncall os_start\n\n\n\n# section to set the vars\n\nsection\n\nset_vars\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_0=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_1=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_2=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_3=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_4=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_5=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_6=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_7=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_8=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_9=d%VOID\n\nret\n\n\n\n# section to flush the vars\n\nsection\n\nflush_vars\n\nFlushMEM KERNEL_RESERVED_0\n\nFlushMEM KERNEL_RESERVED_1\n\nFlushMEM KERNEL_RESERVED_2\n\nFlushMEM KERNEL_RESERVED_3\n\nFlushMEM KERNEL_RESERVED_4\n\nFlushMEM KERNEL_RESERVED_5\n\nFlushMEM KERNEL_RESERVED_6\n\nFlushMEM KERNEL_RESERVED_7\n\nFlushMEM KERNEL_RESERVED_8\n\nFlushMEM KERNEL_RESERVED_9\n\nret\n\n\n\n# oem start section\n\nsection\n\noem_start\n\nEditMem S-SUN_Distributor=unfortunately no one :)\n\nret\n\n\n\n# section to the os takes the absolute control MUAHAHAHAHA >:)\n\nsection\n\nos_start\n\nend_script",ImageHandle,SystemTable);
 	// get the system state
-	Status = SystemTable->RuntimeServices->GetVariable(
-		L"S-SUN_State",
-		&VariablesGuid,
-		NULL,
-		sizeof(data),
-		&data
-	);
+	FS_IMPACT*
+		fstoload
+	=
+		LibGetVariable(L"S-SUN_State", &VariablesGuid)
+		;
 
-	// verific the state
-	if (Status == EFI_NOT_FOUND) {
-		InitializeFileSystem();
+	CurrentFS = *fstoload;
 
-		// update the filesystem
-		updatefilesystem();
+	CSCHEME* loadfrommem = LibGetVariable(L"Theme", &SmallVariables);
+
+	if (loadfrommem != NULL) {
+		Sceme = loadfrommem;
+		PIXELCOL*
+			buttonstextl
+			=
+			LibGetVariable(L"ThemeT", &SmallVariables)
+		;
+		Sceme->buttonstext = *buttonstextl;
 	}
-	else if (!EFI_ERROR(Status))
-	{
-		// load the variable
-		Status = SystemTable->RuntimeServices->GetVariable(
-			L"S-SUN_State",
-			&VariablesGuid,
-			NULL,
-			sizeof(data),
-			&data
-		);
-		CurrentFS = data;
+	else Sceme = newCSCHEME(yellow, gray, black);
 
-		if (&CurrentFS == &data) {
-			printc(L"\nthe system state has been loaded correctlly. :) \n");
-		}
-	}
-	if (Status == EFI_BUFFER_TOO_SMALL) {
-		// fix the buffer
-		printc(L"\ntryting to view what is the reason of BUFFER_TO_SMALL >:)\ndont worry i try to save you S-SUN files ;)\n");
-
-		InitializeFileSystem();
-
-		updatefilesystem();
-	}
-	else
-	{
-		// initialize the filesystem
-		Status = RT->GetVariable(
-			L"S-SUN_State",
-			&VariablesGuid,
-			NULL,
-			sizeof(data),
-			&data
-		);
-		// set the filesystem
-		CurrentFS = data;
-		string* e[100];
-
-		// get status
-		StatusToString(e, Status);
-		printc(L"\nstatus on load the system state: \n");
-		printc(e);
-		printc(L"\n");
-	}
-	
 	// wait
 	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 1, 500000);
-
+	
 	// loading screen
 	initializeMoonScreen();
-	SetScreenAtribute(1, blue);
+	SetScreenAtribute(0, white);
+
+	SetScreenAtribute(1, darkcyan);
 	ClearScreen();
 
-	printc(L"\nS-SUN BootLoader v0.2\n\n");
-	printc(L"\nS-SUN Operating System\nmaded By ErickCraftStudios\n\n");
+	// calculate the scren size
+	globMaxRows = (verticalResolution / 12) / Conio->atributes->size;
+	globMaxColumns = (horizontalResolution / 8) / Conio->atributes->size;
+
+	// draw the presentation by-creator
+	gotoxy((globMaxColumns - StrLen(L"By ErickCraftStudios")) / 2, globMaxRows - 1);
+	printc(L"By ErickCraftStudios");
+
+	// draw the system name
+	gotoxy((globMaxColumns - StrLen(L"S-SUN")) / 2, globMaxRows / 2);
+	printc(L"S-SUN");
+
+	// draw the instruccions
+	gotoxy((globMaxColumns - StrLen(L"Please wait while S-SUN is Booting Up...")) / 2, (globMaxRows / 2) + 4);
+	printc(L"Please wait while S-SUN is Booting Up...");
+
+	// set the colors for the loading bar
+	gotoxy((globMaxColumns - 30) / 2, (globMaxRows / 2) + 2);
+	SetScreenAtribute(0, brgreen);
+
+	// wait to give it elegance
+	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 500000);
+
+	// draw the loading bar
+	printc(L"\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a");
+
+	// again for other time of that reason
+	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 500000);
+	gotoxy((globMaxColumns - 30) / 2, (globMaxRows / 2) + 2);
 	// the animation
 	for (INT8 i = 0; i < 30; i++)
 	{
-		SetScreenAtribute(0, white);
-		SetScreenAtribute(1, blue);
-		printc(L".");
+		// set the loading dots colors
+		SetScreenAtribute(1, darkcyan);
+		SetScreenAtribute(0, cyan);
+		// draw the dot
+		printc(L"\a");
+		// wait for make it a animation
 		uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 100000);
 
 		// press the f1 to skip Init.spp
 		uefi_call_wrapper(SystemTable->ConIn->ReadKeyStroke, 2, SystemTable->ConIn, &Key);
-		if (Key.ScanCode == SCAN_F1) {
+		if (Key.ScanCode == SCAN_ESC) {
 			break;
 		}
 	}
@@ -3162,7 +3909,7 @@ efi_main
 	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 5, 1000000);
 
 	// if not skiped initialize Init.spp
-	if (Key.ScanCode != SCAN_F1) {
+	if (Key.ScanCode != SCAN_ESC) {
 		ExecuteScript(CurrentFS.HEY_CURRENT_SESSION[3].Content, ImageHandle, SystemTable);
 	}
 		// The platform logo may still be displayed → remove it

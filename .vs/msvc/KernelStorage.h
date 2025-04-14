@@ -35,10 +35,8 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 UINTN x = n;
 
 #define FileDef(name,paath,content,direction) \
-    CurrentFS.HEY_CURRENT_SESSION[direction].Name = name; \
-    CurrentFS.HEY_CURRENT_SESSION[direction].path = paath; \
-    CurrentFS.HEY_CURRENT_SESSION[direction].Content = content; \
-    CurrentFS.HEY_CURRENT_SESSION[direction].Direction = direction; \
+    *CurrentFS.HEY_CURRENT_SESSION[direction].Name = StrDuplicate(name); \
+    *CurrentFS.HEY_CURRENT_SESSION[direction].Content = StrDuplicate(content); \
     if ( CurrentFS.FilesCount < direction) { CurrentFS.FilesCount = direction; }
 
 #define BasicStorageMethod \
@@ -51,24 +49,20 @@ UINTN x = n;
 
 typedef UINT8    MEMORY_DIRECTION;
 
-typedef CHAR8    FileName;
-typedef CHAR8    Path;
+typedef CHAR16    FileName;
+typedef CHAR16    Path;
 
-typedef CHAR8    FILE_CONTENT;
+typedef CHAR16    FILE_CONTENT;
 
 typedef MEMORY_DIRECTION    MEM_DIR;
 
-CHAR16 FOLDER_CONTENT;
+CHAR16* FOLDER_CONTENT;
 
 typedef struct {
-    UINT8
-        Direction;
-    CHAR8*
-        Name;
-    CHAR8
-        path;
-    CHAR8*
-        Content;
+    CHAR16*
+        Name[20];
+    CHAR16*
+        Content[2048];
 } File;
 
 typedef File    FileSystem;
@@ -88,11 +82,33 @@ InitializeFileSystem
 {
     FOLDER_CONTENT = L"$FOLDER #_VEFI";
     FileDef(L"\\", L"", FOLDER_CONTENT, 0);
-    FileDef(L"System", L"\\", FOLDER_CONTENT, 1);
-    FileDef(L"User", L"\\", FOLDER_CONTENT, 2);
-    FileDef(L"Init.spp", L"\\", L"EditMem S-SUN_CREATOR=ErickCraftStudios\nEditMem S-SUN_KERNEL_CODENAME=KSUN\nEditMem S-SUN_MadedIn=C\n\ncls\necho Please Wait , Loading Desktop", 3);
+    FileDef(L"\\System", L"\\", FOLDER_CONTENT, 1);
+    FileDef(L"\\User", L"\\", FOLDER_CONTENT, 2);
+    FileDef(L"\\Init.spp", L"\\", L"EditMem S-SUN_CREATOR=ErickCraftStudios\nEditMem S-SUN_KERNEL_CODENAME=KSUN\nEditMem S-SUN_MadedIn=C\n\ncls\necho Please Wait , Loading Desktop", 3);
 
     CurrentFS.FilesCount = 3;
 }
 
+UINT8
+LoockForAFile
+(
+    CHAR16* fileName
+)
+{
+    for (size_t i = 0; i < 100; i++)
+    {
+        if (CurrentFS.HEY_CURRENT_SESSION[i].Name == fileName) {
+            return i;
+        }
+    }
+}
+
+CHAR16
+FileAsText
+(
+    UINT8 id
+)
+{
+    return CurrentFS.HEY_CURRENT_SESSION[id].Content;
+}
 #endif // !_KERNEL_STORAGE_

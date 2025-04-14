@@ -21,6 +21,9 @@
     <Filter Include="Header Files\Dirvers">
       <UniqueIdentifier>{2cc6cd15-82e7-4f58-9654-75642209ef77}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\LIBB">
+      <UniqueIdentifier>{854eaa47-adc6-476b-9901-ab8c4f3e5f21}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\debug.vbs">
@@ -69,9 +72,6 @@
     <ClInclude Include="STFPrint.h">
       <Filter>Header Files\kernel</Filter>
     </ClInclude>
-    <ClInclude Include="KernelEarly.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
     <ClInclude Include="KeyBoardDriver.h">
       <Filter>Header Files\Dirvers</Filter>
     </ClInclude>
@@ -80,6 +80,18 @@
     </ClInclude>
     <ClInclude Include="KernelLanguaje.h">
       <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="KernelEarly.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="KernelErr.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="frameworck.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="int.h">
+      <Filter>Header Files\LIBB</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

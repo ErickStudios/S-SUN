@@ -24,9 +24,16 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 /*+++
 * KernelMK.h
 +++*/
+
+/*
+Desciption:
+    All Public kernel lib files and some functions
+
+Coppyright:
+    CCBY-SA (All project exepct GNU-EFU)
+*/
 #ifndef _KERNEL_
 #define _KERNEL_
-
 
 #include <efi.h>
 #include <efilib.h>
@@ -38,6 +45,8 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #include "KernelStorage.h"
 #include "KernelAlgoritm.h"
 #include "KernelLanguaje.h"
+#include "KernelErr.h"
+#include "frameworck.h"
 
 // #include "KernelDictionaries.h"
 
@@ -114,98 +123,22 @@ typedef VOID electron;
     TEXT
     ;
 
-    // ** Errors **
+    typedef
+        VOID
+    MINI_PROGRAM
+    ;
 
-    // when the Time is OUT
-    #define ERR_TimeOut 0x001
+    typedef
+        EFI_STATUS
+    PROGRAM
+    ;
 
-    // when the parammeter is invalid
-    #define ERR_Invalid 0x002
+    typedef
+        PROGRAM
+     GAME    
+    ;
 
-    // when the program launchs a throw
-    #define ERR_Throw 0x003
 
-    // when the system cant make a action that is out of his limits
-    #define ERR_OutOfResources 0x004
-
-    // when the buffer is too filled to write in he
-    #define ERR_filledbuffer 0x005
-
-    // when the system cant manage the buffer
-    #define ERR_invalid_buffer 0x006
-
-    // when the system cant read the buffer
-    #define ERR_bad_buffer 0x007
-    
-    // when the buffer is so SUS (suspicious) for the system
-    // and the systems looks it with a -_O face
-    #define ERR_mad_buffer 0x008
-
-    #define KERNEL_ERROR 23
-
-    typedef enum {
-        KernelSucces = 0,
-        kTimeOut = (ERR_TimeOut + KERNEL_ERROR),
-        kInvalid = (ERR_Invalid + KERNEL_ERROR),
-        kThrow = (ERR_Throw + KERNEL_ERROR),
-        kOutOfResources = (ERR_OutOfResources + KERNEL_ERROR),
-        kFilledBuffer = (ERR_filledbuffer + KERNEL_ERROR),
-        kInvalidBuffer = (ERR_invalid_buffer + KERNEL_ERROR),
-        kBadBuffer = (ERR_bad_buffer + KERNEL_ERROR),
-        kMadBuffer = (ERR_mad_buffer + KERNEL_ERROR),
-    } KERNEL_STATUS;
-
-    BOOLEAN 
-    KernelERR
-    (
-        KERNEL_STATUS* This
-    ) 
-    {
-        if (*This > KERNEL_ERROR) {
-            return TRUE; // Hay un error de tiempo de espera
-        }
-        return FALSE; // No hay error
-    }
-
-    VOID
-    POWR
-    ErrorToString
-    (
-        KERNEL_STATUS ERROR,
-        TEXT* Buffer
-    )
-    {
-        #ifndef HAVE_US_ECS_KRN
-            return L"you dont have ESC_KRN";
-        #endif // !HAVE_US_ECS_KRN
-
-        // the ky
-        IF (ERROR == kTimeOut) {
-            *Buffer = L"TimeOut , try agin";
-        } 
-        ELIF (ERROR == kInvalid) {
-            *Buffer = L"invalid paramter";
-        }
-        ELIF(ERROR == kThrow) {
-            *Buffer = L"has ocurren an throw error";
-        }
-        ELIF(ERROR == kOutOfResources) {
-            *Buffer = L"the system cant use a action that is out of limits of system";
-        }
-        ELIF(ERROR == kFilledBuffer) {
-            *Buffer = L"you cant write in a buffer that is filled";
-        }
-        ELIF(ERROR == kInvalidBuffer) {
-            *Buffer = L"invalid buffer";
-        }
-        ELIF(ERROR == kBadBuffer) {
-            *Buffer = L"the system can conect with the buffer";
-        }
-        ELIF(ERROR == kMadBuffer) {
-            *Buffer = L"the buffer is so mad for the system -_O";
-        }
-        ELSE(*Buffer = L"invalid error";);
-    }
 
 #endif // !KERNEL_32
 

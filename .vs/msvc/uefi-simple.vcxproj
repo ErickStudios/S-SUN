@@ -395,11 +395,14 @@
     <None Include="..\..\debug.vbs" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="frameworck.h" />
+    <ClInclude Include="int.h" />
     <ClInclude Include="KernelConsole.h" />
     <ClInclude Include="KernelCore.h" />
     <ClInclude Include="KernelDef.h" />
     <ClInclude Include="KernelDictionaries.h" />
     <ClInclude Include="KernelEarly.h" />
+    <ClInclude Include="KernelErr.h" />
     <ClInclude Include="KernelLanguaje.h" />
     <ClInclude Include="KernelMemory.h" />
     <ClInclude Include="kernelMK.h" />

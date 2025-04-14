@@ -35,6 +35,9 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #define MEM_FILE_INT MEMORY_FILE_INT_STRUCTURE
 #define MEM_FILE_STRING MEMORY_FILE_STRING_STRUCTURE
 
+#define CRT_FINT(intmem,name,value) intmem = Create_MEM_FILE_INT(name,value)
+#define CRT_FSTRING(stringmem,name,value) stringmem = Create_MEM_FILE_STRING(name,value)
+
 /////// Ahy , NO hay ñ :(
 
 // 
@@ -48,7 +51,7 @@ typedef struct
 MEMORY_FILE_INT_STRUCTURE {
     string*
         NAME;
-    int*
+    int
         VALUE;
 } MEMORY_FILE_INT_STRUCTURE;
 
@@ -87,6 +90,12 @@ Create_MEM_FILE_STRING
         return NULL;
     }
 
+    INT32 findMemID = -1;
+    for (size_t i = 0; i < MemFileCountString; i++)
+    {
+        if (StrCmp(MemFilesString[i]->NAME, L"[deleted content]") == 0) findMemID = i;
+    }
+
     MEM_FILE_STRING* MemFile = (MEM_FILE_STRING*)AllocatePool(sizeof(MEM_FILE_STRING));
     if (MemFile == NULL) {
         return NULL;
@@ -95,6 +104,10 @@ Create_MEM_FILE_STRING
     MemFile->NAME = StrDuplicate(Name);  // Asegúrate de duplicar el nombre
     MemFile->VALUE = StrDuplicate(Value);  // Asegúrate de duplicar el valor
 
+    if (findMemID != -1) {
+        MemFilesString[findMemID] = MemFile;
+        return MemFile;
+    }
     MemFilesString[MemFileCountString++] = MemFile;
 
     return MemFile;
@@ -116,6 +129,12 @@ Create_MEM_FILE_INT
         return NULL;
     }
 
+    INT32 findMemID = -1;
+    for (size_t i = 0; i < MemFileCountInt; i++)
+    {
+        if (StrCmp(MemFilesInt[i]->NAME, L"[deleted content]") == 0) findMemID = i;
+    }
+
     MEM_FILE_INT* MemFile = (MEM_FILE_INT*)AllocatePool(sizeof(MEM_FILE_INT));
     if (MemFile == NULL) {
         return NULL;
@@ -124,6 +143,10 @@ Create_MEM_FILE_INT
     MemFile->NAME = StrDuplicate(Name);  // Asegúrate de duplicar el nombre
     MemFile->VALUE = Value;
 
+    if (findMemID != -1) {
+        MemFilesInt[findMemID] = MemFile;
+        return MemFile;
+    }
     MemFilesInt[MemFileCountInt++] = MemFile;
 
     return MemFile;
@@ -138,7 +161,7 @@ EFI_STATUS
 Edit_MEM_FILE_STRING
 (
     string* Name,
-    string NewValue
+    string* NewValue
 )
 {
     for (UINTN i = 0; i < MemFileCountString; i++) {
@@ -206,7 +229,48 @@ Read_MEM_FILE_INT
             return MemFilesInt[i]->VALUE;
         }
     }
-    return -1;
+    return -100;
+}
+
+// Flush_MEM_FILE_STRING
+/**
+Summary:
+    this frees the memory allocated for a MEM file string from a only the name
+**/
+bool
+Flush_MEM_FILE_STRING
+(
+    string* Name
+)
+{
+    for (UINTN i = 0; i < MemFileCountString; i++) {
+        if (StrCmp(MemFilesString[i]->NAME, Name) == 0) {
+            MemFilesString[i]->NAME = L"[deleted content]";
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// Flush_MEM_FILE_INT
+/**
+Summary:
+    this frees the memory allocated for a MEM file int from a only the name
+**/
+bool
+Flush_MEM_FILE_INT
+(
+    string* Name
+)
+{
+    for (UINTN i = 0; i < MemFileCountInt; i++) {
+        if (StrCmp(MemFilesInt[i]->NAME, Name) == 0) {
+            MemFilesInt[i]->NAME = L"[deleted content]";
+            return true;
+        }
+    }
+    return false;
 }
 
 // Free_MEM_FILE_STRING
@@ -221,6 +285,7 @@ Free_MEM_FILE_STRING
 )
 {
     if (MemFile != NULL) {
+        Flush_MEM_FILE_STRING(MemFile->NAME);
         FreePool(MemFile);
     }
 }
@@ -237,50 +302,8 @@ Free_MEM_FILE_INT
 )
 {
     if (MemFile != NULL) {
+        Flush_MEM_FILE_INT(MemFile->NAME);
         FreePool(MemFile);
     }
 }
-
-// Flush_MEM_FILE_STRING
-/**
-Summary:
-    this frees the memory allocated for a MEM file string from a only the name
-**/
-void
-Flush_MEM_FILE_STRING
-(
-    string* Name
-)
-{
-    for (UINTN i = 0; i < MemFileCountString; i++) {
-        if (StrCmp(MemFilesString[i]->NAME, Name) == 0) {
-            MemFilesString[i]->VALUE = L"[DELETED]";
-            FreePool(MemFilesString[i]);
-        }
-    }
-
-    pr_special(L"the memory is not exist");
-}
-
-// Flush_MEM_FILE_INT
-/**
-Summary:
-    this frees the memory allocated for a MEM file int from a only the name
-**/
-void
-Flush_MEM_FILE_INT
-(
-    string* Name
-)
-{
-    for (UINTN i = 0; i < MemFileCountString; i++) {
-        if (StrCmp(MemFilesInt[i]->NAME, Name) == 0) {
-            MemFilesInt[i]->VALUE = 0xfff;
-            FreePool(MemFilesInt[i]);
-        }
-    }
-
-    pr_special(L"the int mem file is not exist");
-}
-
 #endif

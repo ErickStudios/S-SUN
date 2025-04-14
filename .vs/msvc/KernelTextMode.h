@@ -179,6 +179,112 @@ ClearScreen
      DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Conio->atributes->BG);
 }
 
+PIXELCOL
+AtoC
+(
+    CHAR16* TheString
+)
+{
+    if (StrCmp(TheString, L"black") == 0) {
+        return black;
+    }
+    else if (StrCmp(TheString, L"white") == 0) {
+        return white;
+    }
+    else if (StrCmp(TheString, L"gray") == 0) {
+        return gray;
+    }
+    else if (StrCmp(TheString, L"red") == 0) {
+        return red;
+    }
+    else if (StrCmp(TheString, L"darkred") == 0) {
+        return darkred;
+    }
+    else if (StrCmp(TheString, L"brred") == 0) {
+        return brred;
+    }
+    else if (StrCmp(TheString, L"orange") == 0) {
+        return orange;
+    }
+    else if (StrCmp(TheString, L"darkorange") == 0) {
+        return darkorange;
+    }
+    else if (StrCmp(TheString, L"brorange") == 0) {
+        return brorange;
+    }
+    else if (StrCmp(TheString, L"yellow") == 0) {
+        return yellow;
+    }
+    else if (StrCmp(TheString, L"darkyellow") == 0) {
+        return darkyellow;
+    }
+    else if (StrCmp(TheString, L"bryellow") == 0) {
+        return bryellow;
+    }
+    else if (StrCmp(TheString, L"green") == 0) {
+        return green;
+    }
+    else if (StrCmp(TheString, L"darkgreen") == 0) {
+        return darkgreen;
+    }
+    else if (StrCmp(TheString, L"brgreen") == 0) {
+        return green;
+    }
+    else if (StrCmp(TheString, L"blue") == 0) {
+        return blue;
+    }
+    else if (StrCmp(TheString, L"darkblue") == 0) {
+        return darkblue;
+    }
+    else if (StrCmp(TheString, L"brblue") == 0) {
+        return brblue;
+    }
+    else if (StrCmp(TheString, L"cyan") == 0) {
+        return cyan;
+    }
+    else if (StrCmp(TheString, L"darkcyan") == 0) {
+        return darkcyan;
+    }
+    else if (StrCmp(TheString, L"brcyan") == 0) {
+        return brcyan;
+    }
+    else {
+        return white;
+    }
+}
+
+CHAR16
+CtoA
+(
+    PIXELCOL* TheCol
+)
+{
+    if (TheCol == &black) return L"black";
+    if (TheCol == &white) return L"white";
+    if (TheCol == &gray) return L"gray";
+    if (TheCol == &darkgray) return L"darkgray";
+    if (TheCol == &darkred) return L"darkred";
+    if (TheCol == &red) return L"red";
+    if (TheCol == &brred) return L"brred";
+    if (TheCol == &darkorange) return L"darkorange";
+    if (TheCol == &orange) return L"orange";
+    if (TheCol == &brorange) return L"brorange";
+    if (TheCol == &darkyellow) return L"darkyellow";
+    if (TheCol == &yellow) return L"yellow";
+    if (TheCol == &bryellow) return L"bryellow";
+    if (TheCol == &darkgreen) return L"darkgreen";
+    if (TheCol == &green) return L"green";
+    if (TheCol == &brgreen) return L"brgreen";
+    if (TheCol == &darkcyan) return L"darkcyan";
+    if (TheCol == &cyan) return L"cyan";
+    if (TheCol == &brcyan) return L"brcyan";
+    if (TheCol == &darkblue) return L"darkblue";
+    if (TheCol == &blue) return L"blue";
+    if (TheCol == &brblue) return L"brblue";
+
+    return L"white";
+}
+
 void
 initializeMoonScreen
 (
@@ -431,8 +537,8 @@ DrawLetter
     int x,
     int y,
     CHAR16* letter,
-    UINTN size,
-    INTN process
+    UINT8 size,
+    INT8 process
 )
 {
     int realx = (x * (8 * size));
@@ -443,23 +549,38 @@ DrawLetter
     else if (StrCmp(letter, L"+") == 0) {
         draw_bitmap(gop, realx, realy, Plus_bitmap, color);
     }
-    else if (StrCmp(letter, L"\x1") == 0) {
+    else if (StrCmp(letter, L"[") == 0) {
+        draw_bitmap(gop, realx, realy, corcheteab_bitmap, color);
+    }
+    else if (StrCmp(letter, L"]") == 0) {
+        draw_bitmap(gop, realx, realy, corchetecerr_bitmap, color);
+    }
+    else if (StrCmp(letter, L"\x2a1") == 0) {
         draw_bitmap(gop, realx, realy, happyface_bitmap, color);
     }
-    else if (StrCmp(letter, L"\x2") == 0) {
+    else if (StrCmp(letter, L"\x2a2") == 0) {
         draw_bitmap(gop, realx, realy, sadface_bitmap, color);
     }
-    else if (StrCmp(letter, L"\x3") == 0) {
+    else if (StrCmp(letter, L"\x2a3") == 0) {
         draw_bitmap(gop, realx, realy, neutralface_bitmap, color);
     }
-    else if (StrCmp(letter, L"\x4") == 0) {
+    else if (StrCmp(letter, L"\x2a4") == 0) {
         draw_bitmap(gop, realx, realy, rombo_bitmap, color);
+    }
+    else if (StrCmp(letter, L"\x2a5") == 0) {
+        draw_bitmap(gop, realx, realy, corazon_bitmap, color);
+    }
+    else if (StrCmp(letter, L"\x2a6") == 0) {
+        draw_bitmap(gop, realx, realy, coin_bitmap, color);
     }
     else if (StrCmp(letter, L"-") == 0) {
         draw_bitmap(gop, realx, realy, subtrac_bitmap, color);
     }
     else if (StrCmp(letter, L"*") == 0) {
         draw_bitmap(gop, realx, realy, Multipy_bitmap, color);
+    }
+    else if (StrCmp(letter, L"^") == 0) {
+        draw_bitmap(gop, realx, realy, cosa_para_caritas_bitmap, color);
     }
     else if (StrCmp(letter, L"/") == 0) {
         draw_bitmap(gop, realx, realy, Diagonal_bitmap, color);
@@ -784,45 +905,37 @@ DrawScreen
             Pixels pixel = bufferscreen[i];
             if (pixel.x != NULL) {
                 EFI_GRAPHICS_OUTPUT_BLT_PIXEL color = pixel.color;
+                UINT16 xpos = pixel.x;
+                UINT16 ypos = pixel.y;
+
                 if (screenscroll < verticalResolution) {
                     if (SMODE == 0) {
-                        gop->Blt(gop, &color, EfiBltVideoFill, 0, 0, pixel.x, pixel.y - screenscroll - 5, 1, 1, 0);
+                        gop->Blt(gop, &color, EfiBltVideoFill, 0, 0, xpos, ypos - screenscroll - 5, 1, 1, 0);
                     }
                     else
                     {
-                        gop->Blt(gop, &color, EfiBltVideoFill, 0, 0, pixel.x, pixel.y + 2, 1, 1, 0);
+                        gop->Blt(gop, &color, EfiBltVideoFill, 0, 0, xpos, ypos + 2, 1, 1, 0);
                     }
                 } else {
-                    gop->Blt(gop, &color, EfiBltVideoFill, 0, 0, pixel.x, pixel.y + 2, 1, 1, 0);
+                    gop->Blt(gop, &color, EfiBltVideoFill, 0, 0, xpos, ypos + 2, 1, 1, 0);
                 }
             }
     }
 }
 
 void
-DrawProcess(
+DrawProcess
+(
     INTN process
 )
 {
 
-    // Verificar que el proceso y sus componentes no sean nulos
-    if (ALLPROCESS[process].WindowsState == NULL || ALLPROCESS[process].atributes == NULL || ALLPROCESS[process].Conoutpud == NULL) {
-        return; // Salir si alguna de las estructuras internas es nula
-    }
 
     // Verificación adicional de coordenadas y tamaños
     INTN x = ALLPROCESS[process].WindowsState->x;
     INTN y = ALLPROCESS[process].WindowsState->y;
     UINTN width = ALLPROCESS[process].horizontalResolution;
     UINTN height = ALLPROCESS[process].verticalResolution;
-
-    if (x < 0 || y < 0 || width <= 0 || height <= 0) {
-        return;
-    }
-
-    if (width <= 0 || height <= 0) {
-        return;
-    }
 
     EFI_GRAPHICS_OUTPUT_BLT_PIXEL borderColor = { 255, 255, 255, 0 }; // Color blanco para el borde
     // Dibujar el borde del proceso
@@ -882,16 +995,19 @@ printf
     EFI_GRAPHICS_OUTPUT_BLT_PIXEL color,
     int* x,
     int* y,
-    CHAR16* TEXT,
+    string* TEXT,
     EFI_GRAPHICS_OUTPUT_BLT_PIXEL bgcolor,
     int size,
     int process
-) {
+) 
+{
     int currentx = x;
     int currenty = y;
-    CHAR16 FullMessage[100];
+    string FullMessage[100];
 
-    for (UINTN TEXTLETTER = 0; TEXTLETTER < StrLen(TEXT); TEXTLETTER++) {
+    int Lenght = StrLen(TEXT);
+
+    for (UINTN TEXTLETTER = 0; TEXTLETTER < Lenght; TEXTLETTER++) {
         SPrint(FullMessage, sizeof(FullMessage), L"%c", TEXT[TEXTLETTER]);
         if (TEXT[TEXTLETTER] == L'\n') {
             currenty++; 
@@ -925,7 +1041,7 @@ CountOccurrencesf
 void
 _printc
 (
-    string* ar,
+    CHAR16* ar,
     bool update,
     ...
 )
@@ -933,11 +1049,12 @@ _printc
     string* a = ar;
 
     printf(gop, Conio->atributes->TEXT, cursorx, cursory, a, Conio->atributes->BG, Conio->atributes->size,-1);
-    cursorx = cursorx + StrLen(a) - CountOccurrencesf(a, L'\n');
-    if (CountOccurrencesf(a, L'\n') != 0) {
-        bufferlines += CountOccurrencesf(a, L'\n');
+    UINTN linescount = CountOccurrencesf(a, L'\n');
+    cursorx = cursorx + StrLen(a) - linescount;
+    if (linescount != 0) {
+        bufferlines += linescount;
         cursorx = 0;
-        cursory = cursory + CountOccurrencesf(a, L'\n');
+        cursory = cursory + linescount;
     }
     if (update == true) {
         DrawScreen();
@@ -947,7 +1064,7 @@ _printc
 void
 printc
 (
-    string* a
+    CHAR16* a
 )
 {
     _printc(a,true);
@@ -1022,7 +1139,8 @@ CHAR16* ReadLine(CHAR16* prompt) {
     return Buffer;
 }
 
-VOID ReadLineSerius
+VOID
+ReadLineSerius
 (
     OUT CHAR16* prompt
 )

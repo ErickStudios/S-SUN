@@ -31,16 +31,11 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #ifndef _KERNEL_DICTIONARIES_
 #define _KERNEL_DICTIONARIES_
 
-typedef enum {
-    DVchibi = 0,
-    DVnorm = 1,
-    DValchon = 2
-} DictionarieTypes;
-
 typedef struct {
     INT8* data;
-    DictionarieTypes type;
 } KernelDictionarie;
+
+#define CRT_DIC(a) KernelDictionarie* a;
 
 KernelDictionarie* DC_EAX;
 KernelDictionarie* DC_DEA;

@@ -28,6 +28,8 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #include <efi.h>
 #include <efilib.h>
 
+#include "KernelLanguaje.h"
+
 #ifndef _KERNEL_TEXTMODE_
 #include "KernelTextMode.h"
 #endif // !_KERNEL_TEXTMODE_
@@ -35,6 +37,8 @@ AUNQUE ESTOY UTILIZANDO GNU-EFI Y QUEMU
 #include "kernelStorage.h"
 #ifndef _KERNEL_DEFS_
 #define _KERNEL_DEFS_
+
+#include "int.h"
 
 EFI_HANDLE globalimagehandle;
 EFI_SYSTEM_TABLE* globalsystemtable;
@@ -54,8 +58,11 @@ EFI_SYSTEM_TABLE* globalsystemtable;
 #define true TRUE
 #define false FALSE
 
+#define DESTROY(X) X = NULL;
 #define GAME_LOOP while (true) 
 #define FOREVER while (true) 
+
+typedef UINT32 CHAR32;
 
 // StartsWish
 /**
@@ -73,10 +80,16 @@ Usage:
 bool
 StartsWish
 (
-    IN string *text,
-    IN string *text2
+    IN string *text1f,
+    IN string *text2f
 )
 {
+
+    // for the texts survive
+
+    CHAR16* text = *text1f;
+    CHAR16* text2 = *text2f;
+
     if (StrnCmp(text, text2, StrLen(text2)) == 0) { return true; }
     else { return false; }
 }
@@ -87,16 +100,11 @@ ConvertChar8ToChar16
     CHAR8 ch
 )
 {
-    if (ch <= 127) {
-        return (CHAR16)ch;
-    }
-    else {
-        return '?'; // Carácter no representable en CHAR8
-    }
+   return (CHAR16)ch;
 }
 
 // Función de conversión de CHAR16 a CHAR8
-string
+CHAR8
 ConvertChar16ToChar8
 (
     CHAR16 ch
@@ -119,7 +127,7 @@ Summary:
 
 typedef struct 
 _SYSTEM_COLOR_SCHEME {
-    PIXELCOL 
+    PIXELCOL
         backgroundcolor;
     PIXELCOL
         buttonscolor;
@@ -286,11 +294,12 @@ pr_warn
 {
     globalsystemtable->ConOut->SetAttribute(globalsystemtable->ConOut, EFI_GREEN | EFI_BACKGROUND_BLACK);
     SetScreenAtribute(0, brgreen);
-    printc(L"*** KERNEL_CALL -> -> : ");
+    printcu(TranslateWorck(&KernelCallPrefix_TRANSL, languajecu));
     SetScreenAtribute(0, orange);
     globalsystemtable->ConOut->SetAttribute(globalsystemtable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
-    printc(e);
-    printc(L"\n");
+    printcu(e);
+    printcu(L"\n");
+    DrawScreen();
 }
 
 // pr_msg
@@ -306,12 +315,12 @@ pr_msg
 {
     globalsystemtable->ConOut->SetAttribute(globalsystemtable->ConOut, EFI_GREEN | EFI_BACKGROUND_BLACK);
     SetScreenAtribute(0, brgreen);
-    printc(L"*** KERNEL_CALL -> -> : ");
+    printcu(TranslateWorck(&KernelCallPrefix_TRANSL, languajecu));
     SetScreenAtribute(0, white);
     globalsystemtable->ConOut->SetAttribute(globalsystemtable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
-    printc(e);
-    printc(L"\n");
-
+    printcu(e);
+    printcu(L"\n");
+    DrawScreen();
 }
 
 // pr_special
@@ -327,11 +336,13 @@ pr_special
 {
     globalsystemtable->ConOut->SetAttribute(globalsystemtable->ConOut, EFI_GREEN | EFI_BACKGROUND_BLACK);
     SetScreenAtribute(0, brgreen);
-    printc(L"*** KERNEL_CALL -> -> : ");
+    printcu(TranslateWorck(&KernelCallPrefix_TRANSL, languajecu));
     SetScreenAtribute(0, brblue);
     globalsystemtable->ConOut->SetAttribute(globalsystemtable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
-    printc(e);
-    printc(L"\n");
+    printcu(e);
+    printcu(L"\n");
+
+    DrawScreen();
 
 }
 
@@ -349,5 +360,43 @@ int_to_hex_string
     CHAR16 HexString[512];
     SPrint(HexString, sizeof(HexString), L"%x", number);
     return HexString;
+}
+
+CHAR16
+ACCES_TO_OTHER_CHARACTERS
+(
+
+)
+{
+    UINTN Event;
+    EFI_INPUT_KEY Key;
+
+    globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
+    globalsystemtable->ConIn->ReadKeyStroke(globalsystemtable->ConIn, &Key);
+    
+    if (Key.ScanCode == SCAN_ESC) {
+        return NULL;
+    }
+    else if (Key.UnicodeChar == L'1') {
+        return L'\x2a1';
+    }
+    else if (Key.UnicodeChar == L'2') {
+        return L'\x2a2';
+    }
+    else if (Key.UnicodeChar == L'3') {
+        return L'\x2a3';
+    }
+    else if (Key.UnicodeChar == L'4') {
+        return L'\x2a4';
+    }
+    else if (Key.UnicodeChar == L'5') {
+        return L'\x2a5';
+    }
+    else if (Key.UnicodeChar == L'6') {
+        return L'\x2a6';
+    }
+    else {
+        return NULL;
+    }
 }
 #endif // !_KERNEL_DEFS_

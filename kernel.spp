@@ -1,0 +1,62 @@
+# ---------------------------------
+#	S-SUN kernel
+# ---------------------------------
+
+# internal system file (kernel.sys)
+
+# ---------------------------------
+# POINTERS DEFINITION
+
+if def%VOID:EditMem VOID=0
+
+# ---------------------------------
+# KERNEL_MAIN
+
+echo Initializing Kernel
+
+# the kernel main
+call set_vars
+call oem_start
+call flush_vars
+call os_start
+
+# section to set the vars
+section
+set_vars
+if CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_0=d%VOID
+if CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_1=d%VOID
+if CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_2=d%VOID
+if CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_3=d%VOID
+if CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_4=d%VOID
+if CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_5=d%VOID
+if CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_6=d%VOID
+if CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_7=d%VOID
+if CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_8=d%VOID
+if CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_9=d%VOID
+ret
+
+# section to flush the vars
+section
+flush_vars
+FlushMEM KERNEL_RESERVED_0
+FlushMEM KERNEL_RESERVED_1
+FlushMEM KERNEL_RESERVED_2
+FlushMEM KERNEL_RESERVED_3
+FlushMEM KERNEL_RESERVED_4
+FlushMEM KERNEL_RESERVED_5
+FlushMEM KERNEL_RESERVED_6
+FlushMEM KERNEL_RESERVED_7
+FlushMEM KERNEL_RESERVED_8
+FlushMEM KERNEL_RESERVED_9
+ret
+
+# oem start section
+section
+oem_start
+EditMem S-SUN_Distributor=unfortunately no one :)
+ret
+
+# section to the os takes the absolute control MUAHAHAHAHA >:)
+section
+os_start
+end_script

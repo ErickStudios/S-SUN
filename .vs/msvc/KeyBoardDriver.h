@@ -1,6 +1,5 @@
 #include <efi.h>
 #include <efilib.h>
-#include <stdint.h>
 
 #ifndef _KEYBOARD_DRIVER_
 #define _KEYBOARD_DRIVER_
