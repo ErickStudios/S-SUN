@@ -7,55 +7,257 @@
       "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelStorage.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\KernelStorage.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\console\\KernelTextMode.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\console\\KernelTextMode.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\kernelMK.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\kernelMK.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelLanguaje.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\services\\KernelLanguaje.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelTextMode.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\KernelTextMode.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\KrnSpeaker.asm||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:KrnSpeaker.asm||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\KernelDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\moontool.bat||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\usr\\moontool.bat||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelMemory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\KernelMemory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\console\\TextModeMapBits.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\console\\TextModeMapBits.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\frameworck.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\frameworck.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelBinary.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\services\\KernelBinary.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelLanguaje.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\KernelLanguaje.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelConsole.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\services\\KernelConsole.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelStorage.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\services\\KernelStorage.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\programs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\usr\\programs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\drivers\\KernelAlgoritm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\drivers\\KernelAlgoritm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\ThridyP.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\usr\\ThridyP.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\sources\\KernelDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\sources\\KernelDef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\sources\\program_lt.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\usr\\sources\\program_lt.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\init.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|solutionrelative:gnu-efi\\lib\\init.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\sources\\KernelCore.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\sources\\KernelCore.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\print.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|solutionrelative:gnu-efi\\lib\\print.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\sources\\program_list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\usr\\sources\\program_list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\neptune_api\\frameworck.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:neptune_api\\frameworck.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\early\\bootloader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\early\\bootloader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\drivers\\KernelSpeaker.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\drivers\\KernelSpeaker.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\console\\STFPrint.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\console\\STFPrint.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\kernelMK.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\kernelMK.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\neptune_api\\sprites.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:neptune_api\\sprites.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\drivers\\KernelNet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\drivers\\KernelNet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\sources\\KernelErr.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\sources\\KernelErr.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelMemory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\services\\KernelMemory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelOem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:kernel\\services\\KernelOem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\debug.vbs||{A52A054C-5228-4819-B568-E5B8040801B5}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:debug.vbs||{A52A054C-5228-4819-B568-E5B8040801B5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\runtime\\rtstr.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|solutionrelative:gnu-efi\\lib\\runtime\\rtstr.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\runtime\\vm.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|solutionrelative:gnu-efi\\lib\\runtime\\vm.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KeyBoardDriver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\KeyBoardDriver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\Routime.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\Routime.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\int.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\int.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\KernelProcess.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\Lima.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\Lima.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelDictionaries.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\KernelDictionaries.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelCore.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DFA0BA98-D0BA-4176-9A34-B5BA6355B1DE}|.vs\\msvc\\uefi-simple.vcxproj|solutionrelative:.vs\\msvc\\KernelCore.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efidebug.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\efidebug.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\str.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|solutionrelative:gnu-efi\\lib\\str.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\event.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|solutionrelative:gnu-efi\\lib\\event.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\sread.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3135D563-9596-4584-9ED6-616ADEC52974}|.vs\\msvc\\gnu-efi.vcxproj|solutionrelative:gnu-efi\\lib\\sread.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efishell.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\efishell.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efirtlib.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\efirtlib.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\ia32\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\ia32\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\loongarch64\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\loongarch64\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efi_nii.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\efi_nii.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\x86_64\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\x86_64\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\mips64el\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\mips64el\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efiip.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\efiip.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\riscv64\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\riscv64\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\eficompiler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\eficompiler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\ia64\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\ia64\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\eficonex.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\eficonex.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\eficon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\eficon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efigpt.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\efigpt.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\x86_64\\efilibplat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\x86_64\\efilibplat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\libsmbios.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\libsmbios.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efiui.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\efiui.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared\\winpackagefamily.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\lib.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\lib.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\arm\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\arm\\efibind.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\programs\\Example1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.vs\\msvc\\programs\\Example1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efi.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\efi.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\programs\\Example1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:kernel\\usr\\programs\\Example1.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efilib.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:gnu-efi\\inc\\efilib.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -68,17 +270,8 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "kernelMK.h",
-              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\kernelMK.h",
-              "RelativeDocumentMoniker": ".vs\\msvc\\kernelMK.h",
-              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\kernelMK.h",
-              "RelativeToolTip": ".vs\\msvc\\kernelMK.h",
-              "ViewState": "AQIAAGkAAAAAAAAAAAAAADAAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T14:18:12.477Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
@@ -88,143 +281,771 @@
               "RelativeDocumentMoniker": "main.c",
               "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\main.c",
               "RelativeToolTip": "main.c",
-              "ViewState": "AQIAAKENAAAAAAAAAAAYwHAOAAAPAAAA",
+              "ViewState": "AQIAANUBAAAAAAAAAAAwwNgBAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2025-04-08T14:18:03.205Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "KernelMemory.h",
-              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelMemory.h",
-              "RelativeDocumentMoniker": ".vs\\msvc\\KernelMemory.h",
-              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelMemory.h",
-              "RelativeToolTip": ".vs\\msvc\\KernelMemory.h",
-              "ViewState": "AQIAAMcAAAAAAAAAAAAIwMoAAAAUAAAA",
+              "DocumentIndex": 10,
+              "Title": "KernelAlgoritm.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\drivers\\KernelAlgoritm.h",
+              "RelativeDocumentMoniker": "kernel\\drivers\\KernelAlgoritm.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\drivers\\KernelAlgoritm.h",
+              "RelativeToolTip": "kernel\\drivers\\KernelAlgoritm.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-11T20:17:21.949Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "KernelDef.h",
-              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelDef.h",
-              "RelativeDocumentMoniker": ".vs\\msvc\\KernelDef.h",
-              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelDef.h",
-              "RelativeToolTip": ".vs\\msvc\\KernelDef.h",
-              "ViewState": "AQIAAC4AAAAAAAAAAAApwDwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T18:38:45.807Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "KernelStorage.h",
-              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelStorage.h",
-              "RelativeDocumentMoniker": ".vs\\msvc\\KernelStorage.h",
-              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelStorage.h",
-              "RelativeToolTip": ".vs\\msvc\\KernelStorage.h",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAAEAAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T18:49:55.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T22:32:37.785Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "frameworck.h",
-              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\frameworck.h",
-              "RelativeDocumentMoniker": ".vs\\msvc\\frameworck.h",
-              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\frameworck.h",
-              "RelativeToolTip": ".vs\\msvc\\frameworck.h",
-              "ViewState": "AQIAAI4AAAAAAAAAAAArwJoAAAAMAAAA",
+              "Title": "KernelBinary.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelBinary.h",
+              "RelativeDocumentMoniker": "kernel\\services\\KernelBinary.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelBinary.h",
+              "RelativeToolTip": "kernel\\services\\KernelBinary.h",
+              "ViewState": "AQIAAJgBAAAAAAAAAAAAAKABAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-10T22:59:29.242Z",
+              "WhenOpened": "2025-05-17T22:29:43.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "KernelConsole.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelConsole.h",
+              "RelativeDocumentMoniker": "kernel\\services\\KernelConsole.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelConsole.h",
+              "RelativeToolTip": "kernel\\services\\KernelConsole.h",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAB4AAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:30:14.942Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TextModeMapBits.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\console\\TextModeMapBits.h",
+              "RelativeDocumentMoniker": "kernel\\console\\TextModeMapBits.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\console\\TextModeMapBits.h",
+              "RelativeToolTip": "kernel\\console\\TextModeMapBits.h",
+              "ViewState": "AQIAAKwCAAAAAAAAAAAowLwCAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:17:50.542Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "KernelTextMode.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\console\\KernelTextMode.h",
+              "RelativeDocumentMoniker": "kernel\\console\\KernelTextMode.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\console\\KernelTextMode.h",
+              "RelativeToolTip": "kernel\\console\\KernelTextMode.h",
+              "ViewState": "AQIAADgDAAAAAAAAAAAgwCADAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:13:24.835Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "KernelTextMode.h",
-              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelTextMode.h",
-              "RelativeDocumentMoniker": ".vs\\msvc\\KernelTextMode.h",
-              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelTextMode.h",
-              "RelativeToolTip": ".vs\\msvc\\KernelTextMode.h",
-              "ViewState": "AQIAAM0BAAAAAAAAAAAIwDkBAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T18:33:34.036Z",
-              "EditorCaption": ""
+              "Title": "KrnSpeaker.asm",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\KrnSpeaker.asm",
+              "RelativeDocumentMoniker": "KrnSpeaker.asm",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\KrnSpeaker.asm",
+              "RelativeToolTip": "KrnSpeaker.asm",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-04T21:41:21.107Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "KernelDictionaries.h",
-              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelDictionaries.h",
-              "RelativeDocumentMoniker": ".vs\\msvc\\KernelDictionaries.h",
-              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelDictionaries.h",
-              "RelativeToolTip": ".vs\\msvc\\KernelDictionaries.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-12T18:17:19.051Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "KernelLanguaje.h",
-              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelLanguaje.h",
-              "RelativeDocumentMoniker": ".vs\\msvc\\KernelLanguaje.h",
-              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelLanguaje.h",
-              "RelativeToolTip": ".vs\\msvc\\KernelLanguaje.h",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAADAAAAACAAAA",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelLanguaje.h",
+              "RelativeDocumentMoniker": "kernel\\services\\KernelLanguaje.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelLanguaje.h",
+              "RelativeToolTip": "kernel\\services\\KernelLanguaje.h",
+              "ViewState": "AQIAABUAAAAAAAAAAAAtwCEAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T22:28:39.773Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T22:33:13.313Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "moontool.bat",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\moontool.bat",
+              "RelativeDocumentMoniker": "kernel\\usr\\moontool.bat",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\moontool.bat",
+              "RelativeToolTip": "kernel\\usr\\moontool.bat",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAAAIEAAAAIAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE8SURBVDhPvZJNSwJRGIWfmcaQiH6DEdEHFBEFBe6KoKKoTf8iAlOmgdbipqBf0rKICAuDkj4WERgulL5o06gLx9S53lZJzrVQgh54uXDOuefdvPAXpJReqW00y4xkQAa8RmtoWb2dz4tLKw0vyACWGZaVSkWZ48SVPDpLKvr3scyw1BtWAPfpLIenl9i5PO92jv2DODd3KW\u002BsjlJg6DqOU2JidIjJsWGckoNhKLE6iuMKQbVaQdQENSFwq1VcV3hjdZSCcrmMBsTPk5wkLtA0SF7f4pQ\u002BvFFoVjA\u002BMsja8hw93V0IV/D69sLj8xOx3T1SD2lvXC34YnVhlvmZIIV8gei2Sd628fs7vbGfCwCKRQdDh/VQBJ\u002Bvo\u002Bnl/low0N/HVmiD4PQUO7EovQH15jTL3MyApjotIbNe5f/5BEiOoURWS5r0AAAAAElFTkSuQmCC",
+              "WhenOpened": "2025-05-17T22:43:17.12Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "programs.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\programs.h",
+              "RelativeDocumentMoniker": "kernel\\usr\\programs.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\programs.h",
+              "RelativeToolTip": "kernel\\usr\\programs.h",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:50:16.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ThridyP.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\ThridyP.h",
+              "RelativeDocumentMoniker": "kernel\\usr\\ThridyP.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\ThridyP.h",
+              "RelativeToolTip": "kernel\\usr\\ThridyP.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:48:21.411Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "KernelStorage.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelStorage.h",
+              "RelativeDocumentMoniker": "kernel\\services\\KernelStorage.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelStorage.h",
+              "RelativeToolTip": "kernel\\services\\KernelStorage.h",
+              "ViewState": "AQIAAB4DAAAAAAAAAAAAACUDAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:32:19.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "KernelDef.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\sources\\KernelDef.h",
+              "RelativeDocumentMoniker": "kernel\\sources\\KernelDef.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\sources\\KernelDef.h",
+              "RelativeToolTip": "kernel\\sources\\KernelDef.h",
+              "ViewState": "AQIAAJEAAAAAAAAAAAAAAB4AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:31:00.355Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "init.c",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\init.c",
+              "RelativeDocumentMoniker": "gnu-efi\\lib\\init.c",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\init.c",
+              "RelativeToolTip": "gnu-efi\\lib\\init.c",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAADUAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-04-20T21:43:05.1Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "efilib.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efilib.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\efilib.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efilib.h",
+              "RelativeToolTip": "gnu-efi\\inc\\efilib.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADkAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-26T01:43:17.741Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "Example1.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\programs\\Example1.h",
+              "RelativeDocumentMoniker": "kernel\\usr\\programs\\Example1.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\programs\\Example1.h",
+              "RelativeToolTip": "kernel\\usr\\programs\\Example1.h",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABcAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:48:09.048Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "program_list.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\sources\\program_list.h",
+              "RelativeDocumentMoniker": "kernel\\usr\\sources\\program_list.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\sources\\program_list.h",
+              "RelativeToolTip": "kernel\\usr\\sources\\program_list.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:47:08.327Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "program_lt.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\sources\\program_lt.h",
+              "RelativeDocumentMoniker": "kernel\\usr\\sources\\program_lt.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\usr\\sources\\program_lt.h",
+              "RelativeToolTip": "kernel\\usr\\sources\\program_lt.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:47:08.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "print.c",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\print.c",
+              "RelativeDocumentMoniker": "gnu-efi\\lib\\print.c",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\print.c",
+              "RelativeToolTip": "gnu-efi\\lib\\print.c",
+              "ViewState": "AQIAALUFAAAAAAAAAAAowMwFAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-04-19T19:37:31.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "KernelCore.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\sources\\KernelCore.h",
+              "RelativeDocumentMoniker": "kernel\\sources\\KernelCore.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\sources\\KernelCore.h",
+              "RelativeToolTip": "kernel\\sources\\KernelCore.h",
+              "ViewState": "AQIAAGgBAAAAAAAAAAAAAHQBAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:30:50.382Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "STFPrint.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\console\\STFPrint.h",
+              "RelativeDocumentMoniker": "kernel\\console\\STFPrint.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\console\\STFPrint.h",
+              "RelativeToolTip": "kernel\\console\\STFPrint.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:19:55.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "frameworck.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\neptune_api\\frameworck.h",
+              "RelativeDocumentMoniker": "neptune_api\\frameworck.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\neptune_api\\frameworck.h",
+              "RelativeToolTip": "neptune_api\\frameworck.h",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAAAF8AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:33:44.206Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "bootloader.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\early\\bootloader.h",
+              "RelativeDocumentMoniker": "kernel\\early\\bootloader.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\early\\bootloader.h",
+              "RelativeToolTip": "kernel\\early\\bootloader.h",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:34:49.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "KernelSpeaker.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\drivers\\KernelSpeaker.h",
+              "RelativeDocumentMoniker": "kernel\\drivers\\KernelSpeaker.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\drivers\\KernelSpeaker.h",
+              "RelativeToolTip": "kernel\\drivers\\KernelSpeaker.h",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:34:25.918Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "sprites.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\neptune_api\\sprites.h",
+              "RelativeDocumentMoniker": "neptune_api\\sprites.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\neptune_api\\sprites.h",
+              "RelativeToolTip": "neptune_api\\sprites.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:34:34.66Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "KernelNet.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\drivers\\KernelNet.h",
+              "RelativeDocumentMoniker": "kernel\\drivers\\KernelNet.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\drivers\\KernelNet.h",
+              "RelativeToolTip": "kernel\\drivers\\KernelNet.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:33:26.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "KernelErr.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\sources\\KernelErr.h",
+              "RelativeDocumentMoniker": "kernel\\sources\\KernelErr.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\sources\\KernelErr.h",
+              "RelativeToolTip": "kernel\\sources\\KernelErr.h",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:33:22.578Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "kernelMK.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\kernelMK.h",
+              "RelativeDocumentMoniker": "kernel\\kernelMK.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\kernelMK.h",
+              "RelativeToolTip": "kernel\\kernelMK.h",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:25:17.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "KernelMemory.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelMemory.h",
+              "RelativeDocumentMoniker": "kernel\\services\\KernelMemory.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelMemory.h",
+              "RelativeToolTip": "kernel\\services\\KernelMemory.h",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABQAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:31:54.938Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "KernelOem.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelOem.h",
+              "RelativeDocumentMoniker": "kernel\\services\\KernelOem.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\kernel\\services\\KernelOem.h",
+              "RelativeToolTip": "kernel\\services\\KernelOem.h",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T22:29:39.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "rtstr.c",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\runtime\\rtstr.c",
+              "RelativeDocumentMoniker": "gnu-efi\\lib\\runtime\\rtstr.c",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\runtime\\rtstr.c",
+              "RelativeToolTip": "gnu-efi\\lib\\runtime\\rtstr.c",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-05-16T23:28:38.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "efi.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efi.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\efi.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efi.h",
+              "RelativeToolTip": "gnu-efi\\inc\\efi.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-29T18:02:01.091Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "debug.vbs",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\debug.vbs",
+              "RelativeDocumentMoniker": "debug.vbs",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\debug.vbs",
+              "RelativeToolTip": "debug.vbs",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADQSURBVDhPpZJRDsIwDENfEAfrzebezDtZ\u002BFg7SleEgEjTujR2HGchKfkxtG3cASTF5XJBPNbZTiLeFiaZR769bSdw1vbv24CDBpYU1ApSUiu2s5SCJEaSE7A6z50l5ajirQLg7IyUpZSWEu384teVIDORgm0DKWz3m5jBzASSQrUeJF2BTSO5mA3z3GPuny0AqFaA0Ys\u002BzuctjM6fgMzlFp4dO9Eh\u002BQAPY3wcQVJISu97Nw0isJ3e9\u002BUKYW1i7zQ/L9EVhIaf5dsopRAr9m/iAT9Q1k796Ae/AAAAAElFTkSuQmCC",
+              "WhenOpened": "2025-05-16T23:04:01.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "vm.c",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\runtime\\vm.c",
+              "RelativeDocumentMoniker": "gnu-efi\\lib\\runtime\\vm.c",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\runtime\\vm.c",
+              "RelativeToolTip": "gnu-efi\\lib\\runtime\\vm.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-04-20T21:39:46.206Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "efibind.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\arm\\efibind.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\arm\\efibind.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\arm\\efibind.h",
+              "RelativeToolTip": "gnu-efi\\inc\\arm\\efibind.h",
+              "ViewState": "AQIAAJMAAAAAAAAAAAAAAA8AAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-17T00:13:51.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "Example1.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\programs\\Example1.h",
+              "RelativeDocumentMoniker": ".vs\\msvc\\programs\\Example1.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\programs\\Example1.h",
+              "RelativeToolTip": ".vs\\msvc\\programs\\Example1.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-16T21:25:56.199Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "KeyBoardDriver.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KeyBoardDriver.h",
+              "RelativeDocumentMoniker": ".vs\\msvc\\KeyBoardDriver.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KeyBoardDriver.h",
+              "RelativeToolTip": ".vs\\msvc\\KeyBoardDriver.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-15T15:23:56.216Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "corecrt.h",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt.h",
+              "ToolTip": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt.h",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt.h",
+              "ViewState": "AQIAAN4AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-08T14:57:32.665Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "efigpt.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efigpt.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\efigpt.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efigpt.h",
+              "RelativeToolTip": "gnu-efi\\inc\\efigpt.h",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-06T22:22:16.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "efilibplat.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\x86_64\\efilibplat.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\x86_64\\efilibplat.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\x86_64\\efilibplat.h",
+              "RelativeToolTip": "gnu-efi\\inc\\x86_64\\efilibplat.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-26T01:43:59.476Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "libsmbios.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\libsmbios.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\libsmbios.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\libsmbios.h",
+              "RelativeToolTip": "gnu-efi\\inc\\libsmbios.h",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-15T21:31:56.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "efiui.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efiui.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\efiui.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efiui.h",
+              "RelativeToolTip": "gnu-efi\\inc\\efiui.h",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-15T21:32:41.009Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "winpackagefamily.h",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared\\winpackagefamily.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared\\winpackagefamily.h",
+              "ToolTip": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared\\winpackagefamily.h",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared\\winpackagefamily.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-15T21:37:12.946Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "lib.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\lib.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\lib.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\lib.h",
+              "RelativeToolTip": "gnu-efi\\inc\\lib.h",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-05T19:54:39.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Routime.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\Routime.h",
+              "RelativeDocumentMoniker": ".vs\\msvc\\Routime.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\Routime.h",
+              "RelativeToolTip": ".vs\\msvc\\Routime.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-20T21:51:37.604Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "eficon.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\eficon.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\eficon.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\eficon.h",
+              "RelativeToolTip": "gnu-efi\\inc\\eficon.h",
+              "ViewState": "AQIAAOgAAAAAAAAAAAD4v/MAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-28T21:53:42.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
               "Title": "int.h",
               "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\int.h",
               "RelativeDocumentMoniker": ".vs\\msvc\\int.h",
               "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\int.h",
               "RelativeToolTip": ".vs\\msvc\\int.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABIAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-13T18:47:30.139Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-13T18:47:30.139Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "KernelProcess.h",
-              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelProcess.h",
-              "RelativeDocumentMoniker": ".vs\\msvc\\KernelProcess.h",
-              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelProcess.h",
-              "RelativeToolTip": ".vs\\msvc\\KernelProcess.h",
-              "ViewState": "AQIAAHsAAAAAAAAAAAAawDAAAAAOAAAA",
+              "DocumentIndex": 34,
+              "Title": "Lima.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\Lima.h",
+              "RelativeDocumentMoniker": ".vs\\msvc\\Lima.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\Lima.h",
+              "RelativeToolTip": ".vs\\msvc\\Lima.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKkAAABMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T19:54:35.552Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T17:38:59.566Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "KernelCore.h",
-              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelCore.h",
-              "RelativeDocumentMoniker": ".vs\\msvc\\KernelCore.h",
-              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\.vs\\msvc\\KernelCore.h",
-              "RelativeToolTip": ".vs\\msvc\\KernelCore.h",
-              "ViewState": "AQIAAE0BAAAAAAAAAAAAwFQBAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T19:58:22.82Z"
+              "DocumentIndex": 35,
+              "Title": "Microsoft.CppCommon.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets",
+              "ViewState": "AQIAAJQAAAAAAAAAAADgv6AAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-05-02T01:24:04.197Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 37,
+              "Title": "str.c",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\str.c",
+              "RelativeDocumentMoniker": "gnu-efi\\lib\\str.c",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\str.c",
+              "RelativeToolTip": "gnu-efi\\lib\\str.c",
+              "ViewState": "AQIAABAAAAAAAAAAAADgvxsAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-04-20T21:39:46.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "eficonex.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\eficonex.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\eficonex.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\eficonex.h",
+              "RelativeToolTip": "gnu-efi\\inc\\eficonex.h",
+              "ViewState": "AQIAAFwAAAAAAAAAAADgv2cAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-08T18:52:33.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "efidebug.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efidebug.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\efidebug.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efidebug.h",
+              "RelativeToolTip": "gnu-efi\\inc\\efidebug.h",
+              "ViewState": "AQIAAFgCAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-06T22:21:09.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "efiip.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efiip.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\efiip.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efiip.h",
+              "RelativeToolTip": "gnu-efi\\inc\\efiip.h",
+              "ViewState": "AQIAAOcAAAAAAAAAAAAAAPMAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-06T22:22:33.333Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "efibind.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\riscv64\\efibind.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\riscv64\\efibind.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\riscv64\\efibind.h",
+              "RelativeToolTip": "gnu-efi\\inc\\riscv64\\efibind.h",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-01T22:03:33.321Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "eficompiler.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\eficompiler.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\eficompiler.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\eficompiler.h",
+              "RelativeToolTip": "gnu-efi\\inc\\eficompiler.h",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAADwAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-23T22:36:56.035Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "efibind.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\ia64\\efibind.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\ia64\\efibind.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\ia64\\efibind.h",
+              "RelativeToolTip": "gnu-efi\\inc\\ia64\\efibind.h",
+              "ViewState": "AQIAANIAAAAAAAAAAAAAANsAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-28T21:50:56.161Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "efibind.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\mips64el\\efibind.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\mips64el\\efibind.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\mips64el\\efibind.h",
+              "RelativeToolTip": "gnu-efi\\inc\\mips64el\\efibind.h",
+              "ViewState": "AQIAAJQAAAAAAAAAAAAmwKgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-01T22:03:53.909Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "efibind.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\x86_64\\efibind.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\x86_64\\efibind.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\x86_64\\efibind.h",
+              "RelativeToolTip": "gnu-efi\\inc\\x86_64\\efibind.h",
+              "ViewState": "AQIAAIoAAAAAAAAAAAAAAJIAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-05-01T18:42:58.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "efi_nii.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efi_nii.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\efi_nii.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efi_nii.h",
+              "RelativeToolTip": "gnu-efi\\inc\\efi_nii.h",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAB0AAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-23T22:36:24.272Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "efibind.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\loongarch64\\efibind.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\loongarch64\\efibind.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\loongarch64\\efibind.h",
+              "RelativeToolTip": "gnu-efi\\inc\\loongarch64\\efibind.h",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-28T21:41:27.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "efibind.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\ia32\\efibind.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\ia32\\efibind.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\ia32\\efibind.h",
+              "RelativeToolTip": "gnu-efi\\inc\\ia32\\efibind.h",
+              "ViewState": "AQIAABQBAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-28T21:47:55.308Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "efirtlib.h",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efirtlib.h",
+              "RelativeDocumentMoniker": "gnu-efi\\inc\\efirtlib.h",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efirtlib.h",
+              "RelativeToolTip": "gnu-efi\\inc\\efirtlib.h",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-28T22:13:15.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "event.c",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\event.c",
+              "RelativeDocumentMoniker": "gnu-efi\\lib\\event.c",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\event.c",
+              "RelativeToolTip": "gnu-efi\\lib\\event.c",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAQwHcAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-04-20T21:45:18.819Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "sread.c",
+              "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\sread.c",
+              "RelativeDocumentMoniker": "gnu-efi\\lib\\sread.c",
+              "ToolTip": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\lib\\sread.c",
+              "RelativeToolTip": "gnu-efi\\lib\\sread.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2025-04-20T21:40:42.539Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
               "Title": "efishell.h",
               "DocumentMoniker": "C:\\Users\\erick\\OneDrive\\ErickCraftStudiosMgrChannel\\Saved Proyects\\S-SUNEFI\\S-SUN\\gnu-efi\\inc\\efishell.h",
               "RelativeDocumentMoniker": "gnu-efi\\inc\\efishell.h",
@@ -233,19 +1054,6 @@
               "ViewState": "AQIAAKABAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-04-08T14:58:17.765Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "corecrt.h",
-              "DocumentMoniker": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt.h",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt.h",
-              "ToolTip": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt.h",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\corecrt.h",
-              "ViewState": "AQIAAN4AAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T14:57:32.665Z",
-              "EditorCaption": ""
             }
           ]
         },

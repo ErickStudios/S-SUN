@@ -24,74 +24,119 @@
     <Filter Include="Header Files\LIBB">
       <UniqueIdentifier>{854eaa47-adc6-476b-9901-ab8c4f3e5f21}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\usrs">
+      <UniqueIdentifier>{bf40fdf5-7d54-47b9-9500-41d19f3ccf83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\debug.vbs">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\KrnSpeaker.asm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\..\kernel\usr\moontool.bat">
+      <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="KernelAlgoritm.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClCompile>
-    <ClCompile Include="KernelAlgoritm.c">
-      <Filter>Source Files\kernelImp</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="kernelMK.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="KernelConsole.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="KernelCore.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="KernelDef.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="KernelMemory.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="KernelTextMode.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="TextModeMapBits.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="KernelStorage.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="KernelProcess.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="STFPrint.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
     <ClInclude Include="KeyBoardDriver.h">
       <Filter>Header Files\Dirvers</Filter>
     </ClInclude>
-    <ClInclude Include="KernelDictionaries.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="KernelLanguaje.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="KernelEarly.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="KernelErr.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="frameworck.h">
-      <Filter>Header Files\kernel</Filter>
-    </ClInclude>
     <ClInclude Include="int.h">
       <Filter>Header Files\LIBB</Filter>
+    </ClInclude>
+    <ClInclude Include="Routime.h">
+      <Filter>Header Files\LIBB</Filter>
+    </ClInclude>
+    <ClInclude Include="Lima.h">
+      <Filter>Header Files\LIBB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\neptune_api\frameworck.h">
+      <Filter>Header Files\LIBB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\neptune_api\sprites.h">
+      <Filter>Header Files\LIBB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\console\KernelTextMode.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\console\STFPrint.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\console\TextModeMapBits.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\drivers\KernelAlgoritm.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\drivers\KernelNet.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\drivers\KernelSpeaker.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\early\bootloader.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\services\KernelBinary.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\services\KernelConsole.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\services\KernelLanguaje.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\services\KernelMemory.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\services\KernelOem.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\services\KernelProcess.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\services\KernelStorage.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\sources\KernelCore.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\sources\KernelDef.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\sources\KernelDictionaries.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\sources\KernelEarly.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\sources\KernelErr.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\kernelMK.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\licensesafety.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\usr\sources\program_list.h">
+      <Filter>Header Files\usrs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\usr\sources\program_lt.h">
+      <Filter>Header Files\usrs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\usr\programs.h">
+      <Filter>Header Files\usrs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\usr\ThridyP.h">
+      <Filter>Header Files\usrs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

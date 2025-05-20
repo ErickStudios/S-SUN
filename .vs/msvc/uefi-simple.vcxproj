@@ -103,6 +103,7 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)x64\$(Configuration)\</OutDir>
     <IntDir>$(OutDir)$(ProjectName)\</IntDir>
+    <CustomBuildBeforeTargets />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetExt>.efi</TargetExt>
@@ -182,6 +183,16 @@
       <OptimizeReferences>true</OptimizeReferences>
       <RandomizedBaseAddress />
     </Link>
+    <CustomBuildStep>
+      <Command>.\ml64 /c KernelSpeaker.asm</Command>
+    </CustomBuildStep>
+    <PreBuildEvent>
+      <Command>REM "$(LocalDebuggerWorkingDirectory)ml64.exe" /c "$(LocalDebuggerWorkingDirectory)KrnSpeaker.asm"</Command>
+    </PreBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -234,7 +245,7 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>gnu-efi.lib;libcmtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gnu-efi.lib;libcmtd.lib;music.asm;%(AdditionalDependencies)</AdditionalDependencies>
       <DataExecutionPrevention>false</DataExecutionPrevention>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <EntryPointSymbol>efi_main</EntryPointSymbol>
@@ -388,30 +399,44 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\main.c" />
-    <ClCompile Include="KernelAlgoritm.c" />
-    <ClCompile Include="KernelAlgoritm.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\debug.vbs" />
+    <None Include="..\..\kernel\usr\moontool.bat" />
+    <None Include="..\..\KrnSpeaker.asm" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="frameworck.h" />
+    <ClInclude Include="..\..\kernel\console\KernelTextMode.h" />
+    <ClInclude Include="..\..\kernel\console\STFPrint.h" />
+    <ClInclude Include="..\..\kernel\console\TextModeMapBits.h" />
+    <ClInclude Include="..\..\kernel\drivers\KernelAlgoritm.h" />
+    <ClInclude Include="..\..\kernel\drivers\KernelNet.h" />
+    <ClInclude Include="..\..\kernel\drivers\KernelSpeaker.h" />
+    <ClInclude Include="..\..\kernel\early\bootloader.h" />
+    <ClInclude Include="..\..\kernel\kernelMK.h" />
+    <ClInclude Include="..\..\kernel\licensesafety.h" />
+    <ClInclude Include="..\..\kernel\services\KernelBinary.h" />
+    <ClInclude Include="..\..\kernel\services\KernelConsole.h" />
+    <ClInclude Include="..\..\kernel\services\KernelLanguaje.h" />
+    <ClInclude Include="..\..\kernel\services\KernelMemory.h" />
+    <ClInclude Include="..\..\kernel\services\KernelOem.h" />
+    <ClInclude Include="..\..\kernel\services\KernelProcess.h" />
+    <ClInclude Include="..\..\kernel\services\KernelStorage.h" />
+    <ClInclude Include="..\..\kernel\sources\KernelCore.h" />
+    <ClInclude Include="..\..\kernel\sources\KernelDef.h" />
+    <ClInclude Include="..\..\kernel\sources\KernelDictionaries.h" />
+    <ClInclude Include="..\..\kernel\sources\KernelEarly.h" />
+    <ClInclude Include="..\..\kernel\sources\KernelErr.h" />
+    <ClInclude Include="..\..\kernel\usr\programs.h" />
+    <ClInclude Include="..\..\kernel\usr\sources\program_list.h" />
+    <ClInclude Include="..\..\kernel\usr\sources\program_lt.h" />
+    <ClInclude Include="..\..\kernel\usr\ThridyP.h" />
+    <ClInclude Include="..\..\neptune_api\frameworck.h" />
+    <ClInclude Include="..\..\neptune_api\sprites.h" />
     <ClInclude Include="int.h" />
-    <ClInclude Include="KernelConsole.h" />
-    <ClInclude Include="KernelCore.h" />
-    <ClInclude Include="KernelDef.h" />
-    <ClInclude Include="KernelDictionaries.h" />
-    <ClInclude Include="KernelEarly.h" />
-    <ClInclude Include="KernelErr.h" />
-    <ClInclude Include="KernelLanguaje.h" />
-    <ClInclude Include="KernelMemory.h" />
-    <ClInclude Include="kernelMK.h" />
-    <ClInclude Include="KernelProcess.h" />
-    <ClInclude Include="KernelStorage.h" />
-    <ClInclude Include="KernelTextMode.h" />
     <ClInclude Include="KeyBoardDriver.h" />
-    <ClInclude Include="STFPrint.h" />
-    <ClInclude Include="TextModeMapBits.h" />
+    <ClInclude Include="Lima.h" />
+    <ClInclude Include="Routime.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,34 @@
+# prepare the variables
+EditMem FRWindowTitle=Test
+EditMem FRWindowX=0
+EditMem FRWindowY=0
+EditMem FRWindowSX=5
+EditMem FRWindowSY=5
+
+section
+main
+EditMem key=&key_and_wait
+
+# restore the screen to the state before of the execution of the script
+restore_screen
+
+if cmp&%key=ESC:exit
+
+# move the window if you press the sandart window control key
+if cmp&%key=F2:EditMem movew=1
+
+# if you move the window read the key
+if cmp&%movew=1:EditMem key=&key_and_wait
+
+# if the window moves process the key
+if cmp&%movew=1:if cmp&%key=up arrow:EditMem FRWindowY=opr&%FRWindowY-1
+if cmp&%movew=1:if cmp&%key=down arrow:EditMem FRWindowY=opr&%FRWindowY+1
+if cmp&%movew=1:if cmp&%key=left arrow:EditMem FRWindowX=opr&%FRWindowX-1
+if cmp&%movew=1:if cmp&%key=right arrow:EditMem FRWindowX=opr&%FRWindowX+1
+
+EditMem movew=0
+
+# draw the window
+int 1f
+
+call main

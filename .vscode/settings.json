@@ -4,6 +4,8 @@
         "efi.h": "c",
         "efilib.h": "c",
         "libsmbios.h": "c",
-        "kernelmk.h": "c"
+        "kernelmk.h": "c",
+        "stddef.h": "c",
+        "corecrt.h": "c"
     }
 }

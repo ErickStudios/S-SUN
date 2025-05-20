@@ -5,6 +5,8 @@ ARCH            = x64
 # 12 = EFI runtime driver
 SUBSYSTEM       = 10
 
+# shell ".\ml64 /c KernelSpeaker.asm"
+
 # Try to auto-detect the target ARCH
 ifeq ($(shell uname -o),Msys)
   IS_MINGW32    = $(findstring MINGW32,$(shell uname -s))

@@ -9,7 +9,7 @@
 ' Modify these variables as needed
 QEMU_PATH  = "C:\Program Files\qemu\"
 ' You can add something like "-S -gdb tcp:127.0.0.1:1234" if you plan to use gdb to debug
-QEMU_OPTS  = "-net none -monitor none -parallel none"
+QEMU_OPTS="-net nic -net user -monitor none -parallel none -machine q35 -device intel-hda -device hda-duplex -m 512M -usb -device usb-tablet"
 ' Set to True if you need to download a file that might be cached locally
 NO_CACHE   = False
 
@@ -30,7 +30,7 @@ ElseIf (TARGET = "ARM") Then
   UEFI_EXT  = "arm"
   QEMU_ARCH = "arm"
   FW_BASE   = "QEMU_EFI"
-  BIOS_OPT  = "-bios"
+  BIOS_OPT  = "-bios OVMF.fd"
   ' You can also add '-device VGA' to the options below, to get graphics output.
   ' But if you do, be mindful that the keyboard input may not work... :(
   QEMU_OPTS = "-M virt -cpu cortex-a15 " & QEMU_OPTS
