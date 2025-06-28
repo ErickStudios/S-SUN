@@ -1,5 +1,4 @@
-#include <efi.h>
-#include <efilib.h>
+#include "../include/motor.h"
 
 #ifndef _ERICK_MAP_BITS_
 #define _ERICK_MAP_BITS_

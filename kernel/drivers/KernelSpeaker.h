@@ -22,6 +22,7 @@ Abstract:
 
 #include <efi.h>
 #include <efilib.h>
+#include "../include/motor.h"
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // prototypes
@@ -30,7 +31,7 @@ Abstract:
 // ----------------------------------------------------------------------------------------------
 // constants
 
-#define SPK_IN_ASM                          0
+#define SPK_IN_ASM                          1
 #define beep_register                       0x300
 #define prototype
 
@@ -52,13 +53,14 @@ prototype EFI_STATUS
 IsSoundCardReady
 (
 );
-
+#if !SPK_IN_ASM
 prototype EFI_STATUS
 PlaySound
 (
     UINT32                                  frequency,
     UINT32                                  duration
 );
+#endif
 
 // ----------------------------------------------------------------------------------------------
 // END prototypes
@@ -69,7 +71,50 @@ PlaySound
 // ----------------------------------------------------------------------------------------------
 
 #if SPK_IN_ASM
-extern void PlaySound();
+extern VOID SetFrequency(
+    u16 frequency
+);
+extern VOID EnableSpeaker(
+);
+extern VOID DisableSpeaker(
+);
+extern VOID SetChannelMode(
+    u8 mode
+);
+
+VOID
+PlaySound
+(
+    u16 frequency,
+    u32 duration
+)
+{
+    //
+    // configure speaker
+    //
+
+    EnableSpeaker();
+
+    //
+    // configure frequency
+    //
+
+    SetFrequency(
+        frequency
+    );
+
+    //
+    // waiting
+    //
+    
+    gBS->Stall(duration);
+
+    //
+    // i finish
+    //
+
+    DisableSpeaker();
+}
 #endif
 
 /*

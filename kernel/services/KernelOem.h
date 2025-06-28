@@ -42,15 +42,15 @@ Abstract:
 // OEM tools
 
 #define IN_CONFLIC_WITH_THE_OEM_VENDORS 0
-										// set to 1 if a bad thing ocurred
-										// debido a que soy un teenager esto me sirve
-										// entonces si me hechan de ahi pues...bueno
-										// sin ofender claro , fabricantes oem...
-										// 
-										// por favor terceros, si me hecharon los de oem
-										// no distribuyan versiones sin la restrinccion
-										// si S-SUN pasa momentos dificiles 
-
+										// Set to 1 if a bad thing occurred
+										// As a teenager, this helps me organize things.
+										// If I ever lose access to OEM support, well... things happen.
+										// No offense to OEM manufacturers.
+										//
+										// Third parties: If I lose OEM support, consider keeping compatibility
+										// with the original system to ensure stability, but you are free to modify
+										// and distribute as per GPL terms.
+										
 // ---------------------------------------------------------------------------------------------
 // OEM compiler
 
@@ -65,7 +65,7 @@ Abstract:
 #define REALESE (IS_A_STABLE_COMERCIAL_VERSION || IS_OEM_FOR_MANUFACTURE_COMPILATION)
 
 #if REALESE
-#pragma warm("WARNNING : this is a stable build , if you find errors dont publish this")
+#pragma warm("WARNNING : this is a stable build , if you find errors i recommended that your fix it before")
 #endif
 
 // ---------------------------------------------------------------------------------------------

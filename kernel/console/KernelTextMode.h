@@ -16,10 +16,13 @@ Abstract:
 
 --------------------------------------------------------------------------------------------------*/
 
-#include <efi.h>
-#include <efilib.h>
+#include "../include/motor.h"
+
 #include "../services/KernelProcess.h"
 #include "STFPrint.h"
+#include "../drivers/KernelNootebockDef.h"
+
+#include "../services/KernelPanicDefs.h"
 
 // ITS MY FONT :)
 #include "TextModeMapBits.h"
@@ -314,6 +317,12 @@ ReadLineSeriusWorck
 (
 );
 
+prototype bool_t
+YNConfirmation
+(
+    CHAR16*                                 ConfirmationMsg
+);
+
 // ----------------------------------------------------------------------------------------------
 // END prototypes
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -546,10 +555,32 @@ draw_pixel
         }
     }
 
+    if (
+        IsLactuc
+        ) {
+        EFI_INPUT_KEY Key;
+
+        gST->ConIn->ReadKeyStroke(gST->ConIn, &Key);
+
+        if (
+            Key.ScanCode == SCAN_F2
+            )
+        {
+            gBS->Stall(10000);
+            gST->ConIn->ReadKeyStroke(gST->ConIn, &Key);
+            if (
+                Key.UnicodeChar == L'N' || Key.UnicodeChar == L'n'
+                )
+            {
+                LaptopFunctionsBr();
+            }
+        }
+    }
+
     if (!pixel_found) {
         // Crear un nuevo píxel
         if (pixels >= 999999) {
-            Print(L"you cant write in a buffer that is filled");
+            ShowPanic(BUFFER_PIXEL_TRUNCATION);
             return;
         }
 
@@ -1195,7 +1226,7 @@ DrawScreen
             SMODE == 0 // if in textmode
             ) {
             // draw the bg
-            DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, Conio->atributes->BG);
+            DrawRectangle(gop, 0, 0, horizontalResolution, verticalResolution, PixelPlusBrightNess(Conio->atributes->BG));
         }
     }
         for (
@@ -1208,7 +1239,7 @@ DrawScreen
                 true
                 ) {
                 // set the color
-                EFI_GRAPHICS_OUTPUT_BLT_PIXEL color = pixel.color;
+                EFI_GRAPHICS_OUTPUT_BLT_PIXEL color = PixelPlusBrightNess(pixel.color);
 
                 // set the pos of the pixel
                 INTN xpos = pixel.x;
@@ -1626,6 +1657,100 @@ ReadLineSeriusWorck
     return result;
 }
 
+bool_t
+YNConfirmation
+(
+    CHAR16* ConfirmationMsg
+)
+{
+    bool_t theUserIsXd = 1;
+    bool_t returned = 0;
+
+    u8 angry_level = 0;
+
+    while (theUserIsXd)
+    {
+        EFI_INPUT_KEY Key;
+
+
+        SetScreenAtribute(0, brblue);
+        if (
+            angry_level > 5
+            ) {
+            SetScreenAtribute(0, red);
+        }
+
+        if (
+            angry_level > 6
+            ) {
+            SetScreenAtribute(0, darkred);
+            printc(L"AHHHHHHHHH");
+            gBS->Stall(100000);
+
+            ShowPanic(UNKNOW_ERROR);
+
+            while (true);
+        }
+
+        if (
+            angry_level > 5
+            ) {
+            printc(L"YOU , CHILDREN OF YOUR MOM , I SAYING YOU ");
+        }
+        printc(ConfirmationMsg);
+
+        if (
+            angry_level > 3
+            ) {
+            printc(L"!");
+        }
+        if (
+            angry_level > 5
+            ) {
+            printc(L"!!!");
+        }
+
+        SetScreenAtribute(0, brcyan);
+
+        printc(L"Y/N ");
+        SetScreenAtribute(0, brgreen);
+        gBS->WaitForEvent(1, &gST->ConIn->WaitForKey, 1);
+
+        gST->ConIn->ReadKeyStroke(gST->ConIn, &Key);
+
+        CHAR16 OK[2];
+
+        OK[0] = Key.UnicodeChar;
+
+        OK[1] = 0;
+
+        printc(OK);
+
+        theUserIsXd = 0;
+        if (
+            Key.UnicodeChar == L'y' || Key.UnicodeChar == L'Y' ||
+            Key.UnicodeChar == L'n' || Key.UnicodeChar == L'N' ||
+            Key.UnicodeChar == CHAR_CARRIAGE_RETURN || Key.ScanCode == SCAN_ESC
+            )
+        {
+            if (
+                Key.UnicodeChar == L'y' || Key.UnicodeChar == L'Y' || Key.UnicodeChar == CHAR_CARRIAGE_RETURN
+                )
+            {
+                returned = 1;
+            }
+            else {
+                returned = 0;
+            }
+            printc(L"\n");
+        }
+        else {
+            theUserIsXd = 1;
+            angry_level++;
+            printc(L"\n");
+        }
+    }
+}
 // ----------------------------------------------------------------------------------------------
 // END functions
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

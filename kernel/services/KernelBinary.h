@@ -24,7 +24,9 @@ Abstract:
 //
 // assembly opcodes
 // 
-// !WARNING MODS MAKER: dont edit this to stay the compatibility with the original system
+// Note: edit this opcodes can break the compatibility with the "vanila" S-SUN , i recommanded you
+// that the new opcodes make it a interruption or put a reference that the asm programs for your mod
+// need to be assembled again
 // 
 
 // mov
@@ -81,32 +83,158 @@ Abstract:
 // ----------------------------------------------------------------------------------------------
 // constants
 
+//
+// the begimer
+//
 #define mov_instruction							1
+
+//
+// math
+//
+
 #define add_instruction							2
 #define sub_instruction							3
 #define div_instruction							4
 #define imul_instruction						5
+
+//
+// basic functions
+//
+
 #define incr_instruction						6
 #define decr_instruction						7
 #define jump_instruction						8
+
+//
+// inprecindible
+//
+
 #define ret_instruction							9
 #define section_instruction						10
 #define interruption_instruction				11
+
+//
+// jumps instructions
+//
+
 #define jq_instruction							12
 #define jg_instruction							13
 #define jng_instruction							14
 #define jnq_instruction							15
-#define safetynow_for_up						16
+
+//
+// for interact with extern program system parts
+//
+
+#define extern_ptr_write_instruction			16
+#define extern_ptr_get_instruction				17
+
+//
+// other functions
+//
+#define lea_instruction							18
+#define nop_instruction							19
+
+#define safetynow_for_up						20
 #define NULL_PARAM								safetynow_for_up
+
+//
+// asm keywords
+//
+
+#define asm_comment								L';'
+
 typedef CHAR16									_BINARY;
+
+typedef struct {
+	CHAR16										Vendor[20];
+	CHAR16										Name[20];
+
+	double										version;
+
+	_BINARY										AssemblyCode[512];
+}
+Driver32, Device32
+;
+
+typedef struct {
+	CHAR16										registeru_from;
+	CHAR16										count_used_registres;
+
+	VOID(*Function)();
+} custom_sams_interruption;
+
+custom_sams_interruption CustomInterruptions[100];
 
 // ----------------------------------------------------------------------------------------------
 // variables
 
-prototype __int16								memory_acces[128]; // 128 vars
+prototype __int16								memory_acces[2000]; // 2000 vars
 
 // ----------------------------------------------------------------------------------------------
 // functions
+
+//
+// assambler functions
+//
+
+prototype void
+sasm_mov
+(
+	CHAR16										Register,
+	CHAR16										NewValue
+);
+
+prototype void
+sasm_lea
+(
+	CHAR16										Register,
+	CHAR16										Register2
+);
+
+prototype void
+sasm_add
+(
+	CHAR16										Register,
+	CHAR16										NewValue
+);
+
+prototype void
+sasm_sub
+(
+	CHAR16										Register,
+	CHAR16										NewValue
+);
+
+prototype void
+sasm_div
+(
+	CHAR16										Register,
+	CHAR16										NewValue
+);
+
+prototype void
+sasm_mul
+(
+	CHAR16										Register,
+	CHAR16										NewValue
+);
+
+prototype BOOLEAN
+sasm_cmp
+(
+	CHAR16										Register,
+	CHAR16										Value
+);
+
+prototype VOID
+sasm_cint_dec
+(
+	CHAR16										id,
+	CHAR16										registeru_from,
+	CHAR16										count_used_registres,
+	VOID										(*Function)()
+);
 
 prototype void
 BinaryEx
@@ -139,8 +267,256 @@ BuildAsmCode
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// assembler
+// ----------------------------------------------------------------------------------------------
+
+typedef struct {
+	CHAR16 opcodecompiled;
+
+	CHAR16 p1compiled;
+	CHAR16 p2compiled;
+} SASM_LEXER_READY_FOR_OBJETIZATION;
+
+typedef struct
+{
+	CHAR16* KeyWord;
+	CHAR16 OpcodeInBinary;
+
+	UINTN attributesnumber;
+} SASM_LEXER_KEYWORD;
+
+SASM_LEXER_KEYWORD SasmKeywords[] = {
+	{ L"mov" , mov_instruction , 2},
+	{ L"add" , add_instruction , 2},
+	{ L"sub" , sub_instruction , 2},
+	{ L"mul" , imul_instruction , 2},
+	{ L"div" , div_instruction , 2},
+	{ L"inc" , incr_instruction , 1},
+	{ L"dec" , decr_instruction , 1},
+	{ L"jmp" , jump_instruction , 1},
+	{ L"lea" , lea_instruction , 1},	
+	{ L"label" , section_instruction , 1},
+	{ NULL , NULL }
+};
+
+UINT16
+AsmSyntax
+(
+	CHAR16* s
+)
+{
+	if (
+		s[0] == L'\'' && s[1] == L'\\' && s[2] == L'n' && s[3] == L'\''
+		)
+	{
+		return L'\n' + safetynow_for_up;
+	}
+	if (
+		s[0] == L'\'' && s[1] == L'\\' && s[2] == L'0' && s[3] == L'\''
+		)
+	{
+		return L'\0' + safetynow_for_up;
+	}
+	if (
+		s[0] == L'\'' && s[2] == L'\''
+		)
+	{
+		return s[1] + safetynow_for_up;
+	}
+	else {
+		return Atoi(s) + safetynow_for_up;
+	}
+}
+
+SASM_LEXER_READY_FOR_OBJETIZATION
+SolveSasmLine
+(
+	CHAR16* Line
+)
+{
+	UINTN cnt = 0;
+	SASM_LEXER_READY_FOR_OBJETIZATION outpud;
+
+	while (
+		Line[cnt] != L' '
+		)
+	{
+		cnt++;
+	}
+
+	CHAR16 keyword[10];
+	UINTN chkeyword = 0;
+
+	while (
+		Line[cnt] != L' '
+		)
+	{
+		keyword[chkeyword] = Line[cnt];
+		chkeyword++;
+		cnt++;
+	}
+
+	keyword[chkeyword] = 0;
+
+	UINTN keywordtocheck = 0;
+
+	while (
+		SasmKeywords[keywordtocheck].KeyWord != NULL && StrCmp(keyword, SasmKeywords[keywordtocheck].KeyWord)
+		)
+	{
+		keywordtocheck++;
+	}
+
+	outpud.opcodecompiled = SasmKeywords[keywordtocheck].OpcodeInBinary;
+
+	for (size_t i = 0; i < SasmKeywords[keywordtocheck].attributesnumber; i++)
+	{
+		CHAR16 arg[10];
+		UINTN argch = 0;
+		while (
+			Line[cnt] != L',' && Line[cnt] != L';' && Line[cnt]
+			)
+		{
+			arg[argch] = Line[cnt];
+			argch++;
+			cnt++;
+		}
+
+		if (
+			i == 1
+			) {
+			outpud.p1compiled = AsmSyntax(arg);
+		}
+		else {
+			outpud.p2compiled = AsmSyntax(arg);
+		}
+	}
+}
+
+CHAR16*
+SasmParseBinaryIns
+(
+	SASM_LEXER_READY_FOR_OBJETIZATION ins
+)
+{
+	CHAR16 outpud[4];
+
+	outpud[0] = ins.opcodecompiled;
+	outpud[1] = ins.p1compiled;
+	outpud[2] = ins.p2compiled;
+
+	outpud[3] = 0;
+
+	return outpud;
+}
+
+// ----------------------------------------------------------------------------------------------
+// END assembler
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // functions
 // ----------------------------------------------------------------------------------------------
+
+//
+// not for asm , for external programs
+//
+
+void
+sasm_mov
+(
+	CHAR16 Register,
+	CHAR16 NewValue
+)
+{
+	//
+	// action
+	//
+
+	memory_acces[Register] = NewValue;
+}
+
+void
+sasm_lea
+(
+	CHAR16 Register,
+	CHAR16 Register2
+)
+{
+	//
+	// action
+	//
+
+	memory_acces[Register] = memory_acces[Register2];
+}
+
+
+void
+sasm_add
+(
+	CHAR16 Register,
+	CHAR16 NewValue
+)
+{
+	//
+	// action
+	//
+
+	memory_acces[Register] += NewValue;
+}
+
+void
+sasm_sub
+(
+	CHAR16 Register,
+	CHAR16 NewValue
+)
+{
+	//
+	// action
+	//
+
+	memory_acces[Register] -= NewValue;
+}
+
+void
+sasm_div
+(
+	CHAR16 Register,
+	CHAR16 NewValue
+)
+{
+	//
+	// action
+	//
+
+	memory_acces[Register] /= NewValue;
+}
+
+void
+sasm_mul
+(
+	CHAR16 Register,
+	CHAR16 NewValue
+)
+{
+	//
+	// action
+	//
+
+	memory_acces[Register] *= NewValue;
+}
+
+prototype BOOLEAN
+sasm_cmp
+(
+	CHAR16 Register,
+	CHAR16 Value
+)
+{
+	return memory_acces[Register] == Value;
+}
 
 /*
 BinaryEx
@@ -155,18 +531,26 @@ BinaryEx
 	BOOLEAN debug
 )
 {
+	INT8 TratarloComo = 0;
+					// 0 = program
+					// 1 = device
+		
 	// the reader
 	unsigned __int64 reader;
 
 	// registers
 
 	// check the program type
-	if (!(p[0] == L'E' && p[1] == L'A' && p[2] == 3))
-	{
-		if (debug) {
-			Print(L"Invalid program: %s\n",p);
+	if (!(p[0] == L'M' && p[1] == L'P' && p[2] == 3)) {
+		if (!(p[0] == L'E' && p[1] == L'A' && p[2] == 3))
+		{
+			if (debug) {
+			}
+			return; // invalid binary
 		}
-		return; // invalid program
+	}
+	else {
+		TratarloComo = 1;
 	}
 
 	// set to skip the program type
@@ -186,18 +570,6 @@ BinaryEx
 
 		__int16 p1r = memory_acces[p1]; // param 1 in register
 		__int16 p2r = memory_acces[p2]; // param 2 in register
-
-		if (
-			debug && ch < safetynow_for_up
-			)
-		{
-			Print(L"instruction: %d\n", ch);
-			Print(L"data: %d\n", p1);
-			Print(L"data2: %d\n", p2);
-
-			Print(L"data in reg: %d\n", p1r);
-			Print(L"data2 in reg: %d\n", p2r);
-		}
 
 		if (
 			ch == mov_instruction // mov
@@ -253,6 +625,8 @@ BinaryEx
 					)
 				&&
 				p[search_s]
+				&&
+				p[p2] != nop_instruction
 				)
 				search_s++
 				;
@@ -417,7 +791,7 @@ BinaryEx
 				gBS->WaitForEvent(1, &gST->ConIn->WaitForKey, 1);
 			}
 			if (
-				p1 == 13
+				p1 == 12
 				)
 			{
 				EFI_INPUT_KEY Key;
@@ -512,6 +886,23 @@ BinaryEx
 				memory_acces[10] = search_s;
 			}
 		}
+		if (
+			ch == extern_ptr_write_instruction
+			)
+		{
+			if (
+				p1r != NULL
+				)
+			{
+				*((INT16*)p1r) = p2r;  // Asegura que se trata como un puntero de tipo co
+			}
+		}
+		if (
+			ch == extern_ptr_get_instruction
+			)
+		{
+			memory_acces[p2] = *((INT16*)p1r);
+		}
 
 		memory_acces[10]++; // next instruction
 	}
@@ -591,37 +982,6 @@ _BINARY hello_bin[] = {
 	L'\0'																				// ENDPROGRAM
 };
 
-
-UINT16
-AsmSyntax
-(
-	CHAR16* s
-)
-{
-	Print(L"\n syntax: %s", s);
-	if (
-		s[0] == L'\'' && s[1] == L'\\' && s[2] == L'n' && s[3] == L'\''
-		)
-	{
-		return L'\n' + safetynow_for_up;
-	}
-	if (
-		s[0] == L'\'' && s[1] == L'\\' && s[2] == L'0' && s[3] == L'\''
-		)
-	{
-		return L'\0' + safetynow_for_up;
-	}
-	if (
-		s[0] == L'\'' && s[2] == L'\''
-		)
-	{
-		return s[1] + safetynow_for_up;
-	}
-	else {
-		return Atoi(s) + safetynow_for_up;
-	}
-}
-
 _BINARY*
 BuildAsmCode
 (
@@ -633,9 +993,11 @@ BuildAsmCode
 	UINTN ch = 3;
 	UINTN asmch = 0;
 
-	outpud[0] = L'E';
-	outpud[1] = L'A';
+	outpud[0] = code[0];
+	outpud[1] = code[1];
 	outpud[2] = 3;
+
+	ch = 2;
 
 	while (code[asmch])
 	{
@@ -643,8 +1005,6 @@ BuildAsmCode
 			CHAR16 instruction[] = { code[asmch] , code[asmch + 1] , code[asmch + 2] , 0 };
 
 			// instruction
-
-			Print(L"\n instruction: %s",instruction);
 
 			outpud[ch] =
 				StrCmp(instruction, L"mov") == 0 ? mov_instruction :

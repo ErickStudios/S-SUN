@@ -138,5 +138,14 @@
     <ClInclude Include="..\..\kernel\usr\ThridyP.h">
       <Filter>Header Files\usrs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\kernel\drivers\KernelNootebockDef.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\kernel\services\KernelPanicDefs.h">
+      <Filter>Header Files\kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\neptune_api\doctools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

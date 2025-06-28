@@ -1,74 +1,118 @@
-/*
-users please help me to devlop this or implement it in your S-SUN distribution
-*/
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+File Name:
+
+	KernelNet.h
+
+----------------------------------------------------------------------------------------------------
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Abstract:
+
+	the networck functions
+
+----------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------*/
+
 #ifndef KERNEL_NET_H
 #define KERNEL_NET_H
 
+#include <efi.h>
+#include <efilib.h>
+
 #include "../sources/KernelDef.h"
 
-EFI_SIMPLE_NETWORK_PROTOCOL* Net = NULL;
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// prototypes
+// ----------------------------------------------------------------------------------------------
 
-#ifndef NET_PRINCIPIES
+// ----------------------------------------------------------------------------------------------
+// variables
+
+
+EFI_SIMPLE_NETWORK_PROTOCOL*								Net = NULL;
+
+//
+// ip config
+//
+
+EFI_MAC_ADDRESS*											MyIp;
+
+//
+// net settings
+//
+
+UINTN														NetHeaderSize;
+
+// ----------------------------------------------------------------------------------------------
+// functions
+
+prototype EFI_MAC_ADDRESS*
+StringToIp
+(
+	CHAR16*													Ip
+);
+
+prototype EFI_STATUS
+InitializeNetwork
+(
+);
+
+prototype EFI_STATUS
+SendDataToIp
+(
+	EFI_MAC_ADDRESS*										Dest,
+	VOID*													Buffer
+);
+
+prototype EFI_STATUS
+ReciveDataFromIp
+(
+	EFI_MAC_ADDRESS*										Src,
+	VOID*													Buffer,
+	UINTN*													BufferSize
+);
+
+// ----------------------------------------------------------------------------------------------
+// END prototypes
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// functions
+// ----------------------------------------------------------------------------------------------
 
 /*
-SERVER
-	-ROOMS
-		-ROOM_DATA
-		-ROOM_CHAT
-		-ROOM_SITES
+InitializeNetwork
+
+Summary:
+	initializes the network
 */
-
-#define EFI_ROOM_MAX_USERS 10
-
-typedef struct {
-	CHAR8 RoomName[32];       // Nombre de la sala
-	UINT8 IPv4Address[4];     // Dirección IP en formato IPv4
-	VOID* RoomData;           // Datos asociados
-	BOOLEAN IsActive;         // Indicador de actividad
-} EFI_ROOM_USER;
-
-typedef struct {
-	UINTN Host;
-	UINTN Server;
-	UINTN Room;
-} EFI_ROOM_DIRECTION;
-
-typedef struct {
-	EFI_ROOM_USER User;
-	CHAR16* Message;
-	EFI_TIME MessageSendTime;
-} EFI_ROOM_CHAT_ENTRY;
-
-typedef EFI_ROOM_USER EFI_ROOM_BOUNCH[EFI_ROOM_MAX_USERS];
-
-typedef struct {
-	// the users
-	EFI_ROOM_BOUNCH RoomList;
-
-	// this has been cleaned
-	EFI_ROOM_CHAT_ENTRY Chat[20];
-
-	EFI_ROOM_DIRECTION direction;
-} EFI_ROOM;
-
-#endif // !NET_PRINCIPIES
-
 EFI_STATUS
 InitializeNetwork
 (
-
 )
 {
+	//
+	// variables
+	//
 	EFI_STATUS Status;
-
 	CHAR16 buffera[256];
 
-	// Localizar el protocolo
+	//
+	// locating protocols
+	//
+	
 	Status = gBS->LocateProtocol(
 		&gEfiSimpleNetworkProtocolGuid,
 		NULL,
 		(VOID**)&Net
 	);
+
+	//
+	// print the status on protocol loc
+	//
 	SetScreenAtribute(0, orange);
 	printc(L"status locating the networck protocol");
 
@@ -80,9 +124,16 @@ InitializeNetwork
 		gBS->Stall(1000000);
 	}
 
-	// Iniciar el adaptador de red
+	//
+	// start adapter
+	//
+
 	if (Net != NULL)
 	Status = Net->Start(Net);
+
+	//
+	// shows the starting adapter status
+	//
 
 	SetScreenAtribute(0, orange);
 	printc(L"status starting the net");
@@ -91,12 +142,21 @@ InitializeNetwork
 	NormalizeStatus(buffera);
 	printc(L"\n");
 
-	// Inicializar la red
+	//
+	// starts the internet
+	//
+
 	if (Net != NULL)
 	Status = Net->Initialize(Net, 0, 0);
+
+	//
+	// prints the status
+	//
+
 	SetScreenAtribute(0, orange);
 	printc(L"status initializing the net");
 	gBS->Stall(1000000);
+
 	NormalizeStatus(buffera);
 	printc(L"\n");
 
@@ -105,19 +165,175 @@ InitializeNetwork
 	printc(L"net initialized\n");
 
 	gBS->Stall(1000000);
+	
+	//
+	// setting the ip
+	//
+
+	MyIp = AllocatePool(sizeof(EFI_MAC_ADDRESS));
+
+	*MyIp->Addr = Net->Mode->PermanentAddress.Addr;
 
 	return EFI_SUCCESS;
 
 }
 
-VOID
-EFI_ROOM_SEND_MESSGAE
+/*
+SendDataToIp
+
+Summary:
+	send a data
+*/
+EFI_STATUS
+SendDataToIp
 (
-	IN struct EFI_ROOM_DIRECTION* Room,
-	IN EFI_ROOM_CHAT_ENTRY* Message
+	EFI_MAC_ADDRESS* Dest,
+	VOID* Buffer
 )
 {
+	//
+	// check if the ip is spefic
+	//
 
+	if (
+		!Dest
+		)
+		return EFI_UNSUPPORTED
+		;
+
+	//
+	// check if the remitent is not send the data to troll
+	//
+
+	if (
+		!Buffer
+		)
+		return EFI_UNSUPPORTED
+		;
+
+	//
+	// variables
+	//
+
+	UINTN													BufferSize;
+
+	UINT16													Protocol;
+
+	//
+	// init variables
+	//
+
+	BufferSize =											sizeof(Buffer);
+	Protocol =												0;
+
+	//
+	// send the data
+	//
+	return Net->Transmit(
+		&Net,												// the network
+		NetHeaderSize,										// the header size
+		BufferSize,											// the buffer size
+		Buffer,												// the data
+		MyIp,												// your ip
+		Dest,												// the person that recive the data
+		Protocol											// the protocol , is 0 because it says
+															// "OPTIONAL"
+	);
 }
+
+/*
+ReciveDataFromIp
+
+Summary:
+	...
+*/
+EFI_STATUS
+ReciveDataFromIp
+(
+	EFI_MAC_ADDRESS* Src,
+	VOID* Buffer,
+	UINTN* BufferSize
+)
+{
+	//
+	// check if the ip is spefic
+	//
+
+	if (
+		!Src
+		)
+		return EFI_UNSUPPORTED
+		;
+
+	//
+	// variables
+	//
+
+	UINT16													Protocol;
+	EFI_SIMPLE_NETWORK_RECEIVE								Recive;
+
+	//
+	// init variables
+	//
+
+	Protocol =														0;
+
+	//
+	// recive it
+	//
+
+	return Net->Receive(
+		&Net,
+		0,
+		BufferSize,
+		Buffer,
+		Src,
+		MyIp,
+		Protocol
+	);
+}
+
+EFI_MAC_ADDRESS*
+StringToIp
+(
+	CHAR16* Ip
+)
+{
+	EFI_MAC_ADDRESS* IpR = AllocatePool(sizeof(EFI_MAC_ADDRESS));
+
+	UINTN ch = 0;
+
+	UINTN ip_part = 0;
+
+	UINTN subch = 0;
+
+	CHAR16 PartToInt[10];
+
+	while (
+		Ip[ch]
+		)
+	{
+		if (
+			Ip[ch] == L'.'
+			)
+		{
+			subch = 0;
+			IpR->Addr[ip_part] = Atoi(PartToInt);
+			ip_part++;
+		}
+		else {
+			PartToInt[subch] = Ip[ch];
+			subch++;
+		}
+
+		ch++;
+	}
+
+	return IpR;
+}
+
+// ----------------------------------------------------------------------------------------------
+// END functions
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 #endif // !KERNEL_NET_H

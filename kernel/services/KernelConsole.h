@@ -581,4 +581,7 @@ KeyToString
         return EFI_SUCCESS;
     }
 
+    
+
+
 #endif // !_KERNEL_CONSOLE_

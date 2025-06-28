@@ -1,38 +1,49 @@
 .CODE
-PUBLIC PlaySound 
-PlaySound PROC frequency:DWORD, duration:DWORD 
+PUBLIC SetFrequency
+PUBLIC EnableSpeaker
+PUBLIC DisableSpeaker
+PUBLIC SetChannelMode
 
-; Configurar temporizador PIT 
+; Configurar frecuencia del PIT (Canal 2)
+SetFrequency PROC frequency:WORD
+    ;mov dx, 43h          ; Registro de control del PIT
+    ;mov al, 182          ; Modo 3 (Onda cuadrada)
+    ;out dx, al
 
-mov al, 182 
+    mov dx, 42h          ; Puerto de datos del canal 2
+    mov ax, frequency    ; Cargar la frecuencia en AX (16 bits)
+    out dx, al
+    mov al, ah           ; Enviar byte bajo
+    out dx, al           ; Enviar byte alto
 
-mov dx, 43h 
-out dx, al
+    ret
+SetFrequency ENDP
 
-; Establecer la frecuencia recibida como par�metro
-mov eax, frequency
-mov dx, 42h
-out dx, eax    ; Enviar byte bajo
-; out dx, al    ; Enviar byte alto
+; Encender el PC Speaker
+EnableSpeaker PROC
+    in  al, 61h      ; Leer estado actual
+    or  al, 3        ; Activar bits 0 y 1 (Encender sonido)
+    out 61h, al
 
-; speakerman
-mov al, 3
-mov dx, 61h
-out dx, al
+    ret
+EnableSpeaker ENDP
 
-; Esperar la duraci�n dada como par�metro
-mov ecx, duration
+; Apagar el PC Speaker
+DisableSpeaker PROC
+    in  al, 61h      ; Leer estado actual
+    and al, 0FCh     ; Apagar bits 0 y 1 (Silencio)
+    out 61h, al
 
-; the loop
-DelayLoop: 
-loop DelayLoop
+    ret
+DisableSpeaker ENDP
 
-; bye speakerman
-mov al, 0 ; stop the timer
-mov dx, 61h ; goodbyte speaker jajajaa
-out dx, al ; no se
+; Configurar modo de operación del canal 2
+SetChannelMode PROC mode:BYTE
+    mov dx, 43h   ; Registro de control del PIT
+    mov al, mode  ; Configurar modo (0-5)
+    out dx, al
 
-ret
+    ret
+SetChannelMode ENDP
 
-PlaySound ENDP 
 END

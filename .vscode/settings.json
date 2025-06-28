@@ -6,6 +6,22 @@
         "libsmbios.h": "c",
         "kernelmk.h": "c",
         "stddef.h": "c",
-        "corecrt.h": "c"
+        "corecrt.h": "c",
+        "kernelbinary.h": "c",
+        "kerneltextmode.h": "c",
+        "boxes.h": "c",
+        "eficompiler.h": "c",
+        "efiprot.h": "c",
+        "intlib.h": "c",
+        "doctools.h": "c",
+        "typeinfo": "cpp",
+        "kernelnootebockdef.h": "c",
+        "kernelpanicdefs.h": "c",
+        "textmodemapbits.h": "c",
+        "motor.h": "c",
+        "licensesafety.h": "c",
+        "kerneldef.h": "c",
+        "programs.h": "c",
+        "sal.h": "c"
     }
 }

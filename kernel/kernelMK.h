@@ -50,10 +50,9 @@ Desciption:
 #include "./drivers/KernelSpeaker.h"
 #include "../neptune_api/sprites.h"
 #include "./early/bootloader.h"
+#include "./drivers/KernelNootebockDef.h"
 
-// #include "KernelDictionaries.h"
-
-// #include "KeyBoardDriver.h"
+#include "./services/KernelPipes.h"
 
 // IF YOU DONT HAVE ECS_KRN, PAM YOU HAVE IT
 #ifndef HAVE_US_ECS_KRN
@@ -156,6 +155,22 @@ Summary
     MINI_MINI_PROGRAM
    ; // OK me callo
 
+    prototype VOID
+        DrawLogo
+        (
+            INT16										x,
+            INT16										y,
+            INT8										Brightness
+        );
+
+    prototype VOID
+        DrawLoadingCircle
+        (
+            INT16										x,
+            INT16										y,
+            INT16										eframe
+        );
+
     VOID
         InitializeKernel
         (
@@ -201,6 +216,101 @@ Summary
                 sizeof(BOOLEAN),
                 TRUE
             );
+        }
+    }
+
+    /*
+LaptopFunctionsBr
+
+Summary:
+    access to the laptop functions with F2+N
+                                        (
+                                        SystemFunctions = F2
+                                        Notebookfunctions = N
+
+                                        F2+N = SystemFunctions > Notebookfunctions
+                                        )
+*/
+    VOID
+        LaptopFunctionsBr
+        (
+        )
+    {
+        if (
+            IsLactuc
+            )
+        {
+            while (true) {
+                /*
+                controls:
+                    the controls source is in KernelNotebookDef.h
+
+                    a,A = brightup, brightdown
+                    ESC = escape from laptop config
+                */
+
+                DrawScreen();
+                EFI_INPUT_KEY Key;
+
+                gBS->WaitForEvent(1, &gST->ConIn->WaitForKey, NULL);
+                gST->ConIn->ReadKeyStroke(gST->ConIn, &Key);
+
+                if (
+                    Key.ScanCode == SCAN_ESC
+                    )
+                {
+                    break;
+                }
+                else if (
+                    Key.UnicodeChar == BRIGHT_DOWN_KEY
+                    )
+                {
+                    laptop_birghtness++;
+                }
+                else if (
+                    Key.UnicodeChar == L'r' || Key.UnicodeChar == L'R'
+                    )
+                {
+                    laptop_birghtness = 0;
+                }
+                else if (
+                    Key.UnicodeChar == BRIGHT_UP_KEY
+                    )
+                {
+                    laptop_birghtness--;
+                }
+            }
+        }
+    }
+
+    VOID
+        Hlt()
+    {
+        //
+        // configure vars
+        //
+
+        EFI_INPUT_KEY Key;
+
+        bool_t hltxd = 1;
+
+        //
+        // setting
+        //
+
+        Key.UnicodeChar = NULL;
+        Key.ScanCode = NULL;
+
+        while (hltxd)
+        {
+            gST->ConIn->ReadKeyStroke(gST->ConIn, &Key);
+
+            if (
+                Key.UnicodeChar != NULL || Key.ScanCode != NULL
+                )
+            {
+                hltxd = 0;
+            }
         }
     }
 

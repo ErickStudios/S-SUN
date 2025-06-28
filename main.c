@@ -19,9 +19,11 @@ Abstract:
 #include <efi.h>
 #include <efilib.h>
 
+#include "./kernel/include/motor.h"
+
 #include "./kernel/licensesafety.h" // before make me anything , Tianocore , please view this file
 
-#include "./kernel/kernelMK.h"
+//#include "./kernel/kernelMK.h"
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // prototypes
@@ -393,6 +395,35 @@ INTN RandomInRange(INTN min, INTN max)
 	return RandomInRangeINWORCK_MANUALLY(siiiiid, min, max);
 }
 
+bool_t
+IsInArrayRange
+(
+	ch16                                                    Text[],
+	u32                                                     ArrayLen
+)
+{
+	if (
+		Text == NULL
+		)
+	{
+		ShowPanic(NULL_CHAR_POINTER);
+	}
+
+	u32														lenght = 0;
+
+	while (Text[lenght])
+	{
+		lenght++;
+	}
+
+	if (
+		lenght > ArrayLen
+		)
+	{
+		ShowPanic(SE_FUE_A_LA_BORDA);
+	}
+	return 1;
+}
 // SumList
 /**
 Summary:
@@ -413,7 +444,7 @@ static VOID updatefilesystem() {
 	// Asignar memoria para la estructura
 
 	// Guardar en la NVRAM
-	EFI_STATUS Status = LibSetNVVariable(
+	EFI_STATUS Status = StGlobVar(
 		L"SSUNState",         // Nombre de la variable
 		&VariablesGuid,         // GUID único
 		sizeof(CurrentFS),      // Tamaño de los datos
@@ -429,6 +460,99 @@ static VOID updatefilesystem() {
 	else {
 		printc(L"FileSytem Saved\n");
 	}
+}
+
+/*
+ShowPanic
+
+Summary:
+	panic pan
+*/
+VOID
+ShowPanic
+(
+	INT32 code
+) 
+{
+		INT32 x = (((GET_MAX_COL)-25) / 2);
+		INT32 y = (((GET_MAX_ROWS)-12) / 2);
+
+		SetScreenAtribute(1, black);
+		ClearScreen();
+
+		DrawLogo(x, y, 3);
+
+		DrawScreen();
+
+		gotoxy(x, y + 7);
+
+		SetScreenAtribute(0, bryellow);
+		printc(L"S-SUN: ");
+
+		SetScreenAtribute(0, brblue);
+		printc(L"AHHh SYS ...SYS?\x2763");
+
+		gotoxy(x, y + 10);
+
+		SetScreenAtribute(0, bryellow);
+		printc(L"User: ");
+
+		SetScreenAtribute(0, brgreen);
+		printc(L"what happen?");
+
+		gotoxy(x, y + 12);
+
+		SetScreenAtribute(0, bryellow);
+		printc(L"S-SUN: ");
+
+		SetScreenAtribute(0, brblue);
+		printc(L"the system has been \x2763 crashed");
+
+		gotoxy(x, y + 15);
+
+		SetScreenAtribute(0, bryellow);
+		printc(L"S-SUN: ");
+
+		SetScreenAtribute(0, brcyan);
+		CHAR16 coder[10];
+		SPrint(coder, sizeof(coder), L"0x%x", code);
+		printc(coder);
+
+		SetScreenAtribute(0, red);
+		printc(L" !! >:(");
+
+		/*
+		if (IS_OEM_FOR_MANUFACTURE_COMPILATION) {
+			gBS->Stall(1000000);
+			SetScreenAtribute(0, darkred);
+			printc(L"AHHHHHHHHHHHHHHHHHH");
+			gBS->Exit(globalimagehandle, EFI_INVALID_PARAMETER, 0, L"");
+		}*/
+
+		gotoxy(x, y + 16);
+
+		SetScreenAtribute(0, brcyan);
+		printc(L"\x2763press ctrl+alt+del\x2763or enter to continue");
+
+		gotoxy(x, y + 16);
+
+		SetScreenAtribute(0, brcyan);
+		while (true)
+		{
+			gBS->WaitForEvent(1, &gST->ConIn->WaitForKey, 1);
+
+			EFI_INPUT_KEY Key;
+
+			gST->ConIn->ReadKeyStroke(gST->ConIn, &Key);
+
+			if (
+				Key.UnicodeChar == CHAR_CARRIAGE_RETURN
+				)
+			{
+				break;
+			}
+		}
+
 }
 
 VOID
@@ -677,7 +801,7 @@ SystemManager
 		ClearScreen();
 		SetScreenAtribute(0, black);
 		SetScreenAtribute(1, white);
-		printc(SystemTable, L"S-SUN system manager");
+		printc(L"S-SUN system manager");
 
 		SetScreenAtribute(0, white);
 		SetScreenAtribute(1, black);
@@ -818,7 +942,7 @@ Syntax use:
 
 	STRICT MEM syntax:
 		S%(MEM_STRING) get a MEM_STRING 		(can use the two caps in the "S")
-		D%(MEM_STRING) get a MEM_STRING		(can use the two caps in the "D")
+		D%(MEM_STRING) get a MEM_INT			(can use the two caps in the "D")
 
 	COMPARATORS:
 		cmp%(syntax1)=(syntax2): verific if syntax  (can be "cmp" or "CMP")
@@ -1086,6 +1210,8 @@ editor
 
 	// the coppy char
 	CHAR16* cpy = L"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
+
+	u8	buffercpy_bord = 0;
 
 	// screen size
 	UINTN MaxColumns, MaxRows;
@@ -1358,6 +1484,13 @@ editor
 				// set to the last letter
 				ch = Index;
 
+				if (
+					buffercpy_bord > 44
+					)
+				{
+					ShowPanic(SE_FUE_A_LA_BORDA);
+				}
+
 				for (size_t i = 0; i < 44; i++)
 				{
 					cpy[i] = L'\0';
@@ -1374,6 +1507,8 @@ editor
 
 					// coppy the letter
 					cpy[0] = text[ch];
+
+					buffercpy_bord++;
 
 					// before character
 					ch--;
@@ -1562,17 +1697,17 @@ ExecuteCommand
 	EFI_HANDLE ImageHandle,
 	EFI_SYSTEM_TABLE* SystemTable,
 	string mode
-) 
+)
 {
 	EFI_INPUT_KEY Key;
 	UINTN Event;
 
-	InitializeLib(ImageHandle,SystemTable);
+	InitializeLib(ImageHandle, SystemTable);
 	/*
 	echo (text)
 	*/
 	if (
-		StrnCmp(buffer, L"echo ", 5) 
+		StrnCmp(buffer, L"echo ", 5)
 		== 0
 		) {
 		CHAR16* msgtoecho = buffer + 5;
@@ -1581,7 +1716,7 @@ ExecuteCommand
 		SetScreenAtribute(1, consoleoutpudcurrentcolorbg);
 
 		printc(L"\n");
-		if (StrCmp(msgtoecho , L"S-SUN is a very good system , erick") == 0) {
+		if (StrCmp(msgtoecho, L"S-SUN is a very good system , erick") == 0) {
 			printc(L"AWWWW Sweety (not the ... i forget it) o^ - ^o\nbut dont replace windows by this ^-^\n... i try to say thanks for the sweet ^-^ but i try to say eh emm forget it");
 		}
 		else if (StrCmp(msgtoecho, L"S-SUN es un buen sistema , erick") == 0) {
@@ -1607,6 +1742,17 @@ ExecuteCommand
 			printc(SPP_SYNTAX(msgtoecho));
 		}
 	}
+	if (
+		StrnCmp(
+			buffer,
+			L"techo "
+			, 6
+		) == 0
+		)
+	{
+		printcu(L"\n");
+		printcu(buffer + 5);
+	}
 	else if (
 		StrCmp(buffer, L"hello view")
 		== 0
@@ -1618,7 +1764,7 @@ ExecuteCommand
 	help (theme)
 	*/
 	else if (
-		StrnCmp(buffer, L"help ", 5) 
+		StrnCmp(buffer, L"help ", 5)
 		== 0
 		) {
 		CHAR16* themetohelp = buffer + 5;
@@ -1630,7 +1776,7 @@ ExecuteCommand
 		}
 	}
 	else if (
-		StrnCmp(buffer, L"writel ", 7) 
+		StrnCmp(buffer, L"writel ", 7)
 		== 0
 		) {
 		CHAR16* msgtoecho = buffer + 7;
@@ -1641,7 +1787,7 @@ ExecuteCommand
 		printc(SPP_SYNTAX(msgtoecho));
 	}
 	else if (
-		StrCmp(buffer, L"Reset /all") 
+		StrCmp(buffer, L"Reset /all")
 		== 0
 		) {
 		InitializeFileSystem();
@@ -1658,7 +1804,7 @@ ExecuteCommand
 	textmode and grmode
 	*/
 	else if (
-		StrCmp(buffer, L"textmode") 
+		StrCmp(buffer, L"textmode")
 		== 0
 		) {
 		ChangeToTextMode();
@@ -1684,7 +1830,7 @@ ExecuteCommand
 		}
 	}
 	else if (
-		StrCmp(buffer, L"grmode") 
+		StrCmp(buffer, L"grmode")
 		== 0
 		) {
 		ChangeToGrapichalMode();
@@ -1693,7 +1839,7 @@ ExecuteCommand
 	int (interruptionID)(letter of the indicator)
 	*/
 	else if (
-		StrnCmp(buffer, L"int ",4) 
+		StrnCmp(buffer, L"int ", 4)
 		== 0
 		)
 	{
@@ -1708,6 +1854,305 @@ ExecuteCommand
 		}
 		else if (interruption[interruptionSize] = L'n') {
 
+		}
+	}
+	else if (
+		StrnCmp(buffer, L"ip ", 3) == 0
+		)
+	{
+		//
+		// variables
+		// 
+
+		EFI_MAC_ADDRESS* IpTrMgr;
+		EFI_MAC_ADDRESS* IpReMgr;
+
+		//
+		// dec args
+		//
+
+		CHAR16* Args = buffer + 3;
+
+		BOOLEAN GetArgument = 0;
+
+		// ** transmit and recive args
+		BOOLEAN TransmitArgument = 0;
+		BOOLEAN ReciveArgument = 0;
+
+		//
+		// parse args
+		//
+
+		INT16 ChA = 0;
+
+		while (
+			Args[ChA]
+			)
+		{
+			//
+			// get arg
+			//
+			if (
+				Args[ChA] == L'-'
+				)
+			{
+				CHAR16 Arg[10] = L"\0\0\0\0\0\0\0\0\0\0";
+
+				ChA++;
+
+				INT8 ParserArg = 0;
+
+				//
+				// get arg chars
+				//
+				while (
+					Args[ChA] != L' ' && Args[ChA]
+					)
+				{
+					Arg[ParserArg] = Args[ChA];
+					ParserArg++;
+					ChA++;
+				}
+				Arg[ParserArg] = 0;
+
+				//
+				// parse arg
+				//
+
+				// -get
+				if (
+					StrCmp(
+						Arg,
+						L"get"
+					) == 0
+					)
+					GetArgument = 1;
+
+				// -tr
+				if (
+					Arg[0] == L't' &&
+					Arg[1] == L'r' &&
+					Arg[2] == L'='
+
+					) {
+					IpTrMgr = StringToIp(Arg + 3);
+
+					TransmitArgument = 1;
+				}
+
+				// -re
+				if (
+					StrnCmp(
+						Arg,
+						L"re=",
+						3
+					) == 0
+					) {
+					IpReMgr = StringToIp(Arg + 3);
+
+					ReciveArgument = 1;
+				}
+			}
+
+			ChA++;
+		}
+
+		//
+		// execute args
+		//
+		if (
+			GetArgument
+			)
+		{
+			printc(L"\n");
+
+			//
+			// set variables
+			//
+
+			CHAR16 IpParse[10];
+
+			//
+			// primary part
+			//
+
+			SPrint(IpParse, sizeof(IpParse), L"%d", MyIp->Addr[0]);
+
+			SetScreenAtribute(0, brblue);
+			printc(IpParse);
+
+			SetScreenAtribute(0, gray);
+			printc(L".");
+
+			//
+			// secondary part
+			//
+
+			SPrint(IpParse, sizeof(IpParse), L"%d", MyIp->Addr[1]);
+
+			SetScreenAtribute(0, bryellow);
+			printc(IpParse);
+
+			SetScreenAtribute(0, gray);
+			printc(L".");
+
+			//
+			// 3rd part
+			//
+
+			SPrint(IpParse, sizeof(IpParse), L"%d", MyIp->Addr[2]);
+
+			SetScreenAtribute(0, brgreen);
+			printc(IpParse);
+
+			SetScreenAtribute(0, gray);
+			printc(L".");
+
+			//
+			// secondary part
+			//
+
+			SPrint(IpParse, sizeof(IpParse), L"%d", MyIp->Addr[3]);
+
+			SetScreenAtribute(0, brcyan);
+			printc(IpParse);
+		}
+		if (
+			TransmitArgument
+			)
+		{
+			printc(L"\n");
+
+			SetScreenAtribute(0, brblue);
+			printc(L"Write the command to send to the ip:");
+			SetScreenAtribute(0, brgreen);
+
+			EFI_SIMPLE_NETWORK_TRANSMIT Trans;
+
+			CHAR16 CommandT[20];
+
+			CHAR16* ee = ReadLineSeriusWorck();
+
+			for (size_t i = 0; i < 20; i++)
+			{
+				CommandT[i] = ee[i];
+			}
+
+			Net->Transmit(
+				Net,
+				0,
+				sizeof(CommandT),
+				CommandT,
+				MyIp,
+				IpTrMgr,
+				0
+			);
+
+		}
+		if (
+			ReciveArgument
+			)
+		{
+			CHAR16 CommandT[20];
+
+			Net->Receive(
+				Net,
+				0,
+				sizeof(CommandT),
+				CommandT,
+				IpReMgr,
+				MyIp,
+				0
+			);
+
+			ExecuteCommand(CommandT, ImageHandle, SystemTable, mode);
+		}
+	}
+	else if (
+		StrnCmp(buffer, L"buzz ", 5) == 0
+		)
+	{
+		//
+		// params recorre
+		//
+
+		ch16* ps = buffer + 5;
+
+		//
+		// parse param
+		//
+
+		if (
+			StrnCmp(ps, L"frq ", 4) == 0
+			)
+		{
+			//
+			// setup
+			//
+
+			u16 frequency = 0;
+			ch16* value = ps + 4;
+
+			//
+			// parsing
+			//
+
+			frequency = Atoi(value);
+
+			//
+			// send
+			//
+
+			SetFrequency(frequency);
+		}
+		else if (
+			StrnCmp(ps, L"mod ", 4) == 0
+			)
+		{
+			//
+			// setup
+			//
+
+			u8 mode = 0;
+			ch16* value = ps + 4;
+
+			//
+			// parsing
+			//
+
+			mode = Atoi(value);
+
+			//
+			// send
+			//
+
+			SetChannelMode(mode);
+		}
+		else if (
+			StrCmp(ps, L"on") == 0
+			)
+		{
+			EnableSpeaker();
+		}
+		else if (
+			StrCmp(ps, L"test") == 0
+			)
+		{
+			EnableSpeaker();
+			gBS->Stall(70);
+			DisableSpeaker();
+		}
+		else if (
+			StrCmp(ps, L"off") == 0
+			)
+		{
+			DisableSpeaker();
+		}
+		else {
+			printc(L"\n");
+			printc(L"buzz usage\n");
+			printc(L"\nprovides a function to send signals to the buzzer\n\n\n");
+			printc(L"ONLY ONE PARAM AT TIME\n\nfrq frequency\nmod mode\noff\non\ntest\n");
 		}
 	}
 	else if (
@@ -2415,6 +2860,12 @@ ExecuteCommand
 							e[1] = 0;
 							printcu(e);
 						}
+						if (
+							CurrentFS->Files[i].Name[J] == 0
+							)
+						{
+							break;
+						}
 					}
 
 					SetScreenAtribute(0, brcyan);
@@ -2426,6 +2877,12 @@ ExecuteCommand
 							e[0] = CurrentFS->Files[i].Extension[J];
 							e[1] = 0;
 							printcu(e);
+						}
+						if (
+							CurrentFS->Files[i].Extension[J] == 0
+							)
+						{
+							break;
 						}
 					}
 					SetScreenAtribute(0, bryellow);
@@ -2439,6 +2896,12 @@ ExecuteCommand
 			}
 		}
 	}
+	else if (
+		StrnCmp(buffer, L"brightness ", 11) == 0
+		)
+		{
+			laptop_birghtness = Atoi(buffer + 11);
+		}
 	else if (
 		StrCmp(buffer, L"cls") 
 		== 0
@@ -2480,6 +2943,10 @@ ExecuteScript
 	EFI_SYSTEM_TABLE* SystemTable
 )
 {
+	//
+	// variables
+	//
+
 	// the input variable
 	EFI_INPUT_KEY Key;
 
@@ -2489,14 +2956,26 @@ ExecuteScript
 	// the script lines count
 	UINTN line_count = 0;
 
+	//
+	// script interpretatin
+	//
+
 	// divide the text in lines
 	CHAR16** lines = SplitLines(buffer, &line_count);
+
+	//
+	// recover values
+	//
 
 	// the mode restorer
 	UINTN smodebackup = SMODE;
 
 	// the ret command line
 	INTN returnsection = 0;
+
+	//
+	// screen recover
+	//
 
 	// save the bgcol no se por que
 	PIXELCOL savedcolorbg = Conio->atributes->BG;
@@ -2511,8 +2990,17 @@ ExecuteScript
 	// screen pixels count restore
 	UINTN savpixels = pixels;
 
+	//
+	// script ex
+	//
+
 	// the script execution
 	for (UINTN i = 0; i < line_count; i++) {
+
+		//
+		// debugger things
+		//
+
 		// read the key to if you want to stop the script 
 		SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key);
 
@@ -2537,6 +3025,10 @@ ExecuteScript
 				// ok
 			}
 		}
+
+		//
+		// instruction parser
+		//
 
 		// if you call to jump a any section
 		if (
@@ -2602,6 +3094,10 @@ ExecuteScript
 		}
 	}
 
+	//
+	// free values
+	//
+
 	// restore the mode
 	SMODE = smodebackup;
 }
@@ -2618,6 +3114,12 @@ Console
 	CHAR16 mode
 ) 
 {
+	//
+	// setuping
+	// 
+	
+	u16 count_spaces = 0;
+
 	// the event
 	UINTN Event;
 	// status
@@ -2654,6 +3156,10 @@ Console
 	ClearScreen();
 	gotoxy(0,0);
 
+	//
+	// draw the prompt
+	//
+
 	// action of the command
 	CHAR16 handle_action_huh = ExecuteCommand(L"cls", globalimagehandle, globalsystemtable, mode);
 	// the title
@@ -2661,24 +3167,29 @@ Console
 	printc(L"\nS-SUN Console\n\n");
 
 	SetScreenAtribute(0, gray);
-	printcu(L"Welcome to ");
+	printcu(TranslateWorck(&GENERIC1_TEXT_TRANSL, languajecu));
 	SetScreenAtribute(0, brblue);
-	printcu(L"S-SUN Command Prompt");
+	printcu(TranslateWorck(&CONSOLE_BUTTON_TRANSL,languajecu));
+	printcu(L" ");
 	SetScreenAtribute(0, gray);
-	printcu(L"if is your first time here \nfollow this steps:\n\n");
+	printcu(TranslateWorck(&CONSOLE_INSTR1_TRANSL,languajecu));
 
-	printcu(L"type ");
+	printcu(TranslateWorck(&GENERIC2_TEXT_TRANSL,languajecu));
 	SetScreenAtribute(0, bryellow);
 	printcu(L"intro ");
 	SetScreenAtribute(0, gray);
-	printcu(L"for a list of begimmer commands\n");
-	printcu(L"type ");
+	printcu(TranslateWorck(&CONSOLE_INSTR2_TRANSL,languajecu));
+	printcu(TranslateWorck(&GENERIC2_TEXT_TRANSL, languajecu));
 	SetScreenAtribute(0, bryellow);
 	printcu(L"exit ");
 	SetScreenAtribute(0, gray);
-	printcu(L"for exit from the ");
+	printcu(TranslateWorck(&CONSOLE_INSTR3_TRANSL, languajecu));
 	SetScreenAtribute(0, brblue);
-	printcu(L"S-SUN Command Prompt\n\n");
+	printcu(TranslateWorck(&CONSOLE_BUTTON_TRANSL, languajecu));
+	SetScreenAtribute(0, brred);
+	printcu(L"\n");
+	printcu(TranslateWorck(&WARNING_NOT_T_TRANSL, languajecu));
+	printcu(L"\n");
 
 	// the prompt
 	SetScreenAtribute(0, brgreen);
@@ -2689,6 +3200,20 @@ Console
 	printc(L"^");
 	SetScreenAtribute(0, gray);
 	printc(L"# ");
+
+	//
+	// go to the action
+	//
+
+	if (
+		count_spaces == 0
+		)
+	{
+		SetScreenAtribute(0, brblue);
+	}
+	else {
+		SetScreenAtribute(0, brgreen);
+	}
 
 	// the loop
 	while (TRUE) {
@@ -2705,7 +3230,9 @@ Console
 		CursorRow = globalsystemtable->ConOut->Mode->CursorRow;
 
 		// key manager
+
 		if (Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
+			count_spaces = 0;
 			Buffer[Index] = L'\0';
 			CHAR16 handle_action_huh = ExecuteCommand(Buffer, globalimagehandle, globalsystemtable, mode);
 			Index = 0; // Reiniciar el índice para la siguiente entrada
@@ -2774,25 +3301,82 @@ Console
 			SetScreenAtribute(0, gray);
 			printc(L"# ");
 			globalsystemtable->ConOut->SetAttribute(globalsystemtable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
-
-		}
-		else if (Key.ScanCode == SCAN_UP) {
-			gotoxy(cursorx, cursory - 1);
-		}
-		else if (Key.ScanCode == SCAN_DOWN) {
-			gotoxy(cursorx, cursory + 1);
+			if (
+				count_spaces == 0
+				)
+			{
+				SetScreenAtribute(0, brgreen);
+			}
+			else {
+				SetScreenAtribute(0, brblue);
+			}
 		}
 		else if (Key.ScanCode == SCAN_ESC)
 		{
 			return EFI_SUCCESS;
 		}
 		else if (Key.UnicodeChar == CHAR_BACKSPACE) {
-			gotoxy(cursorx - 1, cursory);
-			globalsystemtable->ConOut->SetCursorPosition(globalsystemtable->ConOut, CursorColumn - 1, CursorRow);
-			printc(L" ");
-			gotoxy(cursorx - 1, cursory);
-			globalsystemtable->ConOut->SetCursorPosition(globalsystemtable->ConOut, CursorColumn - 1, CursorRow);
-			Buffer[--Index] = L'\0';
+			if (
+				Index != 0
+				) {
+
+				gotoxy(cursorx - 1, cursory);
+				globalsystemtable->ConOut->SetCursorPosition(globalsystemtable->ConOut, CursorColumn - 1, CursorRow);
+				printc(L" ");
+				gotoxy(cursorx - 1, cursory);
+				globalsystemtable->ConOut->SetCursorPosition(globalsystemtable->ConOut, CursorColumn - 1, CursorRow);
+				if (
+					Buffer[Index - 1] == L' '
+					)
+				{
+					count_spaces--;
+					if (
+						count_spaces == 0
+						)
+					{
+						SetScreenAtribute(0, brgreen);
+					}
+					else {
+						SetScreenAtribute(0, brblue);
+					}
+
+					bool_t is_in_para = 0;
+
+					u8 Inx = Index - 2;
+
+					while (
+						Buffer[Inx] != L'-'
+						)
+					{
+						if (
+							Buffer[Inx] == L' '
+							)
+						{
+							is_in_para = 0;
+							break;
+						}
+						else if (
+							Buffer[Inx] == L'='
+							)
+						{
+							is_in_para = 0;
+							SetScreenAtribute(0, brcyan);
+							break;
+						}
+						else {
+							is_in_para = 1;
+						}
+						Inx--;
+					}
+					if (
+						is_in_para
+						)
+					{
+						SetScreenAtribute(0, bryellow);
+					}
+				}
+				Buffer[--Index] = L'\0';
+			}
 		}
 		else if (Key.ScanCode == SCAN_F12) {
 			CHAR16 OtherCharacter = ACCES_TO_OTHER_CHARACTERS();
@@ -2800,19 +3384,80 @@ Console
 				Buffer[Index++] = OtherCharacter;
 				string a[100];
 				SPrint(a, sizeof(a), L"%c", OtherCharacter);
-				SetScreenAtribute(0, white);
 				printc(a);
 			}
 		}
 		else if (Key.UnicodeChar != 0) {
-				Buffer[Index++] = Key.UnicodeChar;
-				string a[100];
-				SPrint(a, sizeof(a), L"%c", Key.UnicodeChar);
-				SetScreenAtribute(0, white);
-				printc(a);
+			Buffer[Index++] = Key.UnicodeChar;
+			string a[100];
+			SPrint(a, sizeof(a), L"%c", Key.UnicodeChar);
+
+			if (
+				Key.UnicodeChar == L'-'
+				)
+			{
+				SetScreenAtribute(0, bryellow);
+			}
+
+			printc(a);
 		}
 		Buffer[Index] = L'\0'; // Asegurar el fin de cadena
-		);
+			);
+
+		if (
+			Key.UnicodeChar == L'='
+			)
+		{
+
+			bool_t is_in_para = 0;
+
+			u8 Inx = Index - 2;
+
+			while (
+				Buffer[Inx] != L'-'
+				)
+			{
+				if (
+					Buffer[Inx] == L' '
+					)
+				{
+					is_in_para = 0;
+					break;
+				}
+				else {
+					is_in_para = 1;
+				}
+				Inx--;
+			}
+			if (
+				is_in_para
+				)
+			{
+				SetScreenAtribute(0, brcyan);
+			}
+			}
+			if (
+				Key.UnicodeChar == L' '
+				)
+			{
+				count_spaces++;
+				if (
+					count_spaces == 0
+					)
+				{
+					SetScreenAtribute(0, brgreen);
+				}
+				else {
+					SetScreenAtribute(0, brblue);
+				}
+		}
+
+		if (
+			Index > 511
+			)
+		{
+			ShowPanic(SE_FUE_A_LA_BORDA);
+		}
 
 		// wait for a key
 		globalsystemtable->BootServices->WaitForEvent(1, &globalsystemtable->ConIn->WaitForKey, &Event);
@@ -4176,6 +4821,10 @@ Desktop
 	EFI_FILE_PROTOCOL* Root;
 	EFI_STATUS Status;
 
+	//
+	// loading screen (yes unesesary but epic)
+	//
+
 	INT8 loadingframe = 0;
 	for (size_t i = 0; i < 21; i++)
 	{
@@ -4196,6 +4845,10 @@ Desktop
 		gBS->Stall(150000);
 	}
 
+	//
+	// variables
+	//
+
 	BOOLEAN OnlyIcons; // only icons
 
 	OnlyIcons = 1;
@@ -4206,6 +4859,10 @@ Desktop
 
 	EFI_SIMPLE_POINTER_PROTOCOL* mouse = 0;
 	EFI_SIMPLE_POINTER_STATE     State;
+
+	//
+	// init the mouse (unused)
+	//
 
 	gBS->LocateProtocol(
 		&gEfiSimplePointerProtocolGuid,
@@ -4218,15 +4875,14 @@ Desktop
 	EFI_SIMPLE_TEXT_INPUT_EX_PROTOCOL* TextInputEx;
 	EFI_KEY_STATE KeyState;
 
-	// Obtener el protocolo extendido de entrada
-	SystemTable->BootServices->HandleProtocol(
-		SystemTable->ConsoleInHandle,
-		&SimpleTextInputExProtocol,
-		(VOID**)&TextInputEx
-	);
-
+	/*
 	Event[0] = SystemTable->ConIn->WaitForKey;
 	Event[1] = TextInputEx->WaitForKeyEx;
+	*/
+
+	//
+	// navegation vars
+	//
 
 	// the option
 	INT8 Tab = 0;
@@ -4235,11 +4891,16 @@ Desktop
 	// the screen size
 	UINTN MaxColumns, MaxRows;
 
-	UINTN MouseX = 0;
-	UINTN MouseY = 0;
+	//
+	// misc pre settings
+	//
 
 	// the editor save
 	CHAR16 textsaved[1024];
+
+	//
+	// parse the screen
+	//
 
 	// set the screen
 	MaxColumns = (gop->Mode->Info->HorizontalResolution / 8) / Conio->atributes->size;
@@ -4247,23 +4908,46 @@ Desktop
 
 	Event[0] = gST->ConIn->WaitForKey;
 
+	//
+	// set the screen
+	//
+
 	ChangeToGrapichalMode();
 
+	//
+	// reserve instance
+	//
+
 	MEM_FILE_INT* DESKTOPINSTANCE = Create_MEM_FILE_INT(L"DESKTOPINSTANCE", 1);
+
+	//
+	// back to screen parser
+	//
+
 	SystemTable->ConOut->QueryMode(SystemTable->ConOut, SystemTable->ConOut->Mode->Mode, &MaxColumns, &MaxRows);
 	globalsystemtable->ConOut->ClearScreen(globalsystemtable->ConOut);
 
-	// Inicializar el puntero
+	//
+	// show a gray screen
+	//
 
 	SetScreenAtribute(1, gray);
 	ClearScreen();
 	// DRAW_TEXT_DIALOG_NO_WAIT(ImageHandle, SystemTable, L"Please wait...", EFI_WHITE, EFI_BACKGROUND_CYAN);
-	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 5, 1000000); \
+	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 5, 1000000);
+
+	//
+	// clear screen and set grp mode
+	//
 
 	ClearScreen();
 	ChangeToGrapichalMode();	
 
 	// DRAW_DIALOG_MSG_CONFIRM(ImageHandle, SystemTable, L"Welcome to S-SUN, Do you want see the survival guide?");
+
+	//
+	// set desktop values
+	//
 
 	SetScreenAtribute(1, Sceme->backgroundcolor);
 
@@ -4273,14 +4957,30 @@ Desktop
 	// ShowCenteredDialoga(ImageHandle, SystemTable, L"if you dont know what you do press F1", Sceme->buttonstext, Sceme->buttonscolor);
 	DrawScreen();
 
+	//
+	// desktop loop
+	//
+
 	while (TRUE) {
 		UINTN index;
 
+		//
+		// screen sets
+		//
 		ChangeToGrapichalMode();
 		SystemTable->ConOut->EnableCursor(SystemTable->ConOut, FALSE);
+		
+		//
+		// set abreviations
+		//
+
 		PIXELCOL syscolor2 = Sceme->buttonscolor;
 		PIXELCOL sysbg = Sceme->backgroundcolor;
 		PIXELCOL sysbtext = Sceme->buttonstext;
+
+		//
+		// items position
+		//
 
 		UINTN barbt0 = OnlyIcons ? (((GET_MAX_COL) - 13) / 2) : 0;
 		UINTN barbt1 = barbt0 + (!OnlyIcons ? 8 : 3);
@@ -4290,18 +4990,25 @@ Desktop
 		UINTN barbt5 = barbt4 + 1 + (!OnlyIcons ? StrLen(TranslateWorck(&TEST_BUTTON_TRANSL, languajecu)) : 1);
 		UINTN barbt6 = barbt5 + 1;
 
-		// Configurar la pantalla
+		//
+		// parse screen (again)
+		//
+
 		MaxColumns = (gop->Mode->Info->HorizontalResolution / 8) / Conio->atributes->size;
 		MaxColumns = MaxColumns - 1;
 		MaxRows = (gop->Mode->Info->VerticalResolution / row_size) / Conio->atributes->size;
 
-		// Posicionar el cursor para el botón "Start"
-
-		// UINTN MaxRows = MaxRows - 1; // Última fila
+		//
+		// set the desktop
+		//
 
 		SetScreenAtribute(1, sysbg);
 
 		ClearScreen();
+
+		//
+		// draw bar
+		//
 
 		gotoxy(0, MaxRows - 1);
 		SetScreenAtribute(1, syscolor2);
@@ -4368,7 +5075,10 @@ Desktop
 		}
 		printcu(OnlyIcons ? L"\x2a1" : TranslateWorck(&CMN_BUTTON_TRANSL, languajecu));
 
-		// Draw start menu
+		//
+		// menus drawing
+		//
+
 		if (optionud > 0) {
 			if (Tab == 0) {
 				for (INT8 i = 0; i < 8; i++)
@@ -4752,18 +5462,34 @@ Desktop
 
 		}
 
+		//
+		// draw finally the screen
+		//
+
 		DrawScreen();
-		// Esperar eventos de teclado
+
+		//
+		// wait for key
+		//
 
 		SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &index);
 		SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key);
 
-		// Manejo de navegación por teclado
+		// -----------
+		// key managen
+		// -----------
 
 		if (Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
+			//
+			// enter in op
+			//
 			if (optionud == 0) {
 				optionud = 1;
 			}
+
+			//
+			// Start Menu
+			//
 			else if (Tab == 0) {
 				if (optionud == 1) {
 					SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
@@ -4820,6 +5546,10 @@ Desktop
 					SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 				}
 			}
+
+			//
+			// themes menu
+			//
 			else if (Tab == 1) {
 				if (optionud == 1) {
 					Sceme = SCDefault;
@@ -4887,6 +5617,11 @@ Desktop
 					LibSetNVVariable(L"ThemeT", &SmallVariables, sizeof(Sceme->buttonstext), (VOID*)&Sceme->buttonstext);
 				}
 			}
+
+			//
+			// games menu
+			//
+
 			else if (Tab == 2) {
 				if (optionud == 1) {
 					ADIVINA_EL_NUMERO(ImageHandle, SystemTable);
@@ -4919,6 +5654,11 @@ Desktop
 					SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
 				}
 			}
+
+			//
+			// languajes menu
+			//
+
 			else if (Tab == 3) {
 				if (optionud == 1) {
 					languajecu = L"en";
@@ -4933,6 +5673,11 @@ Desktop
 					UpdateLanguaje();
 				}
 			}
+
+			//
+			// comunity section
+			//
+
 			else if (Tab == 4) {
 				if (optionud == 1) {
 					ExecuteScript(L"MsgBox A red spy in the base\necho &confirm Are you the red spy?", ImageHandle, SystemTable);
@@ -4958,7 +5703,17 @@ Desktop
 				}
 			}
 		}
+
+		//
+		// shortcuts keys
+		//
+
 		else if (Key.ScanCode == SCAN_F1) {
+
+			//
+			// only icons feature exclusive help
+			//
+
 			if (OnlyIcons) {
 				switch (Tab)
 				{
@@ -5002,12 +5757,22 @@ Desktop
 					SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key);
 				}
 			}
+
+		//
+		// tab managen
+		//
+
 		else if (Key.ScanCode == SCAN_LEFT) {
 				if (Tab > 0) { Tab--; }
 			}
 		else if (Key.ScanCode == SCAN_RIGHT) {
 				Tab++;
 			}
+
+		//
+		// menu managen
+		//
+
 		else if (Key.ScanCode == SCAN_DOWN) {
 				if (optionud > 0) { optionud--; }
 			}
@@ -5129,31 +5894,39 @@ DrawLogo
 		break;
 	}
 
+	// the diammond trace
 	SetScreenAtribute(0, logocol1);
 	gotoxy(x, y);
 	printcu(L"\x763\x763\x3a6\x2ad\x3a7\x2763\x763\x3a6\x763\x763\x763\x3a7\x2763\x763\x3a7\x763\x763\x763\x3a6\x2763\x763\x763\x3a7_\x3a6\x763");
 
+	// the diammond center
 	gotoxy(x, y);
 	SetScreenAtribute(0, logocol2);
 	printcu(L"\x763\x763\x763\x763\x763\x763\x2763\x763\x763\x763\x3a5\x763\x763\x2763\x763\x763\x763\x3a4\x763\x763\x2763");
 
+	// draw the letters S-SUN
 	INT32 lettersx = x + 7;
-
+	
+	// S
 	SetScreenAtribute(0, color1);
 	gotoxy(lettersx, y + 1);
 	printcu(L"/\x2ad\x2763\\_\x2763_/");
 
+	// -
 	SetScreenAtribute(0, color2);
 	gotoxy(lettersx + 3, y + 1);
 	printcu(L"\x2763--");
 
+	// S
 	SetScreenAtribute(0, color3);
 	gotoxy(lettersx + 3 + 3, y + 1);
 	printcu(L"/\x2ad\x2763\\_\x2763_/");
 
+	// U
 	gotoxy(lettersx + 3 + 3 + 3, y + 1);
 	printcu(L"| \x2ae\x2763| \x2ae\x2763\\_/ ");
 
+	// N
 	gotoxy(lettersx + 3 + 3 + 3 + 4, y + 1);
 	printcu(L"| \x2ae\x2763|\\\x2ae\x2763| \x2ae");
 }
@@ -5298,6 +6071,8 @@ BootSettings
 			}
 			printcu(L"Set to debug mode");
 
+			SetScreenAtribute(0, black);
+			SetScreenAtribute(1, gray);
 			gotoxy(x, y + 9);
 			if (
 				tab == 2
@@ -5428,32 +6203,53 @@ efi_main
 	EFI_SYSTEM_TABLE* SystemTable
 )
 {
+	//
+	// configure main variables
+	//
 	UINTN Event;
 	INT16 option;
 	EFI_STATUS Status;
 	EFI_INPUT_KEY Key;
 
+	//
+	// set the settings
+	//
 	BootStage = 0;
-
 	*languajecu = L"en";
 
+	//
+	// lib init
+	// 
+	
 	// EFI_SIMPLE_FILE_SYSTEM_PROTOCOL* FileSystem;
 	globalimagehandle = ImageHandle;
 	globalsystemtable = SystemTable;
 #if defined(_GNU_EFI)
 	InitializeLib(ImageHandle, SystemTable);
 #endif
-	// PlaySound(400, 50); // Mi
-	// PlaySound(600, 50); // Fa
+	//PlaySound(400, 50); // Mi
+	//PlaySound(600, 50); // Fa
 
+	//
+	// test
+	// 
+	
 	// prepare the editor save
 	*EditorProcess = NULL;
 
 	PlaySound(0, 10);
 
+	//
+	// whatch dog
+	// 
+	
 	// set the dog for that the dog dont f*** me
 	Status = gBS->SetWatchdogTimer(0, 0, 0, NULL);
 
+	//
+	// screen
+	//
+	
 	// prepare the gop
 	EFI_PHYSICAL_ADDRESS FrameBufferBase = gop->Mode->FrameBufferBase;
 	UINTN FrameBufferSize = gop->Mode->FrameBufferSize;
@@ -5461,23 +6257,27 @@ efi_main
 	// set the screen size
 	SystemTable->ConOut->QueryMode(SystemTable->ConOut, SystemTable->ConOut->Mode->Mode, &horizontalResolution, &verticalResolution);
 
-	// Obtener la interfaz de gráficos
+	// get the gop
 	Status = uefi_call_wrapper(BS->LocateProtocol, 3, &gEfiGraphicsOutputProtocolGuid, NULL, (VOID**)&gop);
+	
 	if (EFI_ERROR(Status)) {
 		Print(L"Error al obtener el protocolo de gráficos: %r\n", Status);
 		return Status;
 	}
 
-	// Establecer un modo de gráficos específico
-	UINTN Mode = 2; // Cambia esto según el modo disponible que desees utilizar
+	// set a gop mode
+	UINTN Mode = 2; 
+
 	Status = uefi_call_wrapper(gop->SetMode, 2, gop, Mode);
 	if (EFI_ERROR(Status)) {
 		Print(L"Error al establecer el modo de gráficos: %r\n", Status);
 		return Status;
 	}
 
-	// set the screen
-
+	//
+	//set the screen
+	//
+	
 	// change to text mode
 	ChangeToTextMode();
 
@@ -5491,6 +6291,10 @@ efi_main
 	// initialize my text mode protocol
 	initializeMoonScreen();
 
+	//
+	// transition to kernel boot
+	//
+
 	BootStage = 1;
 	CurrentDir = -1;
 
@@ -5503,12 +6307,24 @@ efi_main
 	// wait
 	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 1, 100000);
 
+	//
+	// console settings
+	//
+
 	// clear the screen
 	SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
 	SystemTable->BootServices->LocateProtocol(&gEfiGraphicsOutputProtocolGuid, NULL, (void**)&gop);
 	
+	//
+	// parse gop
+	//
+
 	INTN MaxColumn = (gop->Mode->Info->HorizontalResolution / 8) / Conio->atributes->size;
 	MaxColumn = MaxColumn - 1;
+
+	//
+	// idk
+	//
 
 	// create the taskbar text
 	StrCpy(taskbar, L"");
@@ -5519,12 +6335,21 @@ efi_main
 
 	// SystemTable->BootServices->ExitBootServices(ImageHandle, MapKey);
 
+	//
+	// visual boot
+	//
+
 	SetScreenAtribute(1, black);
 	ClearScreen();
 
 	DrawSplashBoot();
 
-	// FatalError(L"Hello World");
+	//Print(SasmParseBinaryIns(SolveSasmLine(L"mov \'A\',1; 10")));
+	 //FatalError(L"Hello World");
+
+	//
+	// go to the logs and init varius services
+	//
 
 	printc(L"S-SUN startup logs\n");
 	printc(L"\nIf you found a problem with system this can help you to fix it\n\nSystem Startup Logs:\n\n");
@@ -5533,6 +6358,8 @@ efi_main
 
 	// initialize the kernel
 	KERNEL_INITIALIZE;
+
+	//YNConfirmation(L"test");
 
 	FindSoundCard(SystemTable);
 
@@ -5548,6 +6375,11 @@ efi_main
 	InitializeFileSystem();
 
 	printc(L"\n\ncreating the themes\n");
+
+	//
+	// themes creation
+	//
+	
 	// themes
 	SCDefault = newCSCHEME(yellow, gray, black);
 	SCNature = newCSCHEME(cyan, green, black);
@@ -5563,6 +6395,10 @@ efi_main
 	SCSunDays = newCSCHEME(brteal, yellow, black);
 	SCHolidays = newCSCHEME(white, green, brred);
 
+	//
+	// setting reserved
+	//
+
 	// prepare the instances
 	MEM_FILE_INT* Kernel_Startup = Create_MEM_FILE_INT(L"Kernel_Initialized", 1);
 	MEM_FILE_INT* Kernel_Instance = Create_MEM_FILE_INT(L"Kernel_Instance", 1);
@@ -5572,7 +6408,15 @@ efi_main
 	MEM_FILE_INT* DEBUG = Create_MEM_FILE_INT(L"DEBUG GNU-EFI", 1);
 #endif // DEBUG
 
+	//
+	// ready for the loading screen?
+	//
+
 	BootStage = 2;
+
+	//
+	// load desktop theme
+	//
 
 	CSCHEME* loadfrommem = LibGetVariable(L"Theme", &SmallVariables);
 
@@ -5587,6 +6431,9 @@ efi_main
 	}
 	else Sceme = newCSCHEME(yellow, gray, black);
 
+	//
+	// a keys for make a setting
+	//
 
 	uefi_call_wrapper(SystemTable->ConIn->ReadKeyStroke, 2, SystemTable->ConIn, &Key);
 	if (Key.UnicodeChar == L'r') {
@@ -5604,17 +6451,21 @@ efi_main
 		EmergencyPrompt();
 	}
 	
+	//
+	// loading screen
+	//
+	
 	// set the pre-loadscreen colors
 	ClearScreen();
 	SetScreenAtribute(1, black);
 	SetScreenAtribute(0, white);
 
-	printc(L"press ESC to skip init.spp\n");
+	//
+	// execute some things
+	//
 	// execute the kernel.sys (that is internal s++ code)
 	ExecuteScript(L"# ---------------------------------\n\n#\tS-SUN kernel\n\n# ---------------------------------\n\n\n\n# internal system file (kernel.sys)\n\n\n\n# ---------------------------------\n\n# POINTERS DEFINITION\n\n\n\nif def%VOID:EditMem VOID=0\n\n\n\n# ---------------------------------\n\n# KERNEL_MAIN\n\n\n\necho Initializing Kernel\n\n\n\n# the kernel main\n\ncall set_vars\n\ncall oem_start\n\ncall flush_vars\n\ncall os_start\n\n\n\n# section to set the vars\n\nsection\n\nset_vars\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_0=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_1=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_2=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_3=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_4=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_5=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_6=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_7=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_8=d%VOID\n\nif CMP&%KERNEL_INITIALIZED=1:EditMem KERNEL_RESERVED_9=d%VOID\n\nret\n\n\n\n# section to flush the vars\n\nsection\n\nflush_vars\n\nFlushMEM KERNEL_RESERVED_0\n\nFlushMEM KERNEL_RESERVED_1\n\nFlushMEM KERNEL_RESERVED_2\n\nFlushMEM KERNEL_RESERVED_3\n\nFlushMEM KERNEL_RESERVED_4\n\nFlushMEM KERNEL_RESERVED_5\n\nFlushMEM KERNEL_RESERVED_6\n\nFlushMEM KERNEL_RESERVED_7\n\nFlushMEM KERNEL_RESERVED_8\n\nFlushMEM KERNEL_RESERVED_9\n\nret\n\n\n\n# oem start section\n\nsection\n\noem_start\n\nEditMem S-SUN_Distributor=unfortunately no one :)\n\nret\n\n\n\n# section to the os takes the absolute control MUAHAHAHAHA >:)\n\nsection\n\nos_start\n\nend_script",ImageHandle,SystemTable);
 	// get the system state
-
-	printc(L"Loading the filesystem backup...\n");
 
 	// wait
 	uefi_call_wrapper(globalsystemtable->BootServices->Stall, 1, 500000);
@@ -5623,6 +6474,10 @@ efi_main
 	initializeMoonScreen();
 	SetScreenAtribute(0, white);
 
+	//
+	// test again the sound
+	//
+
 	PlaySound(700, 50);
 
 	/*
@@ -5630,11 +6485,19 @@ efi_main
 	ClearScreen();
 	*/
 
+	//
+	// if you active legacy screen
+	//
+
 	// calculate the scren size
 	globMaxRows = (verticalResolution / row_size) / Conio->atributes->size;
 	globMaxColumns = (horizontalResolution / 8) / Conio->atributes->size;
 	if (0) {
 
+		//
+		// screen setting
+		//
+		
 		// draw the presentation by-creator
 		gotoxy((globMaxColumns - StrLen(COMPANY_NAME)) / 2, globMaxRows - 1);
 		printc(COMPANY_NAME);
@@ -5656,6 +6519,10 @@ efi_main
 
 		// draw the loading bar
 		printc(L"\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a\a");
+
+		//
+		// go to the action
+		//
 
 		// again for other time of that reason
 		uefi_call_wrapper(globalsystemtable->BootServices->Stall, 0.01, 500000);
@@ -5686,77 +6553,15 @@ efi_main
 	}
 
 	// if not skiped initialize Init.spp
+	/*
 	if (Key.ScanCode != SCAN_ESC) {
 		// ExecuteScript(CurrentFS->HEY_CURRENT_SESSION[3].Content, ImageHandle, SystemTable);
 	}
-		// The platform logo may still be displayed → remove it
-			/*
-		SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
-		option = 1;
-		while (TRUE) {
-			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_BLACK | EFI_BACKGROUND_LIGHTGRAY);
-			SystemTable->ConOut->ClearScreen(SystemTable->ConOut);
-			Print(L"\n  Select an option to start S-SUN or continue with your OS\n\n");
-			uefi_call_wrapper(SystemTable->ConIn->ReadKeyStroke, 2, SystemTable->ConIn, &Key);
-			if (Key.ScanCode == SCAN_UP) {
-				option--;
-				if (option < 1) option = 4; // Si la opción es menor a 1, ir a la última opción
-			}
-			else if (Key.ScanCode == SCAN_DOWN) {
-				option++;
-				if (option > 4) option = 1; // Si la opción es mayor a 3, ir a la primera opción
-			}
-			else if (Key.UnicodeChar == CHAR_CARRIAGE_RETURN) {
-				if (option == 1) {
-					// Iniciar S-SUN normalmente
-					ssun_main(ImageHandle, SystemTable, L"Norm");
-				}
-				else if (option == 2) {
-					// Iniciar S-SUN en modo desarrollador
-					ssun_main(ImageHandle, SystemTable, L"DEV");
-				}
-				else if (option == 3) {
-					SystemManager(ImageHandle, SystemTable);
-				}
-				else if (option == 4) {
-					// Salir
-					return EFI_SUCCESS;
-				}
-			}
+	*/
 
-			// Mostrar opciones del menú
-			Print(L"    ");
-			if (option == 1) {
-				SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
-			}
-			Print(L"Start S-SUN Normally\n");
-			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_BLACK | EFI_BACKGROUND_LIGHTGRAY);
-			Print(L"    ");
-
-			if (option == 2) {
-				SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
-			}
-			Print(L"Start S-SUN Developer Mode (in this I test new things before I launch it)\n");
-			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_BLACK | EFI_BACKGROUND_LIGHTGRAY);
-			Print(L"    ");
-
-			if (option == 3) {
-				SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
-			}
-			Print(L"Start S-SUN System Manager\n");
-			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_BLACK | EFI_BACKGROUND_LIGHTGRAY);
-
-			Print(L"    ");
-
-			if (option == 4) {
-				SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_WHITE | EFI_BACKGROUND_BLACK);
-			}
-			Print(L"Exit\n");
-			SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_BLACK | EFI_BACKGROUND_LIGHTGRAY);
-
-			SystemTable->BootServices->WaitForEvent(1, &SystemTable->ConIn->WaitForKey, &Event);
-		}
-		*/
+	//
+	// finally in the desktop YYAAAAYY
+	//
 
 	BootStage = 3;
 

@@ -241,7 +241,7 @@ NormalizeStatus
 
     SetScreenAtribute(0, brblue);
     printcu(L"[");
-    SetScreenAtribute(0, brteal);
+    SetScreenAtribute(0, brgreen);
     printcu(Status);
     SetScreenAtribute(0, brblue);
     printcu(L"]");
@@ -255,9 +255,9 @@ PrintWithStatus
     CHAR16 * Status
 )
 {
-    SetScreenAtribute(0, brcyan);
-    printcu(L"@ ");
     SetScreenAtribute(0, brgreen);
+    printcu(L"*");
+    SetScreenAtribute(0, white);
     printcu(text);
     NormalizeStatus(Status);
     printcu(L"\n");

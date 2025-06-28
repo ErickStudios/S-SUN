@@ -18,8 +18,8 @@ Abstract:
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Message for Mod Makers:
     
-    please if you make a mod of S-SUN please use a diferent file if you dont want that your system
-    makes a internal relationship (sorry i dont find the word i really speak spanish) , so , is
+    if you make a mod of S-SUN use a diferent file if you dont want that your system
+    makes a internal dependence to the vanila system , so , is
     optionally change the name of the mount file of your S-SUN mod
 
 ----------------------------------------------------------------------------------------------------
@@ -44,8 +44,10 @@ Kelly is the name of the proyect and the ErickFS is a custom version for S-SUN
 )
 so you can modding ErickFS because the original kelly is lossed foever
 */
-#include <efi.h>
-#include <efilib.h>
+
+#include "../include/motor.h"
+#include "../include/crypto_pepe.h"
+#include "../console/KernelTextMode.h"
 
 #ifndef _KERNEL_STORAGE_
 #define _KERNEL_STORAGE_
@@ -72,12 +74,6 @@ prototype class                                _File;
 prototype class                                _erickFS_partition;
 prototype class                                s_KELLY_TIME;
 prototype class                                _erickFS_partition;
-
-typedef struct _KELLY_TIME {
-    UINT16                          Year;       // 1998 - 20XX
-    UINT8                           Month;      // 1 - 12
-    UINT8                           Day;        // 1 - 31
-} KELLY_TIME;
 
 // ----------------------------------------------------------------------------------------------
 // variables
@@ -115,31 +111,31 @@ KellyTimeUpdate
 prototype VOID
 filelib_load_file
 (
-    INT8                                        FileToLoad
+    t8                                          FileToLoad
 );
 
 prototype INT16
 os_get_file_id
 (
-    CHAR16                                      FileName[MAX_NAME_CHARACTERS],
-    INT8                                        Parent
+    ch16                                        FileName[MAX_NAME_CHARACTERS],
+    t8                                          Parent
 );
 
 prototype BOOLEAN
 os_file_exist
 (
-    CHAR16                                      FileName[MAX_NAME_CHARACTERS],
-    INT8                                        Parent
+    ch16                                        FileName[MAX_NAME_CHARACTERS],
+    t8                                          Parent
 )
 ;
 
 prototype VOID
 os_del_file
 (
-    INT8                                        Filet
+    t8                                          Filet
 );
 
-prototype INT8
+prototype t8
 os_search_free_space
 (
 );
@@ -147,30 +143,42 @@ os_search_free_space
 prototype VOID
 os_create_file
 (
-    CHAR16                                      FileName[MAX_NAME_CHARACTERS],
-    INT8                                        Parent,    
-    BOOLEAN                                     Folder,
-    CHAR16                                      extension[4]
+    ch16                                        FileName[MAX_NAME_CHARACTERS],
+    t8                                          Parent,    
+    bool_t                                      Folder,
+    ch16                                        extension[4]
 );
 
 prototype VOID
 os_write_file
 (
-    INT8                                        File,
-    CHAR16                                      Content[MAX_CONTENT_CHARACTERS]
+    t8                                          File,
+    ch16                                        Content[MAX_CONTENT_CHARACTERS]
 );
 
 prototype CHAR16*
 os_file_name
 (
-    INT8                                        File
+    t8                                          File
 );
 
 prototype CHAR16*
 os_open_file
 (
-    INT8                                        File
+    t8                                          File
 );
+
+prototype VOID
+ConnyExport(
+    ch16*                                       VarName
+);
+
+
+prototype VOID
+ConnyImport(
+    ch16*                                       VarName
+);
+
 
 prototype VOID
 InitializeFileSystem(
@@ -211,18 +219,18 @@ _File
     // technical
     // technically if you delete a file the file stays in the storage (yeah if the file is not writed
     // because the method verifics the free space and take the deleted files as "free space")
-    BOOLEAN                         IsCreated;
+    bool_t                         IsCreated;
 
     // general
   
-    CHAR16                          Name[MAX_NAME_CHARACTERS];
-    CHAR16                          Content[MAX_CONTENT_CHARACTERS];
+    ch16                            Name[MAX_NAME_CHARACTERS];
+    ch16                            Content[MAX_CONTENT_CHARACTERS];
 
     // complex
-    CHAR16                          Extension[4]; // .fdl = folder
+    ch16                            Extension[4]; // .fdl = folder
 
     // folder method
-    INT8                            Parent; // in this here the item of the folder in the list
+    t8                              Parent; // in this here the item of the folder in the list
 
     KELLY_TIME                      CreatedTime;
     KELLY_TIME                      LastEditonTime;
@@ -251,7 +259,7 @@ _erickFS_partition
     //                                               //
     ///////////////////////////////////////////////////
     // technical and for stay the compatibility
-    INT8                            FilesCount;
+    t8                              FilesCount;
 
     ///////////////////////////////////////////////////
     //                                               //
@@ -262,7 +270,7 @@ _erickFS_partition
     File                            Files[MAX_FILES];
 
     // params
-    BOOLEAN                         ReadOnly;
+    bool_t                          ReadOnly;
 } 
 erickFS_partition
 ;
@@ -334,7 +342,7 @@ ImportFS
             (void**)&FileSystem // set the pointer
         );
 
-        // Abrir la raíz del sistema de archivos
+        // Abrir la raï¿½z del sistema de archivos
         uefi_call_wrapper(
             FileSystem->OpenVolume, // the volume
             2,
@@ -412,7 +420,7 @@ ExportFS
             (void**)&FileSystem // set the pointer
         );
 
-        // Abrir la raíz del sistema de archivos
+        // Abrir la raï¿½z del sistema de archivos
         uefi_call_wrapper(
             FileSystem->OpenVolume, // the volume
             2,
@@ -472,7 +480,7 @@ Summary:
 VOID
 filelib_load_file
 (
-    INT8 FileToLoad
+    t8 FileToLoad
 )
 {
     
@@ -489,8 +497,8 @@ os_get_file_id
 // if returns -1 the file is not founded
 // you can make with a folder too
 (
-    CHAR16 FileName[MAX_NAME_CHARACTERS],
-    INT8 Parent    // if -1 there is in root
+    ch16 FileName[MAX_NAME_CHARACTERS],
+    t8 Parent    // if -1 there is in root
 )
 {
     for (
@@ -552,7 +560,7 @@ Summary:
 VOID
 os_del_file
 (
-    INT8 Filet
+    t8 Filet
 )
 {
     KellyTimeUpdate();
@@ -569,8 +577,8 @@ Summary:
 BOOLEAN
 os_file_exist
 (
-    CHAR16                                      FileName[MAX_NAME_CHARACTERS],
-    INT8                                        Parent
+    ch16                                      FileName[MAX_NAME_CHARACTERS],
+    t8                                        Parent
 )
 {
     return os_get_file_id(FileName, Parent) == -1 ? false : true ;
@@ -591,7 +599,7 @@ os_search_free_space
 {
     for (
         size_t i = 0;
-        i < 29; 
+        i < MAX_FILES; 
         i++
         )
     {
@@ -603,6 +611,7 @@ os_search_free_space
         }
     }
 
+    ShowPanic(FILLED_STORAGE_ARRAY_P);
     return -1;
 }
 
@@ -615,13 +624,15 @@ Summary:
 VOID
 os_create_file
 (
-    CHAR16 FileName[MAX_NAME_CHARACTERS],
-    INT8 Parent,    // if -1 there is in root
-    BOOLEAN Folder,
-    CHAR16 extension[4]
+    ch16 FileName[],
+    t8 Parent,    // if -1 there is in root
+    bool_t Folder,
+    ch16 extension[4]
 )
 {
-    INT8 CreateIn = os_search_free_space();
+    IsInArrayRange(FileName,MAX_NAME_CHARACTERS);
+
+    t8 CreateIn = os_search_free_space();
 
     if (
         CreateIn == -1
@@ -688,10 +699,41 @@ Summary:
 VOID
 os_write_file
 (
-    INT8 File,
-    CHAR16 Content[MAX_CONTENT_CHARACTERS]
+    t8 File,
+    ch16 Content[MAX_CONTENT_CHARACTERS]
 )
 {
+    if (
+        true
+        )
+    {
+        if (
+            (CurrentFS->Files[File].Parent == 0 ||
+            CurrentFS->Files[File].Parent == 1) && BootStage > 2
+            ) {
+            SetScreenAtribute(0, brblue);
+            printc(L"\ndo you want to wrtie a system file? ");
+            SetScreenAtribute(0, brcyan);
+            printc(L"Y/N");
+            SetScreenAtribute(0, brgreen);
+            printc(L" ");
+
+            EFI_INPUT_KEY Key;
+
+            gBS->WaitForEvent(1, &gST->ConIn->WaitForKey, 1);
+
+            gST->ConIn->ReadKeyStroke(gST->ConIn, &Key);
+
+            if (
+                Key.UnicodeChar == L'y' || Key.UnicodeChar == L'n'
+                )
+            {
+            }
+            else {
+                return;
+            }
+        }
+    }
 
     if
         (
@@ -722,7 +764,7 @@ Summary:
 CHAR16*
 os_file_name
 (
-    INT8 File
+    t8 File
 )
 {
     if
@@ -753,7 +795,7 @@ Summary:
 CHAR16*
 os_open_file
 (
-    INT8 File
+    t8 File
 )
 {
     if
@@ -762,7 +804,7 @@ os_open_file
             )
         return NULL;
 
-    CHAR16* Str = AllocatePool(sizeof(CHAR16) * (MAX_CONTENT_CHARACTERS + 1));
+    ch16* Str = AllocatePool(sizeof(ch16) * (MAX_CONTENT_CHARACTERS + 1));
     for (
         size_t i = 0;
         i < (MAX_CONTENT_CHARACTERS - 1);
@@ -775,6 +817,21 @@ os_open_file
     Str[MAX_CONTENT_CHARACTERS] = L'\0';// avoid errors
 
     return Str;
+}
+
+VOID
+ConnyExport(
+    ch16* VarName
+)
+{
+}
+
+
+VOID
+ConnyImport(
+    ch16* VarName
+)
+{
 }
 
 /*
@@ -811,6 +868,9 @@ InitializeFileSystem
     os_create_file(L"photos", os_get_file_id(L"root", -1), 1, L"fld");      // /root/photos/
     os_create_file(L"downloads", os_get_file_id(L"root", -1), 1, L"fld");   // /root/downloads/
     os_create_file(L"desktop", os_get_file_id(L"root", -1), 1, L"fld");     // /root/desktop/
+    
+    //os_create_file(L"random", os_get_file_id(L"dev", -1), 1, L"dev"); 
+    //os_write_file(os_get_file_id(L"random",os_get_file_id(L"dev", -1)),GenDevRandom());
 }
 
 // ----------------------------------------------------------------------------------------------

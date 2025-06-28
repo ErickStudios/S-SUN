@@ -174,7 +174,7 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>gnu-efi.lib;libcmtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gnu-efi.lib;libcmtd.lib;$(ProjectDir)KrnSpeaker.obj;%(AdditionalDependencies)</AdditionalDependencies>
       <DataExecutionPrevention>false</DataExecutionPrevention>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <EntryPointSymbol>efi_main</EntryPointSymbol>
@@ -187,7 +187,7 @@
       <Command>.\ml64 /c KernelSpeaker.asm</Command>
     </CustomBuildStep>
     <PreBuildEvent>
-      <Command>REM "$(LocalDebuggerWorkingDirectory)ml64.exe" /c "$(LocalDebuggerWorkingDirectory)KrnSpeaker.asm"</Command>
+      <Command>"$(LocalDebuggerWorkingDirectory)ml64.exe" /c "$(LocalDebuggerWorkingDirectory)KrnSpeaker.asm"</Command>
     </PreBuildEvent>
     <PreLinkEvent>
       <Command>
@@ -411,6 +411,7 @@
     <ClInclude Include="..\..\kernel\console\TextModeMapBits.h" />
     <ClInclude Include="..\..\kernel\drivers\KernelAlgoritm.h" />
     <ClInclude Include="..\..\kernel\drivers\KernelNet.h" />
+    <ClInclude Include="..\..\kernel\drivers\KernelNootebockDef.h" />
     <ClInclude Include="..\..\kernel\drivers\KernelSpeaker.h" />
     <ClInclude Include="..\..\kernel\early\bootloader.h" />
     <ClInclude Include="..\..\kernel\kernelMK.h" />
@@ -420,6 +421,7 @@
     <ClInclude Include="..\..\kernel\services\KernelLanguaje.h" />
     <ClInclude Include="..\..\kernel\services\KernelMemory.h" />
     <ClInclude Include="..\..\kernel\services\KernelOem.h" />
+    <ClInclude Include="..\..\kernel\services\KernelPanicDefs.h" />
     <ClInclude Include="..\..\kernel\services\KernelProcess.h" />
     <ClInclude Include="..\..\kernel\services\KernelStorage.h" />
     <ClInclude Include="..\..\kernel\sources\KernelCore.h" />
@@ -431,6 +433,7 @@
     <ClInclude Include="..\..\kernel\usr\sources\program_list.h" />
     <ClInclude Include="..\..\kernel\usr\sources\program_lt.h" />
     <ClInclude Include="..\..\kernel\usr\ThridyP.h" />
+    <ClInclude Include="..\..\neptune_api\doctools.h" />
     <ClInclude Include="..\..\neptune_api\frameworck.h" />
     <ClInclude Include="..\..\neptune_api\sprites.h" />
     <ClInclude Include="int.h" />
